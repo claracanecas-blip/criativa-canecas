@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9 concluídas, Fase 8 tecnicamente pronta e dependente de dados/domínio externos |
-| Versão | 1.13 |
+| Versão | 1.14 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -395,6 +395,8 @@ Um item pode entrar em implementação quando possui requisito, dependências, e
 Um item está concluído quando código, migrations, testes, documentação, preview, aceite e produção foram completados e a memória foi atualizada.
 
 ## 16. Decisões pendentes
+
+As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINESS_INPUT.md`](../templates/PHASE_8_BUSINESS_INPUT.md), sem incluir credenciais ou dados que não devam ser públicos.
 
 - Domínio próprio desejado e responsável pelo DNS.
 - Ativação final do convite pela conta administrativa proprietária, se ainda pendente.

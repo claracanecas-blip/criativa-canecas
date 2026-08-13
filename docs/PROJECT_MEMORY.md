@@ -156,7 +156,7 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Coletar os dados oficiais restantes e ativar domínio/DNS quando houver autorização específica.
+1. Coletar os dados oficiais pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e ativar domínio/DNS quando houver autorização específica.
 2. Cadastrar somente avaliações reais com autorização documentada.
 3. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
 
