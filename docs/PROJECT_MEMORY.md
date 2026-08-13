@@ -59,6 +59,9 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - “Meu orçamento” abre drawer lateral no desktop e painel inferior no celular; contador, estado vazio, confirmação para limpar e anúncios acessíveis estão implementados.
 - WhatsApp consolidado inclui quantidade, nome, SKU, subtotal, link e total estimado, com ressalvas de preço/prazo/disponibilidade e sem promessa de reserva/pedido.
 - Qualidade da Fase 7: 24 testes unitários, 8 E2E/axe e Lighthouse home P99/A98, coleção P99/A100 e produto P91/A100; Boas Práticas/SEO 100.
+- Base técnica da Fase 8 concluída: `/informacoes` está no rodapé, prerender e sitemap de 361 URLs; textos evitam promessas antes da confirmação no atendimento.
+- Depoimentos nascem em rascunho, só publicados aparecem na home e fotos exigem referência de consentimento. O banco permanece sem depoimentos fictícios.
+- `/admin/depoimentos` permite moderação; RLS remota positiva/negativa e lint passaram. A suíte agora possui 25 testes e 9 E2E/axe.
 
 ## Decisões tomadas
 
@@ -86,6 +89,8 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 22. Tratar contraste WCAG como gate de CI: CTAs rosa usam `--pink-dark` e WhatsApp usa verde escuro com texto branco.
 23. Manter o orçamento exclusivamente local e versionado; armazenar apenas slug/quantidade, normalizar conteúdo inválido e limitar cada item a 99 unidades.
 24. Tratar valores do orçamento como estimativas e manter o WhatsApp como confirmação humana de personalização, prazo, disponibilidade e preço.
+25. Não inventar identidade empresarial, políticas, prazos ou avaliações; disponibilizar conteúdo-base seguro e aguardar dados oficiais para afirmações comerciais definitivas.
+26. Exigir moderação administrativa de depoimentos e referência externa de consentimento para qualquer foto de cliente.
 
 ## Histórico relevante
 
@@ -131,13 +136,14 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 - A allowlist de analytics contém apenas `criativa-canecas.vercel.app`; deve incluir o futuro domínio próprio no mesmo deploy da troca canônica.
 - Métricas são agregadas e não substituem uma plataforma de marketing/atribuição; adicionar Pixel ou GA depende de decisão de negócio e consentimento.
 - O site ainda não possui domínio próprio registrado nesta memória.
+- A Fase 8 depende de nome empresarial/CPF ou CNPJ, endereço/e-mail, condições comerciais oficiais, avaliações reais e acesso ao domínio/DNS.
 - Há atividade residual do GitHub Pages, mas produção oficial é Vercel; não desativar serviço externo sem autorização explícita.
 
 ## Próxima execução recomendada
 
-1. Executar a parte técnica e de conteúdo-base da Fase 8: FAQ, materiais, cuidados, produção, entrega e políticas.
-2. Preparar avaliações moderadas e consentimento de fotos sem publicar conteúdo fictício.
-3. Manter domínio próprio e DNS como decisão externa pendente; não comprar nem alterar DNS sem autorização específica.
+1. Coletar os dados oficiais restantes e ativar domínio/DNS quando houver autorização específica.
+2. Cadastrar somente avaliações reais com autorização documentada.
+3. Executar a descoberta da Fase 9 com métricas reais; não contratar nem implementar checkout sem decisão comercial.
 
 ## Protocolo de atualização da memória
 

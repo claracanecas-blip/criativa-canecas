@@ -7,6 +7,8 @@ import { useCatalog } from '@/composables/useCatalog'
 import { destaques } from '@/data/colecoes'
 import { site } from '@/data/site'
 import type { Collection, IconName } from '@/types/catalog'
+import { useTestimonials } from '@/composables/useTestimonials'
+import { Star } from '@lucide/vue'
 
 const beneficios: Array<{ icone: IconName; titulo: string; texto: string }> = [
   { icone: 'Truck', titulo: 'Envio seguro',      texto: 'Seu pedido bem embalado' },
@@ -38,6 +40,7 @@ const atalhos = computed(() => destaques
   .filter((collection): collection is Collection => collection !== undefined))
 
 const novidades = computed(() => catalog.produtosDaColecao('series').slice(0, 8))
+const { testimonials } = useTestimonials()
 </script>
 
 <template>
@@ -115,6 +118,8 @@ const novidades = computed(() => catalog.produtosDaColecao('series').slice(0, 8)
       <RouterLink class="btn" to="/colecao/series">Ver toda a coleção</RouterLink>
     </p>
   </section>
+
+  <section v-if="testimonials.length" class="section testimonials"><div class="container"><div class="section-title"><h2>Quem presenteia, recomenda</h2><p>Depoimentos publicados após moderação.</p></div><div class="testimonial-grid"><blockquote v-for="item in testimonials" :key="item.id"><div class="stars" :aria-label="`${item.rating} de 5 estrelas`"><Star v-for="star in item.rating" :key="star" :size="17" fill="currentColor" /></div><p>“{{ item.quote }}”</p><cite>{{ item.author_display_name }}</cite></blockquote></div></div></section>
 </template>
 
 <style scoped>
@@ -154,10 +159,12 @@ const novidades = computed(() => catalog.produtosDaColecao('series').slice(0, 8)
 .quick-card div{display:flex;justify-content:center;color:var(--pink);margin-bottom:6px}
 
 .ver-mais{text-align:center;margin-top:26px}
+.testimonials{background:#fff7fa}.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.testimonial-grid blockquote{margin:0;padding:22px;border:1px solid var(--line);border-radius:17px;background:#fff}.stars{display:flex;color:#a86800;gap:2px}.testimonial-grid p{line-height:1.6}.testimonial-grid cite{font-style:normal;color:var(--pink-dark);font-weight:850}
 
 @media(max-width:950px){
   .hero-copy{width:78%}
   .quick-grid{grid-template-columns:repeat(3,1fr)}
+  .testimonial-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:700px){
   .hero-box{height:440px}
@@ -168,5 +175,6 @@ const novidades = computed(() => catalog.produtosDaColecao('series').slice(0, 8)
   .promo-grid{grid-template-columns:1fr}
   .promo-copy{width:70%}
   .quick-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonial-grid{grid-template-columns:1fr}
 }
 </style>

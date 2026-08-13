@@ -18,10 +18,12 @@ const routes: RouteRecordRaw[] = [
   { path: '/presentes',     name: 'presentes',     component: () => import('@/views/PresentesView.vue'),      meta: { titulo: 'Presentes' } },
   { path: '/dia-dos-pais',  name: 'dia-dos-pais',  component: () => import('@/views/DiaDosPaisView.vue'),     meta: { titulo: 'Dia dos Pais' } },
   { path: '/busca',         name: 'busca',         component: () => import('@/views/BuscaView.vue'),          meta: { titulo: 'Busca' } },
+  { path: '/informacoes',    name: 'informacoes',   component: () => import('@/views/InformacoesView.vue'),    meta: { titulo: 'Informações e cuidados' } },
   { path: '/produto/:slug', name: 'produto',       component: () => import('@/views/ProdutoView.vue'),        props: true },
   { path: '/admin/login',   name: 'admin-login',   component: () => import('@/views/admin/AdminLoginView.vue'), meta: { titulo: 'Acesso administrativo' } },
   { path: '/admin/definir-senha', name: 'admin-password', component: () => import('@/views/admin/AdminPasswordView.vue'), meta: { titulo: 'Definir senha administrativa', requiresAdmin: true } },
   { path: '/admin',         name: 'admin',         component: () => import('@/views/admin/AdminCatalogView.vue'), meta: { titulo: 'Painel administrativo', requiresAdmin: true } },
+  { path: '/admin/depoimentos', name: 'admin-testimonials', component: () => import('@/views/admin/AdminTestimonialsView.vue'), meta: { titulo: 'Depoimentos', requiresAdmin: true } },
   { path: '/:pathMatch(.*)*', name: 'nao-encontrado', component: () => import('@/views/NaoEncontradoView.vue'), meta: { titulo: 'Página não encontrada' } },
 ]
 

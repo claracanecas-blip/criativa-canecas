@@ -116,6 +116,10 @@ O visitante pode adicionar produtos ao “Meu orçamento”, ajustar quantidades
 
 O estado fica somente no navegador, em `localStorage`, sem conta ou dados pessoais.
 
+## Informações e depoimentos
+
+`/informacoes` concentra orientações de personalização, produção/entrega, cuidados e pós-venda. Depoimentos são cadastrados em `/admin/depoimentos`, nascem como rascunho e só aparecem na home após publicação; fotos exigem referência de consentimento.
+
 ## Planejamento e memória
 
 - [Especificação SDD e fases de evolução](docs/specs/CATALOG_EVOLUTION_SDD.md)

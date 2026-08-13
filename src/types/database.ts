@@ -299,6 +299,51 @@ export type Database = {
         }
         Relationships: []
       }
+      testimonials: {
+        Row: {
+          author_display_name: string
+          created_at: string
+          created_by: string | null
+          display_order: number
+          id: number
+          photo_consent_reference: string | null
+          photo_path: string | null
+          quote: string
+          rating: number
+          status: string
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          author_display_name: string
+          created_at?: string
+          created_by?: string | null
+          display_order?: number
+          id?: never
+          photo_consent_reference?: string | null
+          photo_path?: string | null
+          quote: string
+          rating: number
+          status?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          author_display_name?: string
+          created_at?: string
+          created_by?: string | null
+          display_order?: number
+          id?: never
+          photo_consent_reference?: string | null
+          photo_path?: string | null
+          quote?: string
+          rating?: number
+          status?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

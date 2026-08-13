@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T20:44:18.000Z",
+  "checks": [
+    { "name": "escrita anônima negada", "passed": true },
+    { "name": "foto sem consentimento rejeitada", "passed": true },
+    { "name": "admin cria rascunho", "passed": true },
+    { "name": "rascunho oculto", "passed": true, "detail": "HTTP 200 []" },
+    { "name": "publicado visível", "passed": true }
+  ],
+  "passed": true
+}

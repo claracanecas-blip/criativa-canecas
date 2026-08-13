@@ -227,7 +227,7 @@ onMounted(async () => {
   <section class="admin-shell container">
     <header class="admin-heading">
       <div><small>Área protegida</small><h1>Catálogo</h1><p>{{ adminEmail }}</p></div>
-      <button class="secondary-button" type="button" @click="logout"><LogOut :size="17" /> Sair</button>
+      <div class="admin-actions"><RouterLink class="secondary-button" to="/admin/depoimentos">Depoimentos</RouterLink><button class="secondary-button" type="button" @click="logout"><LogOut :size="17" /> Sair</button></div>
     </header>
 
     <p v-if="message" class="feedback success" role="status">{{ message }}</p>
@@ -296,6 +296,7 @@ onMounted(async () => {
 
 <style scoped>
 .admin-shell{padding-block:30px 60px}.admin-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}.admin-heading small,.editor-title small{color:var(--pink-dark);font-weight:900;text-transform:uppercase;letter-spacing:.08em}.admin-heading h1{margin:2px 0;font-size:34px}.admin-heading p{margin:0;color:var(--muted);font-size:13px}
+.admin-actions{display:flex;gap:8px}
 .tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin-bottom:20px}.tabs button{border:0;border-bottom:3px solid transparent;background:transparent;padding:12px 18px;font-weight:900;cursor:pointer}.tabs button.active{color:var(--pink-dark);border-color:var(--pink)}.tabs span{background:var(--pink-soft);border-radius:999px;padding:2px 7px;margin-left:4px;font-size:11px}
 .feedback{padding:11px 14px;border-radius:10px;font-size:13px;font-weight:750}.feedback.success{background:#eaf9f1;color:#146c43}.feedback.error{background:#fff0f3;color:#91243d}
 .toolbar{display:flex;gap:10px;margin:18px 0}.toolbar>input{flex:1;border:1px solid var(--line);border-radius:10px;padding:11px 13px}.primary-button,.secondary-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:9px;padding:10px 15px;font-weight:850;cursor:pointer}.primary-button{border:1px solid var(--pink);background:var(--pink);color:#fff}.secondary-button{border:1px solid var(--line);background:#fff;color:var(--ink)}button:disabled{opacity:.55;cursor:not-allowed}

@@ -6,6 +6,7 @@ const publicPages = [
   { name: 'coleção', path: '/colecao/series' },
   { name: 'busca', path: '/busca?q=Arrow' },
   { name: 'produto', path: '/produto/arrow-1' },
+  { name: 'informações', path: '/informacoes' },
 ]
 
 for (const target of publicPages) {

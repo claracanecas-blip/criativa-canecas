@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0, 1, 2, 3, 4, 5, 6 e 7 concluídas |
-| Versão | 1.6 |
+| Versão | 1.7 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -332,11 +332,17 @@ Uma fase só está concluída quando:
 
 ### Fase 8 — Confiança, domínio e conteúdo comercial
 
+**Estado:** em andamento; base técnica concluída em 13 de agosto de 2026, aguardando decisões/dados externos.
+
 **Objetivo:** aumentar credibilidade e conversão.
 
 **Entregas:** avaliações moderadas, FAQ, materiais/cuidados, políticas, domínio próprio e redirecionamento canônico.
 
 **Aceite:** domínio HTTPS ativo, apenas um domínio canônico indexável e conteúdo administrativo publicável.
+
+**Parcial entregue:** página de informações/FAQ, HTML rastreável, depoimentos moderados com RLS, administração e consentimento obrigatório para fotos. Nenhum conteúdo fictício foi publicado.
+
+**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), relatório RLS, 25 testes e 9 cenários Playwright/axe.
 
 **Estimativa:** 2 a 4 dias, excluindo prazos de DNS e produção de conteúdo.
 
@@ -402,5 +408,5 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 | 5 — Produto e SEO | Concluída | 341 páginas, sitemap de 360 URLs, preview e Lighthouse |
 | 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, Playwright/axe e Lighthouse no CI |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
-| 8 — Confiança e domínio | Não iniciada | — |
+| 8 — Confiança e domínio | Em andamento | Base técnica/FAQ/moderação pronta; domínio e dados oficiais pendentes |
 | 9 — Descoberta de checkout | Não iniciada | — |

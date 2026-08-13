@@ -194,9 +194,21 @@ export async function generateSeoAssets(outputDirectory = resolve('dist')): Prom
     await writeFile(resolve(directory, `${collection.slug}.html`), html)
   }
 
+  const informationCanonical = `${siteUrl}/informacoes`
+  const informationHtml = renderSeoHtml(template, {
+    title: 'Informações e cuidados | Criativa Canecas',
+    description: 'Saiba como funciona a personalização, produção, entrega, cuidados e atendimento da Criativa Canecas.',
+    canonical: informationCanonical,
+    image: imageUrl('logo.webp', 'social'),
+    type: 'website',
+    jsonLd: [],
+  }, '<main><article><h1>Informações e cuidados</h1><p>Orientações sobre personalização, produção, entrega, conservação e atendimento.</p><h2>Perguntas frequentes</h2><p>Valores, prazos e disponibilidade são confirmados pelo atendimento antes do pedido.</p></article></main>')
+  await writeFile(resolve(outputDirectory, 'informacoes.html'), informationHtml)
+
   const urls = [
     { loc: siteUrl },
     { loc: `${siteUrl}/colecoes` },
+    { loc: informationCanonical },
     ...catalog.collections.map((collection) => ({ loc: `${siteUrl}/colecao/${collection.slug}`, lastmod: collection.updated_at })),
     ...catalog.products.map((product) => ({ loc: `${siteUrl}/produto/${product.slug}`, lastmod: product.updated_at })),
   ]

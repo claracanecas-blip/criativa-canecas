@@ -21,12 +21,14 @@ const ano = new Date().getFullYear()
         <RouterLink to="/colecoes">Todas as coleções</RouterLink>
         <RouterLink to="/colecao/series">Séries</RouterLink>
         <RouterLink to="/presentes">Presentes</RouterLink>
+        <RouterLink to="/informacoes">Informações e cuidados</RouterLink>
       </div>
 
       <div>
         <strong>Atendimento</strong>
         <a :href="linkWhatsapp()" target="_blank" rel="noopener" @click="trackWhatsappClick('footer')">WhatsApp</a>
         <span>Pedidos sob encomenda</span>
+        <RouterLink to="/informacoes">FAQ e pós-venda</RouterLink>
       </div>
     </div>
     <div class="copy">© {{ ano }} Criativa Canecas • Todos os direitos reservados.</div>
