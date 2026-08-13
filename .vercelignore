@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.git/
+.github/
+.vercel/
+.env*
+!.env.example
+source-images/
+tmp/
+*.log
+cartao-*.png
+qr-*.png
+scripts/*.ps1
