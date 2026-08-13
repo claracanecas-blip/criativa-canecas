@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0, 1, 2, 3, 4, 5, 6 e 7 concluídas |
-| Versão | 1.7 |
+| Versão | 1.8 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -348,11 +348,17 @@ Uma fase só está concluída quando:
 
 ### Fase 9 — Descoberta sobre pagamento online
 
+**Estado:** concluída em 13 de agosto de 2026 com decisão de adiar checkout e medir o funil.
+
 **Objetivo:** decidir com dados se um checkout próprio compensa.
 
 **Entregas:** análise de volume, abandono, taxas, logística, LGPD, antifraude e fornecedores.
 
 **Aceite:** decisão registrada com custo total, riscos e métricas que justificam implementar ou adiar.
+
+**Decisão:** manter orçamento + WhatsApp e reavaliar após 30 dias de dados, operação comercial definida e sinais de volume/perda. Nenhuma contratação ou integração foi feita.
+
+**Evidência:** [`docs/decisions/CHECKOUT_DISCOVERY.md`](../decisions/CHECKOUT_DISCOVERY.md).
 
 **Estimativa:** 1 a 2 dias para descoberta; implementação é uma especificação separada.
 
@@ -409,4 +415,4 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 | 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, Playwright/axe e Lighthouse no CI |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
 | 8 — Confiança e domínio | Em andamento | Base técnica/FAQ/moderação pronta; domínio e dados oficiais pendentes |
-| 9 — Descoberta de checkout | Não iniciada | — |
+| 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |
