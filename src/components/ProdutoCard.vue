@@ -5,10 +5,13 @@ import { linkWhatsapp } from '@/data/site'
 import CatalogImage from '@/components/ui/CatalogImage.vue'
 import type { Product } from '@/types/catalog'
 import { trackWhatsappClick } from '@/services/analytics'
+import { ShoppingBag } from '@lucide/vue'
+import { useQuoteCart } from '@/composables/useQuoteCart'
 
 const props = withDefaults(defineProps<{ produto: Product; priority?: boolean }>(), {
   priority: false,
 })
+const cart = useQuoteCart()
 
 const link = computed(() =>
   linkWhatsapp(`Olá! Tenho interesse na caneca ${props.produto.nome} (${props.produto.sku}). ${window.location.origin}/produto/${props.produto.slug}`),
@@ -30,7 +33,8 @@ const link = computed(() =>
     <div class="info">
       <h3><RouterLink :to="`/produto/${produto.slug}`">{{ produto.nome }}</RouterLink></h3>
       <div class="price">{{ formatarPreco(produto.preco) }}</div>
-      <a class="comprar" :href="link" target="_blank" rel="noopener" @click="trackWhatsappClick('product_card', produto.slug)">Comprar pelo WhatsApp</a>
+      <button type="button" class="add-quote" :aria-label="`Adicionar ${produto.nome} ao orçamento`" @click="cart.add(produto.slug, produto.nome)"><ShoppingBag :size="17" /> Adicionar ao orçamento</button>
+      <a class="comprar" :href="link" target="_blank" rel="noopener" @click="trackWhatsappClick('product_card', produto.slug)">WhatsApp agora</a>
     </div>
   </article>
 </template>
@@ -43,7 +47,8 @@ const link = computed(() =>
 .info{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
 .info h3{margin:0;font-size:17px}
 .price{font-size:24px;color:var(--pink);font-weight:900}
-.comprar{margin-top:auto;text-align:center;background:#087f3f;color:#fff;padding:11px;border-radius:8px;font-weight:800;font-size:14px}
+.add-quote{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:auto;border:1px solid var(--pink-dark);background:#fff;color:var(--pink-dark);padding:10px 8px;border-radius:8px;font-weight:850;font-size:13px;cursor:pointer}.add-quote:hover{background:var(--pink-soft)}
+.comprar{text-align:center;background:#087f3f;color:#fff;padding:10px;border-radius:8px;font-weight:800;font-size:13px}
 .comprar:hover{background:#075e35}
 
 @media(max-width:700px){

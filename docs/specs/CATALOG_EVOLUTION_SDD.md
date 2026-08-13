@@ -6,8 +6,8 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fases 0, 1, 2, 3, 4, 5 e 6 concluídas |
-| Versão | 1.5 |
+| Estado | Em execução; Fases 0, 1, 2, 3, 4, 5, 6 e 7 concluídas |
+| Versão | 1.6 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -316,11 +316,17 @@ Uma fase só está concluída quando:
 
 ### Fase 7 — Carrinho de orçamento
 
+**Estado:** concluída e validada em 13 de agosto de 2026.
+
 **Objetivo:** permitir seleção de vários produtos antes do atendimento.
 
 **Entregas:** estado persistente local, drawer/página de orçamento, quantidades e mensagem consolidada para WhatsApp.
 
 **Aceite:** seleção sobrevive ao refresh, mensagem corresponde à lista e funciona em desktop/celular.
+
+**Rollback:** reverter os componentes/serviços da fase; nenhum dado remoto ou migration é afetado.
+
+**Evidências:** [`docs/baselines/2026-08-13-phase-7/PHASE_7.md`](../baselines/2026-08-13-phase-7/PHASE_7.md), 24 testes unitários, 8 cenários Playwright/axe, inspeção desktop/celular e Lighthouse P90+.
 
 **Estimativa:** 2 a 4 dias.
 
@@ -395,6 +401,6 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 | 4 — Administração | Concluída | RLS remota e ciclo administrativo E2E completo |
 | 5 — Produto e SEO | Concluída | 341 páginas, sitemap de 360 URLs, preview e Lighthouse |
 | 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, Playwright/axe e Lighthouse no CI |
-| 7 — Orçamento | Não iniciada | — |
+| 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
 | 8 — Confiança e domínio | Não iniciada | — |
 | 9 — Descoberta de checkout | Não iniciada | — |

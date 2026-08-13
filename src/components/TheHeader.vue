@@ -7,9 +7,11 @@ import MegaMenu from '@/components/MegaMenu.vue'
 import { menuPrincipal } from '@/data/colecoes'
 import { site, linkWhatsapp } from '@/data/site'
 import { trackWhatsappClick } from '@/services/analytics'
+import { useQuoteCart } from '@/composables/useQuoteCart'
 
 const router = useRouter()
 const termo = ref('')
+const cart = useQuoteCart()
 
 function buscar() {
   const q = termo.value.trim()
@@ -37,10 +39,11 @@ function buscar() {
           <AppIcon name="MessageCircle" :size="21" />
           <span>Central de<br>Atendimento</span>
         </a>
-        <a class="head-link order" :href="linkWhatsapp('Olá! Gostaria de fazer um pedido.')" target="_blank" rel="noopener" @click="trackWhatsappClick('header_order')">
+        <button type="button" class="head-link order" aria-haspopup="dialog" @click="cart.open">
           <AppIcon name="ShoppingBag" :size="20" />
-          <span>Meu pedido</span>
-        </a>
+          <span>Meu orçamento</span>
+          <b v-if="cart.totalQuantity.value" class="cart-count" :aria-label="`${cart.totalQuantity.value} itens no orçamento`">{{ cart.totalQuantity.value }}</b>
+        </button>
       </div>
     </div>
   </header>
@@ -73,10 +76,11 @@ function buscar() {
 .search-wrap button{position:absolute;right:5px;top:5px;display:grid;place-items:center;width:36px;height:36px;padding:0;line-height:0;border-radius:50%;border:0;background:var(--pink);color:#fff;cursor:pointer}
 .search-wrap button :deep(svg){display:block}
 .header-actions{display:flex;gap:9px;align-items:center}
-.head-link{display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:13px;font-size:13px;font-weight:800;white-space:nowrap}
+.head-link{display:flex;align-items:center;gap:8px;padding:10px 11px;border:0;background:transparent;color:inherit;border-radius:13px;font-size:13px;font-weight:800;white-space:nowrap;cursor:pointer}
 .head-link:hover{background:var(--pink-soft)}
 .order{background:var(--pink-dark);color:#fff;border-radius:999px;padding:11px 15px}
 .order:hover{background:#b82053}
+.cart-count{display:grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#fff;color:var(--pink-dark);font-size:11px}
 
 .navbar{background:#fff;border-bottom:1px solid var(--line);position:relative;z-index:50}
 .nav-row{display:flex;align-items:center;gap:1px}

@@ -3,6 +3,7 @@ import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import BotaoWhatsapp from '@/components/BotaoWhatsapp.vue'
 import CatalogStatus from '@/components/CatalogStatus.vue'
+import QuoteCartDrawer from '@/components/QuoteCartDrawer.vue'
 </script>
 
 <template>
@@ -17,4 +18,5 @@ import CatalogStatus from '@/components/CatalogStatus.vue'
 
   <TheFooter />
   <BotaoWhatsapp />
+  <QuoteCartDrawer />
 </template>

@@ -110,6 +110,12 @@ A jornada pública registra apenas contagens diárias agregadas no Supabase: pro
 
 O CI executa testes unitários, TypeScript, build, Playwright, axe WCAG 2.2 A/AA e Lighthouse com mínimo 90 em Performance, Acessibilidade, Boas Práticas e SEO nas páginas principais.
 
+## Orçamento com vários produtos
+
+O visitante pode adicionar produtos ao “Meu orçamento”, ajustar quantidades e manter a seleção após atualizar a página. O drawer gera uma única mensagem de WhatsApp com itens, SKUs, links e total estimado, deixando claro que preço, prazo e disponibilidade ainda precisam de confirmação.
+
+O estado fica somente no navegador, em `localStorage`, sem conta ou dados pessoais.
+
 ## Planejamento e memória
 
 - [Especificação SDD e fases de evolução](docs/specs/CATALOG_EVOLUTION_SDD.md)

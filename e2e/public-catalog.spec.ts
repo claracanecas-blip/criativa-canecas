@@ -33,7 +33,7 @@ test('fluxo busca → produto → WhatsApp preserva contexto comercial', async (
 
   await expect(page).toHaveURL(/\/produto\/arrow-/)
   await expect(page.getByText(/^Código CC-ARROW-/)).toBeVisible()
-  const whatsapp = page.getByRole('link', { name: 'Pedir pelo WhatsApp' })
+  const whatsapp = page.getByRole('link', { name: 'Pedir só este pelo WhatsApp' })
   await expect(whatsapp).toHaveAttribute('href', /wa\.me\/.*CC-ARROW-.*produto%2Farrow-/)
 })
 
@@ -41,10 +41,45 @@ test('produto continua utilizável em viewport móvel e via teclado', async ({ p
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/produto/arrow-1')
   await expect(page.getByRole('heading', { level: 1, name: 'Arrow 01' })).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Pedir pelo WhatsApp' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Pedir só este pelo WhatsApp' })).toBeVisible()
 
   await page.goto('/')
   await page.keyboard.press('Tab')
   const focusedTag = await page.evaluate(() => document.activeElement?.tagName)
   expect(focusedTag).toBe('A')
+})
+
+test('orçamento persiste, ajusta quantidade e gera mensagem consolidada', async ({ page }) => {
+  await page.goto('/produto/arrow-1')
+  await page.getByRole('button', { name: 'Adicionar Arrow 01 ao orçamento' }).click()
+  await expect(page.getByRole('button', { name: /Meu orçamento/ })).toContainText('1')
+
+  await page.getByRole('button', { name: /Meu orçamento/ }).click()
+  await expect(page.getByRole('dialog', { name: 'Sua seleção' })).toBeVisible()
+  await page.getByRole('button', { name: 'Aumentar Arrow 01' }).click()
+  await expect(page.getByLabel('2 unidades')).toBeVisible()
+
+  await page.reload()
+  await expect(page.getByRole('button', { name: /Meu orçamento/ })).toContainText('2')
+  await page.getByRole('button', { name: /Meu orçamento/ }).click()
+  const sendLink = page.getByRole('link', { name: 'Enviar lista pelo WhatsApp' })
+  const href = await sendLink.getAttribute('href')
+  const message = new URL(href ?? '').searchParams.get('text') ?? ''
+  expect(message).toContain('2x Arrow 01 (CC-ARROW-1)')
+  expect(message).toContain('/produto/arrow-1')
+  expect(message).toContain('Total estimado:')
+  expect(message).toContain('não reserva estoque nem confirma o pedido')
+
+  page.once('dialog', (confirmation) => confirmation.accept())
+  await page.getByRole('button', { name: 'Limpar seleção' }).click()
+  await expect(page.getByRole('heading', { name: 'Seu orçamento está vazio' })).toBeVisible()
+})
+
+test('drawer de orçamento funciona em viewport móvel', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/produto/arrow-1')
+  await page.getByRole('button', { name: 'Adicionar Arrow 01 ao orçamento' }).click()
+  await page.getByRole('button', { name: /Meu orçamento/ }).click()
+  await expect(page.getByRole('dialog', { name: 'Sua seleção' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Enviar lista pelo WhatsApp' })).toBeVisible()
 })

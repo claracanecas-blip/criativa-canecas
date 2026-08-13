@@ -55,6 +55,10 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - RLS de analytics passou oito casos positivos/negativos; somente administradores leem os agregados e visitantes não acessam a tabela diretamente.
 - CI executa typecheck, build, 22 testes unitários, 6 cenários Playwright/axe e Lighthouse com gate 90. Axe não aponta violações WCAG 2.2 A/AA nos quatro fluxos públicos.
 - Lighthouse local da Fase 6: home P99/A98/B100/S100; coleção P99/A100/B100/S100; produto P90/A100/B100/S100.
+- Fase 7 concluída: visitantes adicionam/removem produtos, alteram quantidades e mantêm a seleção em `localStorage`, sem conta ou dado pessoal.
+- “Meu orçamento” abre drawer lateral no desktop e painel inferior no celular; contador, estado vazio, confirmação para limpar e anúncios acessíveis estão implementados.
+- WhatsApp consolidado inclui quantidade, nome, SKU, subtotal, link e total estimado, com ressalvas de preço/prazo/disponibilidade e sem promessa de reserva/pedido.
+- Qualidade da Fase 7: 24 testes unitários, 8 E2E/axe e Lighthouse home P99/A98, coleção P99/A100 e produto P91/A100; Boas Práticas/SEO 100.
 
 ## Decisões tomadas
 
@@ -80,6 +84,8 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 20. Usar agregação diária própria no Supabase em vez de eventos customizados pagos da Vercel; não armazenar sessão, IP, termo buscado ou mensagem de erro.
 21. Não exibir banner de consentimento enquanto não houver cookies ou integração opcional de marketing; qualquer Pixel/GA futuro exige avaliação e consentimento antes de carregar.
 22. Tratar contraste WCAG como gate de CI: CTAs rosa usam `--pink-dark` e WhatsApp usa verde escuro com texto branco.
+23. Manter o orçamento exclusivamente local e versionado; armazenar apenas slug/quantidade, normalizar conteúdo inválido e limitar cada item a 99 unidades.
+24. Tratar valores do orçamento como estimativas e manter o WhatsApp como confirmação humana de personalização, prazo, disponibilidade e preço.
 
 ## Histórico relevante
 
@@ -121,7 +127,7 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 - A coleta inicial de cache usou `HEAD` e foi inconclusiva para `GET`; a Fase 1 agora verifica por `GET` e confirmou `public, max-age=31536000` nos 1.432 objetos.
 - Objetos antigos do Storage são preservados quando um produto é excluído; uma rotina futura de limpeza deve remover somente órfãos comprovados.
 - Metadados estáticos e sitemap refletem o catálogo no momento do deploy; mudanças administrativas aparecem imediatamente na SPA, mas exigem novo deploy para atualizar prévias sociais e HTML rastreável.
-- Não há carrinho de orçamento com vários itens.
+- O orçamento não sincroniza entre dispositivos e navegadores; isso é intencional enquanto não houver conta de cliente.
 - A allowlist de analytics contém apenas `criativa-canecas.vercel.app`; deve incluir o futuro domínio próprio no mesmo deploy da troca canônica.
 - Métricas são agregadas e não substituem uma plataforma de marketing/atribuição; adicionar Pixel ou GA depende de decisão de negócio e consentimento.
 - O site ainda não possui domínio próprio registrado nesta memória.
@@ -129,9 +135,9 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Implementar a Fase 7 com carrinho de orçamento persistente e sem conta.
-2. Gerar mensagem consolidada de WhatsApp com itens, quantidades, links e aviso de estimativa.
-3. Cobrir adicionar, remover, alterar quantidade, limpar e persistir no Playwright em desktop/celular.
+1. Executar a parte técnica e de conteúdo-base da Fase 8: FAQ, materiais, cuidados, produção, entrega e políticas.
+2. Preparar avaliações moderadas e consentimento de fotos sem publicar conteúdo fictício.
+3. Manter domínio próprio e DNS como decisão externa pendente; não comprar nem alterar DNS sem autorização específica.
 
 ## Protocolo de atualização da memória
 

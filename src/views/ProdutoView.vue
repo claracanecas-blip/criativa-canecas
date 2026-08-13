@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { ChevronRight, MessageCircle, ShieldCheck } from '@lucide/vue'
+import { ChevronRight, MessageCircle, ShieldCheck, ShoppingBag } from '@lucide/vue'
 import CatalogImage from '@/components/ui/CatalogImage.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
@@ -11,9 +11,11 @@ import { formatarPreco } from '@/data/produtos'
 import { linkWhatsapp } from '@/data/site'
 import { productImageUrl } from '@/utils/assets'
 import { trackWhatsappClick } from '@/services/analytics'
+import { useQuoteCart } from '@/composables/useQuoteCart'
 
 const props = defineProps<{ slug: string }>()
 const catalog = useCatalog()
+const cart = useQuoteCart()
 const selectedImage = ref(0)
 const product = computed(() => catalog.buscarProduto(props.slug))
 const ready = computed(() => ['ready', 'fallback', 'error'].includes(catalog.state.value))
@@ -91,7 +93,8 @@ watch(() => props.slug, () => { selectedImage.value = 0 })
         <p class="price">{{ formatarPreco(product.preco) }}</p>
         <p class="description">{{ product.descricao }}</p>
         <div class="collection-links"><RouterLink v-for="collection in collections" :key="collection.slug" :to="collection.to ?? `/colecao/${collection.slug}`">{{ collection.nome }}</RouterLink></div>
-        <a class="whatsapp" :href="whatsapp" target="_blank" rel="noopener" @click="trackWhatsappClick('product_page', product.slug)"><MessageCircle :size="21" /> Pedir pelo WhatsApp</a>
+        <button type="button" class="add-quote" :aria-label="`Adicionar ${product.nome} ao orçamento`" @click="cart.add(product.slug, product.nome)"><ShoppingBag :size="21" /> Adicionar ao orçamento</button>
+        <a class="whatsapp" :href="whatsapp" target="_blank" rel="noopener" @click="trackWhatsappClick('product_page', product.slug)"><MessageCircle :size="21" /> Pedir só este pelo WhatsApp</a>
         <p class="estimate"><ShieldCheck :size="18" /> Valor estimado; confirme personalização e prazo no atendimento.</p>
       </section>
     </div>
@@ -106,6 +109,6 @@ watch(() => props.slug, () => { selectedImage.value = 0 })
 
 <style scoped>
 .breadcrumb{display:flex;align-items:center;gap:4px;margin-bottom:18px;font-size:12px;color:var(--muted)}.breadcrumb a:hover{color:var(--pink-dark)}
-.product-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:46px;align-items:start}.gallery{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#f7f1f4}.main-image{display:block;width:100%;aspect-ratio:1;object-fit:cover}.product-copy{padding-top:14px}.sku{color:var(--pink-dark);font-weight:900;letter-spacing:.06em;text-transform:uppercase}.product-copy h1{font-family:Georgia,serif;font-size:clamp(34px,4vw,52px);line-height:1.02;margin:10px 0}.theme{color:var(--muted);font-weight:750}.price{font-size:34px;color:var(--pink);font-weight:950;margin:24px 0 12px}.description{font-size:16px;line-height:1.65;color:#5e5157}.collection-links{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.collection-links a{border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:850}.collection-links a:hover{border-color:var(--pink);color:var(--pink-dark)}.whatsapp{display:flex;align-items:center;justify-content:center;gap:8px;background:#087f3f;color:#fff;border-radius:11px;padding:14px 18px;font-weight:900}.whatsapp:hover{background:#075e35}.estimate{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;line-height:1.4;margin-top:12px}.related{margin-top:58px}
+.product-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:46px;align-items:start}.gallery{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#f7f1f4}.main-image{display:block;width:100%;aspect-ratio:1;object-fit:cover}.product-copy{padding-top:14px}.sku{color:var(--pink-dark);font-weight:900;letter-spacing:.06em;text-transform:uppercase}.product-copy h1{font-family:Georgia,serif;font-size:clamp(34px,4vw,52px);line-height:1.02;margin:10px 0}.theme{color:var(--muted);font-weight:750}.price{font-size:34px;color:var(--pink);font-weight:950;margin:24px 0 12px}.description{font-size:16px;line-height:1.65;color:#5e5157}.collection-links{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.collection-links a{border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:850}.collection-links a:hover{border-color:var(--pink);color:var(--pink-dark)}.add-quote,.whatsapp{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:11px;padding:14px 18px;font-weight:900}.add-quote{width:100%;margin-bottom:10px;border:1px solid var(--pink-dark);background:#fff;color:var(--pink-dark);cursor:pointer}.add-quote:hover{background:var(--pink-soft)}.whatsapp{background:#087f3f;color:#fff}.whatsapp:hover{background:#075e35}.estimate{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;line-height:1.4;margin-top:12px}.related{margin-top:58px}
 @media(max-width:800px){.product-layout{grid-template-columns:1fr;gap:22px}.product-copy{padding-top:0}.product-copy h1{font-size:36px}.related{margin-top:42px}}
 </style>
