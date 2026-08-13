@@ -69,7 +69,8 @@ function buscar() {
 .search-wrap{position:relative}
 .search-wrap input{width:100%;height:46px;border:1px solid #ded4d9;border-radius:999px;padding:0 52px 0 18px;outline:none;background:#fafafa}
 .search-wrap input:focus{border-color:#ef9fbb;box-shadow:0 0 0 3px #ffe8f0}
-.search-wrap button{position:absolute;right:5px;top:5px;width:36px;height:36px;border-radius:50%;border:0;background:var(--pink);color:#fff;cursor:pointer}
+.search-wrap button{position:absolute;right:5px;top:5px;display:grid;place-items:center;width:36px;height:36px;padding:0;line-height:0;border-radius:50%;border:0;background:var(--pink);color:#fff;cursor:pointer}
+.search-wrap button :deep(svg){display:block}
 .header-actions{display:flex;gap:9px;align-items:center}
 .head-link{display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:13px;font-size:13px;font-weight:800;white-space:nowrap}
 .head-link:hover{background:var(--pink-soft)}
