@@ -6,7 +6,7 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fase 0 pronta para publicação e Fase 1 verificada localmente |
+| Estado | Em execução; Fases 0 e 1 concluídas em produção |
 | Versão | 1.1 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
@@ -218,7 +218,7 @@ Uma fase só está concluída quando:
 
 ### Fase 1 — Cache e variantes de imagem
 
-**Estado:** implementação e verificações local/Storage concluídas em 13 de agosto de 2026; publicação e aferição final na Vercel pendentes da reautenticação do GitHub.
+**Estado:** concluída em produção em 13 de agosto de 2026.
 
 **Objetivo:** reduzir tráfego e acelerar carregamento móvel.
 
@@ -228,7 +228,7 @@ Uma fase só está concluída quando:
 
 **Rollback:** manter URLs WebP atuais até a validação das novas variantes.
 
-**Evidências locais:** [`docs/baselines/2026-08-13-phase-1-local/PHASE_1.md`](../baselines/2026-08-13-phase-1-local/PHASE_1.md), resumo Lighthouse móvel, suíte reproduzível de sete testes, validação local das 1.074 variantes e verificação pública dos 1.432 objetos.
+**Evidências:** [`docs/baselines/2026-08-13-phase-1-local/PHASE_1.md`](../baselines/2026-08-13-phase-1-local/PHASE_1.md), [`docs/baselines/2026-08-13-phase-1-production/LIGHTHOUSE.md`](../baselines/2026-08-13-phase-1-production/LIGHTHOUSE.md), suíte reproduzível de sete testes, validação local das 1.074 variantes e verificação pública dos 1.432 objetos.
 
 **Estimativa:** 1 a 2 dias.
 
@@ -359,7 +359,7 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 | Fase | Estado | Evidência |
 |---|---|---|
 | 0 — Baseline | Concluída | `docs/baselines/2026-08-13/` e testes de integridade |
-| 1 — Imagens | Pronta para publicação | `docs/baselines/2026-08-13-phase-1-local/` e verificação de 1.432 objetos |
+| 1 — Imagens | Concluída | Produção P99/P98, CLS 0 e 1.432 objetos verificados |
 | 2 — Banco | Não iniciada | — |
 | 3 — Integração frontend | Não iniciada | — |
 | 4 — Administração | Não iniciada | — |

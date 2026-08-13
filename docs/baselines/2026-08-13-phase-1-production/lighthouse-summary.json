@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T18:24:32.036Z",
+  "conditions": {
+    "label": "Fase 1 produção",
+    "siteUrl": "https://criativa-canecas.vercel.app",
+    "formFactor": "mobile",
+    "categories": [
+      "performance",
+      "accessibility",
+      "best-practices",
+      "seo"
+    ],
+    "note": "Resultado laboratorial; variações entre execuções são esperadas."
+  },
+  "reports": [
+    {
+      "name": "home",
+      "requestedUrl": "https://criativa-canecas.vercel.app/",
+      "finalUrl": "https://criativa-canecas.vercel.app/",
+      "fetchTime": "2026-08-13T18:24:09.947Z",
+      "lighthouseVersion": "13.4.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 99,
+        "accessibility": 93,
+        "bestPractices": 100,
+        "seo": 92
+      },
+      "metrics": {
+        "firstContentfulPaint": {
+          "value": 1363.284,
+          "displayValue": "1.4 s"
+        },
+        "largestContentfulPaint": {
+          "value": 1454.784,
+          "displayValue": "1.5 s"
+        },
+        "totalBlockingTime": {
+          "value": 66.5,
+          "displayValue": "70 ms"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "displayValue": "0"
+        },
+        "speedIndex": {
+          "value": 2762.2655978536577,
+          "displayValue": "2.8 s"
+        },
+        "interactive": {
+          "value": 2371.284,
+          "displayValue": "2.4 s"
+        }
+      },
+      "imageRequests": {
+        "count": 12,
+        "transferBytes": 266833,
+        "variantDistribution": {
+          "other": 2,
+          "original": 2,
+          "card-640": 8
+        },
+        "items": [
+          {
+            "url": "https://criativa-canecas.vercel.app/img/logo.webp",
+            "transferSize": 12017,
+            "resourceSize": 11826
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/breaking-bad-1.webp",
+            "transferSize": 58009,
+            "resourceSize": 57356
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/black-mirror-2.webp",
+            "transferSize": 41717,
+            "resourceSize": 41086
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-1.webp",
+            "transferSize": 15691,
+            "resourceSize": 15080
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-2.webp",
+            "transferSize": 24678,
+            "resourceSize": 24038
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-3.webp",
+            "transferSize": 14215,
+            "resourceSize": 13586
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-4.webp",
+            "transferSize": 15667,
+            "resourceSize": 15052
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-1.webp",
+            "transferSize": 18119,
+            "resourceSize": 17504
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-2.webp",
+            "transferSize": 25553,
+            "resourceSize": 24934
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-3.webp",
+            "transferSize": 21479,
+            "resourceSize": 20864
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/black-mirror-1.webp",
+            "transferSize": 19629,
+            "resourceSize": 19016
+          },
+          {
+            "url": "https://criativa-canecas.vercel.app/img/logo.webp",
+            "transferSize": 59,
+            "resourceSize": 11826
+          }
+        ]
+      },
+      "diagnostics": {
+        "layoutShifts": []
+      }
+    },
+    {
+      "name": "collection-series",
+      "requestedUrl": "https://criativa-canecas.vercel.app/colecao/series",
+      "finalUrl": "https://criativa-canecas.vercel.app/colecao/series",
+      "fetchTime": "2026-08-13T18:24:24.093Z",
+      "lighthouseVersion": "13.4.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 98,
+        "accessibility": 95,
+        "bestPractices": 100,
+        "seo": 92
+      },
+      "metrics": {
+        "firstContentfulPaint": {
+          "value": 1290.1295,
+          "displayValue": "1.3 s"
+        },
+        "largestContentfulPaint": {
+          "value": 2043.8194999999998,
+          "displayValue": "2.0 s"
+        },
+        "totalBlockingTime": {
+          "value": 18.5,
+          "displayValue": "20 ms"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "displayValue": "0"
+        },
+        "speedIndex": {
+          "value": 2726.7172362111733,
+          "displayValue": "2.7 s"
+        },
+        "interactive": {
+          "value": 2454.29,
+          "displayValue": "2.5 s"
+        }
+      },
+      "imageRequests": {
+        "count": 20,
+        "transferBytes": 401690,
+        "variantDistribution": {
+          "other": 2,
+          "card-640": 18
+        },
+        "items": [
+          {
+            "url": "https://criativa-canecas.vercel.app/img/logo.webp",
+            "transferSize": 11994,
+            "resourceSize": 11826
+          },
+          {
+            "url": "https://criativa-canecas.vercel.app/img/logo.webp",
+            "transferSize": 54,
+            "resourceSize": 11826
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-1.webp",
+            "transferSize": 15724,
+            "resourceSize": 15080
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-2.webp",
+            "transferSize": 24663,
+            "resourceSize": 24038
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-3.webp",
+            "transferSize": 14204,
+            "resourceSize": 13586
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-4.webp",
+            "transferSize": 15666,
+            "resourceSize": 15052
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-1.webp",
+            "transferSize": 18119,
+            "resourceSize": 17504
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-2.webp",
+            "transferSize": 25549,
+            "resourceSize": 24934
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-3.webp",
+            "transferSize": 21482,
+            "resourceSize": 20864
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/black-mirror-1.webp",
+            "transferSize": 19637,
+            "resourceSize": 19016
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/black-mirror-2.webp",
+            "transferSize": 18079,
+            "resourceSize": 17464
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/black-mirror-3.webp",
+            "transferSize": 26441,
+            "resourceSize": 25824
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/black-mirror-4.webp",
+            "transferSize": 19323,
+            "resourceSize": 18708
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-1.webp",
+            "transferSize": 25165,
+            "resourceSize": 24550
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-2.webp",
+            "transferSize": 22656,
+            "resourceSize": 22032
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-3.webp",
+            "transferSize": 29135,
+            "resourceSize": 28512
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-4.webp",
+            "transferSize": 17049,
+            "resourceSize": 16436
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-5.webp",
+            "transferSize": 19329,
+            "resourceSize": 18708
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-6.webp",
+            "transferSize": 34894,
+            "resourceSize": 34264
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-7.webp",
+            "transferSize": 22527,
+            "resourceSize": 21908
+          }
+        ]
+      },
+      "diagnostics": {
+        "layoutShifts": []
+      }
+    }
+  ]
+}

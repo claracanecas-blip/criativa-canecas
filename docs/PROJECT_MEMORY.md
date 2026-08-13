@@ -29,9 +29,9 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Fase 0 do roadmap concluída: 341 produtos/IDs únicos, 358 imagens locais/remotas, 21 arquivos e 2,10 MB no build limpo.
 - Lighthouse móvel inicial: home P74/A93/B100/S92; coleção de séries P79/A95/B100/S92.
 - Evidências e backup restaurável da Fase 0 estão em `docs/baselines/2026-08-13/`; o backup possui SHA-256 validado por teste.
-- Fase 1 implementada e verificada localmente: cache GET de um ano em todos os objetos, variantes 320/640/social, `srcset`, dimensões declaradas e placeholder de falha.
-- Lighthouse móvel local da Fase 1: home P100/A93/B100/S92 e coleção P99/A95/B100/S92, ambas com CLS 0; a coleção requisitou somente variantes `card-640` para produtos.
-- A publicação das Fases 0 e 1 está pendente porque a credencial atual do GitHub CLI ficou inválida e precisa de novo `gh auth login`.
+- Fases 0 e 1 publicadas em produção; GitHub Actions do commit `1fb5910` passou instalação limpa, testes e build.
+- Fase 1 concluída: cache GET de um ano em todos os objetos, variantes 320/640/social, `srcset`, dimensões declaradas e placeholder de falha.
+- Lighthouse móvel em produção: home P99/A93/B100/S92 e coleção P98/A95/B100/S92, ambas com CLS 0; a coleção requisitou somente variantes `card-640` para produtos.
 
 ## Decisões tomadas
 
@@ -52,7 +52,7 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Commit `abab262`: exclusões para uploads da Vercel e conexão automática.
 - Commit `dbdc35f`: centralização do ícone de busca.
 - Primeiro deploy via CLI enviou 947 MB de arquivos locais; `.vercelignore` foi criado e o deploy automático seguinte terminou em aproximadamente 12 segundos.
-- Supabase CLI e Vercel CLI estão autenticados neste computador. A sessão do GitHub CLI precisa ser refeita antes do próximo push.
+- GitHub CLI, Supabase CLI e Vercel CLI estão autenticados neste computador no contexto do usuário.
 
 ## Cuidados operacionais
 
@@ -94,10 +94,9 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Reautenticar o GitHub CLI, publicar primeiro o commit da Fase 0 e depois o commit da Fase 1.
-2. Confirmar GitHub Actions e o deploy automático da Vercel.
-3. Repetir Lighthouse na URL de produção e promover a Fase 1 para concluída.
-4. Iniciar a Fase 2 com migration versionada, RLS e importador idempotente.
+1. Iniciar a Fase 2 com migration versionada, RLS e importador idempotente.
+2. Validar leitura anônima positiva e escrita anônima negativa antes de migrar o frontend.
+3. Reconciliar os 341 produtos, 15 coleções e relações com o backup da Fase 0.
 
 ## Protocolo de atualização da memória
 

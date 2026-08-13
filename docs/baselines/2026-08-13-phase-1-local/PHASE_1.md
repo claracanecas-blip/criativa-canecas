@@ -1,6 +1,6 @@
 # Evidências da Fase 1 — imagens
 
-Verificação local e no Supabase realizada em 13 de agosto de 2026. A publicação na Vercel deve repetir a medição Lighthouse deste diretório depois do push.
+Verificação local e no Supabase realizada em 13 de agosto de 2026. A publicação foi confirmada na Vercel e a medição final está em `../2026-08-13-phase-1-production/`.
 
 ## Storage e variantes
 
@@ -33,4 +33,4 @@ Verificação local e no Supabase realizada em 13 de agosto de 2026. A publicaç
 - Lighthouse móvel local: home P100/A93/B100/S92, LCP 1,4 s e CLS 0; coleção P99/A95/B100/S92, LCP 1,7 s e CLS 0.
 - O CLS anterior de 0,536 foi atribuído pelo relatório bruto ao rodapé renderizado antes da rota assíncrona. A altura mínima do conteúdo mantém o rodapé fora da viewport até a rota resolver.
 
-Os resultados detalhados e as URLs efetivamente requisitadas estão em `LIGHTHOUSE.md` e `lighthouse-summary.json`. Resultados locais e de produção não são diretamente equivalentes; a evidência final deve ser renovada na URL pública após o deploy.
+Os resultados detalhados e as URLs efetivamente requisitadas estão em `LIGHTHOUSE.md` e `lighthouse-summary.json`. Em produção, as rotas `/` e `/colecao/series` responderam diretamente com HTTP 200; o Lighthouse registrou home P99 e coleção P98, ambas com CLS 0.
