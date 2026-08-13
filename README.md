@@ -56,3 +56,8 @@ Para cadastrar produtos, edite `src/data/produtos.ts`. Os caminhos legados `.jpg
 A Vercel detecta o Vite, executa `npm run build` e publica `dist/`. O arquivo `vercel.json` mantém as rotas do Vue Router funcionando ao abrir uma página diretamente.
 
 O workflow do GitHub executa instalação limpa, verificação TypeScript e build em cada push ou pull request. O deploy fica a cargo da integração GitHub–Vercel.
+
+## Planejamento e memória
+
+- [Especificação SDD e fases de evolução](docs/specs/CATALOG_EVOLUTION_SDD.md)
+- [Memória técnica do projeto](docs/PROJECT_MEMORY.md)
