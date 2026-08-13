@@ -64,6 +64,11 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Depoimentos nascem em rascunho, só publicados aparecem na home e fotos exigem referência de consentimento. O banco permanece sem depoimentos fictícios.
 - Referências de consentimento e autoria não são colunas públicas; o painel lê os dados completos por RPC que exige papel administrativo.
 - `/admin/depoimentos` permite moderação; sete verificações RLS remotas e lint passaram. A suíte agora possui 26 testes e 9 E2E/axe.
+- Fase 8 ganhou conteúdo institucional administrável: `site_content_sections` mantém cartões e FAQ em rascunho/publicado/arquivado; `/admin/informacoes` permite editar, ordenar, publicar, arquivar e excluir sem alterar código.
+- A página pública lê somente seções publicadas, usa backup local seguro em falha do Supabase e o prerender consulta a mesma fonte para produzir HTML rastreável. Nove textos-base seguros foram reconciliados sem inventar condições comerciais.
+- A migration remota `20260813221500` e o lint passaram; 11 verificações RLS confirmaram leitura pública limitada, escrita exclusiva de administrador, autoria privada, ciclo rascunho → publicação e limpeza integral dos dados temporários.
+- O fluxo real de `/admin/informacoes` passou seis verificações navegadas: proteção por login, abertura autorizada, criação de rascunho com autoria, invisibilidade pública, publicação visível e exclusão confirmada; conta e conteúdo temporários foram removidos.
+- Qualidade atual: 30 testes, 11 E2E/axe, typecheck e build aprovados; Lighthouse permanece home P99/A98, coleção P99/A100 e produto P90/A100, com Boas Práticas/SEO 100.
 - Fase 9 de descoberta concluída com decisão de adiar checkout: faltam histórico de conversão e operação comercial definida; orçamento + WhatsApp permanece o fluxo oficial.
 
 ## Decisões tomadas
@@ -96,6 +101,7 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 26. Exigir moderação administrativa de depoimentos e referência externa de consentimento para qualquer foto de cliente.
 27. Reavaliar checkout somente após 30 dias de métricas e operação pronta; gatilhos de investigação: 30 pedidos confirmáveis/mês ou perda documentada ≥10% por ausência de pagamento imediato.
 28. Se aprovado futuramente, começar por link/checkout hospedado após confirmação da arte, sem dados brutos de cartão no sistema.
+29. Manter FAQ e informações comerciais em seções versionadas no Supabase, com fallback local seguro; somente conteúdo publicado é público e a autoria fica restrita à RPC administrativa.
 
 ## Histórico relevante
 

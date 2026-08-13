@@ -299,6 +299,48 @@ export type Database = {
         }
         Relationships: []
       }
+      site_content_sections: {
+        Row: {
+          body: string
+          content_key: string
+          created_at: string
+          created_by: string | null
+          display_order: number
+          icon_name: string | null
+          kind: string
+          status: string
+          title: string
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          body: string
+          content_key: string
+          created_at?: string
+          created_by?: string | null
+          display_order?: number
+          icon_name?: string | null
+          kind: string
+          status?: string
+          title: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          body?: string
+          content_key?: string
+          created_at?: string
+          created_by?: string | null
+          display_order?: number
+          icon_name?: string | null
+          kind?: string
+          status?: string
+          title?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       testimonials: {
         Row: {
           author_display_name: string
@@ -349,6 +391,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_admin_site_content: { Args: never; Returns: Database['public']['Tables']['site_content_sections']['Row'][] }
       get_admin_testimonials: { Args: never; Returns: Database['public']['Tables']['testimonials']['Row'][] }
       is_catalog_admin: { Args: never; Returns: boolean }
       record_catalog_event: {

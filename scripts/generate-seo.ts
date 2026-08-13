@@ -3,6 +3,11 @@ import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { createClient } from '@supabase/supabase-js'
 import { loadEnv } from 'vite'
+import {
+  fallbackInformationContent,
+  normalizePublicInformationContent,
+  type PublicInformationContent,
+} from '../src/data/informationContent.ts'
 import { buildCatalogImportData } from './catalog-import-data.ts'
 
 interface SeoCollection {
@@ -82,6 +87,31 @@ export function renderSeoHtml(
     .replace('<div id="app"></div>', `<div id="app">${body}</div>`)
 }
 
+export function renderInformationBody(sections: PublicInformationContent[]): string {
+  const cards = sections
+    .filter((section) => section.kind === 'card')
+    .map((section) => `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.body)}</p></section>`)
+    .join('')
+  const faq = sections
+    .filter((section) => section.kind === 'faq')
+    .map((section) => `<section><h3>${escapeHtml(section.title)}</h3><p>${escapeHtml(section.body)}</p></section>`)
+    .join('')
+  const content = cards || faq
+    ? `${cards}${faq ? `<section><h2>Perguntas frequentes</h2>${faq}</section>` : ''}`
+    : '<p>As informações estão sendo revisadas. Confirme os detalhes antes do pedido.</p>'
+  return `<main><article><h1>Informações e cuidados</h1><p>Orientações sobre personalização, produção, entrega, conservação e atendimento.</p>${content}</article></main>`
+}
+
+async function remoteInformationContent(url: string, key: string): Promise<PublicInformationContent[]> {
+  const client = createClient(url, key, { auth: { persistSession: false } })
+  const { data, error } = await client
+    .from('site_content_sections')
+    .select('content_key,kind,title,body,icon_name,display_order')
+    .order('display_order')
+  if (error) throw error
+  return normalizePublicInformationContent(data ?? [])
+}
+
 async function remoteCatalog(url: string, key: string): Promise<SeoCatalog> {
   const client = createClient(url, key, { auth: { persistSession: false } })
   const [collections, products, relations, images] = await Promise.all([
@@ -139,12 +169,18 @@ async function fallbackCatalog(): Promise<SeoCatalog> {
 export async function generateSeoAssets(outputDirectory = resolve('dist')): Promise<{ products: number; collections: number }> {
   const env = { ...loadEnv('production', process.cwd(), ''), ...process.env }
   let catalog: SeoCatalog
+  let informationContent = [...fallbackInformationContent]
   if (env.VITE_SUPABASE_URL && env.VITE_SUPABASE_PUBLISHABLE_KEY) {
     try {
       catalog = await remoteCatalog(env.VITE_SUPABASE_URL, env.VITE_SUPABASE_PUBLISHABLE_KEY)
     } catch (error) {
       console.warn(`Supabase indisponível no build SEO; usando backup: ${error instanceof Error ? error.message : error}`)
       catalog = await fallbackCatalog()
+    }
+    try {
+      informationContent = await remoteInformationContent(env.VITE_SUPABASE_URL, env.VITE_SUPABASE_PUBLISHABLE_KEY)
+    } catch (error) {
+      console.warn(`Conteúdo institucional indisponível no build SEO; usando backup: ${error instanceof Error ? error.message : error}`)
     }
   } else {
     catalog = await fallbackCatalog()
@@ -204,7 +240,7 @@ export async function generateSeoAssets(outputDirectory = resolve('dist')): Prom
     image: imageUrl('logo.webp', 'social'),
     type: 'website',
     jsonLd: [],
-  }, '<main><article><h1>Informações e cuidados</h1><p>Orientações sobre personalização, produção, entrega, conservação e atendimento.</p><h2>Perguntas frequentes</h2><p>Valores, prazos e disponibilidade são confirmados pelo atendimento antes do pedido.</p></article></main>')
+  }, renderInformationBody(informationContent))
   await writeFile(resolve(outputDirectory, 'informacoes.html'), informationHtml)
 
   const urls = [

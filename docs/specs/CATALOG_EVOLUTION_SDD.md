@@ -6,8 +6,8 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fases 0, 1, 2, 3, 4, 5, 6 e 7 concluídas |
-| Versão | 1.10 |
+| Estado | Em execução; Fases 0–7 e 9 concluídas, Fase 8 tecnicamente pronta e dependente de dados/domínio externos |
+| Versão | 1.11 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -18,7 +18,7 @@ Este documento é a fonte de verdade para o próximo ciclo do produto. Cada fase
 
 A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 1.432 imagens WebP no bucket público `product-images` e o Postgres contém os metadados reconciliados do catálogo.
 
-O catálogo público é lido do Supabase por uma camada de repositório tipada e possui fallback operacional para os arquivos TypeScript. A manutenção cotidiana é feita pelo painel administrativo protegido por Supabase Auth e RLS. O fluxo comercial termina no WhatsApp e ainda não mede formalmente a jornada entre visualização, busca, seleção e contato.
+O catálogo público é lido do Supabase por uma camada de repositório tipada e possui fallback operacional para os arquivos TypeScript. A manutenção cotidiana é feita pelo painel administrativo protegido por Supabase Auth e RLS. O fluxo comercial termina no WhatsApp e mede a jornada por agregados diários sem identificador de visitante ou texto livre.
 
 ## 3. Objetivos do ciclo
 
@@ -176,9 +176,9 @@ O campo `status` deve ser enum ou restrição equivalente com, no mínimo: `draf
 
 `user_id`, `role`, `created_at`, ligado a `auth.users`. Inicialmente apenas o papel `admin` é necessário.
 
-### Extensões posteriores
+### Extensões do ciclo
 
-`site_settings`, `banners`, `testimonials`, `redirects` e `analytics_event_catalog` só devem ser criadas quando a fase correspondente entrar em execução.
+`analytics_daily_events` armazena somente agregados diários permitidos; `testimonials` controla moderação e consentimento; `site_content_sections` mantém cartões institucionais e FAQ com estados de publicação. `site_settings`, `banners` e `redirects` continuam adiados até haver requisito específico.
 
 ## 10. Segurança e políticas RLS
 
@@ -340,9 +340,9 @@ Uma fase só está concluída quando:
 
 **Aceite:** domínio HTTPS ativo, apenas um domínio canônico indexável e conteúdo administrativo publicável.
 
-**Parcial entregue:** página de informações/FAQ, HTML rastreável, depoimentos moderados com RLS, administração e consentimento obrigatório para fotos. Metadados de consentimento/autoria são privados e acessíveis integralmente somente pela RPC administrativa. Nenhum conteúdo fictício foi publicado.
+**Parcial entregue:** página de informações/FAQ com seções publicáveis em `/admin/informacoes`, fallback seguro e HTML rastreável; depoimentos moderados com RLS, administração e consentimento obrigatório para fotos. Metadados de consentimento/autoria são privados e acessíveis integralmente somente por RPC administrativa. Nenhum conteúdo fictício ou condição comercial não confirmada foi publicado.
 
-**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), sete verificações RLS remotas, 26 testes e 9 cenários Playwright/axe.
+**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, 30 testes e 11 cenários Playwright/axe.
 
 **Estimativa:** 2 a 4 dias, excluindo prazos de DNS e produção de conteúdo.
 
@@ -396,11 +396,10 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 ## 16. Decisões pendentes
 
 - Domínio próprio desejado e responsável pelo DNS.
-- Conta de e-mail que será o primeiro administrador.
-- Ferramenta de analytics e necessidade de Meta Pixel.
+- Ativação final do convite pela conta administrativa proprietária, se ainda pendente.
+- Necessidade comercial futura de Meta Pixel e respectivo fluxo de consentimento.
 - Conteúdo oficial de entrega, troca, materiais e cuidados.
-- Política de moderação e autorização para avaliações/fotos.
-- Critério comercial que justificará um checkout online.
+- Avaliações reais e referências de autorização para nomes/fotos.
 
 ## 17. Registro de progresso
 
@@ -414,5 +413,5 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 | 5 — Produto e SEO | Concluída | 341 páginas, canonical único por HTML, sitemap, preview e Lighthouse |
 | 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, Playwright/axe e Lighthouse no CI |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
-| 8 — Confiança e domínio | Em andamento | Base técnica/FAQ/moderação pronta; domínio e dados oficiais pendentes |
+| 8 — Confiança e domínio | Em andamento | FAQ publicável, fallback, moderação e RLS prontos; domínio, identidade e dados oficiais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |

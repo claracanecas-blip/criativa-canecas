@@ -84,3 +84,17 @@ test('drawer de orçamento funciona em viewport móvel', async ({ page }) => {
   await expect(page.getByRole('dialog', { name: 'Sua seleção' })).toBeVisible()
   await expect(page.getByRole('link', { name: 'Enviar lista pelo WhatsApp' })).toBeVisible()
 })
+
+test('informações publicadas exibem cartões e FAQ', async ({ page }) => {
+  await page.goto('/informacoes')
+  await expect(page.getByRole('heading', { level: 1, name: 'Informações e cuidados' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 2, name: 'Personalização' })).toBeVisible()
+  await expect(page.getByText('Como funciona a personalização?')).toBeVisible()
+  await expect(page.locator('.contact').getByRole('link', { name: 'Falar no WhatsApp' })).toBeVisible()
+})
+
+test('editor de informações exige autenticação administrativa', async ({ page }) => {
+  await page.goto('/admin/informacoes')
+  await expect(page).toHaveURL(/\/admin\/login\?redirect=\/admin\/informacoes/)
+  await expect(page.getByRole('heading', { name: 'Painel administrativo' })).toBeVisible()
+})
