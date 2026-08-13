@@ -13,10 +13,10 @@ Parte técnica concluída em 13 de agosto de 2026. A fase permanece em andamento
 
 ## Segurança e qualidade
 
-- Migrations remotas `20260813214500` e `20260813215000` aplicadas; lint sem erros.
-- RLS: anônimo não escreve; foto sem consentimento falha; admin cria rascunho; anônimo recebe `[]` para rascunho; publicado fica visível.
+- Migrations remotas `20260813214500`, `20260813215000` e `20260813215500` aplicadas; lint sem erros. Referências de consentimento/autoria ficam fora das colunas públicas e a leitura completa exige RPC administrativa.
+- RLS: anônimo não escreve; foto sem consentimento falha; admin cria rascunho; anônimo recebe `[]` para rascunho; publicado fica visível. O reforço de privacidade passou sete verificações remotas positivas/negativas e removeu todos os registros e usuários temporários.
 - Registros e usuário temporários removidos.
-- 25/25 testes unitários, typecheck e build aprovados.
+- 26/26 testes unitários, typecheck e build aprovados.
 - 9/9 Playwright/axe, incluindo `/informacoes`, sem violações automáticas WCAG 2.2 A/AA.
 
 ## Dependências externas restantes
@@ -26,4 +26,4 @@ Parte técnica concluída em 13 de agosto de 2026. A fase permanece em andamento
 - conteúdo real de avaliações e referências de consentimento;
 - escolha/compra do domínio e acesso ao DNS.
 
-Rollback: aplicar, em ordem reversa, `20260813215000_testimonials_admin_hardening.sql` e `20260813214500_moderated_testimonials.sql` de `supabase/rollback/`, além de reverter frontend. Nenhum produto ou pedido é alterado.
+Rollback: aplicar, em ordem reversa, `20260813215500_testimonials_privacy.sql`, `20260813215000_testimonials_admin_hardening.sql` e `20260813214500_moderated_testimonials.sql` de `supabase/rollback/`, além de reverter frontend. Nenhum produto ou pedido é alterado.

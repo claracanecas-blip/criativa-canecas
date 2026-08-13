@@ -12,7 +12,7 @@ const errorMessage = ref('')
 const form = ref({ id: 0, author_display_name: '', quote: '', rating: 5, status: 'draft', display_order: 0, photo_path: '', photo_consent_reference: '' })
 
 async function reload() {
-  const { data, error } = await client.from('testimonials').select('*').order('updated_at', { ascending: false })
+  const { data, error } = await client.rpc('get_admin_testimonials')
   if (error) errorMessage.value = error.message
   else testimonials.value = data ?? []
 }

@@ -61,7 +61,8 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Qualidade da Fase 7: 24 testes unitários, 8 E2E/axe e Lighthouse home P99/A98, coleção P99/A100 e produto P91/A100; Boas Práticas/SEO 100.
 - Base técnica da Fase 8 concluída: `/informacoes` está no rodapé, prerender e sitemap de 361 URLs; textos evitam promessas antes da confirmação no atendimento.
 - Depoimentos nascem em rascunho, só publicados aparecem na home e fotos exigem referência de consentimento. O banco permanece sem depoimentos fictícios.
-- `/admin/depoimentos` permite moderação; RLS remota positiva/negativa e lint passaram. A suíte agora possui 25 testes e 9 E2E/axe.
+- Referências de consentimento e autoria não são colunas públicas; o painel lê os dados completos por RPC que exige papel administrativo.
+- `/admin/depoimentos` permite moderação; sete verificações RLS remotas e lint passaram. A suíte agora possui 26 testes e 9 E2E/axe.
 - Fase 9 de descoberta concluída com decisão de adiar checkout: faltam histórico de conversão e operação comercial definida; orçamento + WhatsApp permanece o fluxo oficial.
 
 ## Decisões tomadas

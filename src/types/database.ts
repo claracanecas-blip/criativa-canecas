@@ -349,6 +349,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_admin_testimonials: { Args: never; Returns: Database['public']['Tables']['testimonials']['Row'][] }
       is_catalog_admin: { Args: never; Returns: boolean }
       record_catalog_event: {
         Args: {

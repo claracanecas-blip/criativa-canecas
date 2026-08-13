@@ -21,6 +21,7 @@
     "images:verify": "node scripts/verify-product-images.mjs",
     "catalog:import": "node --import tsx scripts/import-catalog.ts",
     "catalog:verify": "node --import tsx scripts/verify-catalog-database.ts",
+    "testimonials:verify-rls": "node --import tsx scripts/verify-testimonials-rls.ts",
     "admin:verify-e2e": "node scripts/verify-admin-e2e.mjs"
   },
   "dependencies": {

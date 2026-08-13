@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0, 1, 2, 3, 4, 5, 6 e 7 concluídas |
-| Versão | 1.8 |
+| Versão | 1.9 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -340,9 +340,9 @@ Uma fase só está concluída quando:
 
 **Aceite:** domínio HTTPS ativo, apenas um domínio canônico indexável e conteúdo administrativo publicável.
 
-**Parcial entregue:** página de informações/FAQ, HTML rastreável, depoimentos moderados com RLS, administração e consentimento obrigatório para fotos. Nenhum conteúdo fictício foi publicado.
+**Parcial entregue:** página de informações/FAQ, HTML rastreável, depoimentos moderados com RLS, administração e consentimento obrigatório para fotos. Metadados de consentimento/autoria são privados e acessíveis integralmente somente pela RPC administrativa. Nenhum conteúdo fictício foi publicado.
 
-**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), relatório RLS, 25 testes e 9 cenários Playwright/axe.
+**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), sete verificações RLS remotas, 26 testes e 9 cenários Playwright/axe.
 
 **Estimativa:** 2 a 4 dias, excluindo prazos de DNS e produção de conteúdo.
 
