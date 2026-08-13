@@ -61,6 +61,17 @@ O workflow do GitHub executa instalação limpa, verificação TypeScript e buil
 
 O baseline reproduzível do catálogo, das rotas, imagens e Lighthouse pode ser atualizado com `npm run baseline`. As evidências versionadas ficam em `docs/baselines/`.
 
+## Banco do catálogo
+
+O schema do catálogo é versionado em `supabase/migrations/`. A importação usa o backup validado da Fase 0 e pode ser repetida sem duplicar registros:
+
+```bash
+npm run catalog:import
+npm run catalog:verify
+```
+
+Esses comandos administrativos exigem as chaves apenas no ambiente da execução. O frontend nunca recebe `service_role`. Os scripts de rollback ficam em `supabase/rollback/` e não são aplicados automaticamente.
+
 ## Planejamento e memória
 
 - [Especificação SDD e fases de evolução](docs/specs/CATALOG_EVOLUTION_SDD.md)

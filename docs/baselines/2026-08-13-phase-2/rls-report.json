@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T18:52:00.685Z",
+  "checks": [
+    {
+      "name": "leitura anônima de coleções publicadas",
+      "passed": true,
+      "detail": "17/17"
+    },
+    {
+      "name": "leitura anônima de produtos",
+      "passed": true,
+      "detail": "341/341"
+    },
+    {
+      "name": "leitura anônima de relações publicadas",
+      "passed": true,
+      "detail": "341/341"
+    },
+    {
+      "name": "leitura anônima de imagens",
+      "passed": true,
+      "detail": "1364/1364"
+    },
+    {
+      "name": "somente 15 coleções listadas",
+      "passed": true,
+      "detail": "HTTP 200, linhas 15"
+    },
+    {
+      "name": "escrita anônima negada",
+      "passed": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "name": "upload anônimo no Storage negado",
+      "passed": true,
+      "detail": "HTTP 400"
+    },
+    {
+      "name": "escrita autenticada sem admin negada",
+      "passed": true,
+      "detail": "HTTP 403"
+    },
+    {
+      "name": "upload sem admin no Storage negado",
+      "passed": true,
+      "detail": "HTTP 400"
+    },
+    {
+      "name": "escrita de administrador permitida",
+      "passed": true,
+      "detail": "HTTP 201"
+    },
+    {
+      "name": "upload de administrador no Storage permitido",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "leitura pública do objeto permitida",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "rascunho oculto para anônimo",
+      "passed": true,
+      "detail": "HTTP 200, linhas 0"
+    },
+    {
+      "name": "exclusão de administrador permitida",
+      "passed": true,
+      "detail": "HTTP 204"
+    },
+    {
+      "name": "exclusão de administrador no Storage permitida",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "usuário administrativo temporário removido",
+      "passed": true,
+      "detail": "HTTP 200, linhas 0"
+    },
+    {
+      "name": "produto sentinela removido",
+      "passed": true,
+      "detail": "HTTP 200, linhas 0"
+    },
+    {
+      "name": "objeto sentinela removido da origem",
+      "passed": true,
+      "detail": "HTTP 200, linhas 0"
+    }
+  ],
+  "passed": true
+}

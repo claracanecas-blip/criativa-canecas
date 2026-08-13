@@ -1,0 +1,3 @@
+-- O catálogo real é importado de forma idempotente por `npm run catalog:import`.
+-- Este arquivo permanece sem dados para que `supabase db reset` seja reproduzível
+-- sem duplicar as 341 entradas do backup versionado.

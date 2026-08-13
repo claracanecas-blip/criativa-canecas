@@ -6,7 +6,7 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fases 0 e 1 concluídas em produção |
+| Estado | Em execução; Fases 0, 1 e 2 concluídas |
 | Versão | 1.1 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
@@ -16,7 +16,7 @@ Este documento é a fonte de verdade para o próximo ciclo do produto. Cada fase
 
 ## 2. Contexto atual
 
-A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 358 imagens WebP no bucket público `product-images`.
+A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 1.432 imagens WebP no bucket público `product-images` e o Postgres contém os metadados reconciliados do catálogo.
 
 O catálogo ainda é definido em arquivos TypeScript. Isso exige alteração de código e um deploy para mudar nome, preço, ordem, coleção ou disponibilidade de um produto. O fluxo comercial termina no WhatsApp e ainda não mede formalmente a jornada entre visualização, busca, seleção e contato.
 
@@ -154,7 +154,9 @@ Para cada incremento:
 
 ### `collections`
 
-`id`, `slug`, `name`, `description`, `icon_name`, `image_path`, `display_order`, `is_published`, `seo_title`, `seo_description`, `created_at`, `updated_at`.
+`id`, `slug`, `name`, `description`, `icon_name`, `image_path`, `display_order`, `is_published`, `is_listed`, `seo_title`, `seo_description`, `created_at`, `updated_at`.
+
+`is_published` controla acesso por URL; `is_listed` controla presença em menus e vitrines. Essa separação preserva links legados sem recolocá-los na navegação principal.
 
 ### `products`
 
@@ -234,6 +236,8 @@ Uma fase só está concluída quando:
 
 ### Fase 2 — Banco do catálogo e importação
 
+**Estado:** concluída no Supabase em 13 de agosto de 2026.
+
 **Objetivo:** transferir metadados do catálogo para o Supabase.
 
 **Entregas:** migrações, RLS, tipos gerados, importador idempotente e relatório de reconciliação.
@@ -241,6 +245,8 @@ Uma fase só está concluída quando:
 **Aceite:** catálogo importado sem perda, leitura anônima limitada a publicados e escrita anônima negada.
 
 **Rollback:** feature flag ou adaptador para retornar aos dados TypeScript.
+
+**Evidências:** [`docs/baselines/2026-08-13-phase-2/PHASE_2.md`](../baselines/2026-08-13-phase-2/PHASE_2.md), relatórios JSON de reconciliação/RLS, duas migrations remotas reconciliadas, tipos gerados e 11 testes locais.
 
 **Estimativa:** 2 a 4 dias.
 
@@ -360,7 +366,7 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 |---|---|---|
 | 0 — Baseline | Concluída | `docs/baselines/2026-08-13/` e testes de integridade |
 | 1 — Imagens | Concluída | Produção P99/P98, CLS 0 e 1.432 objetos verificados |
-| 2 — Banco | Não iniciada | — |
+| 2 — Banco | Concluída | 341 produtos reconciliados e RLS positiva/negativa verificada |
 | 3 — Integração frontend | Não iniciada | — |
 | 4 — Administração | Não iniciada | — |
 | 5 — Produto e SEO | Não iniciada | — |

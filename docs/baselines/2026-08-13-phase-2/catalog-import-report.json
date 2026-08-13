@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T18:52:35.642Z",
+  "reconciliation": {
+    "collections": {
+      "expected": 17,
+      "remote": 17,
+      "exact": true
+    },
+    "products": {
+      "expected": 341,
+      "remote": 341,
+      "exact": true
+    },
+    "product_collections": {
+      "expected": 341,
+      "remote": 341,
+      "exact": true
+    },
+    "product_images": {
+      "expected": 1364,
+      "remote": 1364,
+      "exact": true
+    }
+  }
+}

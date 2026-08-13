@@ -32,6 +32,10 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Fases 0 e 1 publicadas em produção; GitHub Actions do commit `1fb5910` passou instalação limpa, testes e build.
 - Fase 1 concluída: cache GET de um ano em todos os objetos, variantes 320/640/social, `srcset`, dimensões declaradas e placeholder de falha.
 - Lighthouse móvel em produção: home P99/A93/B100/S92 e coleção P98/A95/B100/S92, ambas com CLS 0; a coleção requisitou somente variantes `card-640` para produtos.
+- Workspace oficial local: `C:\Projetos\criativa-canecas-main`; a pasta anterior no OneDrive é somente backup e não deve receber novas alterações.
+- Fase 2 concluída no Supabase: 17 coleções publicadas (15 listadas), 341 produtos, 341 relações e 1.364 associações de imagem.
+- Migrations remotas `20260813184000`, `20260813190000` e `20260813191500` reconciliadas; tipos gerados em `src/types/database.ts` e `db lint` sem apontamentos.
+- RLS remota validada para anon, autenticado sem admin e administrador temporário; nenhum usuário ou produto de teste permaneceu.
 
 ## Decisões tomadas
 
@@ -45,6 +49,8 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 8. Evoluir primeiro o catálogo e o orçamento via WhatsApp; pagamento online depende de uma descoberta posterior.
 9. Pré-gerar variantes no plano atual do Supabase, evitando depender das transformações dinâmicas de imagem de planos pagos.
 10. Tratar caminhos de imagem como versionados: quando o conteúdo mudar, publicar um novo nome em vez de reutilizar indefinidamente uma URL com cache de um ano.
+11. Usar IDs textuais estáveis no banco para preservar os IDs/slugs existentes durante a migração.
+12. Separar `is_published` de `is_listed`: coleções legadas continuam acessíveis por URL, mas não voltam aos menus.
 
 ## Histórico relevante
 
@@ -56,8 +62,8 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 
 ## Cuidados operacionais
 
-- O projeto está dentro do OneDrive. Arquivos antigos podem reaparecer em `dist`; apague apenas o `dist` validado e gere um build limpo antes de medir ou publicar manualmente.
-- O `supabase link` apresentou conflito `AlreadyExists` em `supabase/.temp` sob o OneDrive. A integração do Storage foi concluída por API/CLI sem guardar a chave no Git.
+- A antiga cópia do projeto no OneDrive deve permanecer apenas como backup até confirmação posterior do usuário; o workspace ativo está em `C:\Projetos`.
+- Fora do OneDrive, `supabase link`, migrations e geração de tipos funcionam normalmente. Docker Desktop continua ausente, então `db dump`/stack local não estão disponíveis; o backup JSON e os rollbacks versionados cobrem esta fase.
 - O PowerShell bloqueia o alias `npm.ps1`; use `C:\Program Files\nodejs\npm.cmd` e `C:\Program Files\nodejs\npx.cmd` quando necessário.
 - Git e GitHub CLI foram instalados depois da abertura da sessão; alguns processos não enxergam o Git no `PATH`. O executável está em `C:\Program Files\Git\cmd\git.exe`.
 - `.env.local` é ignorado e pode conter dados locais gerenciados pela Vercel. Nunca imprima seu conteúdo completo em logs.
@@ -85,6 +91,7 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 - A coleta inicial de cache usou `HEAD` e foi inconclusiva para `GET`; a Fase 1 agora verifica por `GET` e confirmou `public, max-age=31536000` nos 1.432 objetos.
 - Metadados do catálogo ainda exigem código e deploy.
+- O banco já contém o catálogo, mas o frontend continuará usando TypeScript até a feature flag/repositório resiliente da Fase 3 estar publicado.
 - Ainda não existe painel administrativo ou autenticação de administrador.
 - Não existem páginas individuais de produto, sitemap dinâmico, JSON-LD de produto ou Open Graph por item.
 - Não existe medição formal de clique no WhatsApp, busca ou visualização de produto.
@@ -94,9 +101,9 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Iniciar a Fase 2 com migration versionada, RLS e importador idempotente.
-2. Validar leitura anônima positiva e escrita anônima negativa antes de migrar o frontend.
-3. Reconciliar os 341 produtos, 15 coleções e relações com o backup da Fase 0.
+1. Implementar a Fase 3 com cliente público tipado, repositório e feature flag de rollback para TypeScript.
+2. Exercitar carregamento, vazio e falha simulada sem tela branca.
+3. Publicar apenas após comprovar paridade dos 341 produtos, 15 coleções listadas e links legados.
 
 ## Protocolo de atualização da memória
 
