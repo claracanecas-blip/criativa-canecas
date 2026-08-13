@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9 concluídas, Fase 8 tecnicamente pronta e dependente de dados/domínio externos |
-| Versão | 1.12 |
+| Versão | 1.13 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -310,7 +310,7 @@ Uma fase só está concluída quando:
 
 **Rollback:** reverter frontend/CI e aplicar `supabase/rollback/20260813211500_catalog_analytics.sql`; catálogo e administração não são alterados.
 
-**Evidências:** [`docs/baselines/2026-08-13-phase-6/PHASE_6.md`](../baselines/2026-08-13-phase-6/PHASE_6.md), oito verificações remotas de RLS, 6/6 cenários Playwright/axe sem violação automática e Lighthouse P90+ nas três páginas.
+**Evidências:** [`docs/baselines/2026-08-13-phase-6/PHASE_6.md`](../baselines/2026-08-13-phase-6/PHASE_6.md), oito verificações remotas de RLS, 55 cenários Playwright/axe em Chrome, Edge, Firefox, WebKit desktop e Safari móvel, além de Lighthouse P90+ nas três páginas.
 
 **Estimativa:** 2 a 4 dias.
 
@@ -342,7 +342,7 @@ Uma fase só está concluída quando:
 
 **Parcial entregue:** página de informações/FAQ com seções publicáveis em `/admin/informacoes`, fallback seguro e HTML rastreável; depoimentos moderados com RLS, administração e consentimento obrigatório para fotos; origem oficial centralizada em `VITE_SITE_URL` com runbook de domínio e rollback. Metadados de consentimento/autoria são privados e acessíveis integralmente somente por RPC administrativa. Nenhum conteúdo fictício ou condição comercial não confirmada foi publicado.
 
-**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, build com domínio alternativo, 32 testes e 11 cenários Playwright/axe.
+**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, build com domínio alternativo, 32 testes e 55 cenários Playwright/axe entre os cinco perfis de navegador.
 
 **Estimativa:** 2 a 4 dias, excluindo prazos de DNS e produção de conteúdo.
 
@@ -386,6 +386,7 @@ Fase 0 → Fase 1
 - **Acessibilidade:** axe nas páginas principais e navegação manual por teclado.
 - **Desempenho:** Lighthouse em home, coleção e produto.
 - **Segurança:** busca de segredos no diff e testes negativos de escrita.
+- **Auditoria de conclusão:** [`docs/audits/2026-08-13-SDD_COMPLETION_AUDIT.md`](../audits/2026-08-13-SDD_COMPLETION_AUDIT.md) mapeia os 59 requisitos às evidências e separa conclusão técnica de dependências externas.
 
 ## 15. Definição de pronto
 
@@ -411,7 +412,7 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 | 3 — Integração frontend | Concluída | Catálogo remoto, fallback, 14 testes e validação navegada |
 | 4 — Administração | Concluída | RLS remota e ciclo administrativo E2E completo |
 | 5 — Produto e SEO | Concluída | 341 páginas, canonical único por HTML, sitemap, preview e Lighthouse |
-| 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, Playwright/axe e Lighthouse no CI |
+| 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, 55 cenários em cinco perfis e Lighthouse no CI |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
 | 8 — Confiança e domínio | Em andamento | FAQ/moderação/RLS e troca canônica preparados; domínio, identidade e dados oficiais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |

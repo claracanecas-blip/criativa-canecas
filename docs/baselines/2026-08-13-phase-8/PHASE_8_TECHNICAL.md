@@ -23,7 +23,7 @@ Parte técnica concluída em 13 de agosto de 2026. A fase permanece em andamento
 - O navegador validou seis etapas administrativas reais: redirecionamento ao login, autenticação, criação de rascunho com autoria, invisibilidade pública, publicação visível e exclusão confirmada.
 - Registros e usuário temporários removidos.
 - 32/32 testes, typecheck e build aprovados.
-- 11/11 Playwright/axe, incluindo conteúdo remoto/fallback em `/informacoes` e proteção da rota administrativa, sem violações automáticas WCAG 2.2 A/AA.
+- 55/55 Playwright/axe entre Chrome, Edge, Firefox, WebKit desktop e perfil Safari móvel, incluindo conteúdo remoto/fallback em `/informacoes` e proteção da rota administrativa, sem violações automáticas WCAG 2.2 A/AA.
 - Lighthouse: home P98/A98/B100/S100; coleção P98/A100/B100/S100; produto P91/A100/B100/S100.
 
 ## Dependências externas restantes

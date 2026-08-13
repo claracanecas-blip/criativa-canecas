@@ -53,7 +53,7 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Fase 6 concluída: eventos de produto, busca, coleção, WhatsApp e erro são agregados diariamente no Supabase, sem cookie, identificador de visitante, texto livre ou PII.
 - Analytics só envia no hostname oficial de produção; localhost e previews são ignorados. A função RPC aceita apenas eventos/dimensões fechados e slugs publicados.
 - RLS de analytics passou oito casos positivos/negativos; somente administradores leem os agregados e visitantes não acessam a tabela diretamente.
-- CI executa typecheck, build, 22 testes unitários, 6 cenários Playwright/axe e Lighthouse com gate 90. Axe não aponta violações WCAG 2.2 A/AA nos quatro fluxos públicos.
+- CI executa 32 testes unitários, typecheck, build, 55 cenários Playwright/axe e Lighthouse com gate 90. A matriz cobre Chrome, Edge atual em Windows, Firefox, WebKit desktop e perfil Safari móvel; Axe não aponta violações WCAG 2.2 A/AA nos fluxos públicos.
 - Lighthouse local da Fase 6: home P99/A98/B100/S100; coleção P99/A100/B100/S100; produto P90/A100/B100/S100.
 - Fase 7 concluída: visitantes adicionam/removem produtos, alteram quantidades e mantêm a seleção em `localStorage`, sem conta ou dado pessoal.
 - “Meu orçamento” abre drawer lateral no desktop e painel inferior no celular; contador, estado vazio, confirmação para limpar e anúncios acessíveis estão implementados.
@@ -70,6 +70,7 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - O fluxo real de `/admin/informacoes` passou seis verificações navegadas: proteção por login, abertura autorizada, criação de rascunho com autoria, invisibilidade pública, publicação visível e exclusão confirmada; conta e conteúdo temporários foram removidos.
 - Qualidade atual: 32 testes, 11 E2E/axe, typecheck e build aprovados; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
 - A origem canônica foi centralizada em `VITE_SITE_URL`, configurada como variável pública na Vercel para Production, Preview e Development. Canonical, Open Graph, JSON-LD, sitemap, robots, links comerciais e analytics seguem a mesma origem.
+- A auditoria `docs/audits/2026-08-13-SDD_COMPLETION_AUDIT.md` mapeia os 59 requisitos: todos têm evidência técnica; somente o aceite externo da Fase 8 continua pendente.
 - Um build simulado com domínio alternativo atualizou home, produto e sitemap sem deixar canonical no hostname anterior; o procedimento de DNS, Supabase Auth, validação e rollback está em `docs/runbooks/CUSTOM_DOMAIN.md`.
 - Fase 9 de descoberta concluída com decisão de adiar checkout: faltam histórico de conversão e operação comercial definida; orçamento + WhatsApp permanece o fluxo oficial.
 

@@ -22,9 +22,11 @@ Playwright + axe verificam home, coleção, busca e produto contra regras WCAG 2
 
 O fluxo busca → produto → WhatsApp valida contexto comercial, e um cenário móvel confirma página de produto e navegação inicial por teclado.
 
+Uma auditoria posterior fechou a matriz de compatibilidade do NFR-008. O CI `31746994598` aprovou 11 cenários no Edge atual em `windows-latest` e 44 cenários em Chrome, Firefox, WebKit desktop e perfil Safari móvel. WebKit funciona como prova automatizada reproduzível do motor Safari; uma checagem física em iPhone continua recomendável antes de campanhas de grande alcance.
+
 ## Lighthouse e CI
 
-O CI agora executa instalação limpa, testes unitários, typecheck, build, Playwright/axe e Lighthouse. O gate falha se alguma categoria ficar abaixo de 90.
+O CI agora executa instalação limpa, testes unitários, typecheck, build, Playwright/axe em cinco perfis de navegador e Lighthouse. O gate falha se algum fluxo ou categoria ficar abaixo do aceite.
 
 | Página | Performance | Acessibilidade | Boas práticas | SEO |
 |---|---:|---:|---:|---:|
