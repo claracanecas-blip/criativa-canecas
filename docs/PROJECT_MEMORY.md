@@ -50,6 +50,11 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - O build gera 341 HTMLs de produto, 17 HTMLs de coleção, sitemap com 360 URLs e robots bloqueando `/admin`; HTML estático contém canonical, Open Graph, JSON-LD e conteúdo rastreável.
 - Vercel usa `cleanUrls` e dá precedência aos HTMLs gerados antes do fallback SPA; preview confirmou `200` e metadados sem executar JavaScript.
 - Lighthouse local da Fase 5: home P99/A93/B100/S100; coleção P99/A95/B100/S100; produto P90/A95/B100/S100, todos com CLS baixo/zero.
+- Fase 6 concluída: eventos de produto, busca, coleção, WhatsApp e erro são agregados diariamente no Supabase, sem cookie, identificador de visitante, texto livre ou PII.
+- Analytics só envia no hostname oficial de produção; localhost e previews são ignorados. A função RPC aceita apenas eventos/dimensões fechados e slugs publicados.
+- RLS de analytics passou oito casos positivos/negativos; somente administradores leem os agregados e visitantes não acessam a tabela diretamente.
+- CI executa typecheck, build, 22 testes unitários, 6 cenários Playwright/axe e Lighthouse com gate 90. Axe não aponta violações WCAG 2.2 A/AA nos quatro fluxos públicos.
+- Lighthouse local da Fase 6: home P99/A98/B100/S100; coleção P99/A100/B100/S100; produto P90/A100/B100/S100.
 
 ## Decisões tomadas
 
@@ -72,6 +77,9 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 17. Não expor `created_by`/`updated_by` nas consultas públicas; administradores consultam autoria pelo log protegido.
 18. Prerenderizar HTML estático no build atual em vez de migrar para SSR/Nuxt sem evidência; manter a SPA para interatividade e fallback.
 19. Gerar SEO pelo catálogo remoto na Vercel e usar o backup local somente quando a leitura remota falhar durante o build.
+20. Usar agregação diária própria no Supabase em vez de eventos customizados pagos da Vercel; não armazenar sessão, IP, termo buscado ou mensagem de erro.
+21. Não exibir banner de consentimento enquanto não houver cookies ou integração opcional de marketing; qualquer Pixel/GA futuro exige avaliação e consentimento antes de carregar.
+22. Tratar contraste WCAG como gate de CI: CTAs rosa usam `--pink-dark` e WhatsApp usa verde escuro com texto branco.
 
 ## Histórico relevante
 
@@ -113,16 +121,17 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 - A coleta inicial de cache usou `HEAD` e foi inconclusiva para `GET`; a Fase 1 agora verifica por `GET` e confirmou `public, max-age=31536000` nos 1.432 objetos.
 - Objetos antigos do Storage são preservados quando um produto é excluído; uma rotina futura de limpeza deve remover somente órfãos comprovados.
 - Metadados estáticos e sitemap refletem o catálogo no momento do deploy; mudanças administrativas aparecem imediatamente na SPA, mas exigem novo deploy para atualizar prévias sociais e HTML rastreável.
-- Não existe medição formal de clique no WhatsApp, busca ou visualização de produto.
 - Não há carrinho de orçamento com vários itens.
+- A allowlist de analytics contém apenas `criativa-canecas.vercel.app`; deve incluir o futuro domínio próprio no mesmo deploy da troca canônica.
+- Métricas são agregadas e não substituem uma plataforma de marketing/atribuição; adicionar Pixel ou GA depende de decisão de negócio e consentimento.
 - O site ainda não possui domínio próprio registrado nesta memória.
 - Há atividade residual do GitHub Pages, mas produção oficial é Vercel; não desativar serviço externo sem autorização explícita.
 
 ## Próxima execução recomendada
 
-1. Implementar a Fase 6 com eventos tipados e sem PII para visualização, busca, coleção e WhatsApp.
-2. Adicionar consentimento somente para integrações opcionais que realmente precisem dele e impedir métricas em desenvolvimento.
-3. Ampliar Playwright/axe/Lighthouse no CI e adicionar monitoramento de erros sem dados pessoais.
+1. Implementar a Fase 7 com carrinho de orçamento persistente e sem conta.
+2. Gerar mensagem consolidada de WhatsApp com itens, quantidades, links e aviso de estimativa.
+3. Cobrir adicionar, remover, alterar quantidade, limpar e persistir no Playwright em desktop/celular.
 
 ## Protocolo de atualização da memória
 

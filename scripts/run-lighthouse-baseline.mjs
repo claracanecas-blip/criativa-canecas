@@ -8,7 +8,9 @@ const baselineDate = process.env.BASELINE_DATE ?? new Date().toISOString().slice
 const runId = process.env.BASELINE_RUN_ID ?? baselineDate
 const runLabel = process.env.BASELINE_LABEL ?? `Baseline ${baselineDate}`
 const siteUrl = process.env.BASELINE_SITE_URL ?? 'https://criativa-canecas.vercel.app'
-const outputDirectory = join(projectRoot, 'docs', 'baselines', runId)
+const outputDirectory = process.env.BASELINE_OUTPUT_DIR
+  ? join(projectRoot, process.env.BASELINE_OUTPUT_DIR)
+  : join(projectRoot, 'docs', 'baselines', runId)
 const temporaryDirectory = join(projectRoot, 'tmp', 'lighthouse-baseline')
 const lighthouseCli = join(projectRoot, 'node_modules', 'lighthouse', 'cli', 'index.js')
 const targets = [

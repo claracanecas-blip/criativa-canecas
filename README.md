@@ -104,6 +104,12 @@ Ao final do build, `scripts/generate-seo.ts` consulta o catálogo público (ou u
 
 Os arquivos SEO refletem o estado do catálogo no momento do deploy. Alterações administrativas aparecem imediatamente na interface dinâmica; metadados estáticos e sitemap são atualizados no próximo deploy.
 
+## Analytics e qualidade
+
+A jornada pública registra apenas contagens diárias agregadas no Supabase: produto, busca, coleção, WhatsApp e erros técnicos. O termo buscado e mensagens de erro nunca são enviados; desenvolvimento e previews não contaminam produção. Veja o contrato em `docs/analytics/EVENT_CATALOG.md`.
+
+O CI executa testes unitários, TypeScript, build, Playwright, axe WCAG 2.2 A/AA e Lighthouse com mínimo 90 em Performance, Acessibilidade, Boas Práticas e SEO nas páginas principais.
+
 ## Planejamento e memória
 
 - [Especificação SDD e fases de evolução](docs/specs/CATALOG_EVOLUTION_SDD.md)

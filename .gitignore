@@ -6,6 +6,8 @@ dist
 *.log
 source-images/
 tmp/
+test-results/
+playwright-report/
 
 .vercel
 .env.local

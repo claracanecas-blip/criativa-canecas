@@ -4,6 +4,7 @@ import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
 import { useCatalog } from '@/composables/useCatalog'
 import { linkWhatsapp } from '@/data/site'
+import { trackWhatsappClick } from '@/services/analytics'
 
 const catalog = useCatalog()
 
@@ -28,7 +29,7 @@ const frases = [
       <small>Campanha especial</small>
       <h1>Dia dos Pais</h1>
       <p>Uma caneca com a cara dele — com foto, frase ou o time do coração.</p>
-      <a class="btn" :href="linkWhatsapp('Olá! Quero uma caneca para o Dia dos Pais.')" target="_blank" rel="noopener">
+      <a class="btn" :href="linkWhatsapp('Olá! Quero uma caneca para o Dia dos Pais.')" target="_blank" rel="noopener" @click="trackWhatsappClick('campaign')">
         Encomendar agora
       </a>
     </div>

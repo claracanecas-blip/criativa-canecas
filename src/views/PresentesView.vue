@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import AppIcon from '@/components/ui/AppIcon.vue'
 import { useCatalog } from '@/composables/useCatalog'
 import { linkWhatsapp } from '@/data/site'
+import { trackWhatsappClick } from '@/services/analytics'
 
 const catalog = useCatalog()
 
@@ -52,7 +53,7 @@ const cards = computed(() => ocasioes
     <div class="kit">
       <h3>Kit presente</h3>
       <p>Caneca + caixa personalizada + cartão escrito à mão. Combine tudo pelo atendimento.</p>
-      <a class="btn" :href="linkWhatsapp('Olá! Quero montar um kit presente.')" target="_blank" rel="noopener">
+      <a class="btn" :href="linkWhatsapp('Olá! Quero montar um kit presente.')" target="_blank" rel="noopener" @click="trackWhatsappClick('gifts')">
         Montar meu kit
       </a>
     </div>

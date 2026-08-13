@@ -36,8 +36,8 @@ button,input{font:inherit}
 .empty p{margin:0 0 18px}
 
 /* botão padrão */
-.btn{display:inline-block;padding:11px 20px;border-radius:999px;background:var(--pink);color:#fff;font-weight:900;cursor:pointer;border:0}
-.btn:hover{background:var(--pink-dark)}
+.btn{display:inline-block;padding:11px 20px;border-radius:999px;background:var(--pink-dark);color:#fff;font-weight:900;cursor:pointer;border:0}
+.btn:hover{background:#b82053}
 
 @media(max-width:700px){
   .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}

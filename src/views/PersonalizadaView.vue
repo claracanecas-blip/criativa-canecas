@@ -2,6 +2,7 @@
 import AppIcon from '@/components/ui/AppIcon.vue'
 import { linkWhatsapp } from '@/data/site'
 import type { IconName } from '@/types/catalog'
+import { trackWhatsappClick } from '@/services/analytics'
 
 const passos = [
   { n: 1, titulo: 'Escolha o modelo', texto: 'Caneca branca, mágica (muda com o calor) ou colorida.' },
@@ -46,7 +47,7 @@ const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
     </div>
 
     <div class="cta">
-      <a class="btn" :href="linkWhatsapp('Olá! Quero criar uma caneca personalizada.')" target="_blank" rel="noopener">
+      <a class="btn" :href="linkWhatsapp('Olá! Quero criar uma caneca personalizada.')" target="_blank" rel="noopener" @click="trackWhatsappClick('personalized')">
         Criar minha caneca no WhatsApp
       </a>
     </div>
@@ -56,7 +57,7 @@ const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
 <style scoped>
 .passos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .passo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 18px;box-shadow:0 7px 20px rgba(70,35,50,.05)}
-.numero{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pink);color:#fff;font-weight:900;margin-bottom:12px}
+.numero{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pink-dark);color:#fff;font-weight:900;margin-bottom:12px}
 .passo strong{display:block;margin-bottom:6px}
 .passo p{margin:0;font-size:13px;color:var(--muted)}
 

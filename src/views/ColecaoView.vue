@@ -123,7 +123,7 @@ watch(
 .filtros{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
 .chip{padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:800;cursor:pointer}
 .chip:hover{border-color:#efacc3}
-.chip.ativo{background:var(--pink);border-color:var(--pink);color:#fff}
+.chip.ativo{background:var(--pink-dark);border-color:var(--pink-dark);color:#fff}
 .paginacao{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:28px;font-size:13px;font-weight:800}
 .paginacao button{border:1px solid var(--line);border-radius:999px;padding:9px 16px;background:#fff;font-weight:800;cursor:pointer}
 .paginacao button:not(:disabled):hover{border-color:var(--pink);color:var(--pink-dark)}

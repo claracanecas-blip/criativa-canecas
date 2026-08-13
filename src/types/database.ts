@@ -39,6 +39,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      analytics_daily_events: {
+        Row: {
+          dimension_1: string
+          dimension_2: string
+          event_count: number
+          event_date: string
+          event_name: string
+          last_seen_at: string
+        }
+        Insert: {
+          dimension_1?: string
+          dimension_2?: string
+          event_count?: number
+          event_date?: string
+          event_name: string
+          last_seen_at?: string
+        }
+        Update: {
+          dimension_1?: string
+          dimension_2?: string
+          event_count?: number
+          event_date?: string
+          event_name?: string
+          last_seen_at?: string
+        }
+        Relationships: []
+      }
       admin_users: {
         Row: {
           created_at: string
@@ -278,6 +305,14 @@ export type Database = {
     }
     Functions: {
       is_catalog_admin: { Args: never; Returns: boolean }
+      record_catalog_event: {
+        Args: {
+          p_dimension_1?: string
+          p_dimension_2?: string
+          p_event_name: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

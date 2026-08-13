@@ -6,6 +6,7 @@ import AppIcon from '@/components/ui/AppIcon.vue'
 import MegaMenu from '@/components/MegaMenu.vue'
 import { menuPrincipal } from '@/data/colecoes'
 import { site, linkWhatsapp } from '@/data/site'
+import { trackWhatsappClick } from '@/services/analytics'
 
 const router = useRouter()
 const termo = ref('')
@@ -32,11 +33,11 @@ function buscar() {
       </form>
 
       <div class="header-actions">
-        <a class="head-link" :href="linkWhatsapp('Olá! Preciso de ajuda com um pedido.')" target="_blank" rel="noopener">
+        <a class="head-link" :href="linkWhatsapp('Olá! Preciso de ajuda com um pedido.')" target="_blank" rel="noopener" @click="trackWhatsappClick('header_help')">
           <AppIcon name="MessageCircle" :size="21" />
           <span>Central de<br>Atendimento</span>
         </a>
-        <a class="head-link order" :href="linkWhatsapp('Olá! Gostaria de fazer um pedido.')" target="_blank" rel="noopener">
+        <a class="head-link order" :href="linkWhatsapp('Olá! Gostaria de fazer um pedido.')" target="_blank" rel="noopener" @click="trackWhatsappClick('header_order')">
           <AppIcon name="ShoppingBag" :size="20" />
           <span>Meu pedido</span>
         </a>
@@ -74,15 +75,15 @@ function buscar() {
 .header-actions{display:flex;gap:9px;align-items:center}
 .head-link{display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:13px;font-size:13px;font-weight:800;white-space:nowrap}
 .head-link:hover{background:var(--pink-soft)}
-.order{background:var(--pink);color:#fff;border-radius:999px;padding:11px 15px}
-.order:hover{background:var(--pink-dark)}
+.order{background:var(--pink-dark);color:#fff;border-radius:999px;padding:11px 15px}
+.order:hover{background:#b82053}
 
 .navbar{background:#fff;border-bottom:1px solid var(--line);position:relative;z-index:50}
 .nav-row{display:flex;align-items:center;gap:1px}
 .nav-link{display:flex;align-items:center;gap:3px;padding:13px 15px;font-size:13px;font-weight:850;white-space:nowrap}
 .nav-link:hover{color:var(--pink-dark)}
-.special{background:var(--pink);color:#fff}
-.special:hover{color:#fff;background:var(--pink-dark)}
+.special{background:var(--pink-dark);color:#fff}
+.special:hover{color:#fff;background:#b82053}
 
 @media(max-width:950px){
   .header-row{grid-template-columns:auto 1fr}

@@ -6,8 +6,8 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fases 0, 1, 2, 3, 4 e 5 concluídas |
-| Versão | 1.4 |
+| Estado | Em execução; Fases 0, 1, 2, 3, 4, 5 e 6 concluídas |
+| Versão | 1.5 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -300,11 +300,17 @@ Uma fase só está concluída quando:
 
 ### Fase 6 — Analytics, acessibilidade e qualidade
 
+**Estado:** concluída e validada em 13 de agosto de 2026.
+
 **Objetivo:** medir resultados e prevenir regressões.
 
 **Entregas:** eventos, consentimento quando aplicável, Playwright para fluxos críticos, auditoria axe/Lighthouse e monitoramento de erro.
 
 **Aceite:** eventos aparecem apenas em produção, não contêm PII e os fluxos principais passam no CI.
+
+**Rollback:** reverter frontend/CI e aplicar `supabase/rollback/20260813211500_catalog_analytics.sql`; catálogo e administração não são alterados.
+
+**Evidências:** [`docs/baselines/2026-08-13-phase-6/PHASE_6.md`](../baselines/2026-08-13-phase-6/PHASE_6.md), oito verificações remotas de RLS, 6/6 cenários Playwright/axe sem violação automática e Lighthouse P90+ nas três páginas.
 
 **Estimativa:** 2 a 4 dias.
 
@@ -388,7 +394,7 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 | 3 — Integração frontend | Concluída | Catálogo remoto, fallback, 14 testes e validação navegada |
 | 4 — Administração | Concluída | RLS remota e ciclo administrativo E2E completo |
 | 5 — Produto e SEO | Concluída | 341 páginas, sitemap de 360 URLs, preview e Lighthouse |
-| 6 — Medição e qualidade | Não iniciada | — |
+| 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, Playwright/axe e Lighthouse no CI |
 | 7 — Orçamento | Não iniciada | — |
 | 8 — Confiança e domínio | Não iniciada | — |
 | 9 — Descoberta de checkout | Não iniciada | — |

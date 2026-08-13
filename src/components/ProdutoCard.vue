@@ -4,6 +4,7 @@ import { formatarPreco } from '@/data/produtos'
 import { linkWhatsapp } from '@/data/site'
 import CatalogImage from '@/components/ui/CatalogImage.vue'
 import type { Product } from '@/types/catalog'
+import { trackWhatsappClick } from '@/services/analytics'
 
 const props = withDefaults(defineProps<{ produto: Product; priority?: boolean }>(), {
   priority: false,
@@ -29,7 +30,7 @@ const link = computed(() =>
     <div class="info">
       <h3><RouterLink :to="`/produto/${produto.slug}`">{{ produto.nome }}</RouterLink></h3>
       <div class="price">{{ formatarPreco(produto.preco) }}</div>
-      <a class="comprar" :href="link" target="_blank" rel="noopener">Comprar pelo WhatsApp</a>
+      <a class="comprar" :href="link" target="_blank" rel="noopener" @click="trackWhatsappClick('product_card', produto.slug)">Comprar pelo WhatsApp</a>
     </div>
   </article>
 </template>
@@ -42,8 +43,8 @@ const link = computed(() =>
 .info{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
 .info h3{margin:0;font-size:17px}
 .price{font-size:24px;color:var(--pink);font-weight:900}
-.comprar{margin-top:auto;text-align:center;background:#25D366;color:#fff;padding:11px;border-radius:8px;font-weight:800;font-size:14px}
-.comprar:hover{background:#1eb757}
+.comprar{margin-top:auto;text-align:center;background:#087f3f;color:#fff;padding:11px;border-radius:8px;font-weight:800;font-size:14px}
+.comprar:hover{background:#075e35}
 
 @media(max-width:700px){
   .info{padding:12px}

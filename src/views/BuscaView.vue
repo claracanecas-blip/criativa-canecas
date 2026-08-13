@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import AppIcon from '@/components/ui/AppIcon.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
 import { useCatalog } from '@/composables/useCatalog'
+import { trackSearch } from '@/services/analytics'
 
 const route = useRoute()
 const catalog = useCatalog()
@@ -19,6 +20,19 @@ const colecoesEncontradas = computed(() => {
     (c) => c.nome.toLowerCase().includes(q) || c.slug.includes(q),
   )
 })
+
+const lastTrackedSearch = ref('')
+watch(
+  () => [termo.value.trim().length, resultados.value.length + colecoesEncontradas.value.length, catalog.state.value] as const,
+  ([queryLength, resultCount, state]) => {
+    if (!queryLength || !['ready', 'fallback'].includes(state)) return
+    const signature = `${queryLength}:${resultCount}`
+    if (signature === lastTrackedSearch.value) return
+    lastTrackedSearch.value = signature
+    trackSearch(queryLength, resultCount)
+  },
+  { immediate: true },
+)
 </script>
 
 <template>

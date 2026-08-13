@@ -2,6 +2,12 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import { currentAdmin } from '@/services/adminAuth'
 import { applyPageMeta } from '@/composables/usePageMeta'
+import {
+  collectionSource,
+  productSource,
+  trackCollectionSelect,
+  trackProductView,
+} from '@/services/analytics'
 
 const routes: RouteRecordRaw[] = [
   { path: '/',              name: 'home',          component: HomeView,                                       meta: { titulo: 'Canecas Personalizadas' } },
@@ -42,7 +48,13 @@ router.beforeEach(async (to) => {
   }
 })
 
-router.afterEach((to) => {
+router.afterEach((to, from) => {
+  if (to.name === 'produto') {
+    trackProductView(String(to.params.slug ?? ''), productSource(from.name))
+  } else if (to.name === 'colecao') {
+    trackCollectionSelect(String(to.params.slug ?? ''), collectionSource(from.name))
+  }
+
   const titulo = typeof to.meta.titulo === 'string' ? to.meta.titulo : undefined
   document.title = titulo ? `${titulo} | Criativa Canecas` : 'Criativa Canecas'
   if (to.name === 'produto' || to.name === 'colecao') return

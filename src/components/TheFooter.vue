@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { site, linkWhatsapp } from '@/data/site'
+import { trackWhatsappClick } from '@/services/analytics'
 
 const ano = new Date().getFullYear()
 </script>
@@ -24,7 +25,7 @@ const ano = new Date().getFullYear()
 
       <div>
         <strong>Atendimento</strong>
-        <a :href="linkWhatsapp()" target="_blank" rel="noopener">WhatsApp</a>
+        <a :href="linkWhatsapp()" target="_blank" rel="noopener" @click="trackWhatsappClick('footer')">WhatsApp</a>
         <span>Pedidos sob encomenda</span>
       </div>
     </div>

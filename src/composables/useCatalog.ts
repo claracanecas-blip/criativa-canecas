@@ -5,6 +5,7 @@ import {
   type CatalogRepository,
 } from '@/repositories/catalogRepository'
 import type { CatalogSnapshot, Product } from '@/types/catalog'
+import { reportClientError, routeGroup } from '@/services/analytics'
 
 export type CatalogState = 'idle' | 'loading' | 'ready' | 'fallback' | 'error'
 export type CatalogSource = 'supabase' | 'typescript' | null
@@ -68,6 +69,10 @@ async function refresh(): Promise<void> {
     const result = forceTypescript
       ? { snapshot: await typescriptCatalogRepository.load(), state: 'ready' as const, source: 'typescript' as const, message: null }
       : await loadCatalogWithFallback(configured, typescriptCatalogRepository)
+
+    if (!forceTypescript && result.state !== 'ready') {
+      reportClientError('catalog_load', routeGroup(window.location.pathname.split('/')[1]))
+    }
 
     snapshot.value = result.snapshot
     state.value = result.state
