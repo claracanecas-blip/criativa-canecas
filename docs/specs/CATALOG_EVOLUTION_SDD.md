@@ -6,8 +6,8 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fases 0, 1, 2 e 3 concluídas |
-| Versão | 1.2 |
+| Estado | Em execução; Fases 0, 1, 2, 3 e 4 concluídas |
+| Versão | 1.3 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -268,11 +268,17 @@ Uma fase só está concluída quando:
 
 ### Fase 4 — Painel administrativo
 
+**Estado:** concluída e validada em 13 de agosto de 2026.
+
 **Objetivo:** permitir manutenção cotidiana pelo navegador.
 
 **Entregas:** login, proteção de rota, CRUD de produtos/coleções, upload, ordenação e publicação.
 
 **Aceite:** administrador completa o ciclo criar → revisar → publicar → visualizar; usuário não autorizado não escreve.
+
+**Rollback:** reverter o frontend para o commit anterior e aplicar, em ordem, `20260813205500_catalog_actor_privacy.sql` e `20260813204000_catalog_admin_audit.sql` da pasta `supabase/rollback/`. O catálogo público permanece disponível durante o rollback.
+
+**Evidências:** [`docs/baselines/2026-08-13-phase-4/PHASE_4.md`](../baselines/2026-08-13-phase-4/PHASE_4.md), relatório RLS remoto e teste Playwright do ciclo login → criar coleção → criar/publicar produto com quatro variantes → visualizar → excluir → logout.
 
 **Estimativa:** 4 a 7 dias.
 

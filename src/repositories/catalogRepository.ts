@@ -1,16 +1,17 @@
-import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { colecoes as colecoesLocais, todasColecoes } from '@/data/colecoes'
 import { todosProdutos } from '@/data/produtos'
 import type { CatalogSnapshot, Collection, IconName, Product } from '@/types/catalog'
 import type { Database, Tables } from '@/types/database'
+import { getSupabaseClient } from '@/services/supabase'
 
 export interface CatalogRepository {
   load(): Promise<CatalogSnapshot>
 }
 
 export interface CatalogDatabaseRows {
-  collections: Tables<'collections'>[]
-  products: Tables<'products'>[]
+  collections: Array<Omit<Tables<'collections'>, 'created_by' | 'updated_by'>>
+  products: Array<Omit<Tables<'products'>, 'created_by' | 'updated_by'>>
   relations: Tables<'product_collections'>[]
   images: Tables<'product_images'>[]
 }
@@ -71,8 +72,8 @@ export class SupabaseCatalogRepository implements CatalogRepository {
 
   async load(): Promise<CatalogSnapshot> {
     const [collections, products, relations, images] = await Promise.all([
-      this.client.from('collections').select('*').order('display_order'),
-      this.client.from('products').select('*').eq('status', 'published').order('display_order').range(0, 999),
+      this.client.from('collections').select('id,slug,name,description,icon_name,image_path,display_order,is_published,is_listed,seo_title,seo_description,created_at,updated_at').order('display_order'),
+      this.client.from('products').select('id,slug,sku,name,theme,description,price,status,is_featured,display_order,seo_title,seo_description,created_at,updated_at').eq('status', 'published').order('display_order').range(0, 999),
       this.client.from('product_collections').select('*').order('display_order').range(0, 999),
       this.client.from('product_images').select('*').eq('variant', 'original').order('display_order').range(0, 999),
     ])
@@ -117,5 +118,5 @@ export function configuredCatalogRepository(): CatalogRepository {
     }
   }
 
-  return new SupabaseCatalogRepository(createClient<Database>(url, publishableKey))
+  return new SupabaseCatalogRepository(getSupabaseClient())
 }

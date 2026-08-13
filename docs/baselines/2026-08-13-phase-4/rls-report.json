@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T19:39:57.707Z",
+  "checks": [
+    {
+      "name": "leitura anônima de coleções publicadas",
+      "passed": true,
+      "detail": "17/17"
+    },
+    {
+      "name": "leitura anônima de produtos",
+      "passed": true,
+      "detail": "341/341"
+    },
+    {
+      "name": "leitura anônima de relações publicadas",
+      "passed": true,
+      "detail": "341/341"
+    },
+    {
+      "name": "leitura anônima de imagens",
+      "passed": true,
+      "detail": "1364/1364"
+    },
+    {
+      "name": "somente 15 coleções listadas",
+      "passed": true,
+      "detail": "HTTP 200, linhas 15"
+    },
+    {
+      "name": "identificador do administrador oculto para anônimo",
+      "passed": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "name": "escrita anônima negada",
+      "passed": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "name": "upload anônimo no Storage negado",
+      "passed": true,
+      "detail": "HTTP 400"
+    },
+    {
+      "name": "escrita autenticada sem admin negada",
+      "passed": true,
+      "detail": "HTTP 403"
+    },
+    {
+      "name": "upload sem admin no Storage negado",
+      "passed": true,
+      "detail": "HTTP 400"
+    },
+    {
+      "name": "auditoria oculta para autenticado sem admin",
+      "passed": true,
+      "detail": "HTTP 200, linhas 0"
+    },
+    {
+      "name": "escrita de administrador permitida",
+      "passed": true,
+      "detail": "HTTP 201"
+    },
+    {
+      "name": "autoria administrativa registrada",
+      "passed": true,
+      "detail": "HTTP 200, ator e59c5ad7-5703-4c56-8230-1037dc47e566"
+    },
+    {
+      "name": "inserção registrada na auditoria",
+      "passed": true,
+      "detail": "HTTP 200, linhas 1"
+    },
+    {
+      "name": "upload de administrador no Storage permitido",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "leitura pública do objeto permitida",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "rascunho oculto para anônimo",
+      "passed": true,
+      "detail": "HTTP 200, linhas 0"
+    },
+    {
+      "name": "exclusão de administrador permitida",
+      "passed": true,
+      "detail": "HTTP 204"
+    },
+    {
+      "name": "exclusão registrada na auditoria",
+      "passed": true,
+      "detail": "HTTP 200, linhas 1"
+    },
+    {
+      "name": "exclusão de administrador no Storage permitida",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "auditoria sentinela removida",
+      "passed": true,
+      "detail": "HTTP 200, linhas 0"
+    },
+    {
+      "name": "usuário administrativo temporário removido",
+      "passed": true,
+      "detail": "HTTP 200, linhas 0"
+    },
+    {
+      "name": "produto sentinela removido",
+      "passed": true,
+      "detail": "HTTP 200, linhas 0"
+    },
+    {
+      "name": "objeto sentinela removido da origem",
+      "passed": true,
+      "detail": "HTTP 200, linhas 0"
+    }
+  ],
+  "passed": true
+}

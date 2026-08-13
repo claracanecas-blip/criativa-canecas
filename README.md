@@ -77,6 +77,20 @@ npm run catalog:verify
 
 Esses comandos administrativos exigem as chaves apenas no ambiente da execução. O frontend nunca recebe `service_role`. Os scripts de rollback ficam em `supabase/rollback/` e não são aplicados automaticamente.
 
+## Painel administrativo
+
+O painel protegido está em `/admin`. A autenticação usa Supabase Auth e o acesso depende também de uma linha com papel `admin` em `public.admin_users`; estar apenas autenticado não concede escrita.
+
+O painel permite criar, editar e excluir produtos/coleções, controlar preço, ordem, destaque e publicação, relacionar múltiplas coleções e enviar JPEG/PNG/WebP. O navegador valida a imagem e gera quatro WebP (`original`, `card-320`, `card-640` e `social`) antes de publicar. Exclusões exigem confirmação e preservam objetos do Storage para evitar perda acidental.
+
+A verificação ponta a ponta administrativa cria e remove um usuário e registros sentinela:
+
+```bash
+npm run admin:verify-e2e
+```
+
+Ela exige URL, chave publicável e `service_role` somente no ambiente da execução. O relatório não armazena essas credenciais.
+
 ## Planejamento e memória
 
 - [Especificação SDD e fases de evolução](docs/specs/CATALOG_EVOLUTION_SDD.md)

@@ -57,9 +57,37 @@ export type Database = {
         }
         Relationships: []
       }
+      catalog_audit_logs: {
+        Row: {
+          action: string
+          actor_id: string | null
+          changed_at: string
+          entity_id: string
+          entity_type: string
+          id: number
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          changed_at?: string
+          entity_id: string
+          entity_type: string
+          id?: never
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          changed_at?: string
+          entity_id?: string
+          entity_type?: string
+          id?: never
+        }
+        Relationships: []
+      }
       collections: {
         Row: {
           created_at: string
+          created_by: string | null
           description: string
           display_order: number
           icon_name: string
@@ -72,9 +100,11 @@ export type Database = {
           seo_title: string | null
           slug: string
           updated_at: string
+          updated_by: string | null
         }
         Insert: {
           created_at?: string
+          created_by?: string | null
           description?: string
           display_order?: number
           icon_name: string
@@ -87,9 +117,11 @@ export type Database = {
           seo_title?: string | null
           slug: string
           updated_at?: string
+          updated_by?: string | null
         }
         Update: {
           created_at?: string
+          created_by?: string | null
           description?: string
           display_order?: number
           icon_name?: string
@@ -102,6 +134,7 @@ export type Database = {
           seo_title?: string | null
           slug?: string
           updated_at?: string
+          updated_by?: string | null
         }
         Relationships: []
       }
@@ -185,6 +218,7 @@ export type Database = {
       products: {
         Row: {
           created_at: string
+          created_by: string | null
           description: string
           display_order: number
           id: string
@@ -198,9 +232,11 @@ export type Database = {
           status: string
           theme: string
           updated_at: string
+          updated_by: string | null
         }
         Insert: {
           created_at?: string
+          created_by?: string | null
           description?: string
           display_order?: number
           id: string
@@ -214,9 +250,11 @@ export type Database = {
           status?: string
           theme?: string
           updated_at?: string
+          updated_by?: string | null
         }
         Update: {
           created_at?: string
+          created_by?: string | null
           description?: string
           display_order?: number
           id?: string
@@ -230,6 +268,7 @@ export type Database = {
           status?: string
           theme?: string
           updated_at?: string
+          updated_by?: string | null
         }
         Relationships: []
       }

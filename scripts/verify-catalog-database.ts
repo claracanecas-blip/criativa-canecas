@@ -114,6 +114,15 @@ try {
   const listedCollections = listedResponse.ok ? await listedResponse.json() as unknown[] : []
   record('somente 15 coleções listadas', listedResponse.ok && listedCollections.length === 15, `HTTP ${listedResponse.status}, linhas ${listedCollections.length}`)
 
+  const anonymousActorRead = await fetch(`${projectUrl}/rest/v1/products?select=created_by&limit=1`, {
+    headers: apiHeaders(anonKey),
+  })
+  record(
+    'identificador do administrador oculto para anônimo',
+    [401, 403].includes(anonymousActorRead.status),
+    `HTTP ${anonymousActorRead.status}`,
+  )
+
   const anonWrite = await attemptProductInsert(anonKey)
   record('escrita anônima negada', [401, 403].includes(anonWrite.status), `HTTP ${anonWrite.status}`)
   if (anonWrite.ok) await serviceDelete('products', `id=eq.${encodeURIComponent(sentinelId)}`)
@@ -150,6 +159,16 @@ try {
   record('upload sem admin no Storage negado', !nonAdminStorageWrite.ok, `HTTP ${nonAdminStorageWrite.status}`)
   if (nonAdminStorageWrite.ok) await deleteStorageObject(serviceKey)
 
+  const nonAdminAuditRead = await fetch(`${projectUrl}/rest/v1/catalog_audit_logs?select=id&limit=1`, {
+    headers: apiHeaders(anonKey, session.access_token),
+  })
+  const nonAdminAuditRows = nonAdminAuditRead.ok ? await nonAdminAuditRead.json() as unknown[] : []
+  record(
+    'auditoria oculta para autenticado sem admin',
+    nonAdminAuditRead.ok && nonAdminAuditRows.length === 0,
+    `HTTP ${nonAdminAuditRead.status}, linhas ${nonAdminAuditRows.length}`,
+  )
+
   const grantAdmin = await fetch(`${projectUrl}/rest/v1/admin_users`, {
     method: 'POST',
     headers: { ...apiHeaders(serviceKey), prefer: 'resolution=merge-duplicates,return=minimal' },
@@ -159,6 +178,28 @@ try {
 
   const adminWrite = await attemptProductInsert(session.access_token)
   record('escrita de administrador permitida', adminWrite.status === 201, `HTTP ${adminWrite.status}`)
+
+  const actorRead = await fetch(`${projectUrl}/rest/v1/products?id=eq.${encodeURIComponent(sentinelId)}&select=created_by,updated_by`, {
+    headers: apiHeaders(serviceKey),
+  })
+  const actorRows = actorRead.ok
+    ? await actorRead.json() as Array<{ created_by: string | null; updated_by: string | null }>
+    : []
+  record(
+    'autoria administrativa registrada',
+    actorRead.ok && actorRows[0]?.created_by === temporaryUserId && actorRows[0]?.updated_by === temporaryUserId,
+    `HTTP ${actorRead.status}, ator ${actorRows[0]?.updated_by ?? 'ausente'}`,
+  )
+
+  const auditInsertRead = await fetch(`${projectUrl}/rest/v1/catalog_audit_logs?entity_id=eq.${encodeURIComponent(sentinelId)}&action=eq.insert&select=actor_id`, {
+    headers: apiHeaders(anonKey, session.access_token),
+  })
+  const auditInsertRows = auditInsertRead.ok ? await auditInsertRead.json() as Array<{ actor_id: string | null }> : []
+  record(
+    'inserção registrada na auditoria',
+    auditInsertRead.ok && auditInsertRows.some((row) => row.actor_id === temporaryUserId),
+    `HTTP ${auditInsertRead.status}, linhas ${auditInsertRows.length}`,
+  )
 
   const adminStorageWrite = await attemptStorageUpload(session.access_token)
   record('upload de administrador no Storage permitido', adminStorageWrite.ok, `HTTP ${adminStorageWrite.status}`)
@@ -179,11 +220,22 @@ try {
   })
   record('exclusão de administrador permitida', adminDelete.status === 204, `HTTP ${adminDelete.status}`)
 
+  const auditDeleteRead = await fetch(`${projectUrl}/rest/v1/catalog_audit_logs?entity_id=eq.${encodeURIComponent(sentinelId)}&action=eq.delete&select=actor_id`, {
+    headers: apiHeaders(anonKey, session.access_token),
+  })
+  const auditDeleteRows = auditDeleteRead.ok ? await auditDeleteRead.json() as Array<{ actor_id: string | null }> : []
+  record(
+    'exclusão registrada na auditoria',
+    auditDeleteRead.ok && auditDeleteRows.some((row) => row.actor_id === temporaryUserId),
+    `HTTP ${auditDeleteRead.status}, linhas ${auditDeleteRows.length}`,
+  )
+
   const adminStorageDelete = await deleteStorageObject(session.access_token)
   record('exclusão de administrador no Storage permitida', adminStorageDelete.ok, `HTTP ${adminStorageDelete.status}`)
 } finally {
   await serviceDelete('products', `id=eq.${encodeURIComponent(sentinelId)}`).catch(() => undefined)
   await deleteStorageObject(serviceKey, serviceKey).catch(() => undefined)
+  await serviceDelete('catalog_audit_logs', `entity_id=eq.${encodeURIComponent(sentinelId)}`).catch(() => undefined)
   if (temporaryUserId) {
     await serviceDelete('admin_users', `user_id=eq.${encodeURIComponent(temporaryUserId)}`).catch(() => undefined)
     await fetch(`${projectUrl}/auth/v1/admin/users/${temporaryUserId}`, {
@@ -192,6 +244,16 @@ try {
     }).catch(() => undefined)
   }
 }
+
+const cleanupAuditResponse = await fetch(`${projectUrl}/rest/v1/catalog_audit_logs?entity_id=eq.${encodeURIComponent(sentinelId)}&select=id`, {
+  headers: apiHeaders(serviceKey),
+})
+const cleanupAuditRows = cleanupAuditResponse.ok ? await cleanupAuditResponse.json() as unknown[] : []
+record(
+  'auditoria sentinela removida',
+  cleanupAuditResponse.ok && cleanupAuditRows.length === 0,
+  `HTTP ${cleanupAuditResponse.status}, linhas ${cleanupAuditRows.length}`,
+)
 
 const cleanupAdminResponse = temporaryUserId
   ? await fetch(`${projectUrl}/rest/v1/admin_users?user_id=eq.${encodeURIComponent(temporaryUserId)}&select=user_id`, {

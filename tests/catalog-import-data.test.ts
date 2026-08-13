@@ -35,6 +35,8 @@ test('migration habilita RLS e políticas positivas e negativas', async () => {
       readFile(new URL('../supabase/migrations/20260813184000_catalog_schema.sql', import.meta.url), 'utf8'),
       readFile(new URL('../supabase/migrations/20260813190000_catalog_collection_visibility.sql', import.meta.url), 'utf8'),
       readFile(new URL('../supabase/migrations/20260813191500_catalog_function_hardening.sql', import.meta.url), 'utf8'),
+      readFile(new URL('../supabase/migrations/20260813204000_catalog_admin_audit.sql', import.meta.url), 'utf8'),
+      readFile(new URL('../supabase/migrations/20260813205500_catalog_actor_privacy.sql', import.meta.url), 'utf8'),
     ])
   ).join('\n'))
 
@@ -49,6 +51,11 @@ test('migration habilita RLS e políticas positivas e negativas', async () => {
   assert.match(migration, /revoke all on function public\.set_catalog_updated_at\(\) from public, anon, authenticated/i)
   assert.match(migration, /product_images_admin_insert/i)
   assert.match(migration, /product_images_admin_delete/i)
+  assert.match(migration, /catalog_audit_logs_admin_read/i)
+  assert.match(migration, /revoke all on public\.catalog_audit_logs from anon, authenticated/i)
+  assert.match(migration, /revoke all on function public\.log_catalog_change\(\) from public, anon, authenticated/i)
+  assert.match(migration, /revoke select on public\.products from anon, authenticated/i)
+  assert.match(migration, /grant select \([\s\S]*seo_description[\s\S]*\) on public\.products to anon, authenticated/i)
 })
 
 test('coleções legadas permanecem publicadas, mas fora da navegação', async () => {

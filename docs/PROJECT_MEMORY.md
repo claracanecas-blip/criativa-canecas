@@ -40,6 +40,12 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Variáveis públicas `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` e `VITE_CATALOG_SOURCE` configuradas na Vercel para Production, Preview e Development; nenhuma chave administrativa foi adicionada.
 - Paridade navegada: 15 coleções listadas, 80 itens em `/colecao/series`, quatro resultados para `Arrow` e link legado `/colecao/desenhos` com 27 itens.
 - Lighthouse local da Fase 3: home P99/A93/B100/S92 e coleção P98/A95/B100/S92.
+- Fase 4 concluída: `/admin` exige sessão Supabase e papel em `admin_users`; login, recuperação/definição de senha, CRUD, múltiplas coleções, status, destaque, ordem e upload estão disponíveis.
+- Upload administrativo valida JPEG/PNG/WebP até 10 MB e no mínimo 640 × 640, gerando no navegador as quatro variantes WebP antes da publicação.
+- Auditoria remota registra criação/atualização/exclusão e ator; UUIDs de autoria foram removidos da superfície de leitura pública por privilégios de coluna.
+- Supabase Auth usa `https://criativa-canecas.vercel.app` como Site URL e permite callbacks de produção, previews do projeto e Vite local.
+- Um convite administrativo foi enviado ao e-mail proprietário do projeto; o destinatário define a própria senha por link do Supabase.
+- E2E Playwright comprovou login, 341 produtos iniciais, criação de coleção, publicação com quatro imagens, visualização pública, exclusões confirmadas e logout; nenhum sentinela permaneceu.
 
 ## Decisões tomadas
 
@@ -57,6 +63,9 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 12. Separar `is_published` de `is_listed`: coleções legadas continuam acessíveis por URL, mas não voltam aos menus.
 13. Centralizar leitura do catálogo em um repositório tipado; a UI não acessa diretamente o cliente Supabase.
 14. Manter fallback automático para TypeScript em falhas transitórias e feature flag `VITE_CATALOG_SOURCE=typescript` para rollback integral.
+15. Autorizar o painel em duas camadas: sessão válida no Supabase Auth e papel `admin` no banco/RLS.
+16. Gerar variantes de imagem no navegador antes de publicar; caminhos recebem nome versionado e objetos antigos não são apagados automaticamente.
+17. Não expor `created_by`/`updated_by` nas consultas públicas; administradores consultam autoria pelo log protegido.
 
 ## Histórico relevante
 
@@ -96,8 +105,7 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 ## Riscos e débitos conhecidos
 
 - A coleta inicial de cache usou `HEAD` e foi inconclusiva para `GET`; a Fase 1 agora verifica por `GET` e confirmou `public, max-age=31536000` nos 1.432 objetos.
-- A manutenção de metadados ainda exige script administrativo; o painel da Fase 4 eliminará essa dependência cotidiana.
-- Ainda não existe painel administrativo ou autenticação de administrador.
+- Objetos antigos do Storage são preservados quando um produto é excluído; uma rotina futura de limpeza deve remover somente órfãos comprovados.
 - Não existem páginas individuais de produto, sitemap dinâmico, JSON-LD de produto ou Open Graph por item.
 - Não existe medição formal de clique no WhatsApp, busca ou visualização de produto.
 - Não há carrinho de orçamento com vários itens.
@@ -106,9 +114,9 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Implementar a Fase 4 com autenticação Supabase e rota `/admin` protegida.
-2. Entregar CRUD de produtos e coleções respeitando as políticas RLS já validadas.
-3. Implementar upload/validação de imagens e comprovar o ciclo criar → revisar → publicar → visualizar.
+1. Implementar a Fase 5 com rota canônica `/produto/:slug`, página de detalhe e produtos relacionados.
+2. Adicionar metadados, Open Graph, JSON-LD, breadcrumbs, `robots.txt` e sitemap somente com itens publicados.
+3. Avaliar prerenderização das rotas públicas e validar links diretos/compartilhamento antes de qualquer decisão sobre SSR.
 
 ## Protocolo de atualização da memória
 

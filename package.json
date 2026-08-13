@@ -18,7 +18,8 @@
     "images:upload": "node scripts/upload-product-images.mjs",
     "images:verify": "node scripts/verify-product-images.mjs",
     "catalog:import": "node --import tsx scripts/import-catalog.ts",
-    "catalog:verify": "node --import tsx scripts/verify-catalog-database.ts"
+    "catalog:verify": "node --import tsx scripts/verify-catalog-database.ts",
+    "admin:verify-e2e": "node scripts/verify-admin-e2e.mjs"
   },
   "dependencies": {
     "@lucide/vue": "^1.31.0",
@@ -27,6 +28,7 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.2.0",
     "@vitejs/plugin-vue": "^5.2.1",

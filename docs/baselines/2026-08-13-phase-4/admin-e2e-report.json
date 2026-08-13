@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T19:40:27.833Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "rota administrativa exige login",
+      "passed": true,
+      "detail": "/admin redirecionou para /admin/login"
+    },
+    {
+      "name": "administrador autenticado abre painel",
+      "passed": true,
+      "detail": "341 produtos carregados"
+    },
+    {
+      "name": "CRUD cria coleção",
+      "passed": true,
+      "detail": "phase4-02adf5106402"
+    },
+    {
+      "name": "CRUD publica produto com variantes",
+      "passed": true,
+      "detail": "caneca-sentinela-02adf5106402"
+    },
+    {
+      "name": "upload gerou quatro variantes",
+      "passed": true,
+      "detail": "4/4"
+    },
+    {
+      "name": "produto publicado aparece no catálogo",
+      "passed": true,
+      "detail": "/colecao/phase4-02adf5106402"
+    },
+    {
+      "name": "CRUD exclui produto com confirmação",
+      "passed": true,
+      "detail": "metadados removidos e objetos preservados até limpeza"
+    },
+    {
+      "name": "CRUD exclui coleção vazia com confirmação",
+      "passed": true,
+      "detail": "phase4-02adf5106402"
+    },
+    {
+      "name": "logout encerra sessão administrativa",
+      "passed": true,
+      "detail": "/admin/login"
+    }
+  ]
+}

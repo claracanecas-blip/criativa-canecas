@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import { currentAdmin } from '@/services/adminAuth'
 
 const routes: RouteRecordRaw[] = [
   { path: '/',              name: 'home',          component: HomeView,                                       meta: { titulo: 'Canecas Personalizadas' } },
@@ -10,6 +11,9 @@ const routes: RouteRecordRaw[] = [
   { path: '/presentes',     name: 'presentes',     component: () => import('@/views/PresentesView.vue'),      meta: { titulo: 'Presentes' } },
   { path: '/dia-dos-pais',  name: 'dia-dos-pais',  component: () => import('@/views/DiaDosPaisView.vue'),     meta: { titulo: 'Dia dos Pais' } },
   { path: '/busca',         name: 'busca',         component: () => import('@/views/BuscaView.vue'),          meta: { titulo: 'Busca' } },
+  { path: '/admin/login',   name: 'admin-login',   component: () => import('@/views/admin/AdminLoginView.vue'), meta: { titulo: 'Acesso administrativo' } },
+  { path: '/admin/definir-senha', name: 'admin-password', component: () => import('@/views/admin/AdminPasswordView.vue'), meta: { titulo: 'Definir senha administrativa', requiresAdmin: true } },
+  { path: '/admin',         name: 'admin',         component: () => import('@/views/admin/AdminCatalogView.vue'), meta: { titulo: 'Painel administrativo', requiresAdmin: true } },
   { path: '/:pathMatch(.*)*', name: 'nao-encontrado', component: () => import('@/views/NaoEncontradoView.vue'), meta: { titulo: 'Página não encontrada' } },
 ]
 
@@ -18,6 +22,22 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior: (to, from, savedPosition) => savedPosition ?? { top: 0 },
+})
+
+router.beforeEach(async (to) => {
+  if (!to.meta.requiresAdmin) return true
+
+  try {
+    const admin = await currentAdmin()
+    if (admin) return true
+  } catch {
+    // A tela de login apresenta a falha de configuração de forma controlada.
+  }
+
+  return {
+    name: 'admin-login',
+    query: { redirect: to.fullPath },
+  }
 })
 
 router.afterEach((to) => {
