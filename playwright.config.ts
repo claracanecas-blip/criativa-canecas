@@ -13,6 +13,10 @@ export default defineConfig({
   },
   projects: [
     { name: 'chrome', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
+    { name: 'edge', use: { ...devices['Desktop Edge'], channel: 'msedge' } },
+    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+    { name: 'safari', use: { ...devices['Desktop Safari'] } },
+    { name: 'mobile-safari', use: { ...devices['iPhone 13'] } },
   ],
   webServer: {
     command: 'npm run dev -- --host 127.0.0.1 --port 4173',

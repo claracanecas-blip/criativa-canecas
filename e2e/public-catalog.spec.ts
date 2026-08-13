@@ -47,8 +47,10 @@ test('produto continua utilizável em viewport móvel e via teclado', async ({ p
 
   await page.goto('/')
   await page.keyboard.press('Tab')
-  const focusedTag = await page.evaluate(() => document.activeElement?.tagName)
-  expect(focusedTag).toBe('A')
+  const focusIsInteractive = await page.evaluate(() =>
+    document.activeElement?.matches('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'),
+  )
+  expect(focusIsInteractive).toBe(true)
 })
 
 test('orçamento persiste, ajusta quantidade e gera mensagem consolidada', async ({ page }) => {

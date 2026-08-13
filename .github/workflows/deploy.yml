@@ -27,5 +27,18 @@ jobs:
       - run: npm test
       - run: npm run typecheck
       - run: npm run build
+      - name: Install Playwright compatibility browsers
+        run: npx playwright install --with-deps firefox webkit
       - run: npm run test:e2e
       - run: npm run quality:lighthouse
+
+  edge:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run test:e2e:edge
