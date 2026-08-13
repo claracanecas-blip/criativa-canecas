@@ -1,0 +1,5149 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T17:18:07.581Z",
+  "sourceCommit": "08aa4397540987e25aaeb4344ee7591b14aeb054",
+  "sourceChecksums": {
+    "src/data/produtos.ts": "84e50dd237d81bee8375666c089cb09eda314aa9034f30289513d4a802101ab7",
+    "src/data/colecoes.ts": "22b3a4a233032bc0cd76d42a3304729dbfa6cd00d5cb46b5b91acdcfdfc868b5",
+    "src/data/site.ts": "edca0295b9e081dd28c0a625b08b02d4abb9234917d536663661646fd0178a39"
+  },
+  "collections": [
+    {
+      "slug": "personalizada",
+      "nome": "Personalizadas",
+      "icone": "Camera",
+      "to": "/personalizada"
+    },
+    {
+      "slug": "divertidas",
+      "nome": "Divertidas",
+      "icone": "Smile"
+    },
+    {
+      "slug": "animes",
+      "nome": "Animes",
+      "icone": "Sparkles"
+    },
+    {
+      "slug": "casais",
+      "nome": "Casais",
+      "icone": "Heart"
+    },
+    {
+      "slug": "profissoes",
+      "nome": "Profissões",
+      "icone": "BriefcaseBusiness"
+    },
+    {
+      "slug": "futebol",
+      "nome": "Futebol & Esportes",
+      "icone": "Dumbbell"
+    },
+    {
+      "slug": "religiao",
+      "nome": "Religião",
+      "icone": "Church"
+    },
+    {
+      "slug": "pets",
+      "nome": "Pets",
+      "icone": "Dog"
+    },
+    {
+      "slug": "games",
+      "nome": "Games",
+      "icone": "Gamepad2"
+    },
+    {
+      "slug": "aniversario",
+      "nome": "Aniversário",
+      "icone": "Cake"
+    },
+    {
+      "slug": "amizade",
+      "nome": "Amizade",
+      "icone": "Handshake"
+    },
+    {
+      "slug": "geek",
+      "nome": "Geek & Nerd",
+      "icone": "Tv"
+    },
+    {
+      "slug": "series",
+      "nome": "Séries",
+      "icone": "Clapperboard"
+    },
+    {
+      "slug": "cafe",
+      "nome": "Café",
+      "icone": "Coffee"
+    },
+    {
+      "slug": "unicornio",
+      "nome": "Unicórnios",
+      "icone": "Sparkles"
+    }
+  ],
+  "productGroups": {
+    "animes": [
+      {
+        "id": "demon-slayer-gyuu",
+        "nome": "Demon Slayer 01",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-gyuu.jpg"
+      },
+      {
+        "id": "demon-slayer-inosuke",
+        "nome": "Demon Slayer 02",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-inosuke.jpg"
+      },
+      {
+        "id": "demon-slayer-kanao",
+        "nome": "Demon Slayer 03",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-kanao.jpg"
+      },
+      {
+        "id": "demon-slayer-kimetsu-no-yaiba",
+        "nome": "Demon Slayer 04",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-kimetsu-no-yaiba.jpg"
+      },
+      {
+        "id": "demon-slayer-kimetsu-no-yaiba-2",
+        "nome": "Demon Slayer 05",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-kimetsu-no-yaiba-2.jpg"
+      },
+      {
+        "id": "demon-slayer-kimetsu-no-yaiba-3",
+        "nome": "Demon Slayer 06",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-kimetsu-no-yaiba-3.jpg"
+      },
+      {
+        "id": "demon-slayer-kyoujurou",
+        "nome": "Demon Slayer 07",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-kyoujurou.jpg"
+      },
+      {
+        "id": "demon-slayer-mitsuri",
+        "nome": "Demon Slayer 08",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-mitsuri.jpg"
+      },
+      {
+        "id": "demon-slayer-muchirou",
+        "nome": "Demon Slayer 09",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-muchirou.jpg"
+      },
+      {
+        "id": "demon-slayer-nezuko",
+        "nome": "Demon Slayer 10",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-nezuko.jpg"
+      },
+      {
+        "id": "demon-slayer-sabito",
+        "nome": "Demon Slayer 11",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-sabito.jpg"
+      },
+      {
+        "id": "demon-slayer-sanemi",
+        "nome": "Demon Slayer 12",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-sanemi.jpg"
+      },
+      {
+        "id": "demon-slayer-shinobu",
+        "nome": "Demon Slayer 13",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-shinobu.jpg"
+      },
+      {
+        "id": "demon-slayer-tanjirou",
+        "nome": "Demon Slayer 14",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-tanjirou.jpg"
+      },
+      {
+        "id": "demon-slayer-zenitsu",
+        "nome": "Demon Slayer 15",
+        "tema": "Demon Slayer",
+        "preco": 39.9,
+        "imagem": "./img/demon-slayer-zenitsu.jpg"
+      },
+      {
+        "id": "cavaleiros-do-zodiaco-hyoga",
+        "nome": "Cavaleiros do Zodíaco 01",
+        "tema": "Cavaleiros do Zodíaco",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-hyoga.jpg"
+      },
+      {
+        "id": "cavaleiros-do-zodiaco-ikki",
+        "nome": "Cavaleiros do Zodíaco 02",
+        "tema": "Cavaleiros do Zodíaco",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-ikki.jpg"
+      },
+      {
+        "id": "cavaleiros-do-zodiaco-kiki",
+        "nome": "Cavaleiros do Zodíaco 03",
+        "tema": "Cavaleiros do Zodíaco",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-kiki.jpg"
+      },
+      {
+        "id": "cavaleiros-do-zodiaco-saint-seiya",
+        "nome": "Cavaleiros do Zodíaco 04",
+        "tema": "Cavaleiros do Zodíaco",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-saint-seiya.jpg"
+      },
+      {
+        "id": "cavaleiros-do-zodiaco-saori",
+        "nome": "Cavaleiros do Zodíaco 05",
+        "tema": "Cavaleiros do Zodíaco",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-saori.jpg"
+      },
+      {
+        "id": "cavaleiros-do-zodiaco-shaina",
+        "nome": "Cavaleiros do Zodíaco 06",
+        "tema": "Cavaleiros do Zodíaco",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-shaina.jpg"
+      },
+      {
+        "id": "cavaleiros-do-zodiaco-shiryu",
+        "nome": "Cavaleiros do Zodíaco 07",
+        "tema": "Cavaleiros do Zodíaco",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-shiryu.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-afrodite",
+        "nome": "Cavaleiros do Zodíaco Dourados 01",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-afrodite.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-aiolia",
+        "nome": "Cavaleiros do Zodíaco Dourados 02",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-aiolia.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-aiolos",
+        "nome": "Cavaleiros do Zodíaco Dourados 03",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-aiolos.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-aldebaran",
+        "nome": "Cavaleiros do Zodíaco Dourados 04",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-aldebaran.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-camus",
+        "nome": "Cavaleiros do Zodíaco Dourados 05",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-camus.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-dohko",
+        "nome": "Cavaleiros do Zodíaco Dourados 06",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-dohko.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-mascara-morte",
+        "nome": "Cavaleiros do Zodíaco Dourados 07",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-mascara-morte.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-milo",
+        "nome": "Cavaleiros do Zodíaco Dourados 08",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-milo.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-mu",
+        "nome": "Cavaleiros do Zodíaco Dourados 09",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-mu.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-saga",
+        "nome": "Cavaleiros do Zodíaco Dourados 10",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-saga.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-shaka",
+        "nome": "Cavaleiros do Zodíaco Dourados 11",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-shaka.jpg"
+      },
+      {
+        "id": "cavaleiros-dourados-shura",
+        "nome": "Cavaleiros do Zodíaco Dourados 12",
+        "tema": "Cavaleiros do Zodíaco Dourados",
+        "preco": 39.9,
+        "imagem": "./img/cavaleiros-do-zodiaco-dourados-shura.jpg"
+      },
+      {
+        "id": "fairy-tail-35",
+        "nome": "Fairy Tail 01",
+        "tema": "Fairy Tail",
+        "preco": 39.9,
+        "imagem": "./img/fairy-tail-35.png"
+      },
+      {
+        "id": "fairy-tail-36",
+        "nome": "Fairy Tail 02",
+        "tema": "Fairy Tail",
+        "preco": 39.9,
+        "imagem": "./img/fairy-tail-36.png"
+      },
+      {
+        "id": "fairy-tail-37",
+        "nome": "Fairy Tail 03",
+        "tema": "Fairy Tail",
+        "preco": 39.9,
+        "imagem": "./img/fairy-tail-37.png"
+      },
+      {
+        "id": "fairy-tail-38",
+        "nome": "Fairy Tail 04",
+        "tema": "Fairy Tail",
+        "preco": 39.9,
+        "imagem": "./img/fairy-tail-38.png"
+      },
+      {
+        "id": "fairy-tail-39",
+        "nome": "Fairy Tail 05",
+        "tema": "Fairy Tail",
+        "preco": 39.9,
+        "imagem": "./img/fairy-tail-39.png"
+      },
+      {
+        "id": "fairy-tail-40",
+        "nome": "Fairy Tail 06",
+        "tema": "Fairy Tail",
+        "preco": 39.9,
+        "imagem": "./img/fairy-tail-40.png"
+      },
+      {
+        "id": "fairy-tail-41",
+        "nome": "Fairy Tail 07",
+        "tema": "Fairy Tail",
+        "preco": 39.9,
+        "imagem": "./img/fairy-tail-41.png"
+      },
+      {
+        "id": "fairy-tail-42",
+        "nome": "Fairy Tail 08",
+        "tema": "Fairy Tail",
+        "preco": 39.9,
+        "imagem": "./img/fairy-tail-42.png"
+      },
+      {
+        "id": "fairy-tail-43",
+        "nome": "Fairy Tail 09",
+        "tema": "Fairy Tail",
+        "preco": 39.9,
+        "imagem": "./img/fairy-tail-43.png"
+      }
+    ],
+    "aniversario": [
+      {
+        "id": "aniversario-01",
+        "nome": "Aniversário 01",
+        "tema": "Aniversário",
+        "preco": 39.9,
+        "imagem": "./img/aniversario-01.jpg"
+      },
+      {
+        "id": "aniversario-02",
+        "nome": "Aniversário 02",
+        "tema": "Aniversário",
+        "preco": 39.9,
+        "imagem": "./img/aniversario-02.jpg"
+      },
+      {
+        "id": "aniversario-03",
+        "nome": "Aniversário 03",
+        "tema": "Aniversário",
+        "preco": 39.9,
+        "imagem": "./img/aniversario-03.jpg"
+      },
+      {
+        "id": "aniversario-04",
+        "nome": "Aniversário 04",
+        "tema": "Aniversário",
+        "preco": 39.9,
+        "imagem": "./img/aniversario-04.jpg"
+      },
+      {
+        "id": "aniversario-05",
+        "nome": "Aniversário 05",
+        "tema": "Aniversário",
+        "preco": 39.9,
+        "imagem": "./img/aniversario-05.jpg"
+      },
+      {
+        "id": "aniversario-06",
+        "nome": "Aniversário 06",
+        "tema": "Aniversário",
+        "preco": 39.9,
+        "imagem": "./img/aniversario-06.jpg"
+      },
+      {
+        "id": "aniversario-07",
+        "nome": "Aniversário 07",
+        "tema": "Aniversário",
+        "preco": 39.9,
+        "imagem": "./img/aniversario-07.jpg"
+      }
+    ],
+    "cafe": [
+      {
+        "id": "cafe-01",
+        "nome": "Café 01",
+        "tema": "Café",
+        "preco": 39.9,
+        "imagem": "./img/cafe-final-01.jpg"
+      },
+      {
+        "id": "cafe-02",
+        "nome": "Café 02",
+        "tema": "Café",
+        "preco": 39.9,
+        "imagem": "./img/cafe-final-02.jpg"
+      },
+      {
+        "id": "cafe-03",
+        "nome": "Café 03",
+        "tema": "Café",
+        "preco": 39.9,
+        "imagem": "./img/cafe-final-03.jpg"
+      },
+      {
+        "id": "cafe-04",
+        "nome": "Café 04",
+        "tema": "Café",
+        "preco": 39.9,
+        "imagem": "./img/cafe-final-04.jpg"
+      },
+      {
+        "id": "cafe-05",
+        "nome": "Café 05",
+        "tema": "Café",
+        "preco": 39.9,
+        "imagem": "./img/cafe-final-05.jpg"
+      },
+      {
+        "id": "cafe-06",
+        "nome": "Café 06",
+        "tema": "Café",
+        "preco": 39.9,
+        "imagem": "./img/cafe-final-06.jpg"
+      }
+    ],
+    "casais": [
+      {
+        "id": "casais-01",
+        "nome": "Casais 01",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-01.jpg"
+      },
+      {
+        "id": "casais-02",
+        "nome": "Casais 02",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-02.jpg"
+      },
+      {
+        "id": "casais-03",
+        "nome": "Casais 03",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-03.jpg"
+      },
+      {
+        "id": "casais-04",
+        "nome": "Casais 04",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-04.jpg"
+      },
+      {
+        "id": "casais-05",
+        "nome": "Casais 05",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-05.jpg"
+      },
+      {
+        "id": "casais-06",
+        "nome": "Casais 06",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-06.jpg"
+      },
+      {
+        "id": "casais-07",
+        "nome": "Casais 07",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-07.jpg"
+      },
+      {
+        "id": "casais-08",
+        "nome": "Casais 08",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-08.jpg"
+      },
+      {
+        "id": "casais-09",
+        "nome": "Casais 09",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-09.jpg"
+      },
+      {
+        "id": "casais-10",
+        "nome": "Casais 10",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-10.jpg"
+      },
+      {
+        "id": "casais-11",
+        "nome": "Casais 11",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-11.jpg"
+      },
+      {
+        "id": "casais-12",
+        "nome": "Casais 12",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-12.jpg"
+      },
+      {
+        "id": "casais-13",
+        "nome": "Casais 13",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-13.jpg"
+      },
+      {
+        "id": "casais-14",
+        "nome": "Casais 14",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-14.jpg"
+      },
+      {
+        "id": "casais-15",
+        "nome": "Casais 15",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-15.jpg"
+      },
+      {
+        "id": "casais-16",
+        "nome": "Casais 16",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-16.jpg"
+      },
+      {
+        "id": "casais-17",
+        "nome": "Casais 17",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-17.jpg"
+      },
+      {
+        "id": "casais-18",
+        "nome": "Casais 18",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-18.jpg"
+      },
+      {
+        "id": "casais-19",
+        "nome": "Casais 19",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-19.jpg"
+      },
+      {
+        "id": "casais-20",
+        "nome": "Casais 20",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-20.jpg"
+      },
+      {
+        "id": "casais-21",
+        "nome": "Casais 21",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-21.jpg"
+      },
+      {
+        "id": "casais-22",
+        "nome": "Casais 22",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-22.jpg"
+      },
+      {
+        "id": "casais-23",
+        "nome": "Casais 23",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-23.jpg"
+      },
+      {
+        "id": "casais-24",
+        "nome": "Casais 24",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-24.jpg"
+      },
+      {
+        "id": "casais-25",
+        "nome": "Casais 25",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-25.jpg"
+      },
+      {
+        "id": "casais-26",
+        "nome": "Casais 26",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-26.jpg"
+      },
+      {
+        "id": "casais-27",
+        "nome": "Casais 27",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-27.jpg"
+      },
+      {
+        "id": "casais-28",
+        "nome": "Casais 28",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-28.jpg"
+      },
+      {
+        "id": "casais-29",
+        "nome": "Casais 29",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-29.jpg"
+      },
+      {
+        "id": "casais-30",
+        "nome": "Casais 30",
+        "tema": "Casais",
+        "preco": 39.9,
+        "imagem": "./img/casais-novo-30.jpg"
+      }
+    ],
+    "desenhos": [
+      {
+        "id": "desenhos-01",
+        "nome": "A Era do Gelo 01",
+        "tema": "A Era do Gelo",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-01.jpg"
+      },
+      {
+        "id": "desenhos-02",
+        "nome": "Peppa Pig 02",
+        "tema": "Peppa Pig",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-02.jpg"
+      },
+      {
+        "id": "desenhos-03",
+        "nome": "Hora de Aventura 03",
+        "tema": "Hora de Aventura",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-03.jpg"
+      },
+      {
+        "id": "desenhos-04",
+        "nome": "Hora de Aventura 04",
+        "tema": "Hora de Aventura",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-04.jpg"
+      },
+      {
+        "id": "desenhos-05",
+        "nome": "Doraemon 05",
+        "tema": "Doraemon",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-05.jpg"
+      },
+      {
+        "id": "desenhos-06",
+        "nome": "Hora de Aventura 06",
+        "tema": "Hora de Aventura",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-06.jpg"
+      },
+      {
+        "id": "desenhos-07",
+        "nome": "Tartarugas Ninja 07",
+        "tema": "Tartarugas Ninja",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-07.jpg"
+      },
+      {
+        "id": "desenhos-08",
+        "nome": "Looney Tunes 08",
+        "tema": "Looney Tunes",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-08.jpg"
+      },
+      {
+        "id": "desenhos-09",
+        "nome": "Cartoon Network 09",
+        "tema": "Cartoon Network",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-09.jpg"
+      },
+      {
+        "id": "desenhos-10",
+        "nome": "Tazmania 10",
+        "tema": "Tazmania",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-10.jpg"
+      },
+      {
+        "id": "desenhos-11",
+        "nome": "My Little Pony 11",
+        "tema": "My Little Pony",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-11.jpg"
+      },
+      {
+        "id": "desenhos-12",
+        "nome": "Hello Kitty 12",
+        "tema": "Hello Kitty",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-12.jpg"
+      },
+      {
+        "id": "desenhos-13",
+        "nome": "Hello Kitty 13",
+        "tema": "Hello Kitty",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-13.jpg"
+      },
+      {
+        "id": "desenhos-14",
+        "nome": "Apenas Um Show 14",
+        "tema": "Apenas Um Show",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-14.jpg"
+      },
+      {
+        "id": "desenhos-15",
+        "nome": "Buzz Lightyear 15",
+        "tema": "Buzz Lightyear",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-15.jpg"
+      },
+      {
+        "id": "desenhos-16",
+        "nome": "Hora de Aventura 16",
+        "tema": "Hora de Aventura",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-16.jpg"
+      },
+      {
+        "id": "desenhos-17",
+        "nome": "As Meninas Superpoderosas 17",
+        "tema": "As Meninas Superpoderosas",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-17.jpg"
+      },
+      {
+        "id": "desenhos-18",
+        "nome": "PJ Masks 18",
+        "tema": "PJ Masks",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-18.jpg"
+      },
+      {
+        "id": "desenhos-19",
+        "nome": "PJ Masks 19",
+        "tema": "PJ Masks",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-19.jpg"
+      },
+      {
+        "id": "desenhos-20",
+        "nome": "Snoopy 20",
+        "tema": "Snoopy",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-20.jpg"
+      },
+      {
+        "id": "desenhos-21",
+        "nome": "Monster High 21",
+        "tema": "Monster High",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-21.jpg"
+      },
+      {
+        "id": "desenhos-22",
+        "nome": "Snoopy 22",
+        "tema": "Snoopy",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-22.jpg"
+      },
+      {
+        "id": "desenhos-23",
+        "nome": "Hello Kitty 23",
+        "tema": "Hello Kitty",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-23.jpg"
+      },
+      {
+        "id": "desenhos-24",
+        "nome": "Ben 10 24",
+        "tema": "Ben 10",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-24.jpg"
+      },
+      {
+        "id": "desenhos-25",
+        "nome": "Miraculous 25",
+        "tema": "Miraculous",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-25.jpg"
+      },
+      {
+        "id": "desenhos-26",
+        "nome": "Miraculous 26",
+        "tema": "Miraculous",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-26.jpg"
+      },
+      {
+        "id": "desenhos-27",
+        "nome": "Miraculous 27",
+        "tema": "Miraculous",
+        "preco": 39.9,
+        "imagem": "./img/desenhos-novo-27.jpg"
+      }
+    ],
+    "unicornio": [
+      {
+        "id": "unicornios-01",
+        "nome": "Unicórnios 01",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-01.jpg"
+      },
+      {
+        "id": "unicornios-02",
+        "nome": "Unicórnios 02",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-02.jpg"
+      },
+      {
+        "id": "unicornios-03",
+        "nome": "Unicórnios 03",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-03.jpg"
+      },
+      {
+        "id": "unicornios-04",
+        "nome": "Unicórnios 04",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-04.jpg"
+      },
+      {
+        "id": "unicornios-05",
+        "nome": "Unicórnios 05",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-05.jpg"
+      },
+      {
+        "id": "unicornios-06",
+        "nome": "Unicórnios 06",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-06.jpg"
+      },
+      {
+        "id": "unicornios-07",
+        "nome": "Unicórnios 07",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-07.jpg"
+      },
+      {
+        "id": "unicornios-08",
+        "nome": "Unicórnios 08",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-08.jpg"
+      },
+      {
+        "id": "unicornios-09",
+        "nome": "Unicórnios 09",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-09.jpg"
+      },
+      {
+        "id": "unicornios-10",
+        "nome": "Unicórnios 10",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-10.jpg"
+      },
+      {
+        "id": "unicornios-11",
+        "nome": "Unicórnios 11",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-11.jpg"
+      },
+      {
+        "id": "unicornios-12",
+        "nome": "Unicórnios 12",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-12.jpg"
+      },
+      {
+        "id": "unicornios-13",
+        "nome": "Unicórnios 13",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-13.jpg"
+      },
+      {
+        "id": "unicornios-14",
+        "nome": "Unicórnios 14",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-14.jpg"
+      },
+      {
+        "id": "unicornios-15",
+        "nome": "Unicórnios 15",
+        "tema": "Unicórnios",
+        "preco": 39.9,
+        "imagem": "./img/divertidas-unicornio-15.jpg"
+      }
+    ],
+    "herois": [
+      {
+        "id": "herois-01",
+        "nome": "Heróis 01",
+        "tema": "Heróis",
+        "preco": 39.9,
+        "imagem": "./img/herois-marvel-01.jpg"
+      },
+      {
+        "id": "herois-02",
+        "nome": "Heróis 02",
+        "tema": "Heróis",
+        "preco": 39.9,
+        "imagem": "./img/herois-marvel-02.jpg"
+      },
+      {
+        "id": "herois-03",
+        "nome": "Heróis 03",
+        "tema": "Heróis",
+        "preco": 39.9,
+        "imagem": "./img/herois-marvel-03.jpg"
+      },
+      {
+        "id": "herois-04",
+        "nome": "Heróis 04",
+        "tema": "Heróis",
+        "preco": 39.9,
+        "imagem": "./img/herois-marvel-04.jpg"
+      }
+    ],
+    "games": [
+      {
+        "id": "games-fortnite-01",
+        "nome": "Fortnite 01",
+        "tema": "Fortnite",
+        "preco": 39.9,
+        "imagem": "./img/games-fortnite-01.jpg"
+      },
+      {
+        "id": "games-fortnite-02",
+        "nome": "Fortnite 02",
+        "tema": "Fortnite",
+        "preco": 39.9,
+        "imagem": "./img/games-fortnite-02.jpg"
+      },
+      {
+        "id": "games-fortnite-03",
+        "nome": "Fortnite 03",
+        "tema": "Fortnite",
+        "preco": 39.9,
+        "imagem": "./img/games-fortnite-03.jpg"
+      },
+      {
+        "id": "games-fortnite-04",
+        "nome": "Fortnite 04",
+        "tema": "Fortnite",
+        "preco": 39.9,
+        "imagem": "./img/games-fortnite-04.jpg"
+      },
+      {
+        "id": "games-gta-01",
+        "nome": "GTA 01",
+        "tema": "GTA",
+        "preco": 39.9,
+        "imagem": "./img/games-gta-01.jpg"
+      },
+      {
+        "id": "games-gta-02",
+        "nome": "GTA 02",
+        "tema": "GTA",
+        "preco": 39.9,
+        "imagem": "./img/games-gta-02.jpg"
+      },
+      {
+        "id": "games-gta-03",
+        "nome": "GTA 03",
+        "tema": "GTA",
+        "preco": 39.9,
+        "imagem": "./img/games-gta-03.jpg"
+      },
+      {
+        "id": "games-gta-04",
+        "nome": "GTA 04",
+        "tema": "GTA",
+        "preco": 39.9,
+        "imagem": "./img/games-gta-04.jpg"
+      },
+      {
+        "id": "games-minecraft-01",
+        "nome": "Minecraft 01",
+        "tema": "Minecraft",
+        "preco": 39.9,
+        "imagem": "./img/games-minecraft-01.jpg"
+      },
+      {
+        "id": "games-minecraft-02",
+        "nome": "Minecraft 02",
+        "tema": "Minecraft",
+        "preco": 39.9,
+        "imagem": "./img/games-minecraft-02.jpg"
+      },
+      {
+        "id": "games-minecraft-03",
+        "nome": "Minecraft 03",
+        "tema": "Minecraft",
+        "preco": 39.9,
+        "imagem": "./img/games-minecraft-03.jpg"
+      },
+      {
+        "id": "games-minecraft-04",
+        "nome": "Minecraft 04",
+        "tema": "Minecraft",
+        "preco": 39.9,
+        "imagem": "./img/games-minecraft-04.jpg"
+      },
+      {
+        "id": "games-call-of-duty-01",
+        "nome": "Call of Duty 01",
+        "tema": "Call of Duty",
+        "preco": 39.9,
+        "imagem": "./img/games-call-of-duty-01.jpg"
+      },
+      {
+        "id": "games-call-of-duty-02",
+        "nome": "Call of Duty 02",
+        "tema": "Call of Duty",
+        "preco": 39.9,
+        "imagem": "./img/games-call-of-duty-02.jpg"
+      },
+      {
+        "id": "games-among-us-01",
+        "nome": "Among Us 01",
+        "tema": "Among Us",
+        "preco": 39.9,
+        "imagem": "./img/games-among-us-01.jpg"
+      },
+      {
+        "id": "games-among-us-02",
+        "nome": "Among Us 02",
+        "tema": "Among Us",
+        "preco": 39.9,
+        "imagem": "./img/games-among-us-02.jpg"
+      },
+      {
+        "id": "games-among-us-03",
+        "nome": "Among Us 03",
+        "tema": "Among Us",
+        "preco": 39.9,
+        "imagem": "./img/games-among-us-03.jpg"
+      },
+      {
+        "id": "games-among-us-04",
+        "nome": "Among Us 04",
+        "tema": "Among Us",
+        "preco": 39.9,
+        "imagem": "./img/games-among-us-04.jpg"
+      },
+      {
+        "id": "games-angry-birds-01",
+        "nome": "Angry Birds 01",
+        "tema": "Angry Birds",
+        "preco": 39.9,
+        "imagem": "./img/games-angry-birds-01.jpg"
+      },
+      {
+        "id": "games-angry-birds-02",
+        "nome": "Angry Birds 02",
+        "tema": "Angry Birds",
+        "preco": 39.9,
+        "imagem": "./img/games-angry-birds-02.jpg"
+      },
+      {
+        "id": "games-angry-birds-03",
+        "nome": "Angry Birds 03",
+        "tema": "Angry Birds",
+        "preco": 39.9,
+        "imagem": "./img/games-angry-birds-03.jpg"
+      },
+      {
+        "id": "games-assassins-creed-01",
+        "nome": "Assassin's Creed 01",
+        "tema": "Assassin's Creed",
+        "preco": 39.9,
+        "imagem": "./img/games-assassins-creed-01.jpg"
+      },
+      {
+        "id": "games-assassins-creed-02",
+        "nome": "Assassin's Creed 02",
+        "tema": "Assassin's Creed",
+        "preco": 39.9,
+        "imagem": "./img/games-assassins-creed-02.jpg"
+      },
+      {
+        "id": "games-assassins-creed-03",
+        "nome": "Assassin's Creed 03",
+        "tema": "Assassin's Creed",
+        "preco": 39.9,
+        "imagem": "./img/games-assassins-creed-03.jpg"
+      },
+      {
+        "id": "games-assassins-creed-04",
+        "nome": "Assassin's Creed 04",
+        "tema": "Assassin's Creed",
+        "preco": 39.9,
+        "imagem": "./img/games-assassins-creed-04.jpg"
+      },
+      {
+        "id": "games-clash-royale-01",
+        "nome": "Clash Royale 01",
+        "tema": "Clash Royale",
+        "preco": 39.9,
+        "imagem": "./img/games-clash-royale-01.jpg"
+      },
+      {
+        "id": "games-clash-royale-02",
+        "nome": "Clash Royale 02",
+        "tema": "Clash Royale",
+        "preco": 39.9,
+        "imagem": "./img/games-clash-royale-02.jpg"
+      },
+      {
+        "id": "games-clash-royale-03",
+        "nome": "Clash Royale 03",
+        "tema": "Clash Royale",
+        "preco": 39.9,
+        "imagem": "./img/games-clash-royale-03.jpg"
+      },
+      {
+        "id": "games-dark-souls-01",
+        "nome": "Dark Souls 01",
+        "tema": "Dark Souls",
+        "preco": 39.9,
+        "imagem": "./img/games-dark-souls-01.jpg"
+      },
+      {
+        "id": "games-dark-souls-02",
+        "nome": "Dark Souls 02",
+        "tema": "Dark Souls",
+        "preco": 39.9,
+        "imagem": "./img/games-dark-souls-02.jpg"
+      },
+      {
+        "id": "games-dark-souls-03",
+        "nome": "Dark Souls 03",
+        "tema": "Dark Souls",
+        "preco": 39.9,
+        "imagem": "./img/games-dark-souls-03.jpg"
+      },
+      {
+        "id": "games-fifa-01",
+        "nome": "FIFA 01",
+        "tema": "FIFA",
+        "preco": 39.9,
+        "imagem": "./img/games-fifa-01.jpg"
+      },
+      {
+        "id": "games-fifa-02",
+        "nome": "FIFA 02",
+        "tema": "FIFA",
+        "preco": 39.9,
+        "imagem": "./img/games-fifa-02.jpg"
+      },
+      {
+        "id": "games-super-mario-01",
+        "nome": "Super Mario 01",
+        "tema": "Super Mario",
+        "preco": 39.9,
+        "imagem": "./img/games-super-mario-01.jpg"
+      },
+      {
+        "id": "games-the-last-of-us-01",
+        "nome": "The Last of Us 01",
+        "tema": "The Last of Us",
+        "preco": 39.9,
+        "imagem": "./img/games-the-last-of-us-01.jpg"
+      },
+      {
+        "id": "games-the-last-of-us-02",
+        "nome": "The Last of Us 02",
+        "tema": "The Last of Us",
+        "preco": 39.9,
+        "imagem": "./img/games-the-last-of-us-02.jpg"
+      },
+      {
+        "id": "games-the-last-of-us-03",
+        "nome": "The Last of Us 03",
+        "tema": "The Last of Us",
+        "preco": 39.9,
+        "imagem": "./img/games-the-last-of-us-03.jpg"
+      },
+      {
+        "id": "games-watch-dogs-01",
+        "nome": "Watch Dogs 01",
+        "tema": "Watch Dogs",
+        "preco": 39.9,
+        "imagem": "./img/games-watch-dogs-01.jpg"
+      },
+      {
+        "id": "games-watch-dogs-02",
+        "nome": "Watch Dogs 02",
+        "tema": "Watch Dogs",
+        "preco": 39.9,
+        "imagem": "./img/games-watch-dogs-02.jpg"
+      },
+      {
+        "id": "games-watch-dogs-03",
+        "nome": "Watch Dogs 03",
+        "tema": "Watch Dogs",
+        "preco": 39.9,
+        "imagem": "./img/games-watch-dogs-03.jpg"
+      },
+      {
+        "id": "games-controle-nintendo-01",
+        "nome": "Controle Nintendo 01",
+        "tema": "Controle Nintendo",
+        "preco": 39.9,
+        "imagem": "./img/games-controle-nintendo-01.jpg"
+      },
+      {
+        "id": "games-controle-nintendo-02",
+        "nome": "Controle Nintendo 02",
+        "tema": "Controle Nintendo",
+        "preco": 39.9,
+        "imagem": "./img/games-controle-nintendo-02.jpg"
+      },
+      {
+        "id": "games-controle-nintendo-03",
+        "nome": "Controle Nintendo 03",
+        "tema": "Controle Nintendo",
+        "preco": 39.9,
+        "imagem": "./img/games-controle-nintendo-03.jpg"
+      },
+      {
+        "id": "games-battlefield-01",
+        "nome": "Battlefield 01",
+        "tema": "Battlefield",
+        "preco": 39.9,
+        "imagem": "./img/games-battlefield-01.jpg"
+      },
+      {
+        "id": "games-battlefield-02",
+        "nome": "Battlefield 02",
+        "tema": "Battlefield",
+        "preco": 39.9,
+        "imagem": "./img/games-battlefield-02.jpg"
+      },
+      {
+        "id": "games-battlefield-03",
+        "nome": "Battlefield 03",
+        "tema": "Battlefield",
+        "preco": 39.9,
+        "imagem": "./img/games-battlefield-03.jpg"
+      },
+      {
+        "id": "games-battlefield-04",
+        "nome": "Battlefield 04",
+        "tema": "Battlefield",
+        "preco": 39.9,
+        "imagem": "./img/games-battlefield-04.jpg"
+      },
+      {
+        "id": "games-bloodborne-01",
+        "nome": "Bloodborne 01",
+        "tema": "Bloodborne",
+        "preco": 39.9,
+        "imagem": "./img/games-bloodborne-01.jpg"
+      },
+      {
+        "id": "games-bloodborne-02",
+        "nome": "Bloodborne 02",
+        "tema": "Bloodborne",
+        "preco": 39.9,
+        "imagem": "./img/games-bloodborne-02.jpg"
+      },
+      {
+        "id": "games-bloodborne-03",
+        "nome": "Bloodborne 03",
+        "tema": "Bloodborne",
+        "preco": 39.9,
+        "imagem": "./img/games-bloodborne-03.jpg"
+      },
+      {
+        "id": "games-bloodborne-04",
+        "nome": "Bloodborne 04",
+        "tema": "Bloodborne",
+        "preco": 39.9,
+        "imagem": "./img/games-bloodborne-04.jpg"
+      },
+      {
+        "id": "games-free-fire-01",
+        "nome": "Free Fire 01",
+        "tema": "Free Fire",
+        "preco": 39.9,
+        "imagem": "./img/games-free-fire-02.jpg"
+      },
+      {
+        "id": "games-free-fire-02",
+        "nome": "Free Fire 02",
+        "tema": "Free Fire",
+        "preco": 39.9,
+        "imagem": "./img/games-free-fire-04.jpg"
+      }
+    ],
+    "geek": [
+      {
+        "id": "geek-01",
+        "nome": "It: A Coisa 01",
+        "tema": "It: A Coisa",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-01.jpg"
+      },
+      {
+        "id": "geek-02",
+        "nome": "Mad Max 01",
+        "tema": "Mad Max",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-02.jpg"
+      },
+      {
+        "id": "geek-03",
+        "nome": "Taxi Driver 01",
+        "tema": "Taxi Driver",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-03.jpg"
+      },
+      {
+        "id": "geek-04",
+        "nome": "Mega Man 01",
+        "tema": "Mega Man",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-04.jpg"
+      },
+      {
+        "id": "geek-05",
+        "nome": "Corrida Maluca 01",
+        "tema": "Corrida Maluca",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-05.jpg"
+      },
+      {
+        "id": "geek-06",
+        "nome": "Tartarugas Ninja 01",
+        "tema": "Tartarugas Ninja",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-06.jpg"
+      },
+      {
+        "id": "geek-08",
+        "nome": "He-Man 01",
+        "tema": "He-Man",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-08.jpg"
+      },
+      {
+        "id": "geek-09",
+        "nome": "Motoqueiro Fantasma 01",
+        "tema": "Motoqueiro Fantasma",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-09.jpg"
+      },
+      {
+        "id": "geek-10",
+        "nome": "It: A Coisa 02",
+        "tema": "It: A Coisa",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-10.jpg"
+      },
+      {
+        "id": "geek-11",
+        "nome": "God of War 01",
+        "tema": "God of War",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-11.jpg"
+      },
+      {
+        "id": "geek-12",
+        "nome": "John Wick 01",
+        "tema": "John Wick",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-12.jpg"
+      },
+      {
+        "id": "geek-13",
+        "nome": "Predador 01",
+        "tema": "Predador",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-13.jpg"
+      },
+      {
+        "id": "geek-15",
+        "nome": "God of War 02",
+        "tema": "God of War",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-15.jpg"
+      },
+      {
+        "id": "geek-16",
+        "nome": "Breaking Bad 01",
+        "tema": "Breaking Bad",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-16.jpg"
+      },
+      {
+        "id": "geek-17",
+        "nome": "RoboCop 01",
+        "tema": "RoboCop",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-17.jpg"
+      },
+      {
+        "id": "geek-19",
+        "nome": "Power Rangers 01",
+        "tema": "Power Rangers",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-19.jpg"
+      },
+      {
+        "id": "geek-21",
+        "nome": "Pulp Fiction 01",
+        "tema": "Pulp Fiction",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-21.jpg"
+      },
+      {
+        "id": "geek-22",
+        "nome": "Matrix 01",
+        "tema": "Matrix",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-22.jpg"
+      },
+      {
+        "id": "geek-23",
+        "nome": "Spawn 01",
+        "tema": "Spawn",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-23.jpg"
+      },
+      {
+        "id": "geek-24",
+        "nome": "The Witcher 01",
+        "tema": "The Witcher",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-24.jpg"
+      },
+      {
+        "id": "geek-25",
+        "nome": "Stranger Things 01",
+        "tema": "Stranger Things",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-25.jpg"
+      },
+      {
+        "id": "geek-26",
+        "nome": "Marvel 01",
+        "tema": "Marvel",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-26.jpg"
+      },
+      {
+        "id": "geek-27",
+        "nome": "ThunderCats 01",
+        "tema": "ThunderCats",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-27.jpg"
+      },
+      {
+        "id": "geek-28",
+        "nome": "Street Fighter 01",
+        "tema": "Street Fighter",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-28.jpg"
+      },
+      {
+        "id": "geek-30",
+        "nome": "Fantasia Sombria 01",
+        "tema": "Fantasia Sombria",
+        "preco": 39.9,
+        "imagem": "./img/geek-mockup-30.jpg"
+      },
+      {
+        "id": "geek-extra-power-rangers-02",
+        "nome": "Power Rangers 02",
+        "tema": "Power Rangers",
+        "preco": 39.9,
+        "imagem": "./img/geek-extra-power-rangers-02.jpg"
+      },
+      {
+        "id": "geek-extra-he-man-02",
+        "nome": "He-Man 02",
+        "tema": "He-Man",
+        "preco": 39.9,
+        "imagem": "./img/geek-extra-he-man-02.jpg"
+      },
+      {
+        "id": "geek-extra-mega-man-02",
+        "nome": "Mega Man 02",
+        "tema": "Mega Man",
+        "preco": 39.9,
+        "imagem": "./img/geek-extra-mega-man-02.jpg"
+      },
+      {
+        "id": "geek-extra-mega-man-03",
+        "nome": "Mega Man 03",
+        "tema": "Mega Man",
+        "preco": 39.9,
+        "imagem": "./img/geek-extra-mega-man-03.jpg"
+      },
+      {
+        "id": "geek-extra-stranger-things-02",
+        "nome": "Stranger Things 02",
+        "tema": "Stranger Things",
+        "preco": 39.9,
+        "imagem": "./img/geek-extra-stranger-things-02.jpg"
+      },
+      {
+        "id": "geek-extra-stranger-things-03",
+        "nome": "Stranger Things 03",
+        "tema": "Stranger Things",
+        "preco": 39.9,
+        "imagem": "./img/geek-extra-stranger-things-03.jpg"
+      },
+      {
+        "id": "geek-extra-stranger-things-04",
+        "nome": "Stranger Things 04",
+        "tema": "Stranger Things",
+        "preco": 39.9,
+        "imagem": "./img/geek-extra-stranger-things-04.jpg"
+      },
+      {
+        "id": "geek-extra-tartarugas-ninja-02",
+        "nome": "Tartarugas Ninja 02",
+        "tema": "Tartarugas Ninja",
+        "preco": 39.9,
+        "imagem": "./img/geek-extra-tartarugas-ninja-02.jpg"
+      },
+      {
+        "id": "geek-extra-tartarugas-ninja-03",
+        "nome": "Tartarugas Ninja 03",
+        "tema": "Tartarugas Ninja",
+        "preco": 39.9,
+        "imagem": "./img/geek-extra-tartarugas-ninja-03.jpg"
+      }
+    ],
+    "amizade": [
+      {
+        "id": "amizade-01",
+        "nome": "Amizade 01",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-01.jpg"
+      },
+      {
+        "id": "amizade-02",
+        "nome": "Amizade 02",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-02.jpg"
+      },
+      {
+        "id": "amizade-03",
+        "nome": "Amizade 03",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-03.jpg"
+      },
+      {
+        "id": "amizade-04",
+        "nome": "Amizade 04",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-04.jpg"
+      },
+      {
+        "id": "amizade-05",
+        "nome": "Amizade 05",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-05.jpg"
+      },
+      {
+        "id": "amizade-06",
+        "nome": "Amizade 06",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-06.jpg"
+      },
+      {
+        "id": "amizade-07",
+        "nome": "Amizade 07",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-07.jpg"
+      },
+      {
+        "id": "amizade-08",
+        "nome": "Amizade 08",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-08.jpg"
+      },
+      {
+        "id": "amizade-09",
+        "nome": "Amizade 09",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-09.jpg"
+      },
+      {
+        "id": "amizade-10",
+        "nome": "Amizade 10",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-10.jpg"
+      },
+      {
+        "id": "amizade-11",
+        "nome": "Amizade 11",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-11.jpg"
+      },
+      {
+        "id": "amizade-12",
+        "nome": "Amizade 12",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-12.jpg"
+      },
+      {
+        "id": "amizade-13",
+        "nome": "Amizade 13",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-13.jpg"
+      },
+      {
+        "id": "amizade-14",
+        "nome": "Amizade 14",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-14.jpg"
+      },
+      {
+        "id": "amizade-15",
+        "nome": "Amizade 15",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-15.jpg"
+      },
+      {
+        "id": "amizade-16",
+        "nome": "Amizade 16",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-16.jpg"
+      },
+      {
+        "id": "amizade-17",
+        "nome": "Amizade 17",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-17.jpg"
+      },
+      {
+        "id": "amizade-18",
+        "nome": "Amizade 18",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-18.jpg"
+      },
+      {
+        "id": "amizade-19",
+        "nome": "Amizade 19",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-19.jpg"
+      },
+      {
+        "id": "amizade-20",
+        "nome": "Amizade 20",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-20.jpg"
+      },
+      {
+        "id": "amizade-21",
+        "nome": "Amizade 21",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-21.jpg"
+      },
+      {
+        "id": "amizade-22",
+        "nome": "Amizade 22",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-22.jpg"
+      },
+      {
+        "id": "amizade-23",
+        "nome": "Amizade 23",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-23.jpg"
+      },
+      {
+        "id": "amizade-24",
+        "nome": "Amizade 24",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-24.jpg"
+      },
+      {
+        "id": "amizade-25",
+        "nome": "Amizade 25",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-25.jpg"
+      },
+      {
+        "id": "amizade-26",
+        "nome": "Amizade 26",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-26.jpg"
+      },
+      {
+        "id": "amizade-27",
+        "nome": "Amizade 27",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-27.jpg"
+      },
+      {
+        "id": "amizade-28",
+        "nome": "Amizade 28",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-28.jpg"
+      },
+      {
+        "id": "amizade-29",
+        "nome": "Amizade 29",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-29.jpg"
+      },
+      {
+        "id": "amizade-30",
+        "nome": "Amizade 30",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-30.jpg"
+      },
+      {
+        "id": "amizade-31",
+        "nome": "Amizade 31",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-31.jpg"
+      },
+      {
+        "id": "amizade-32",
+        "nome": "Amizade 32",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-32.jpg"
+      },
+      {
+        "id": "amizade-33",
+        "nome": "Amizade 33",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-33.jpg"
+      },
+      {
+        "id": "amizade-34",
+        "nome": "Amizade 34",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-34.jpg"
+      },
+      {
+        "id": "amizade-35",
+        "nome": "Amizade 35",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-35.jpg"
+      },
+      {
+        "id": "amizade-36",
+        "nome": "Amizade 36",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-36.jpg"
+      },
+      {
+        "id": "amizade-37",
+        "nome": "Amizade 37",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-37.jpg"
+      },
+      {
+        "id": "amizade-38",
+        "nome": "Amizade 38",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-38.jpg"
+      },
+      {
+        "id": "amizade-39",
+        "nome": "Amizade 39",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-39.jpg"
+      },
+      {
+        "id": "amizade-40",
+        "nome": "Amizade 40",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-40.jpg"
+      },
+      {
+        "id": "amizade-41",
+        "nome": "Amizade 41",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-41.jpg"
+      },
+      {
+        "id": "amizade-42",
+        "nome": "Amizade 42",
+        "tema": "Amizade",
+        "preco": 39.9,
+        "imagem": "./img/amizade-nova-42.jpg"
+      }
+    ],
+    "series": [
+      {
+        "id": "arrow-1",
+        "nome": "Arrow 01",
+        "tema": "Arrow",
+        "imagem": "./img/arrow-1.jpg"
+      },
+      {
+        "id": "arrow-2",
+        "nome": "Arrow 02",
+        "tema": "Arrow",
+        "imagem": "./img/arrow-2.jpg"
+      },
+      {
+        "id": "arrow-3",
+        "nome": "Arrow 03",
+        "tema": "Arrow",
+        "imagem": "./img/arrow-3.jpg"
+      },
+      {
+        "id": "arrow-4",
+        "nome": "Arrow 04",
+        "tema": "Arrow",
+        "imagem": "./img/arrow-4.jpg"
+      },
+      {
+        "id": "blacklist-1",
+        "nome": "Blacklist 01",
+        "tema": "Blacklist",
+        "imagem": "./img/blacklist-1.jpg"
+      },
+      {
+        "id": "blacklist-2",
+        "nome": "Blacklist 02",
+        "tema": "Blacklist",
+        "imagem": "./img/blacklist-2.jpg"
+      },
+      {
+        "id": "blacklist-3",
+        "nome": "Blacklist 03",
+        "tema": "Blacklist",
+        "imagem": "./img/blacklist-3.jpg"
+      },
+      {
+        "id": "black-mirror-1",
+        "nome": "Black Mirror 01",
+        "tema": "Black Mirror",
+        "imagem": "./img/black-mirror-1.jpg"
+      },
+      {
+        "id": "black-mirror-2",
+        "nome": "Black Mirror 02",
+        "tema": "Black Mirror",
+        "imagem": "./img/black-mirror-2.jpg"
+      },
+      {
+        "id": "black-mirror-3",
+        "nome": "Black Mirror 03",
+        "tema": "Black Mirror",
+        "imagem": "./img/black-mirror-3.jpg"
+      },
+      {
+        "id": "black-mirror-4",
+        "nome": "Black Mirror 04",
+        "tema": "Black Mirror",
+        "imagem": "./img/black-mirror-4.jpg"
+      },
+      {
+        "id": "breaking-bad-1",
+        "nome": "Breaking Bad 01",
+        "tema": "Breaking Bad",
+        "imagem": "./img/breaking-bad-1.jpg"
+      },
+      {
+        "id": "breaking-bad-2",
+        "nome": "Breaking Bad 02",
+        "tema": "Breaking Bad",
+        "imagem": "./img/breaking-bad-2.jpg"
+      },
+      {
+        "id": "breaking-bad-3",
+        "nome": "Breaking Bad 03",
+        "tema": "Breaking Bad",
+        "imagem": "./img/breaking-bad-3.jpg"
+      },
+      {
+        "id": "breaking-bad-4",
+        "nome": "Breaking Bad 04",
+        "tema": "Breaking Bad",
+        "imagem": "./img/breaking-bad-4.jpg"
+      },
+      {
+        "id": "breaking-bad-5",
+        "nome": "Breaking Bad 05",
+        "tema": "Breaking Bad",
+        "imagem": "./img/breaking-bad-5.jpg"
+      },
+      {
+        "id": "breaking-bad-6",
+        "nome": "Breaking Bad 06",
+        "tema": "Breaking Bad",
+        "imagem": "./img/breaking-bad-6.jpg"
+      },
+      {
+        "id": "breaking-bad-7",
+        "nome": "Breaking Bad 07",
+        "tema": "Breaking Bad",
+        "imagem": "./img/breaking-bad-7.jpg"
+      },
+      {
+        "id": "chaves-1",
+        "nome": "Chaves 01",
+        "tema": "Chaves",
+        "imagem": "./img/chaves-1.jpg"
+      },
+      {
+        "id": "series-la-casa-de-papel-01",
+        "nome": "La Casa de Papel 01",
+        "tema": "La Casa de Papel",
+        "imagem": "./img/series-la-casa-de-papel-01.jpg"
+      },
+      {
+        "id": "series-game-of-thrones-01",
+        "nome": "Game of Thrones 01",
+        "tema": "Game of Thrones",
+        "imagem": "./img/series-game-of-thrones-01.jpg"
+      },
+      {
+        "id": "series-vikings-01",
+        "nome": "Vikings 01",
+        "tema": "Vikings",
+        "imagem": "./img/series-vikings-01.jpg"
+      },
+      {
+        "id": "series-friends-01",
+        "nome": "Friends 01",
+        "tema": "Friends",
+        "imagem": "./img/series-friends-01.jpg"
+      },
+      {
+        "id": "series-lucifer-01",
+        "nome": "Lucifer 01",
+        "tema": "Lucifer",
+        "imagem": "./img/series-lucifer-01.jpg"
+      },
+      {
+        "id": "series-lucifer-02",
+        "nome": "Lucifer 02",
+        "tema": "Lucifer",
+        "imagem": "./img/series-lucifer-02.jpg"
+      },
+      {
+        "id": "series-lucifer-03",
+        "nome": "Lucifer 03",
+        "tema": "Lucifer",
+        "imagem": "./img/series-lucifer-03.jpg"
+      },
+      {
+        "id": "series-lucifer-04",
+        "nome": "Lucifer 04",
+        "tema": "Lucifer",
+        "imagem": "./img/series-lucifer-04.jpg"
+      },
+      {
+        "id": "series-supernatural-01",
+        "nome": "Supernatural 01",
+        "tema": "Supernatural",
+        "imagem": "./img/series-supernatural-01.jpg"
+      },
+      {
+        "id": "series-supernatural-02",
+        "nome": "Supernatural 02",
+        "tema": "Supernatural",
+        "imagem": "./img/series-supernatural-02.jpg"
+      },
+      {
+        "id": "series-supernatural-03",
+        "nome": "Supernatural 03",
+        "tema": "Supernatural",
+        "imagem": "./img/series-supernatural-03.jpg"
+      },
+      {
+        "id": "series-supernatural-04",
+        "nome": "Supernatural 04",
+        "tema": "Supernatural",
+        "imagem": "./img/series-supernatural-04.jpg"
+      },
+      {
+        "id": "series-the-walking-dead-01",
+        "nome": "The Walking Dead 01",
+        "tema": "The Walking Dead",
+        "imagem": "./img/series-the-walking-dead-01.jpg"
+      },
+      {
+        "id": "series-the-walking-dead-02",
+        "nome": "The Walking Dead 02",
+        "tema": "The Walking Dead",
+        "imagem": "./img/series-the-walking-dead-02.jpg"
+      },
+      {
+        "id": "series-the-walking-dead-03",
+        "nome": "The Walking Dead 03",
+        "tema": "The Walking Dead",
+        "imagem": "./img/series-the-walking-dead-03.jpg"
+      },
+      {
+        "id": "series-the-walking-dead-04",
+        "nome": "The Walking Dead 04",
+        "tema": "The Walking Dead",
+        "imagem": "./img/series-the-walking-dead-04.jpg"
+      },
+      {
+        "id": "series-dexter-01",
+        "nome": "Dexter 01",
+        "tema": "Dexter",
+        "imagem": "./img/series-dexter-01.jpg"
+      },
+      {
+        "id": "series-dexter-02",
+        "nome": "Dexter 02",
+        "tema": "Dexter",
+        "imagem": "./img/series-dexter-02.jpg"
+      },
+      {
+        "id": "series-dexter-03",
+        "nome": "Dexter 03",
+        "tema": "Dexter",
+        "imagem": "./img/series-dexter-03.jpg"
+      },
+      {
+        "id": "series-suits-01",
+        "nome": "Suits 01",
+        "tema": "Suits",
+        "imagem": "./img/series-suits-01.jpg"
+      },
+      {
+        "id": "series-suits-02",
+        "nome": "Suits 02",
+        "tema": "Suits",
+        "imagem": "./img/series-suits-02.jpg"
+      },
+      {
+        "id": "series-suits-03",
+        "nome": "Suits 03",
+        "tema": "Suits",
+        "imagem": "./img/series-suits-03.jpg"
+      },
+      {
+        "id": "series-suits-04",
+        "nome": "Suits 04",
+        "tema": "Suits",
+        "imagem": "./img/series-suits-04.jpg"
+      },
+      {
+        "id": "series-the-big-bang-theory-01",
+        "nome": "The Big Bang Theory 01",
+        "tema": "The Big Bang Theory",
+        "imagem": "./img/series-the-big-bang-theory-01.jpg"
+      },
+      {
+        "id": "series-the-big-bang-theory-02",
+        "nome": "The Big Bang Theory 02",
+        "tema": "The Big Bang Theory",
+        "imagem": "./img/series-the-big-bang-theory-02.jpg"
+      },
+      {
+        "id": "series-the-big-bang-theory-03",
+        "nome": "The Big Bang Theory 03",
+        "tema": "The Big Bang Theory",
+        "imagem": "./img/series-the-big-bang-theory-03.jpg"
+      },
+      {
+        "id": "series-the-100-01",
+        "nome": "The 100 01",
+        "tema": "The 100",
+        "imagem": "./img/series-the-100-01.jpg"
+      },
+      {
+        "id": "series-the-100-02",
+        "nome": "The 100 02",
+        "tema": "The 100",
+        "imagem": "./img/series-the-100-02.jpg"
+      },
+      {
+        "id": "series-the-100-03",
+        "nome": "The 100 03",
+        "tema": "The 100",
+        "imagem": "./img/series-the-100-03.jpg"
+      },
+      {
+        "id": "series-the-100-04",
+        "nome": "The 100 04",
+        "tema": "The 100",
+        "imagem": "./img/series-the-100-04.jpg"
+      },
+      {
+        "id": "series-american-horror-story-01",
+        "nome": "American Horror Story 01",
+        "tema": "American Horror Story",
+        "imagem": "./img/series-american-horror-story-01.jpg"
+      },
+      {
+        "id": "series-american-horror-story-02",
+        "nome": "American Horror Story 02",
+        "tema": "American Horror Story",
+        "imagem": "./img/series-american-horror-story-02.jpg"
+      },
+      {
+        "id": "series-american-horror-story-03",
+        "nome": "American Horror Story 03",
+        "tema": "American Horror Story",
+        "imagem": "./img/series-american-horror-story-03.jpg"
+      },
+      {
+        "id": "series-american-horror-story-04",
+        "nome": "American Horror Story 04",
+        "tema": "American Horror Story",
+        "imagem": "./img/series-american-horror-story-04.jpg"
+      },
+      {
+        "id": "series-ozark-01",
+        "nome": "Ozark 01",
+        "tema": "Ozark",
+        "imagem": "./img/series-ozark-01.jpg"
+      },
+      {
+        "id": "series-ozark-02",
+        "nome": "Ozark 02",
+        "tema": "Ozark",
+        "imagem": "./img/series-ozark-02.jpg"
+      },
+      {
+        "id": "series-ozark-03",
+        "nome": "Ozark 03",
+        "tema": "Ozark",
+        "imagem": "./img/series-ozark-03.jpg"
+      },
+      {
+        "id": "series-ozark-04",
+        "nome": "Ozark 04",
+        "tema": "Ozark",
+        "imagem": "./img/series-ozark-04.jpg"
+      },
+      {
+        "id": "series-prison-break-01",
+        "nome": "Prison Break 01",
+        "tema": "Prison Break",
+        "imagem": "./img/series-prison-break-01.jpg"
+      },
+      {
+        "id": "series-prison-break-02",
+        "nome": "Prison Break 02",
+        "tema": "Prison Break",
+        "imagem": "./img/series-prison-break-02.jpg"
+      },
+      {
+        "id": "series-prison-break-03",
+        "nome": "Prison Break 03",
+        "tema": "Prison Break",
+        "imagem": "./img/series-prison-break-03.jpg"
+      },
+      {
+        "id": "series-prison-break-04",
+        "nome": "Prison Break 04",
+        "tema": "Prison Break",
+        "imagem": "./img/series-prison-break-04.jpg"
+      },
+      {
+        "id": "series-sherlock-01",
+        "nome": "Sherlock 01",
+        "tema": "Sherlock",
+        "imagem": "./img/series-sherlock-01.jpg"
+      },
+      {
+        "id": "series-sherlock-02",
+        "nome": "Sherlock 02",
+        "tema": "Sherlock",
+        "imagem": "./img/series-sherlock-02.jpg"
+      },
+      {
+        "id": "series-sherlock-03",
+        "nome": "Sherlock 03",
+        "tema": "Sherlock",
+        "imagem": "./img/series-sherlock-03.jpg"
+      },
+      {
+        "id": "series-the-handmaids-tale-01",
+        "nome": "The Handmaid's Tale 01",
+        "tema": "The Handmaid's Tale",
+        "imagem": "./img/series-the-handmaids-tale-01.jpg"
+      },
+      {
+        "id": "series-the-handmaids-tale-02",
+        "nome": "The Handmaid's Tale 02",
+        "tema": "The Handmaid's Tale",
+        "imagem": "./img/series-the-handmaids-tale-02.jpg"
+      },
+      {
+        "id": "series-the-handmaids-tale-03",
+        "nome": "The Handmaid's Tale 03",
+        "tema": "The Handmaid's Tale",
+        "imagem": "./img/series-the-handmaids-tale-03.jpg"
+      },
+      {
+        "id": "series-the-handmaids-tale-04",
+        "nome": "The Handmaid's Tale 04",
+        "tema": "The Handmaid's Tale",
+        "imagem": "./img/series-the-handmaids-tale-04.jpg"
+      },
+      {
+        "id": "series-outlander-01",
+        "nome": "Outlander 01",
+        "tema": "Outlander",
+        "imagem": "./img/series-outlander-01.jpg"
+      },
+      {
+        "id": "series-outlander-02",
+        "nome": "Outlander 02",
+        "tema": "Outlander",
+        "imagem": "./img/series-outlander-02.jpg"
+      },
+      {
+        "id": "series-outlander-03",
+        "nome": "Outlander 03",
+        "tema": "Outlander",
+        "imagem": "./img/series-outlander-03.jpg"
+      },
+      {
+        "id": "series-outlander-04",
+        "nome": "Outlander 04",
+        "tema": "Outlander",
+        "imagem": "./img/series-outlander-04.jpg"
+      },
+      {
+        "id": "series-the-originals-01",
+        "nome": "The Originals 01",
+        "tema": "The Originals",
+        "imagem": "./img/series-the-originals-01.jpg"
+      },
+      {
+        "id": "series-the-originals-02",
+        "nome": "The Originals 02",
+        "tema": "The Originals",
+        "imagem": "./img/series-the-originals-02.jpg"
+      },
+      {
+        "id": "series-the-originals-03",
+        "nome": "The Originals 03",
+        "tema": "The Originals",
+        "imagem": "./img/series-the-originals-03.jpg"
+      },
+      {
+        "id": "series-the-originals-04",
+        "nome": "The Originals 04",
+        "tema": "The Originals",
+        "imagem": "./img/series-the-originals-04.jpg"
+      },
+      {
+        "id": "series-teen-wolf-01",
+        "nome": "Teen Wolf 01",
+        "tema": "Teen Wolf",
+        "imagem": "./img/series-teen-wolf-01.jpg"
+      },
+      {
+        "id": "series-teen-wolf-02",
+        "nome": "Teen Wolf 02",
+        "tema": "Teen Wolf",
+        "imagem": "./img/series-teen-wolf-02.jpg"
+      },
+      {
+        "id": "series-teen-wolf-03",
+        "nome": "Teen Wolf 03",
+        "tema": "Teen Wolf",
+        "imagem": "./img/series-teen-wolf-03.jpg"
+      },
+      {
+        "id": "series-teen-wolf-04",
+        "nome": "Teen Wolf 04",
+        "tema": "Teen Wolf",
+        "imagem": "./img/series-teen-wolf-04.jpg"
+      }
+    ]
+  },
+  "materializedProducts": [
+    {
+      "id": "demon-slayer-gyuu",
+      "nome": "Demon Slayer 01",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-gyuu.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-inosuke",
+      "nome": "Demon Slayer 02",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-inosuke.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-kanao",
+      "nome": "Demon Slayer 03",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-kanao.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-kimetsu-no-yaiba",
+      "nome": "Demon Slayer 04",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-kimetsu-no-yaiba.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-kimetsu-no-yaiba-2",
+      "nome": "Demon Slayer 05",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-kimetsu-no-yaiba-2.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-kimetsu-no-yaiba-3",
+      "nome": "Demon Slayer 06",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-kimetsu-no-yaiba-3.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-kyoujurou",
+      "nome": "Demon Slayer 07",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-kyoujurou.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-mitsuri",
+      "nome": "Demon Slayer 08",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-mitsuri.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-muchirou",
+      "nome": "Demon Slayer 09",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-muchirou.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-nezuko",
+      "nome": "Demon Slayer 10",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-nezuko.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-sabito",
+      "nome": "Demon Slayer 11",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-sabito.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-sanemi",
+      "nome": "Demon Slayer 12",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-sanemi.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-shinobu",
+      "nome": "Demon Slayer 13",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-shinobu.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-tanjirou",
+      "nome": "Demon Slayer 14",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-tanjirou.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "demon-slayer-zenitsu",
+      "nome": "Demon Slayer 15",
+      "tema": "Demon Slayer",
+      "preco": 39.9,
+      "imagem": "./img/demon-slayer-zenitsu.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-do-zodiaco-hyoga",
+      "nome": "Cavaleiros do Zodíaco 01",
+      "tema": "Cavaleiros do Zodíaco",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-hyoga.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-do-zodiaco-ikki",
+      "nome": "Cavaleiros do Zodíaco 02",
+      "tema": "Cavaleiros do Zodíaco",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-ikki.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-do-zodiaco-kiki",
+      "nome": "Cavaleiros do Zodíaco 03",
+      "tema": "Cavaleiros do Zodíaco",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-kiki.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-do-zodiaco-saint-seiya",
+      "nome": "Cavaleiros do Zodíaco 04",
+      "tema": "Cavaleiros do Zodíaco",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-saint-seiya.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-do-zodiaco-saori",
+      "nome": "Cavaleiros do Zodíaco 05",
+      "tema": "Cavaleiros do Zodíaco",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-saori.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-do-zodiaco-shaina",
+      "nome": "Cavaleiros do Zodíaco 06",
+      "tema": "Cavaleiros do Zodíaco",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-shaina.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-do-zodiaco-shiryu",
+      "nome": "Cavaleiros do Zodíaco 07",
+      "tema": "Cavaleiros do Zodíaco",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-shiryu.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-afrodite",
+      "nome": "Cavaleiros do Zodíaco Dourados 01",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-afrodite.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-aiolia",
+      "nome": "Cavaleiros do Zodíaco Dourados 02",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-aiolia.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-aiolos",
+      "nome": "Cavaleiros do Zodíaco Dourados 03",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-aiolos.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-aldebaran",
+      "nome": "Cavaleiros do Zodíaco Dourados 04",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-aldebaran.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-camus",
+      "nome": "Cavaleiros do Zodíaco Dourados 05",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-camus.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-dohko",
+      "nome": "Cavaleiros do Zodíaco Dourados 06",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-dohko.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-mascara-morte",
+      "nome": "Cavaleiros do Zodíaco Dourados 07",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-mascara-morte.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-milo",
+      "nome": "Cavaleiros do Zodíaco Dourados 08",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-milo.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-mu",
+      "nome": "Cavaleiros do Zodíaco Dourados 09",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-mu.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-saga",
+      "nome": "Cavaleiros do Zodíaco Dourados 10",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-saga.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-shaka",
+      "nome": "Cavaleiros do Zodíaco Dourados 11",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-shaka.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "cavaleiros-dourados-shura",
+      "nome": "Cavaleiros do Zodíaco Dourados 12",
+      "tema": "Cavaleiros do Zodíaco Dourados",
+      "preco": 39.9,
+      "imagem": "./img/cavaleiros-do-zodiaco-dourados-shura.jpg",
+      "colecao": "animes"
+    },
+    {
+      "id": "fairy-tail-35",
+      "nome": "Fairy Tail 01",
+      "tema": "Fairy Tail",
+      "preco": 39.9,
+      "imagem": "./img/fairy-tail-35.png",
+      "colecao": "animes"
+    },
+    {
+      "id": "fairy-tail-36",
+      "nome": "Fairy Tail 02",
+      "tema": "Fairy Tail",
+      "preco": 39.9,
+      "imagem": "./img/fairy-tail-36.png",
+      "colecao": "animes"
+    },
+    {
+      "id": "fairy-tail-37",
+      "nome": "Fairy Tail 03",
+      "tema": "Fairy Tail",
+      "preco": 39.9,
+      "imagem": "./img/fairy-tail-37.png",
+      "colecao": "animes"
+    },
+    {
+      "id": "fairy-tail-38",
+      "nome": "Fairy Tail 04",
+      "tema": "Fairy Tail",
+      "preco": 39.9,
+      "imagem": "./img/fairy-tail-38.png",
+      "colecao": "animes"
+    },
+    {
+      "id": "fairy-tail-39",
+      "nome": "Fairy Tail 05",
+      "tema": "Fairy Tail",
+      "preco": 39.9,
+      "imagem": "./img/fairy-tail-39.png",
+      "colecao": "animes"
+    },
+    {
+      "id": "fairy-tail-40",
+      "nome": "Fairy Tail 06",
+      "tema": "Fairy Tail",
+      "preco": 39.9,
+      "imagem": "./img/fairy-tail-40.png",
+      "colecao": "animes"
+    },
+    {
+      "id": "fairy-tail-41",
+      "nome": "Fairy Tail 07",
+      "tema": "Fairy Tail",
+      "preco": 39.9,
+      "imagem": "./img/fairy-tail-41.png",
+      "colecao": "animes"
+    },
+    {
+      "id": "fairy-tail-42",
+      "nome": "Fairy Tail 08",
+      "tema": "Fairy Tail",
+      "preco": 39.9,
+      "imagem": "./img/fairy-tail-42.png",
+      "colecao": "animes"
+    },
+    {
+      "id": "fairy-tail-43",
+      "nome": "Fairy Tail 09",
+      "tema": "Fairy Tail",
+      "preco": 39.9,
+      "imagem": "./img/fairy-tail-43.png",
+      "colecao": "animes"
+    },
+    {
+      "id": "aniversario-01",
+      "nome": "Aniversário 01",
+      "tema": "Aniversário",
+      "preco": 39.9,
+      "imagem": "./img/aniversario-01.jpg",
+      "colecao": "aniversario"
+    },
+    {
+      "id": "aniversario-02",
+      "nome": "Aniversário 02",
+      "tema": "Aniversário",
+      "preco": 39.9,
+      "imagem": "./img/aniversario-02.jpg",
+      "colecao": "aniversario"
+    },
+    {
+      "id": "aniversario-03",
+      "nome": "Aniversário 03",
+      "tema": "Aniversário",
+      "preco": 39.9,
+      "imagem": "./img/aniversario-03.jpg",
+      "colecao": "aniversario"
+    },
+    {
+      "id": "aniversario-04",
+      "nome": "Aniversário 04",
+      "tema": "Aniversário",
+      "preco": 39.9,
+      "imagem": "./img/aniversario-04.jpg",
+      "colecao": "aniversario"
+    },
+    {
+      "id": "aniversario-05",
+      "nome": "Aniversário 05",
+      "tema": "Aniversário",
+      "preco": 39.9,
+      "imagem": "./img/aniversario-05.jpg",
+      "colecao": "aniversario"
+    },
+    {
+      "id": "aniversario-06",
+      "nome": "Aniversário 06",
+      "tema": "Aniversário",
+      "preco": 39.9,
+      "imagem": "./img/aniversario-06.jpg",
+      "colecao": "aniversario"
+    },
+    {
+      "id": "aniversario-07",
+      "nome": "Aniversário 07",
+      "tema": "Aniversário",
+      "preco": 39.9,
+      "imagem": "./img/aniversario-07.jpg",
+      "colecao": "aniversario"
+    },
+    {
+      "id": "cafe-01",
+      "nome": "Café 01",
+      "tema": "Café",
+      "preco": 39.9,
+      "imagem": "./img/cafe-final-01.jpg",
+      "colecao": "cafe"
+    },
+    {
+      "id": "cafe-02",
+      "nome": "Café 02",
+      "tema": "Café",
+      "preco": 39.9,
+      "imagem": "./img/cafe-final-02.jpg",
+      "colecao": "cafe"
+    },
+    {
+      "id": "cafe-03",
+      "nome": "Café 03",
+      "tema": "Café",
+      "preco": 39.9,
+      "imagem": "./img/cafe-final-03.jpg",
+      "colecao": "cafe"
+    },
+    {
+      "id": "cafe-04",
+      "nome": "Café 04",
+      "tema": "Café",
+      "preco": 39.9,
+      "imagem": "./img/cafe-final-04.jpg",
+      "colecao": "cafe"
+    },
+    {
+      "id": "cafe-05",
+      "nome": "Café 05",
+      "tema": "Café",
+      "preco": 39.9,
+      "imagem": "./img/cafe-final-05.jpg",
+      "colecao": "cafe"
+    },
+    {
+      "id": "cafe-06",
+      "nome": "Café 06",
+      "tema": "Café",
+      "preco": 39.9,
+      "imagem": "./img/cafe-final-06.jpg",
+      "colecao": "cafe"
+    },
+    {
+      "id": "casais-01",
+      "nome": "Casais 01",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-01.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-02",
+      "nome": "Casais 02",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-02.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-03",
+      "nome": "Casais 03",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-03.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-04",
+      "nome": "Casais 04",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-04.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-05",
+      "nome": "Casais 05",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-05.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-06",
+      "nome": "Casais 06",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-06.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-07",
+      "nome": "Casais 07",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-07.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-08",
+      "nome": "Casais 08",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-08.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-09",
+      "nome": "Casais 09",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-09.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-10",
+      "nome": "Casais 10",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-10.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-11",
+      "nome": "Casais 11",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-11.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-12",
+      "nome": "Casais 12",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-12.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-13",
+      "nome": "Casais 13",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-13.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-14",
+      "nome": "Casais 14",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-14.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-15",
+      "nome": "Casais 15",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-15.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-16",
+      "nome": "Casais 16",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-16.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-17",
+      "nome": "Casais 17",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-17.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-18",
+      "nome": "Casais 18",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-18.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-19",
+      "nome": "Casais 19",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-19.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-20",
+      "nome": "Casais 20",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-20.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-21",
+      "nome": "Casais 21",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-21.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-22",
+      "nome": "Casais 22",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-22.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-23",
+      "nome": "Casais 23",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-23.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-24",
+      "nome": "Casais 24",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-24.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-25",
+      "nome": "Casais 25",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-25.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-26",
+      "nome": "Casais 26",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-26.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-27",
+      "nome": "Casais 27",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-27.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-28",
+      "nome": "Casais 28",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-28.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-29",
+      "nome": "Casais 29",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-29.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "casais-30",
+      "nome": "Casais 30",
+      "tema": "Casais",
+      "preco": 39.9,
+      "imagem": "./img/casais-novo-30.jpg",
+      "colecao": "casais"
+    },
+    {
+      "id": "desenhos-01",
+      "nome": "A Era do Gelo 01",
+      "tema": "A Era do Gelo",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-01.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-02",
+      "nome": "Peppa Pig 02",
+      "tema": "Peppa Pig",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-02.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-03",
+      "nome": "Hora de Aventura 03",
+      "tema": "Hora de Aventura",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-03.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-04",
+      "nome": "Hora de Aventura 04",
+      "tema": "Hora de Aventura",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-04.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-05",
+      "nome": "Doraemon 05",
+      "tema": "Doraemon",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-05.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-06",
+      "nome": "Hora de Aventura 06",
+      "tema": "Hora de Aventura",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-06.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-07",
+      "nome": "Tartarugas Ninja 07",
+      "tema": "Tartarugas Ninja",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-07.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-08",
+      "nome": "Looney Tunes 08",
+      "tema": "Looney Tunes",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-08.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-09",
+      "nome": "Cartoon Network 09",
+      "tema": "Cartoon Network",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-09.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-10",
+      "nome": "Tazmania 10",
+      "tema": "Tazmania",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-10.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-11",
+      "nome": "My Little Pony 11",
+      "tema": "My Little Pony",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-11.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-12",
+      "nome": "Hello Kitty 12",
+      "tema": "Hello Kitty",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-12.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-13",
+      "nome": "Hello Kitty 13",
+      "tema": "Hello Kitty",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-13.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-14",
+      "nome": "Apenas Um Show 14",
+      "tema": "Apenas Um Show",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-14.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-15",
+      "nome": "Buzz Lightyear 15",
+      "tema": "Buzz Lightyear",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-15.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-16",
+      "nome": "Hora de Aventura 16",
+      "tema": "Hora de Aventura",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-16.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-17",
+      "nome": "As Meninas Superpoderosas 17",
+      "tema": "As Meninas Superpoderosas",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-17.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-18",
+      "nome": "PJ Masks 18",
+      "tema": "PJ Masks",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-18.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-19",
+      "nome": "PJ Masks 19",
+      "tema": "PJ Masks",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-19.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-20",
+      "nome": "Snoopy 20",
+      "tema": "Snoopy",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-20.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-21",
+      "nome": "Monster High 21",
+      "tema": "Monster High",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-21.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-22",
+      "nome": "Snoopy 22",
+      "tema": "Snoopy",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-22.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-23",
+      "nome": "Hello Kitty 23",
+      "tema": "Hello Kitty",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-23.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-24",
+      "nome": "Ben 10 24",
+      "tema": "Ben 10",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-24.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-25",
+      "nome": "Miraculous 25",
+      "tema": "Miraculous",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-25.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-26",
+      "nome": "Miraculous 26",
+      "tema": "Miraculous",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-26.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "desenhos-27",
+      "nome": "Miraculous 27",
+      "tema": "Miraculous",
+      "preco": 39.9,
+      "imagem": "./img/desenhos-novo-27.jpg",
+      "colecao": "desenhos"
+    },
+    {
+      "id": "unicornios-01",
+      "nome": "Unicórnios 01",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-01.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-02",
+      "nome": "Unicórnios 02",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-02.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-03",
+      "nome": "Unicórnios 03",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-03.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-04",
+      "nome": "Unicórnios 04",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-04.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-05",
+      "nome": "Unicórnios 05",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-05.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-06",
+      "nome": "Unicórnios 06",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-06.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-07",
+      "nome": "Unicórnios 07",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-07.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-08",
+      "nome": "Unicórnios 08",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-08.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-09",
+      "nome": "Unicórnios 09",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-09.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-10",
+      "nome": "Unicórnios 10",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-10.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-11",
+      "nome": "Unicórnios 11",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-11.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-12",
+      "nome": "Unicórnios 12",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-12.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-13",
+      "nome": "Unicórnios 13",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-13.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-14",
+      "nome": "Unicórnios 14",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-14.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "unicornios-15",
+      "nome": "Unicórnios 15",
+      "tema": "Unicórnios",
+      "preco": 39.9,
+      "imagem": "./img/divertidas-unicornio-15.jpg",
+      "colecao": "unicornio"
+    },
+    {
+      "id": "herois-01",
+      "nome": "Heróis 01",
+      "tema": "Heróis",
+      "preco": 39.9,
+      "imagem": "./img/herois-marvel-01.jpg",
+      "colecao": "herois"
+    },
+    {
+      "id": "herois-02",
+      "nome": "Heróis 02",
+      "tema": "Heróis",
+      "preco": 39.9,
+      "imagem": "./img/herois-marvel-02.jpg",
+      "colecao": "herois"
+    },
+    {
+      "id": "herois-03",
+      "nome": "Heróis 03",
+      "tema": "Heróis",
+      "preco": 39.9,
+      "imagem": "./img/herois-marvel-03.jpg",
+      "colecao": "herois"
+    },
+    {
+      "id": "herois-04",
+      "nome": "Heróis 04",
+      "tema": "Heróis",
+      "preco": 39.9,
+      "imagem": "./img/herois-marvel-04.jpg",
+      "colecao": "herois"
+    },
+    {
+      "id": "games-fortnite-01",
+      "nome": "Fortnite 01",
+      "tema": "Fortnite",
+      "preco": 39.9,
+      "imagem": "./img/games-fortnite-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-fortnite-02",
+      "nome": "Fortnite 02",
+      "tema": "Fortnite",
+      "preco": 39.9,
+      "imagem": "./img/games-fortnite-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-fortnite-03",
+      "nome": "Fortnite 03",
+      "tema": "Fortnite",
+      "preco": 39.9,
+      "imagem": "./img/games-fortnite-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-fortnite-04",
+      "nome": "Fortnite 04",
+      "tema": "Fortnite",
+      "preco": 39.9,
+      "imagem": "./img/games-fortnite-04.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-gta-01",
+      "nome": "GTA 01",
+      "tema": "GTA",
+      "preco": 39.9,
+      "imagem": "./img/games-gta-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-gta-02",
+      "nome": "GTA 02",
+      "tema": "GTA",
+      "preco": 39.9,
+      "imagem": "./img/games-gta-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-gta-03",
+      "nome": "GTA 03",
+      "tema": "GTA",
+      "preco": 39.9,
+      "imagem": "./img/games-gta-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-gta-04",
+      "nome": "GTA 04",
+      "tema": "GTA",
+      "preco": 39.9,
+      "imagem": "./img/games-gta-04.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-minecraft-01",
+      "nome": "Minecraft 01",
+      "tema": "Minecraft",
+      "preco": 39.9,
+      "imagem": "./img/games-minecraft-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-minecraft-02",
+      "nome": "Minecraft 02",
+      "tema": "Minecraft",
+      "preco": 39.9,
+      "imagem": "./img/games-minecraft-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-minecraft-03",
+      "nome": "Minecraft 03",
+      "tema": "Minecraft",
+      "preco": 39.9,
+      "imagem": "./img/games-minecraft-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-minecraft-04",
+      "nome": "Minecraft 04",
+      "tema": "Minecraft",
+      "preco": 39.9,
+      "imagem": "./img/games-minecraft-04.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-call-of-duty-01",
+      "nome": "Call of Duty 01",
+      "tema": "Call of Duty",
+      "preco": 39.9,
+      "imagem": "./img/games-call-of-duty-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-call-of-duty-02",
+      "nome": "Call of Duty 02",
+      "tema": "Call of Duty",
+      "preco": 39.9,
+      "imagem": "./img/games-call-of-duty-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-among-us-01",
+      "nome": "Among Us 01",
+      "tema": "Among Us",
+      "preco": 39.9,
+      "imagem": "./img/games-among-us-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-among-us-02",
+      "nome": "Among Us 02",
+      "tema": "Among Us",
+      "preco": 39.9,
+      "imagem": "./img/games-among-us-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-among-us-03",
+      "nome": "Among Us 03",
+      "tema": "Among Us",
+      "preco": 39.9,
+      "imagem": "./img/games-among-us-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-among-us-04",
+      "nome": "Among Us 04",
+      "tema": "Among Us",
+      "preco": 39.9,
+      "imagem": "./img/games-among-us-04.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-angry-birds-01",
+      "nome": "Angry Birds 01",
+      "tema": "Angry Birds",
+      "preco": 39.9,
+      "imagem": "./img/games-angry-birds-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-angry-birds-02",
+      "nome": "Angry Birds 02",
+      "tema": "Angry Birds",
+      "preco": 39.9,
+      "imagem": "./img/games-angry-birds-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-angry-birds-03",
+      "nome": "Angry Birds 03",
+      "tema": "Angry Birds",
+      "preco": 39.9,
+      "imagem": "./img/games-angry-birds-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-assassins-creed-01",
+      "nome": "Assassin's Creed 01",
+      "tema": "Assassin's Creed",
+      "preco": 39.9,
+      "imagem": "./img/games-assassins-creed-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-assassins-creed-02",
+      "nome": "Assassin's Creed 02",
+      "tema": "Assassin's Creed",
+      "preco": 39.9,
+      "imagem": "./img/games-assassins-creed-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-assassins-creed-03",
+      "nome": "Assassin's Creed 03",
+      "tema": "Assassin's Creed",
+      "preco": 39.9,
+      "imagem": "./img/games-assassins-creed-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-assassins-creed-04",
+      "nome": "Assassin's Creed 04",
+      "tema": "Assassin's Creed",
+      "preco": 39.9,
+      "imagem": "./img/games-assassins-creed-04.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-clash-royale-01",
+      "nome": "Clash Royale 01",
+      "tema": "Clash Royale",
+      "preco": 39.9,
+      "imagem": "./img/games-clash-royale-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-clash-royale-02",
+      "nome": "Clash Royale 02",
+      "tema": "Clash Royale",
+      "preco": 39.9,
+      "imagem": "./img/games-clash-royale-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-clash-royale-03",
+      "nome": "Clash Royale 03",
+      "tema": "Clash Royale",
+      "preco": 39.9,
+      "imagem": "./img/games-clash-royale-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-dark-souls-01",
+      "nome": "Dark Souls 01",
+      "tema": "Dark Souls",
+      "preco": 39.9,
+      "imagem": "./img/games-dark-souls-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-dark-souls-02",
+      "nome": "Dark Souls 02",
+      "tema": "Dark Souls",
+      "preco": 39.9,
+      "imagem": "./img/games-dark-souls-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-dark-souls-03",
+      "nome": "Dark Souls 03",
+      "tema": "Dark Souls",
+      "preco": 39.9,
+      "imagem": "./img/games-dark-souls-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-fifa-01",
+      "nome": "FIFA 01",
+      "tema": "FIFA",
+      "preco": 39.9,
+      "imagem": "./img/games-fifa-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-fifa-02",
+      "nome": "FIFA 02",
+      "tema": "FIFA",
+      "preco": 39.9,
+      "imagem": "./img/games-fifa-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-super-mario-01",
+      "nome": "Super Mario 01",
+      "tema": "Super Mario",
+      "preco": 39.9,
+      "imagem": "./img/games-super-mario-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-the-last-of-us-01",
+      "nome": "The Last of Us 01",
+      "tema": "The Last of Us",
+      "preco": 39.9,
+      "imagem": "./img/games-the-last-of-us-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-the-last-of-us-02",
+      "nome": "The Last of Us 02",
+      "tema": "The Last of Us",
+      "preco": 39.9,
+      "imagem": "./img/games-the-last-of-us-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-the-last-of-us-03",
+      "nome": "The Last of Us 03",
+      "tema": "The Last of Us",
+      "preco": 39.9,
+      "imagem": "./img/games-the-last-of-us-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-watch-dogs-01",
+      "nome": "Watch Dogs 01",
+      "tema": "Watch Dogs",
+      "preco": 39.9,
+      "imagem": "./img/games-watch-dogs-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-watch-dogs-02",
+      "nome": "Watch Dogs 02",
+      "tema": "Watch Dogs",
+      "preco": 39.9,
+      "imagem": "./img/games-watch-dogs-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-watch-dogs-03",
+      "nome": "Watch Dogs 03",
+      "tema": "Watch Dogs",
+      "preco": 39.9,
+      "imagem": "./img/games-watch-dogs-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-controle-nintendo-01",
+      "nome": "Controle Nintendo 01",
+      "tema": "Controle Nintendo",
+      "preco": 39.9,
+      "imagem": "./img/games-controle-nintendo-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-controle-nintendo-02",
+      "nome": "Controle Nintendo 02",
+      "tema": "Controle Nintendo",
+      "preco": 39.9,
+      "imagem": "./img/games-controle-nintendo-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-controle-nintendo-03",
+      "nome": "Controle Nintendo 03",
+      "tema": "Controle Nintendo",
+      "preco": 39.9,
+      "imagem": "./img/games-controle-nintendo-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-battlefield-01",
+      "nome": "Battlefield 01",
+      "tema": "Battlefield",
+      "preco": 39.9,
+      "imagem": "./img/games-battlefield-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-battlefield-02",
+      "nome": "Battlefield 02",
+      "tema": "Battlefield",
+      "preco": 39.9,
+      "imagem": "./img/games-battlefield-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-battlefield-03",
+      "nome": "Battlefield 03",
+      "tema": "Battlefield",
+      "preco": 39.9,
+      "imagem": "./img/games-battlefield-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-battlefield-04",
+      "nome": "Battlefield 04",
+      "tema": "Battlefield",
+      "preco": 39.9,
+      "imagem": "./img/games-battlefield-04.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-bloodborne-01",
+      "nome": "Bloodborne 01",
+      "tema": "Bloodborne",
+      "preco": 39.9,
+      "imagem": "./img/games-bloodborne-01.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-bloodborne-02",
+      "nome": "Bloodborne 02",
+      "tema": "Bloodborne",
+      "preco": 39.9,
+      "imagem": "./img/games-bloodborne-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-bloodborne-03",
+      "nome": "Bloodborne 03",
+      "tema": "Bloodborne",
+      "preco": 39.9,
+      "imagem": "./img/games-bloodborne-03.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-bloodborne-04",
+      "nome": "Bloodborne 04",
+      "tema": "Bloodborne",
+      "preco": 39.9,
+      "imagem": "./img/games-bloodborne-04.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-free-fire-01",
+      "nome": "Free Fire 01",
+      "tema": "Free Fire",
+      "preco": 39.9,
+      "imagem": "./img/games-free-fire-02.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "games-free-fire-02",
+      "nome": "Free Fire 02",
+      "tema": "Free Fire",
+      "preco": 39.9,
+      "imagem": "./img/games-free-fire-04.jpg",
+      "colecao": "games"
+    },
+    {
+      "id": "geek-01",
+      "nome": "It: A Coisa 01",
+      "tema": "It: A Coisa",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-01.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-02",
+      "nome": "Mad Max 01",
+      "tema": "Mad Max",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-02.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-03",
+      "nome": "Taxi Driver 01",
+      "tema": "Taxi Driver",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-03.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-04",
+      "nome": "Mega Man 01",
+      "tema": "Mega Man",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-04.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-05",
+      "nome": "Corrida Maluca 01",
+      "tema": "Corrida Maluca",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-05.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-06",
+      "nome": "Tartarugas Ninja 01",
+      "tema": "Tartarugas Ninja",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-06.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-08",
+      "nome": "He-Man 01",
+      "tema": "He-Man",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-08.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-09",
+      "nome": "Motoqueiro Fantasma 01",
+      "tema": "Motoqueiro Fantasma",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-09.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-10",
+      "nome": "It: A Coisa 02",
+      "tema": "It: A Coisa",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-10.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-11",
+      "nome": "God of War 01",
+      "tema": "God of War",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-11.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-12",
+      "nome": "John Wick 01",
+      "tema": "John Wick",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-12.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-13",
+      "nome": "Predador 01",
+      "tema": "Predador",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-13.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-15",
+      "nome": "God of War 02",
+      "tema": "God of War",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-15.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-16",
+      "nome": "Breaking Bad 01",
+      "tema": "Breaking Bad",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-16.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-17",
+      "nome": "RoboCop 01",
+      "tema": "RoboCop",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-17.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-19",
+      "nome": "Power Rangers 01",
+      "tema": "Power Rangers",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-19.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-21",
+      "nome": "Pulp Fiction 01",
+      "tema": "Pulp Fiction",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-21.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-22",
+      "nome": "Matrix 01",
+      "tema": "Matrix",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-22.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-23",
+      "nome": "Spawn 01",
+      "tema": "Spawn",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-23.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-24",
+      "nome": "The Witcher 01",
+      "tema": "The Witcher",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-24.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-25",
+      "nome": "Stranger Things 01",
+      "tema": "Stranger Things",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-25.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-26",
+      "nome": "Marvel 01",
+      "tema": "Marvel",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-26.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-27",
+      "nome": "ThunderCats 01",
+      "tema": "ThunderCats",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-27.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-28",
+      "nome": "Street Fighter 01",
+      "tema": "Street Fighter",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-28.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-30",
+      "nome": "Fantasia Sombria 01",
+      "tema": "Fantasia Sombria",
+      "preco": 39.9,
+      "imagem": "./img/geek-mockup-30.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-extra-power-rangers-02",
+      "nome": "Power Rangers 02",
+      "tema": "Power Rangers",
+      "preco": 39.9,
+      "imagem": "./img/geek-extra-power-rangers-02.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-extra-he-man-02",
+      "nome": "He-Man 02",
+      "tema": "He-Man",
+      "preco": 39.9,
+      "imagem": "./img/geek-extra-he-man-02.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-extra-mega-man-02",
+      "nome": "Mega Man 02",
+      "tema": "Mega Man",
+      "preco": 39.9,
+      "imagem": "./img/geek-extra-mega-man-02.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-extra-mega-man-03",
+      "nome": "Mega Man 03",
+      "tema": "Mega Man",
+      "preco": 39.9,
+      "imagem": "./img/geek-extra-mega-man-03.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-extra-stranger-things-02",
+      "nome": "Stranger Things 02",
+      "tema": "Stranger Things",
+      "preco": 39.9,
+      "imagem": "./img/geek-extra-stranger-things-02.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-extra-stranger-things-03",
+      "nome": "Stranger Things 03",
+      "tema": "Stranger Things",
+      "preco": 39.9,
+      "imagem": "./img/geek-extra-stranger-things-03.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-extra-stranger-things-04",
+      "nome": "Stranger Things 04",
+      "tema": "Stranger Things",
+      "preco": 39.9,
+      "imagem": "./img/geek-extra-stranger-things-04.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-extra-tartarugas-ninja-02",
+      "nome": "Tartarugas Ninja 02",
+      "tema": "Tartarugas Ninja",
+      "preco": 39.9,
+      "imagem": "./img/geek-extra-tartarugas-ninja-02.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "geek-extra-tartarugas-ninja-03",
+      "nome": "Tartarugas Ninja 03",
+      "tema": "Tartarugas Ninja",
+      "preco": 39.9,
+      "imagem": "./img/geek-extra-tartarugas-ninja-03.jpg",
+      "colecao": "geek"
+    },
+    {
+      "id": "amizade-01",
+      "nome": "Amizade 01",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-01.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-02",
+      "nome": "Amizade 02",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-02.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-03",
+      "nome": "Amizade 03",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-03.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-04",
+      "nome": "Amizade 04",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-04.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-05",
+      "nome": "Amizade 05",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-05.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-06",
+      "nome": "Amizade 06",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-06.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-07",
+      "nome": "Amizade 07",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-07.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-08",
+      "nome": "Amizade 08",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-08.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-09",
+      "nome": "Amizade 09",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-09.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-10",
+      "nome": "Amizade 10",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-10.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-11",
+      "nome": "Amizade 11",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-11.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-12",
+      "nome": "Amizade 12",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-12.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-13",
+      "nome": "Amizade 13",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-13.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-14",
+      "nome": "Amizade 14",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-14.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-15",
+      "nome": "Amizade 15",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-15.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-16",
+      "nome": "Amizade 16",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-16.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-17",
+      "nome": "Amizade 17",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-17.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-18",
+      "nome": "Amizade 18",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-18.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-19",
+      "nome": "Amizade 19",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-19.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-20",
+      "nome": "Amizade 20",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-20.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-21",
+      "nome": "Amizade 21",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-21.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-22",
+      "nome": "Amizade 22",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-22.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-23",
+      "nome": "Amizade 23",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-23.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-24",
+      "nome": "Amizade 24",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-24.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-25",
+      "nome": "Amizade 25",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-25.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-26",
+      "nome": "Amizade 26",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-26.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-27",
+      "nome": "Amizade 27",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-27.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-28",
+      "nome": "Amizade 28",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-28.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-29",
+      "nome": "Amizade 29",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-29.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-30",
+      "nome": "Amizade 30",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-30.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-31",
+      "nome": "Amizade 31",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-31.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-32",
+      "nome": "Amizade 32",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-32.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-33",
+      "nome": "Amizade 33",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-33.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-34",
+      "nome": "Amizade 34",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-34.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-35",
+      "nome": "Amizade 35",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-35.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-36",
+      "nome": "Amizade 36",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-36.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-37",
+      "nome": "Amizade 37",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-37.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-38",
+      "nome": "Amizade 38",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-38.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-39",
+      "nome": "Amizade 39",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-39.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-40",
+      "nome": "Amizade 40",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-40.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-41",
+      "nome": "Amizade 41",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-41.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "amizade-42",
+      "nome": "Amizade 42",
+      "tema": "Amizade",
+      "preco": 39.9,
+      "imagem": "./img/amizade-nova-42.jpg",
+      "colecao": "amizade"
+    },
+    {
+      "id": "arrow-1",
+      "nome": "Arrow 01",
+      "tema": "Arrow",
+      "imagem": "./img/arrow-1.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "arrow-2",
+      "nome": "Arrow 02",
+      "tema": "Arrow",
+      "imagem": "./img/arrow-2.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "arrow-3",
+      "nome": "Arrow 03",
+      "tema": "Arrow",
+      "imagem": "./img/arrow-3.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "arrow-4",
+      "nome": "Arrow 04",
+      "tema": "Arrow",
+      "imagem": "./img/arrow-4.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "blacklist-1",
+      "nome": "Blacklist 01",
+      "tema": "Blacklist",
+      "imagem": "./img/blacklist-1.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "blacklist-2",
+      "nome": "Blacklist 02",
+      "tema": "Blacklist",
+      "imagem": "./img/blacklist-2.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "blacklist-3",
+      "nome": "Blacklist 03",
+      "tema": "Blacklist",
+      "imagem": "./img/blacklist-3.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "black-mirror-1",
+      "nome": "Black Mirror 01",
+      "tema": "Black Mirror",
+      "imagem": "./img/black-mirror-1.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "black-mirror-2",
+      "nome": "Black Mirror 02",
+      "tema": "Black Mirror",
+      "imagem": "./img/black-mirror-2.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "black-mirror-3",
+      "nome": "Black Mirror 03",
+      "tema": "Black Mirror",
+      "imagem": "./img/black-mirror-3.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "black-mirror-4",
+      "nome": "Black Mirror 04",
+      "tema": "Black Mirror",
+      "imagem": "./img/black-mirror-4.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "breaking-bad-1",
+      "nome": "Breaking Bad 01",
+      "tema": "Breaking Bad",
+      "imagem": "./img/breaking-bad-1.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "breaking-bad-2",
+      "nome": "Breaking Bad 02",
+      "tema": "Breaking Bad",
+      "imagem": "./img/breaking-bad-2.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "breaking-bad-3",
+      "nome": "Breaking Bad 03",
+      "tema": "Breaking Bad",
+      "imagem": "./img/breaking-bad-3.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "breaking-bad-4",
+      "nome": "Breaking Bad 04",
+      "tema": "Breaking Bad",
+      "imagem": "./img/breaking-bad-4.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "breaking-bad-5",
+      "nome": "Breaking Bad 05",
+      "tema": "Breaking Bad",
+      "imagem": "./img/breaking-bad-5.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "breaking-bad-6",
+      "nome": "Breaking Bad 06",
+      "tema": "Breaking Bad",
+      "imagem": "./img/breaking-bad-6.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "breaking-bad-7",
+      "nome": "Breaking Bad 07",
+      "tema": "Breaking Bad",
+      "imagem": "./img/breaking-bad-7.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "chaves-1",
+      "nome": "Chaves 01",
+      "tema": "Chaves",
+      "imagem": "./img/chaves-1.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-la-casa-de-papel-01",
+      "nome": "La Casa de Papel 01",
+      "tema": "La Casa de Papel",
+      "imagem": "./img/series-la-casa-de-papel-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-game-of-thrones-01",
+      "nome": "Game of Thrones 01",
+      "tema": "Game of Thrones",
+      "imagem": "./img/series-game-of-thrones-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-vikings-01",
+      "nome": "Vikings 01",
+      "tema": "Vikings",
+      "imagem": "./img/series-vikings-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-friends-01",
+      "nome": "Friends 01",
+      "tema": "Friends",
+      "imagem": "./img/series-friends-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-lucifer-01",
+      "nome": "Lucifer 01",
+      "tema": "Lucifer",
+      "imagem": "./img/series-lucifer-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-lucifer-02",
+      "nome": "Lucifer 02",
+      "tema": "Lucifer",
+      "imagem": "./img/series-lucifer-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-lucifer-03",
+      "nome": "Lucifer 03",
+      "tema": "Lucifer",
+      "imagem": "./img/series-lucifer-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-lucifer-04",
+      "nome": "Lucifer 04",
+      "tema": "Lucifer",
+      "imagem": "./img/series-lucifer-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-supernatural-01",
+      "nome": "Supernatural 01",
+      "tema": "Supernatural",
+      "imagem": "./img/series-supernatural-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-supernatural-02",
+      "nome": "Supernatural 02",
+      "tema": "Supernatural",
+      "imagem": "./img/series-supernatural-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-supernatural-03",
+      "nome": "Supernatural 03",
+      "tema": "Supernatural",
+      "imagem": "./img/series-supernatural-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-supernatural-04",
+      "nome": "Supernatural 04",
+      "tema": "Supernatural",
+      "imagem": "./img/series-supernatural-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-walking-dead-01",
+      "nome": "The Walking Dead 01",
+      "tema": "The Walking Dead",
+      "imagem": "./img/series-the-walking-dead-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-walking-dead-02",
+      "nome": "The Walking Dead 02",
+      "tema": "The Walking Dead",
+      "imagem": "./img/series-the-walking-dead-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-walking-dead-03",
+      "nome": "The Walking Dead 03",
+      "tema": "The Walking Dead",
+      "imagem": "./img/series-the-walking-dead-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-walking-dead-04",
+      "nome": "The Walking Dead 04",
+      "tema": "The Walking Dead",
+      "imagem": "./img/series-the-walking-dead-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-dexter-01",
+      "nome": "Dexter 01",
+      "tema": "Dexter",
+      "imagem": "./img/series-dexter-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-dexter-02",
+      "nome": "Dexter 02",
+      "tema": "Dexter",
+      "imagem": "./img/series-dexter-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-dexter-03",
+      "nome": "Dexter 03",
+      "tema": "Dexter",
+      "imagem": "./img/series-dexter-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-suits-01",
+      "nome": "Suits 01",
+      "tema": "Suits",
+      "imagem": "./img/series-suits-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-suits-02",
+      "nome": "Suits 02",
+      "tema": "Suits",
+      "imagem": "./img/series-suits-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-suits-03",
+      "nome": "Suits 03",
+      "tema": "Suits",
+      "imagem": "./img/series-suits-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-suits-04",
+      "nome": "Suits 04",
+      "tema": "Suits",
+      "imagem": "./img/series-suits-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-big-bang-theory-01",
+      "nome": "The Big Bang Theory 01",
+      "tema": "The Big Bang Theory",
+      "imagem": "./img/series-the-big-bang-theory-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-big-bang-theory-02",
+      "nome": "The Big Bang Theory 02",
+      "tema": "The Big Bang Theory",
+      "imagem": "./img/series-the-big-bang-theory-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-big-bang-theory-03",
+      "nome": "The Big Bang Theory 03",
+      "tema": "The Big Bang Theory",
+      "imagem": "./img/series-the-big-bang-theory-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-100-01",
+      "nome": "The 100 01",
+      "tema": "The 100",
+      "imagem": "./img/series-the-100-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-100-02",
+      "nome": "The 100 02",
+      "tema": "The 100",
+      "imagem": "./img/series-the-100-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-100-03",
+      "nome": "The 100 03",
+      "tema": "The 100",
+      "imagem": "./img/series-the-100-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-100-04",
+      "nome": "The 100 04",
+      "tema": "The 100",
+      "imagem": "./img/series-the-100-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-american-horror-story-01",
+      "nome": "American Horror Story 01",
+      "tema": "American Horror Story",
+      "imagem": "./img/series-american-horror-story-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-american-horror-story-02",
+      "nome": "American Horror Story 02",
+      "tema": "American Horror Story",
+      "imagem": "./img/series-american-horror-story-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-american-horror-story-03",
+      "nome": "American Horror Story 03",
+      "tema": "American Horror Story",
+      "imagem": "./img/series-american-horror-story-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-american-horror-story-04",
+      "nome": "American Horror Story 04",
+      "tema": "American Horror Story",
+      "imagem": "./img/series-american-horror-story-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-ozark-01",
+      "nome": "Ozark 01",
+      "tema": "Ozark",
+      "imagem": "./img/series-ozark-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-ozark-02",
+      "nome": "Ozark 02",
+      "tema": "Ozark",
+      "imagem": "./img/series-ozark-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-ozark-03",
+      "nome": "Ozark 03",
+      "tema": "Ozark",
+      "imagem": "./img/series-ozark-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-ozark-04",
+      "nome": "Ozark 04",
+      "tema": "Ozark",
+      "imagem": "./img/series-ozark-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-prison-break-01",
+      "nome": "Prison Break 01",
+      "tema": "Prison Break",
+      "imagem": "./img/series-prison-break-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-prison-break-02",
+      "nome": "Prison Break 02",
+      "tema": "Prison Break",
+      "imagem": "./img/series-prison-break-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-prison-break-03",
+      "nome": "Prison Break 03",
+      "tema": "Prison Break",
+      "imagem": "./img/series-prison-break-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-prison-break-04",
+      "nome": "Prison Break 04",
+      "tema": "Prison Break",
+      "imagem": "./img/series-prison-break-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-sherlock-01",
+      "nome": "Sherlock 01",
+      "tema": "Sherlock",
+      "imagem": "./img/series-sherlock-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-sherlock-02",
+      "nome": "Sherlock 02",
+      "tema": "Sherlock",
+      "imagem": "./img/series-sherlock-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-sherlock-03",
+      "nome": "Sherlock 03",
+      "tema": "Sherlock",
+      "imagem": "./img/series-sherlock-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-handmaids-tale-01",
+      "nome": "The Handmaid's Tale 01",
+      "tema": "The Handmaid's Tale",
+      "imagem": "./img/series-the-handmaids-tale-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-handmaids-tale-02",
+      "nome": "The Handmaid's Tale 02",
+      "tema": "The Handmaid's Tale",
+      "imagem": "./img/series-the-handmaids-tale-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-handmaids-tale-03",
+      "nome": "The Handmaid's Tale 03",
+      "tema": "The Handmaid's Tale",
+      "imagem": "./img/series-the-handmaids-tale-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-handmaids-tale-04",
+      "nome": "The Handmaid's Tale 04",
+      "tema": "The Handmaid's Tale",
+      "imagem": "./img/series-the-handmaids-tale-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-outlander-01",
+      "nome": "Outlander 01",
+      "tema": "Outlander",
+      "imagem": "./img/series-outlander-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-outlander-02",
+      "nome": "Outlander 02",
+      "tema": "Outlander",
+      "imagem": "./img/series-outlander-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-outlander-03",
+      "nome": "Outlander 03",
+      "tema": "Outlander",
+      "imagem": "./img/series-outlander-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-outlander-04",
+      "nome": "Outlander 04",
+      "tema": "Outlander",
+      "imagem": "./img/series-outlander-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-originals-01",
+      "nome": "The Originals 01",
+      "tema": "The Originals",
+      "imagem": "./img/series-the-originals-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-originals-02",
+      "nome": "The Originals 02",
+      "tema": "The Originals",
+      "imagem": "./img/series-the-originals-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-originals-03",
+      "nome": "The Originals 03",
+      "tema": "The Originals",
+      "imagem": "./img/series-the-originals-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-the-originals-04",
+      "nome": "The Originals 04",
+      "tema": "The Originals",
+      "imagem": "./img/series-the-originals-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-teen-wolf-01",
+      "nome": "Teen Wolf 01",
+      "tema": "Teen Wolf",
+      "imagem": "./img/series-teen-wolf-01.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-teen-wolf-02",
+      "nome": "Teen Wolf 02",
+      "tema": "Teen Wolf",
+      "imagem": "./img/series-teen-wolf-02.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-teen-wolf-03",
+      "nome": "Teen Wolf 03",
+      "tema": "Teen Wolf",
+      "imagem": "./img/series-teen-wolf-03.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    },
+    {
+      "id": "series-teen-wolf-04",
+      "nome": "Teen Wolf 04",
+      "tema": "Teen Wolf",
+      "imagem": "./img/series-teen-wolf-04.jpg",
+      "colecao": "series",
+      "preco": 39.9
+    }
+  ]
+}

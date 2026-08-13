@@ -10,6 +10,7 @@ Requer Node.js 22 ou superior.
 npm install
 npm run dev
 npm run typecheck
+npm test
 npm run build
 npm run preview
 ```
@@ -56,6 +57,8 @@ Para cadastrar produtos, edite `src/data/produtos.ts`. Os caminhos legados `.jpg
 A Vercel detecta o Vite, executa `npm run build` e publica `dist/`. O arquivo `vercel.json` mantém as rotas do Vue Router funcionando ao abrir uma página diretamente.
 
 O workflow do GitHub executa instalação limpa, verificação TypeScript e build em cada push ou pull request. O deploy fica a cargo da integração GitHub–Vercel.
+
+O baseline reproduzível do catálogo, das rotas, imagens e Lighthouse pode ser atualizado com `npm run baseline`. As evidências versionadas ficam em `docs/baselines/`.
 
 ## Planejamento e memória
 

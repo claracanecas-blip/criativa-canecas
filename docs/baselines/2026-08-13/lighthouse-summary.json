@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T17:21:59.223Z",
+  "conditions": {
+    "formFactor": "mobile",
+    "categories": [
+      "performance",
+      "accessibility",
+      "best-practices",
+      "seo"
+    ],
+    "note": "Resultado laboratorial; variações entre execuções são esperadas."
+  },
+  "reports": [
+    {
+      "name": "home",
+      "requestedUrl": "https://criativa-canecas.vercel.app/",
+      "finalUrl": "https://criativa-canecas.vercel.app/",
+      "fetchTime": "2026-08-13T17:21:40.584Z",
+      "lighthouseVersion": "13.4.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 74,
+        "accessibility": 93,
+        "bestPractices": 100,
+        "seo": 92
+      },
+      "metrics": {
+        "firstContentfulPaint": {
+          "value": 1195.722,
+          "displayValue": "1.2 s"
+        },
+        "largestContentfulPaint": {
+          "value": 12756.722000000002,
+          "displayValue": "12.8 s"
+        },
+        "totalBlockingTime": {
+          "value": 89,
+          "displayValue": "90 ms"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "displayValue": "0"
+        },
+        "speedIndex": {
+          "value": 2674.299596434254,
+          "displayValue": "2.7 s"
+        },
+        "interactive": {
+          "value": 12936.722000000002,
+          "displayValue": "12.9 s"
+        }
+      }
+    },
+    {
+      "name": "collection-series",
+      "requestedUrl": "https://criativa-canecas.vercel.app/colecao/series",
+      "finalUrl": "https://criativa-canecas.vercel.app/colecao/series",
+      "fetchTime": "2026-08-13T17:21:51.630Z",
+      "lighthouseVersion": "13.4.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 79,
+        "accessibility": 95,
+        "bestPractices": 100,
+        "seo": 92
+      },
+      "metrics": {
+        "firstContentfulPaint": {
+          "value": 1063.9835,
+          "displayValue": "1.1 s"
+        },
+        "largestContentfulPaint": {
+          "value": 1104.9835,
+          "displayValue": "1.1 s"
+        },
+        "totalBlockingTime": {
+          "value": 16,
+          "displayValue": "20 ms"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0.5358444714459295,
+          "displayValue": "0.536"
+        },
+        "speedIndex": {
+          "value": 1385.1569958672624,
+          "displayValue": "1.4 s"
+        },
+        "interactive": {
+          "value": 1970.9835000000003,
+          "displayValue": "2.0 s"
+        }
+      }
+    }
+  ]
+}

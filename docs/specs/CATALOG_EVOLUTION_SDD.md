@@ -6,8 +6,8 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Aprovada para planejamento; implementação ainda não iniciada |
-| Versão | 1.0 |
+| Estado | Em execução; Fase 0 concluída |
+| Versão | 1.1 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -204,11 +204,15 @@ Uma fase só está concluída quando:
 
 ### Fase 0 — Baseline e proteção
 
+**Estado:** concluída em 13 de agosto de 2026.
+
 **Objetivo:** criar uma referência mensurável antes de alterar dados.
 
 **Entregas:** inventário do catálogo, export de segurança, medição Lighthouse, mapa de rotas, testes básicos e registro dos cabeçalhos atuais.
 
 **Aceite:** contagens reconciliadas, backup restaurável e baseline anexado ao projeto.
+
+**Evidências:** [`docs/baselines/2026-08-13/BASELINE.md`](../baselines/2026-08-13/BASELINE.md), [`LIGHTHOUSE.md`](../baselines/2026-08-13/LIGHTHOUSE.md), backup JSON com SHA-256 e quatro testes automatizados de integridade.
 
 **Estimativa:** 0,5 a 1 dia.
 
@@ -350,7 +354,7 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 
 | Fase | Estado | Evidência |
 |---|---|---|
-| 0 — Baseline | Não iniciada | — |
+| 0 — Baseline | Concluída | `docs/baselines/2026-08-13/` e testes de integridade |
 | 1 — Imagens | Não iniciada | — |
 | 2 — Banco | Não iniciada | — |
 | 3 — Integração frontend | Não iniciada | — |

@@ -18,7 +18,7 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 
 - Stack: Vue 3, TypeScript 5.9, Vue Router, Tailwind CSS 4, Lucide Icons e Vite 6.
 - Hospedagem: Vercel ligada ao GitHub; push em `main` cria deploy de produção.
-- CI: GitHub Actions executa `npm ci` e `npm run build`.
+- CI: GitHub Actions executa `npm ci`, `npm test` e `npm run build`.
 - Imagens: 358 arquivos WebP verificados no Supabase.
 - Originais: preservados localmente em `source-images/` e ignorados pelo Git.
 - Pacote de produção limpo: aproximadamente 2,1 MB e 21 arquivos na medição da migração.
@@ -26,6 +26,9 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Catálogo ainda é definido em `src/data/produtos.ts` e `src/data/colecoes.ts`.
 - O frontend resolve caminhos antigos `.jpg`/`.png` para WebP no Supabase por `src/utils/assets.ts`.
 - Fluxo de compra atual: contato pelo WhatsApp, sem checkout próprio.
+- Fase 0 do roadmap concluída: 341 produtos/IDs únicos, 358 imagens locais/remotas, 21 arquivos e 2,10 MB no build limpo.
+- Lighthouse móvel inicial: home P74/A93/B100/S92; coleção de séries P79/A95/B100/S92.
+- Evidências e backup restaurável da Fase 0 estão em `docs/baselines/2026-08-13/`; o backup possui SHA-256 validado por teste.
 
 ## Decisões tomadas
 
@@ -85,12 +88,12 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-Seguir `docs/specs/CATALOG_EVOLUTION_SDD.md` a partir da Fase 0. A primeira entrega vertical recomendada é:
+Seguir `docs/specs/CATALOG_EVOLUTION_SDD.md` pela Fase 1:
 
-1. inventário e baseline;
-2. cache prolongado e variantes responsivas de imagem;
-3. evidência de desempenho antes/depois;
-4. atualização desta memória e do registro de progresso.
+1. corrigir o metadata de cache das 358 imagens, atualmente `no-cache`;
+2. gerar variantes responsivas sem remover as URLs WebP atuais;
+3. reduzir o LCP da home e o CLS da coleção identificados no baseline;
+4. comparar Lighthouse antes/depois e atualizar esta memória.
 
 ## Protocolo de atualização da memória
 

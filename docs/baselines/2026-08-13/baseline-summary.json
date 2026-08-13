@@ -1,0 +1,3110 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T17:18:07.581Z",
+  "sourceCommit": "08aa4397540987e25aaeb4344ee7591b14aeb054",
+  "productionUrl": "https://criativa-canecas.vercel.app",
+  "storageUrl": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images",
+  "counts": {
+    "publicCollections": 15,
+    "productGroups": 11,
+    "products": 341,
+    "uniqueProductIds": 341,
+    "uniqueImageReferences": 341,
+    "optimizedImages": 358,
+    "originalImages": 358,
+    "buildFiles": 21,
+    "buildBytes": 2197348,
+    "declaredRoutes": 9,
+    "remoteImagesReachable": 358
+  },
+  "productCountsByGroup": {
+    "animes": 43,
+    "aniversario": 7,
+    "cafe": 6,
+    "casais": 30,
+    "desenhos": 27,
+    "unicornio": 15,
+    "herois": 4,
+    "games": 53,
+    "geek": 34,
+    "amizade": 42,
+    "series": 80
+  },
+  "anomalies": {
+    "duplicateProductIds": [],
+    "duplicateCollectionSlugs": [],
+    "duplicateImageReferences": [],
+    "missingOptimizedReferences": [],
+    "unreferencedOptimizedImages": [
+      "cafe-novo-01.webp",
+      "cafe-novo-02.webp",
+      "cafe-novo-05.webp",
+      "cafe-novo-09.webp",
+      "cafe-novo-15.webp",
+      "cafe-novo-17.webp",
+      "games-free-fire-01.webp",
+      "games-free-fire-03.webp",
+      "geek-extra-he-man-03.webp",
+      "geek-extra-mega-man-04.webp",
+      "geek-extra-power-rangers-03.webp",
+      "geek-extra-tartarugas-ninja-04.webp",
+      "geek-mockup-07.webp",
+      "geek-mockup-14.webp",
+      "geek-mockup-18.webp",
+      "geek-mockup-20.webp",
+      "geek-mockup-29.webp"
+    ],
+    "publicCollectionsWithoutDirectGroup": [
+      "personalizada",
+      "divertidas",
+      "profissoes",
+      "futebol",
+      "religiao",
+      "pets"
+    ],
+    "productGroupsOutsidePublicCollections": [
+      "desenhos",
+      "herois"
+    ],
+    "unreachableRemoteImages": []
+  },
+  "routes": [
+    "/",
+    "/colecoes",
+    "/colecao/:slug",
+    "/personalizada",
+    "/com-fotos",
+    "/presentes",
+    "/dia-dos-pais",
+    "/busca",
+    "/:pathMatch(.*)*"
+  ],
+  "routeChecks": [
+    {
+      "path": "/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "vercelCache": "MISS"
+    },
+    {
+      "path": "/colecoes",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "vercelCache": "HIT"
+    },
+    {
+      "path": "/colecao/series",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "vercelCache": "MISS"
+    },
+    {
+      "path": "/personalizada",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "vercelCache": "HIT"
+    },
+    {
+      "path": "/com-fotos",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "vercelCache": "HIT"
+    },
+    {
+      "path": "/presentes",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "vercelCache": "HIT"
+    },
+    {
+      "path": "/dia-dos-pais",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "vercelCache": "HIT"
+    },
+    {
+      "path": "/busca?q=caneca",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "vercelCache": "HIT"
+    },
+    {
+      "path": "/baseline-rota-inexistente",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "vercelCache": "HIT"
+    }
+  ],
+  "imageHeaderDistribution": {
+    "no-cache": 358
+  },
+  "files": {
+    "build": [
+      {
+        "path": "tmp/baseline-dist/assets/BuscaView-CTxd55no.js",
+        "bytes": 1500
+      },
+      {
+        "path": "tmp/baseline-dist/assets/BuscaView-yOfckCWu.css",
+        "bytes": 316
+      },
+      {
+        "path": "tmp/baseline-dist/assets/ColecaoView-CW5mBAPh.js",
+        "bytes": 2698
+      },
+      {
+        "path": "tmp/baseline-dist/assets/ColecaoView-x7qOud_f.css",
+        "bytes": 1034
+      },
+      {
+        "path": "tmp/baseline-dist/assets/ColecoesView-C1tx6kIT.js",
+        "bytes": 918
+      },
+      {
+        "path": "tmp/baseline-dist/assets/ColecoesView-x1flmUVB.css",
+        "bytes": 746
+      },
+      {
+        "path": "tmp/baseline-dist/assets/ComFotosView-B2cCHNpf.js",
+        "bytes": 1429
+      },
+      {
+        "path": "tmp/baseline-dist/assets/ComFotosView-W4CkAIGZ.css",
+        "bytes": 316
+      },
+      {
+        "path": "tmp/baseline-dist/assets/DiaDosPaisView-CkSDlFne.js",
+        "bytes": 1643
+      },
+      {
+        "path": "tmp/baseline-dist/assets/DiaDosPaisView-DwESpRJi.css",
+        "bytes": 775
+      },
+      {
+        "path": "tmp/baseline-dist/assets/EstadoVazio.vue_vue_type_script_setup_true_lang-CQYT2T6G.js",
+        "bytes": 664
+      },
+      {
+        "path": "tmp/baseline-dist/assets/index-BwNx2N3Q.css",
+        "bytes": 18089
+      },
+      {
+        "path": "tmp/baseline-dist/assets/index-rVBx3ULG.js",
+        "bytes": 139941
+      },
+      {
+        "path": "tmp/baseline-dist/assets/NaoEncontradoView-Dg8VUvq8.js",
+        "bytes": 644
+      },
+      {
+        "path": "tmp/baseline-dist/assets/NaoEncontradoView-VDXhbboQ.css",
+        "bytes": 273
+      },
+      {
+        "path": "tmp/baseline-dist/assets/PersonalizadaView-ClLG3URH.css",
+        "bytes": 1266
+      },
+      {
+        "path": "tmp/baseline-dist/assets/PersonalizadaView-D5MrDYLY.js",
+        "bytes": 1859
+      },
+      {
+        "path": "tmp/baseline-dist/assets/PresentesView-AS5-omag.css",
+        "bytes": 1142
+      },
+      {
+        "path": "tmp/baseline-dist/assets/PresentesView-CPV0WXPC.js",
+        "bytes": 1657
+      },
+      {
+        "path": "tmp/baseline-dist/img/logo.png",
+        "bytes": 2019829
+      },
+      {
+        "path": "tmp/baseline-dist/index.html",
+        "bytes": 609
+      }
+    ],
+    "optimizedImages": [
+      {
+        "path": "tmp/supabase-upload/amizade-nova-01.webp",
+        "bytes": 38054
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-02.webp",
+        "bytes": 32948
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-03.webp",
+        "bytes": 42850
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-04.webp",
+        "bytes": 47380
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-05.webp",
+        "bytes": 33336
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-06.webp",
+        "bytes": 40518
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-07.webp",
+        "bytes": 28562
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-08.webp",
+        "bytes": 42744
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-09.webp",
+        "bytes": 42242
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-10.webp",
+        "bytes": 63646
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-11.webp",
+        "bytes": 63854
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-12.webp",
+        "bytes": 41810
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-13.webp",
+        "bytes": 73390
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-14.webp",
+        "bytes": 111894
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-15.webp",
+        "bytes": 58916
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-16.webp",
+        "bytes": 49100
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-17.webp",
+        "bytes": 36958
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-18.webp",
+        "bytes": 65924
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-19.webp",
+        "bytes": 57974
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-20.webp",
+        "bytes": 57980
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-21.webp",
+        "bytes": 40202
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-22.webp",
+        "bytes": 36382
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-23.webp",
+        "bytes": 43092
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-24.webp",
+        "bytes": 57288
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-25.webp",
+        "bytes": 41578
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-26.webp",
+        "bytes": 47592
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-27.webp",
+        "bytes": 47686
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-28.webp",
+        "bytes": 41278
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-29.webp",
+        "bytes": 42192
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-30.webp",
+        "bytes": 37018
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-31.webp",
+        "bytes": 49058
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-32.webp",
+        "bytes": 38906
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-33.webp",
+        "bytes": 64728
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-34.webp",
+        "bytes": 42302
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-35.webp",
+        "bytes": 49410
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-36.webp",
+        "bytes": 56724
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-37.webp",
+        "bytes": 49016
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-38.webp",
+        "bytes": 55030
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-39.webp",
+        "bytes": 59060
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-40.webp",
+        "bytes": 50736
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-41.webp",
+        "bytes": 48104
+      },
+      {
+        "path": "tmp/supabase-upload/amizade-nova-42.webp",
+        "bytes": 59804
+      },
+      {
+        "path": "tmp/supabase-upload/aniversario-01.webp",
+        "bytes": 63868
+      },
+      {
+        "path": "tmp/supabase-upload/aniversario-02.webp",
+        "bytes": 65530
+      },
+      {
+        "path": "tmp/supabase-upload/aniversario-03.webp",
+        "bytes": 39840
+      },
+      {
+        "path": "tmp/supabase-upload/aniversario-04.webp",
+        "bytes": 70466
+      },
+      {
+        "path": "tmp/supabase-upload/aniversario-05.webp",
+        "bytes": 84312
+      },
+      {
+        "path": "tmp/supabase-upload/aniversario-06.webp",
+        "bytes": 65132
+      },
+      {
+        "path": "tmp/supabase-upload/aniversario-07.webp",
+        "bytes": 66648
+      },
+      {
+        "path": "tmp/supabase-upload/arrow-1.webp",
+        "bytes": 38368
+      },
+      {
+        "path": "tmp/supabase-upload/arrow-2.webp",
+        "bytes": 60854
+      },
+      {
+        "path": "tmp/supabase-upload/arrow-3.webp",
+        "bytes": 32918
+      },
+      {
+        "path": "tmp/supabase-upload/arrow-4.webp",
+        "bytes": 34500
+      },
+      {
+        "path": "tmp/supabase-upload/black-mirror-1.webp",
+        "bytes": 41010
+      },
+      {
+        "path": "tmp/supabase-upload/black-mirror-2.webp",
+        "bytes": 41086
+      },
+      {
+        "path": "tmp/supabase-upload/black-mirror-3.webp",
+        "bytes": 64116
+      },
+      {
+        "path": "tmp/supabase-upload/black-mirror-4.webp",
+        "bytes": 46634
+      },
+      {
+        "path": "tmp/supabase-upload/blacklist-1.webp",
+        "bytes": 44060
+      },
+      {
+        "path": "tmp/supabase-upload/blacklist-2.webp",
+        "bytes": 57662
+      },
+      {
+        "path": "tmp/supabase-upload/blacklist-3.webp",
+        "bytes": 50430
+      },
+      {
+        "path": "tmp/supabase-upload/breaking-bad-1.webp",
+        "bytes": 57356
+      },
+      {
+        "path": "tmp/supabase-upload/breaking-bad-2.webp",
+        "bytes": 60712
+      },
+      {
+        "path": "tmp/supabase-upload/breaking-bad-3.webp",
+        "bytes": 64814
+      },
+      {
+        "path": "tmp/supabase-upload/breaking-bad-4.webp",
+        "bytes": 33358
+      },
+      {
+        "path": "tmp/supabase-upload/breaking-bad-5.webp",
+        "bytes": 40714
+      },
+      {
+        "path": "tmp/supabase-upload/breaking-bad-6.webp",
+        "bytes": 85682
+      },
+      {
+        "path": "tmp/supabase-upload/breaking-bad-7.webp",
+        "bytes": 57372
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-final-01.webp",
+        "bytes": 54128
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-final-02.webp",
+        "bytes": 57628
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-final-03.webp",
+        "bytes": 56256
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-final-04.webp",
+        "bytes": 44716
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-final-05.webp",
+        "bytes": 64006
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-final-06.webp",
+        "bytes": 83716
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-novo-01.webp",
+        "bytes": 54128
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-novo-02.webp",
+        "bytes": 57628
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-novo-05.webp",
+        "bytes": 56256
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-novo-09.webp",
+        "bytes": 44716
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-novo-15.webp",
+        "bytes": 64006
+      },
+      {
+        "path": "tmp/supabase-upload/cafe-novo-17.webp",
+        "bytes": 83716
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-01.webp",
+        "bytes": 91682
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-02.webp",
+        "bytes": 81700
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-03.webp",
+        "bytes": 48436
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-04.webp",
+        "bytes": 44678
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-05.webp",
+        "bytes": 81778
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-06.webp",
+        "bytes": 88424
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-07.webp",
+        "bytes": 38602
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-08.webp",
+        "bytes": 82054
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-09.webp",
+        "bytes": 65482
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-10.webp",
+        "bytes": 98186
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-11.webp",
+        "bytes": 57796
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-12.webp",
+        "bytes": 47674
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-13.webp",
+        "bytes": 42182
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-14.webp",
+        "bytes": 71116
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-15.webp",
+        "bytes": 72188
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-16.webp",
+        "bytes": 87402
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-17.webp",
+        "bytes": 110152
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-18.webp",
+        "bytes": 72300
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-19.webp",
+        "bytes": 105606
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-20.webp",
+        "bytes": 59918
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-21.webp",
+        "bytes": 39838
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-22.webp",
+        "bytes": 78888
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-23.webp",
+        "bytes": 76656
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-24.webp",
+        "bytes": 32952
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-25.webp",
+        "bytes": 77540
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-26.webp",
+        "bytes": 76652
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-27.webp",
+        "bytes": 110066
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-28.webp",
+        "bytes": 47162
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-29.webp",
+        "bytes": 75296
+      },
+      {
+        "path": "tmp/supabase-upload/casais-novo-30.webp",
+        "bytes": 85406
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-afrodite.webp",
+        "bytes": 272848
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-aiolia.webp",
+        "bytes": 273368
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-aiolos.webp",
+        "bytes": 282182
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-aldebaran.webp",
+        "bytes": 289794
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-camus.webp",
+        "bytes": 278080
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-dohko.webp",
+        "bytes": 281516
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-mascara-morte.webp",
+        "bytes": 287146
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-milo.webp",
+        "bytes": 280666
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-mu.webp",
+        "bytes": 274208
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-saga.webp",
+        "bytes": 284516
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-shaka.webp",
+        "bytes": 292016
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-dourados-shura.webp",
+        "bytes": 279084
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-hyoga.webp",
+        "bytes": 260062
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-ikki.webp",
+        "bytes": 258308
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-kiki.webp",
+        "bytes": 240810
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-saint-seiya.webp",
+        "bytes": 288626
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-saori.webp",
+        "bytes": 265526
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-shaina.webp",
+        "bytes": 251824
+      },
+      {
+        "path": "tmp/supabase-upload/cavaleiros-do-zodiaco-shiryu.webp",
+        "bytes": 264536
+      },
+      {
+        "path": "tmp/supabase-upload/chaves-1.webp",
+        "bytes": 63138
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-gyuu.webp",
+        "bytes": 161856
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-inosuke.webp",
+        "bytes": 172524
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-kanao.webp",
+        "bytes": 154404
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-kimetsu-no-yaiba-2.webp",
+        "bytes": 169654
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-kimetsu-no-yaiba-3.webp",
+        "bytes": 212946
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-kimetsu-no-yaiba.webp",
+        "bytes": 171874
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-kyoujurou.webp",
+        "bytes": 167578
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-mitsuri.webp",
+        "bytes": 165384
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-muchirou.webp",
+        "bytes": 158138
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-nezuko.webp",
+        "bytes": 167824
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-sabito.webp",
+        "bytes": 169352
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-sanemi.webp",
+        "bytes": 153408
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-shinobu.webp",
+        "bytes": 163146
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-tanjirou.webp",
+        "bytes": 157816
+      },
+      {
+        "path": "tmp/supabase-upload/demon-slayer-zenitsu.webp",
+        "bytes": 165602
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-01.webp",
+        "bytes": 62688
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-02.webp",
+        "bytes": 35160
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-03.webp",
+        "bytes": 61306
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-04.webp",
+        "bytes": 34782
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-05.webp",
+        "bytes": 77200
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-06.webp",
+        "bytes": 34308
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-07.webp",
+        "bytes": 41680
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-08.webp",
+        "bytes": 79266
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-09.webp",
+        "bytes": 109954
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-10.webp",
+        "bytes": 54044
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-11.webp",
+        "bytes": 29264
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-12.webp",
+        "bytes": 46676
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-13.webp",
+        "bytes": 35588
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-14.webp",
+        "bytes": 28372
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-15.webp",
+        "bytes": 39314
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-16.webp",
+        "bytes": 26230
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-17.webp",
+        "bytes": 39890
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-18.webp",
+        "bytes": 49610
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-19.webp",
+        "bytes": 60040
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-20.webp",
+        "bytes": 36018
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-21.webp",
+        "bytes": 46584
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-22.webp",
+        "bytes": 39030
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-23.webp",
+        "bytes": 51090
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-24.webp",
+        "bytes": 44342
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-25.webp",
+        "bytes": 37372
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-26.webp",
+        "bytes": 46850
+      },
+      {
+        "path": "tmp/supabase-upload/desenhos-novo-27.webp",
+        "bytes": 58664
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-01.webp",
+        "bytes": 61138
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-02.webp",
+        "bytes": 47090
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-03.webp",
+        "bytes": 57840
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-04.webp",
+        "bytes": 49406
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-05.webp",
+        "bytes": 49922
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-06.webp",
+        "bytes": 56832
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-07.webp",
+        "bytes": 45798
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-08.webp",
+        "bytes": 58966
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-09.webp",
+        "bytes": 73236
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-10.webp",
+        "bytes": 63758
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-11.webp",
+        "bytes": 54908
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-12.webp",
+        "bytes": 57900
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-13.webp",
+        "bytes": 47542
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-14.webp",
+        "bytes": 53760
+      },
+      {
+        "path": "tmp/supabase-upload/divertidas-unicornio-15.webp",
+        "bytes": 47822
+      },
+      {
+        "path": "tmp/supabase-upload/fairy-tail-35.webp",
+        "bytes": 145716
+      },
+      {
+        "path": "tmp/supabase-upload/fairy-tail-36.webp",
+        "bytes": 83084
+      },
+      {
+        "path": "tmp/supabase-upload/fairy-tail-37.webp",
+        "bytes": 112960
+      },
+      {
+        "path": "tmp/supabase-upload/fairy-tail-38.webp",
+        "bytes": 103700
+      },
+      {
+        "path": "tmp/supabase-upload/fairy-tail-39.webp",
+        "bytes": 78686
+      },
+      {
+        "path": "tmp/supabase-upload/fairy-tail-40.webp",
+        "bytes": 144014
+      },
+      {
+        "path": "tmp/supabase-upload/fairy-tail-41.webp",
+        "bytes": 104694
+      },
+      {
+        "path": "tmp/supabase-upload/fairy-tail-42.webp",
+        "bytes": 123262
+      },
+      {
+        "path": "tmp/supabase-upload/fairy-tail-43.webp",
+        "bytes": 79472
+      },
+      {
+        "path": "tmp/supabase-upload/games-among-us-01.webp",
+        "bytes": 36780
+      },
+      {
+        "path": "tmp/supabase-upload/games-among-us-02.webp",
+        "bytes": 32282
+      },
+      {
+        "path": "tmp/supabase-upload/games-among-us-03.webp",
+        "bytes": 46208
+      },
+      {
+        "path": "tmp/supabase-upload/games-among-us-04.webp",
+        "bytes": 37632
+      },
+      {
+        "path": "tmp/supabase-upload/games-angry-birds-01.webp",
+        "bytes": 44374
+      },
+      {
+        "path": "tmp/supabase-upload/games-angry-birds-02.webp",
+        "bytes": 50444
+      },
+      {
+        "path": "tmp/supabase-upload/games-angry-birds-03.webp",
+        "bytes": 66052
+      },
+      {
+        "path": "tmp/supabase-upload/games-assassins-creed-01.webp",
+        "bytes": 51342
+      },
+      {
+        "path": "tmp/supabase-upload/games-assassins-creed-02.webp",
+        "bytes": 56228
+      },
+      {
+        "path": "tmp/supabase-upload/games-assassins-creed-03.webp",
+        "bytes": 36146
+      },
+      {
+        "path": "tmp/supabase-upload/games-assassins-creed-04.webp",
+        "bytes": 46454
+      },
+      {
+        "path": "tmp/supabase-upload/games-battlefield-01.webp",
+        "bytes": 52696
+      },
+      {
+        "path": "tmp/supabase-upload/games-battlefield-02.webp",
+        "bytes": 51202
+      },
+      {
+        "path": "tmp/supabase-upload/games-battlefield-03.webp",
+        "bytes": 41940
+      },
+      {
+        "path": "tmp/supabase-upload/games-battlefield-04.webp",
+        "bytes": 61730
+      },
+      {
+        "path": "tmp/supabase-upload/games-bloodborne-01.webp",
+        "bytes": 52794
+      },
+      {
+        "path": "tmp/supabase-upload/games-bloodborne-02.webp",
+        "bytes": 45290
+      },
+      {
+        "path": "tmp/supabase-upload/games-bloodborne-03.webp",
+        "bytes": 39328
+      },
+      {
+        "path": "tmp/supabase-upload/games-bloodborne-04.webp",
+        "bytes": 45084
+      },
+      {
+        "path": "tmp/supabase-upload/games-call-of-duty-01.webp",
+        "bytes": 38846
+      },
+      {
+        "path": "tmp/supabase-upload/games-call-of-duty-02.webp",
+        "bytes": 41606
+      },
+      {
+        "path": "tmp/supabase-upload/games-clash-royale-01.webp",
+        "bytes": 44818
+      },
+      {
+        "path": "tmp/supabase-upload/games-clash-royale-02.webp",
+        "bytes": 59698
+      },
+      {
+        "path": "tmp/supabase-upload/games-clash-royale-03.webp",
+        "bytes": 63368
+      },
+      {
+        "path": "tmp/supabase-upload/games-controle-nintendo-01.webp",
+        "bytes": 22042
+      },
+      {
+        "path": "tmp/supabase-upload/games-controle-nintendo-02.webp",
+        "bytes": 24448
+      },
+      {
+        "path": "tmp/supabase-upload/games-controle-nintendo-03.webp",
+        "bytes": 22268
+      },
+      {
+        "path": "tmp/supabase-upload/games-dark-souls-01.webp",
+        "bytes": 59016
+      },
+      {
+        "path": "tmp/supabase-upload/games-dark-souls-02.webp",
+        "bytes": 50760
+      },
+      {
+        "path": "tmp/supabase-upload/games-dark-souls-03.webp",
+        "bytes": 86904
+      },
+      {
+        "path": "tmp/supabase-upload/games-fifa-01.webp",
+        "bytes": 63224
+      },
+      {
+        "path": "tmp/supabase-upload/games-fifa-02.webp",
+        "bytes": 49240
+      },
+      {
+        "path": "tmp/supabase-upload/games-fortnite-01.webp",
+        "bytes": 51736
+      },
+      {
+        "path": "tmp/supabase-upload/games-fortnite-02.webp",
+        "bytes": 58216
+      },
+      {
+        "path": "tmp/supabase-upload/games-fortnite-03.webp",
+        "bytes": 66630
+      },
+      {
+        "path": "tmp/supabase-upload/games-fortnite-04.webp",
+        "bytes": 55816
+      },
+      {
+        "path": "tmp/supabase-upload/games-free-fire-01.webp",
+        "bytes": 67770
+      },
+      {
+        "path": "tmp/supabase-upload/games-free-fire-02.webp",
+        "bytes": 62320
+      },
+      {
+        "path": "tmp/supabase-upload/games-free-fire-03.webp",
+        "bytes": 57302
+      },
+      {
+        "path": "tmp/supabase-upload/games-free-fire-04.webp",
+        "bytes": 61622
+      },
+      {
+        "path": "tmp/supabase-upload/games-gta-01.webp",
+        "bytes": 70308
+      },
+      {
+        "path": "tmp/supabase-upload/games-gta-02.webp",
+        "bytes": 46694
+      },
+      {
+        "path": "tmp/supabase-upload/games-gta-03.webp",
+        "bytes": 60658
+      },
+      {
+        "path": "tmp/supabase-upload/games-gta-04.webp",
+        "bytes": 63990
+      },
+      {
+        "path": "tmp/supabase-upload/games-minecraft-01.webp",
+        "bytes": 63404
+      },
+      {
+        "path": "tmp/supabase-upload/games-minecraft-02.webp",
+        "bytes": 40386
+      },
+      {
+        "path": "tmp/supabase-upload/games-minecraft-03.webp",
+        "bytes": 53720
+      },
+      {
+        "path": "tmp/supabase-upload/games-minecraft-04.webp",
+        "bytes": 59872
+      },
+      {
+        "path": "tmp/supabase-upload/games-super-mario-01.webp",
+        "bytes": 33240
+      },
+      {
+        "path": "tmp/supabase-upload/games-the-last-of-us-01.webp",
+        "bytes": 36334
+      },
+      {
+        "path": "tmp/supabase-upload/games-the-last-of-us-02.webp",
+        "bytes": 45186
+      },
+      {
+        "path": "tmp/supabase-upload/games-the-last-of-us-03.webp",
+        "bytes": 30094
+      },
+      {
+        "path": "tmp/supabase-upload/games-watch-dogs-01.webp",
+        "bytes": 70172
+      },
+      {
+        "path": "tmp/supabase-upload/games-watch-dogs-02.webp",
+        "bytes": 69388
+      },
+      {
+        "path": "tmp/supabase-upload/games-watch-dogs-03.webp",
+        "bytes": 34932
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-he-man-02.webp",
+        "bytes": 58560
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-he-man-03.webp",
+        "bytes": 59648
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-mega-man-02.webp",
+        "bytes": 61854
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-mega-man-03.webp",
+        "bytes": 64050
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-mega-man-04.webp",
+        "bytes": 55588
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-power-rangers-02.webp",
+        "bytes": 66450
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-power-rangers-03.webp",
+        "bytes": 63582
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-stranger-things-02.webp",
+        "bytes": 49428
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-stranger-things-03.webp",
+        "bytes": 63858
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-stranger-things-04.webp",
+        "bytes": 62780
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-tartarugas-ninja-02.webp",
+        "bytes": 59212
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-tartarugas-ninja-03.webp",
+        "bytes": 61318
+      },
+      {
+        "path": "tmp/supabase-upload/geek-extra-tartarugas-ninja-04.webp",
+        "bytes": 40398
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-01.webp",
+        "bytes": 43722
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-02.webp",
+        "bytes": 69110
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-03.webp",
+        "bytes": 63640
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-04.webp",
+        "bytes": 60280
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-05.webp",
+        "bytes": 58734
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-06.webp",
+        "bytes": 60416
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-07.webp",
+        "bytes": 66116
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-08.webp",
+        "bytes": 64826
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-09.webp",
+        "bytes": 55888
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-10.webp",
+        "bytes": 65808
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-11.webp",
+        "bytes": 65970
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-12.webp",
+        "bytes": 64166
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-13.webp",
+        "bytes": 67062
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-14.webp",
+        "bytes": 47292
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-15.webp",
+        "bytes": 61994
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-16.webp",
+        "bytes": 50412
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-17.webp",
+        "bytes": 55830
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-18.webp",
+        "bytes": 82930
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-19.webp",
+        "bytes": 77876
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-20.webp",
+        "bytes": 63086
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-21.webp",
+        "bytes": 40200
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-22.webp",
+        "bytes": 53956
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-23.webp",
+        "bytes": 62350
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-24.webp",
+        "bytes": 54814
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-25.webp",
+        "bytes": 58040
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-26.webp",
+        "bytes": 64890
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-27.webp",
+        "bytes": 64814
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-28.webp",
+        "bytes": 54592
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-29.webp",
+        "bytes": 43294
+      },
+      {
+        "path": "tmp/supabase-upload/geek-mockup-30.webp",
+        "bytes": 54368
+      },
+      {
+        "path": "tmp/supabase-upload/herois-marvel-01.webp",
+        "bytes": 43834
+      },
+      {
+        "path": "tmp/supabase-upload/herois-marvel-02.webp",
+        "bytes": 90122
+      },
+      {
+        "path": "tmp/supabase-upload/herois-marvel-03.webp",
+        "bytes": 66944
+      },
+      {
+        "path": "tmp/supabase-upload/herois-marvel-04.webp",
+        "bytes": 78832
+      },
+      {
+        "path": "tmp/supabase-upload/series-american-horror-story-01.webp",
+        "bytes": 54042
+      },
+      {
+        "path": "tmp/supabase-upload/series-american-horror-story-02.webp",
+        "bytes": 50230
+      },
+      {
+        "path": "tmp/supabase-upload/series-american-horror-story-03.webp",
+        "bytes": 51318
+      },
+      {
+        "path": "tmp/supabase-upload/series-american-horror-story-04.webp",
+        "bytes": 41442
+      },
+      {
+        "path": "tmp/supabase-upload/series-dexter-01.webp",
+        "bytes": 51954
+      },
+      {
+        "path": "tmp/supabase-upload/series-dexter-02.webp",
+        "bytes": 33966
+      },
+      {
+        "path": "tmp/supabase-upload/series-dexter-03.webp",
+        "bytes": 63264
+      },
+      {
+        "path": "tmp/supabase-upload/series-friends-01.webp",
+        "bytes": 44040
+      },
+      {
+        "path": "tmp/supabase-upload/series-game-of-thrones-01.webp",
+        "bytes": 59592
+      },
+      {
+        "path": "tmp/supabase-upload/series-la-casa-de-papel-01.webp",
+        "bytes": 60552
+      },
+      {
+        "path": "tmp/supabase-upload/series-lucifer-01.webp",
+        "bytes": 38322
+      },
+      {
+        "path": "tmp/supabase-upload/series-lucifer-02.webp",
+        "bytes": 34788
+      },
+      {
+        "path": "tmp/supabase-upload/series-lucifer-03.webp",
+        "bytes": 44154
+      },
+      {
+        "path": "tmp/supabase-upload/series-lucifer-04.webp",
+        "bytes": 35394
+      },
+      {
+        "path": "tmp/supabase-upload/series-outlander-01.webp",
+        "bytes": 56822
+      },
+      {
+        "path": "tmp/supabase-upload/series-outlander-02.webp",
+        "bytes": 47984
+      },
+      {
+        "path": "tmp/supabase-upload/series-outlander-03.webp",
+        "bytes": 41740
+      },
+      {
+        "path": "tmp/supabase-upload/series-outlander-04.webp",
+        "bytes": 67922
+      },
+      {
+        "path": "tmp/supabase-upload/series-ozark-01.webp",
+        "bytes": 29712
+      },
+      {
+        "path": "tmp/supabase-upload/series-ozark-02.webp",
+        "bytes": 26700
+      },
+      {
+        "path": "tmp/supabase-upload/series-ozark-03.webp",
+        "bytes": 45838
+      },
+      {
+        "path": "tmp/supabase-upload/series-ozark-04.webp",
+        "bytes": 23058
+      },
+      {
+        "path": "tmp/supabase-upload/series-prison-break-01.webp",
+        "bytes": 53742
+      },
+      {
+        "path": "tmp/supabase-upload/series-prison-break-02.webp",
+        "bytes": 39584
+      },
+      {
+        "path": "tmp/supabase-upload/series-prison-break-03.webp",
+        "bytes": 57204
+      },
+      {
+        "path": "tmp/supabase-upload/series-prison-break-04.webp",
+        "bytes": 34736
+      },
+      {
+        "path": "tmp/supabase-upload/series-sherlock-01.webp",
+        "bytes": 55650
+      },
+      {
+        "path": "tmp/supabase-upload/series-sherlock-02.webp",
+        "bytes": 45138
+      },
+      {
+        "path": "tmp/supabase-upload/series-sherlock-03.webp",
+        "bytes": 45028
+      },
+      {
+        "path": "tmp/supabase-upload/series-suits-01.webp",
+        "bytes": 28086
+      },
+      {
+        "path": "tmp/supabase-upload/series-suits-02.webp",
+        "bytes": 33848
+      },
+      {
+        "path": "tmp/supabase-upload/series-suits-03.webp",
+        "bytes": 30340
+      },
+      {
+        "path": "tmp/supabase-upload/series-suits-04.webp",
+        "bytes": 31924
+      },
+      {
+        "path": "tmp/supabase-upload/series-supernatural-01.webp",
+        "bytes": 38012
+      },
+      {
+        "path": "tmp/supabase-upload/series-supernatural-02.webp",
+        "bytes": 34194
+      },
+      {
+        "path": "tmp/supabase-upload/series-supernatural-03.webp",
+        "bytes": 35504
+      },
+      {
+        "path": "tmp/supabase-upload/series-supernatural-04.webp",
+        "bytes": 39840
+      },
+      {
+        "path": "tmp/supabase-upload/series-teen-wolf-01.webp",
+        "bytes": 47548
+      },
+      {
+        "path": "tmp/supabase-upload/series-teen-wolf-02.webp",
+        "bytes": 43264
+      },
+      {
+        "path": "tmp/supabase-upload/series-teen-wolf-03.webp",
+        "bytes": 35870
+      },
+      {
+        "path": "tmp/supabase-upload/series-teen-wolf-04.webp",
+        "bytes": 30350
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-100-01.webp",
+        "bytes": 46312
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-100-02.webp",
+        "bytes": 54774
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-100-03.webp",
+        "bytes": 50360
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-100-04.webp",
+        "bytes": 56848
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-big-bang-theory-01.webp",
+        "bytes": 51910
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-big-bang-theory-02.webp",
+        "bytes": 48552
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-big-bang-theory-03.webp",
+        "bytes": 63986
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-handmaids-tale-01.webp",
+        "bytes": 30000
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-handmaids-tale-02.webp",
+        "bytes": 40816
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-handmaids-tale-03.webp",
+        "bytes": 40500
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-handmaids-tale-04.webp",
+        "bytes": 26366
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-originals-01.webp",
+        "bytes": 38762
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-originals-02.webp",
+        "bytes": 42360
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-originals-03.webp",
+        "bytes": 47862
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-originals-04.webp",
+        "bytes": 49266
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-walking-dead-01.webp",
+        "bytes": 42468
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-walking-dead-02.webp",
+        "bytes": 45406
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-walking-dead-03.webp",
+        "bytes": 62276
+      },
+      {
+        "path": "tmp/supabase-upload/series-the-walking-dead-04.webp",
+        "bytes": 49214
+      },
+      {
+        "path": "tmp/supabase-upload/series-vikings-01.webp",
+        "bytes": 49400
+      }
+    ],
+    "originalImages": [
+      {
+        "path": "source-images/amizade-nova-01.jpg",
+        "bytes": 1398278
+      },
+      {
+        "path": "source-images/amizade-nova-02.jpg",
+        "bytes": 1083527
+      },
+      {
+        "path": "source-images/amizade-nova-03.jpg",
+        "bytes": 1247238
+      },
+      {
+        "path": "source-images/amizade-nova-04.jpg",
+        "bytes": 1218563
+      },
+      {
+        "path": "source-images/amizade-nova-05.jpg",
+        "bytes": 1139851
+      },
+      {
+        "path": "source-images/amizade-nova-06.jpg",
+        "bytes": 1175094
+      },
+      {
+        "path": "source-images/amizade-nova-07.jpg",
+        "bytes": 1283901
+      },
+      {
+        "path": "source-images/amizade-nova-08.jpg",
+        "bytes": 1382846
+      },
+      {
+        "path": "source-images/amizade-nova-09.jpg",
+        "bytes": 1420588
+      },
+      {
+        "path": "source-images/amizade-nova-10.jpg",
+        "bytes": 1347281
+      },
+      {
+        "path": "source-images/amizade-nova-11.jpg",
+        "bytes": 1495087
+      },
+      {
+        "path": "source-images/amizade-nova-12.jpg",
+        "bytes": 1173410
+      },
+      {
+        "path": "source-images/amizade-nova-13.jpg",
+        "bytes": 1661176
+      },
+      {
+        "path": "source-images/amizade-nova-14.jpg",
+        "bytes": 1612902
+      },
+      {
+        "path": "source-images/amizade-nova-15.jpg",
+        "bytes": 1212697
+      },
+      {
+        "path": "source-images/amizade-nova-16.jpg",
+        "bytes": 1237623
+      },
+      {
+        "path": "source-images/amizade-nova-17.jpg",
+        "bytes": 1123093
+      },
+      {
+        "path": "source-images/amizade-nova-18.jpg",
+        "bytes": 1353645
+      },
+      {
+        "path": "source-images/amizade-nova-19.jpg",
+        "bytes": 1331436
+      },
+      {
+        "path": "source-images/amizade-nova-20.jpg",
+        "bytes": 1270719
+      },
+      {
+        "path": "source-images/amizade-nova-21.jpg",
+        "bytes": 1201658
+      },
+      {
+        "path": "source-images/amizade-nova-22.jpg",
+        "bytes": 1352239
+      },
+      {
+        "path": "source-images/amizade-nova-23.jpg",
+        "bytes": 1222644
+      },
+      {
+        "path": "source-images/amizade-nova-24.jpg",
+        "bytes": 1530101
+      },
+      {
+        "path": "source-images/amizade-nova-25.jpg",
+        "bytes": 1162352
+      },
+      {
+        "path": "source-images/amizade-nova-26.jpg",
+        "bytes": 1515666
+      },
+      {
+        "path": "source-images/amizade-nova-27.jpg",
+        "bytes": 1220484
+      },
+      {
+        "path": "source-images/amizade-nova-28.jpg",
+        "bytes": 1138643
+      },
+      {
+        "path": "source-images/amizade-nova-29.jpg",
+        "bytes": 1452113
+      },
+      {
+        "path": "source-images/amizade-nova-30.jpg",
+        "bytes": 1100149
+      },
+      {
+        "path": "source-images/amizade-nova-31.jpg",
+        "bytes": 1493849
+      },
+      {
+        "path": "source-images/amizade-nova-32.jpg",
+        "bytes": 1169865
+      },
+      {
+        "path": "source-images/amizade-nova-33.jpg",
+        "bytes": 1642849
+      },
+      {
+        "path": "source-images/amizade-nova-34.jpg",
+        "bytes": 1226361
+      },
+      {
+        "path": "source-images/amizade-nova-35.jpg",
+        "bytes": 1452685
+      },
+      {
+        "path": "source-images/amizade-nova-36.jpg",
+        "bytes": 1490455
+      },
+      {
+        "path": "source-images/amizade-nova-37.jpg",
+        "bytes": 1495707
+      },
+      {
+        "path": "source-images/amizade-nova-38.jpg",
+        "bytes": 1501103
+      },
+      {
+        "path": "source-images/amizade-nova-39.jpg",
+        "bytes": 1252673
+      },
+      {
+        "path": "source-images/amizade-nova-40.jpg",
+        "bytes": 1477194
+      },
+      {
+        "path": "source-images/amizade-nova-41.jpg",
+        "bytes": 1429358
+      },
+      {
+        "path": "source-images/amizade-nova-42.jpg",
+        "bytes": 1229303
+      },
+      {
+        "path": "source-images/aniversario-01.jpg",
+        "bytes": 453329
+      },
+      {
+        "path": "source-images/aniversario-02.jpg",
+        "bytes": 482547
+      },
+      {
+        "path": "source-images/aniversario-03.jpg",
+        "bytes": 363259
+      },
+      {
+        "path": "source-images/aniversario-04.jpg",
+        "bytes": 484094
+      },
+      {
+        "path": "source-images/aniversario-05.jpg",
+        "bytes": 507075
+      },
+      {
+        "path": "source-images/aniversario-06.jpg",
+        "bytes": 495038
+      },
+      {
+        "path": "source-images/aniversario-07.jpg",
+        "bytes": 472161
+      },
+      {
+        "path": "source-images/arrow-1.jpg",
+        "bytes": 374372
+      },
+      {
+        "path": "source-images/arrow-2.jpg",
+        "bytes": 457034
+      },
+      {
+        "path": "source-images/arrow-3.jpg",
+        "bytes": 344798
+      },
+      {
+        "path": "source-images/arrow-4.jpg",
+        "bytes": 324270
+      },
+      {
+        "path": "source-images/black-mirror-1.jpg",
+        "bytes": 296563
+      },
+      {
+        "path": "source-images/black-mirror-2.jpg",
+        "bytes": 326798
+      },
+      {
+        "path": "source-images/black-mirror-3.jpg",
+        "bytes": 398001
+      },
+      {
+        "path": "source-images/black-mirror-4.jpg",
+        "bytes": 351275
+      },
+      {
+        "path": "source-images/blacklist-1.jpg",
+        "bytes": 331821
+      },
+      {
+        "path": "source-images/blacklist-2.jpg",
+        "bytes": 345784
+      },
+      {
+        "path": "source-images/blacklist-3.jpg",
+        "bytes": 332199
+      },
+      {
+        "path": "source-images/breaking-bad-1.jpg",
+        "bytes": 451388
+      },
+      {
+        "path": "source-images/breaking-bad-2.jpg",
+        "bytes": 465259
+      },
+      {
+        "path": "source-images/breaking-bad-3.jpg",
+        "bytes": 467549
+      },
+      {
+        "path": "source-images/breaking-bad-4.jpg",
+        "bytes": 370899
+      },
+      {
+        "path": "source-images/breaking-bad-5.jpg",
+        "bytes": 382010
+      },
+      {
+        "path": "source-images/breaking-bad-6.jpg",
+        "bytes": 548405
+      },
+      {
+        "path": "source-images/breaking-bad-7.jpg",
+        "bytes": 396219
+      },
+      {
+        "path": "source-images/cafe-final-01.jpg",
+        "bytes": 1258044
+      },
+      {
+        "path": "source-images/cafe-final-02.jpg",
+        "bytes": 1562256
+      },
+      {
+        "path": "source-images/cafe-final-03.jpg",
+        "bytes": 1516888
+      },
+      {
+        "path": "source-images/cafe-final-04.jpg",
+        "bytes": 1447353
+      },
+      {
+        "path": "source-images/cafe-final-05.jpg",
+        "bytes": 1599986
+      },
+      {
+        "path": "source-images/cafe-final-06.jpg",
+        "bytes": 1650642
+      },
+      {
+        "path": "source-images/cafe-novo-01.jpg",
+        "bytes": 1258044
+      },
+      {
+        "path": "source-images/cafe-novo-02.jpg",
+        "bytes": 1562256
+      },
+      {
+        "path": "source-images/cafe-novo-05.jpg",
+        "bytes": 1516888
+      },
+      {
+        "path": "source-images/cafe-novo-09.jpg",
+        "bytes": 1447353
+      },
+      {
+        "path": "source-images/cafe-novo-15.jpg",
+        "bytes": 1599986
+      },
+      {
+        "path": "source-images/cafe-novo-17.jpg",
+        "bytes": 1650642
+      },
+      {
+        "path": "source-images/casais-novo-01.jpg",
+        "bytes": 593414
+      },
+      {
+        "path": "source-images/casais-novo-02.jpg",
+        "bytes": 551692
+      },
+      {
+        "path": "source-images/casais-novo-03.jpg",
+        "bytes": 396917
+      },
+      {
+        "path": "source-images/casais-novo-04.jpg",
+        "bytes": 387887
+      },
+      {
+        "path": "source-images/casais-novo-05.jpg",
+        "bytes": 491551
+      },
+      {
+        "path": "source-images/casais-novo-06.jpg",
+        "bytes": 500293
+      },
+      {
+        "path": "source-images/casais-novo-07.jpg",
+        "bytes": 337283
+      },
+      {
+        "path": "source-images/casais-novo-08.jpg",
+        "bytes": 583012
+      },
+      {
+        "path": "source-images/casais-novo-09.jpg",
+        "bytes": 476545
+      },
+      {
+        "path": "source-images/casais-novo-10.jpg",
+        "bytes": 666598
+      },
+      {
+        "path": "source-images/casais-novo-11.jpg",
+        "bytes": 441384
+      },
+      {
+        "path": "source-images/casais-novo-12.jpg",
+        "bytes": 403040
+      },
+      {
+        "path": "source-images/casais-novo-13.jpg",
+        "bytes": 383329
+      },
+      {
+        "path": "source-images/casais-novo-14.jpg",
+        "bytes": 488095
+      },
+      {
+        "path": "source-images/casais-novo-15.jpg",
+        "bytes": 510535
+      },
+      {
+        "path": "source-images/casais-novo-16.jpg",
+        "bytes": 568829
+      },
+      {
+        "path": "source-images/casais-novo-17.jpg",
+        "bytes": 657153
+      },
+      {
+        "path": "source-images/casais-novo-18.jpg",
+        "bytes": 520024
+      },
+      {
+        "path": "source-images/casais-novo-19.jpg",
+        "bytes": 648410
+      },
+      {
+        "path": "source-images/casais-novo-20.jpg",
+        "bytes": 435945
+      },
+      {
+        "path": "source-images/casais-novo-21.jpg",
+        "bytes": 364247
+      },
+      {
+        "path": "source-images/casais-novo-22.jpg",
+        "bytes": 550240
+      },
+      {
+        "path": "source-images/casais-novo-23.jpg",
+        "bytes": 546382
+      },
+      {
+        "path": "source-images/casais-novo-24.jpg",
+        "bytes": 325840
+      },
+      {
+        "path": "source-images/casais-novo-25.jpg",
+        "bytes": 499235
+      },
+      {
+        "path": "source-images/casais-novo-26.jpg",
+        "bytes": 517895
+      },
+      {
+        "path": "source-images/casais-novo-27.jpg",
+        "bytes": 636815
+      },
+      {
+        "path": "source-images/casais-novo-28.jpg",
+        "bytes": 347404
+      },
+      {
+        "path": "source-images/casais-novo-29.jpg",
+        "bytes": 513500
+      },
+      {
+        "path": "source-images/casais-novo-30.jpg",
+        "bytes": 562611
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-afrodite.jpg",
+        "bytes": 1201407
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-aiolia.jpg",
+        "bytes": 1226244
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-aiolos.jpg",
+        "bytes": 1247346
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-aldebaran.jpg",
+        "bytes": 1268949
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-camus.jpg",
+        "bytes": 1215813
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-dohko.jpg",
+        "bytes": 1241713
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-mascara-morte.jpg",
+        "bytes": 1241809
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-milo.jpg",
+        "bytes": 1224754
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-mu.jpg",
+        "bytes": 1200613
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-saga.jpg",
+        "bytes": 1244305
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-shaka.jpg",
+        "bytes": 1271110
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-dourados-shura.jpg",
+        "bytes": 1219891
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-hyoga.jpg",
+        "bytes": 1183608
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-ikki.jpg",
+        "bytes": 1198890
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-kiki.jpg",
+        "bytes": 1129882
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-saint-seiya.jpg",
+        "bytes": 1255290
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-saori.jpg",
+        "bytes": 1193932
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-shaina.jpg",
+        "bytes": 1176007
+      },
+      {
+        "path": "source-images/cavaleiros-do-zodiaco-shiryu.jpg",
+        "bytes": 1206958
+      },
+      {
+        "path": "source-images/chaves-1.jpg",
+        "bytes": 434134
+      },
+      {
+        "path": "source-images/demon-slayer-gyuu.jpg",
+        "bytes": 738926
+      },
+      {
+        "path": "source-images/demon-slayer-inosuke.jpg",
+        "bytes": 761936
+      },
+      {
+        "path": "source-images/demon-slayer-kanao.jpg",
+        "bytes": 702676
+      },
+      {
+        "path": "source-images/demon-slayer-kimetsu-no-yaiba-2.jpg",
+        "bytes": 777816
+      },
+      {
+        "path": "source-images/demon-slayer-kimetsu-no-yaiba-3.jpg",
+        "bytes": 891190
+      },
+      {
+        "path": "source-images/demon-slayer-kimetsu-no-yaiba.jpg",
+        "bytes": 783505
+      },
+      {
+        "path": "source-images/demon-slayer-kyoujurou.jpg",
+        "bytes": 752264
+      },
+      {
+        "path": "source-images/demon-slayer-mitsuri.jpg",
+        "bytes": 758973
+      },
+      {
+        "path": "source-images/demon-slayer-muchirou.jpg",
+        "bytes": 721630
+      },
+      {
+        "path": "source-images/demon-slayer-nezuko.jpg",
+        "bytes": 751885
+      },
+      {
+        "path": "source-images/demon-slayer-sabito.jpg",
+        "bytes": 774200
+      },
+      {
+        "path": "source-images/demon-slayer-sanemi.jpg",
+        "bytes": 720925
+      },
+      {
+        "path": "source-images/demon-slayer-shinobu.jpg",
+        "bytes": 733570
+      },
+      {
+        "path": "source-images/demon-slayer-tanjirou.jpg",
+        "bytes": 729936
+      },
+      {
+        "path": "source-images/demon-slayer-zenitsu.jpg",
+        "bytes": 762994
+      },
+      {
+        "path": "source-images/desenhos-novo-01.jpg",
+        "bytes": 1645124
+      },
+      {
+        "path": "source-images/desenhos-novo-02.jpg",
+        "bytes": 1357646
+      },
+      {
+        "path": "source-images/desenhos-novo-03.jpg",
+        "bytes": 1336061
+      },
+      {
+        "path": "source-images/desenhos-novo-04.jpg",
+        "bytes": 1195752
+      },
+      {
+        "path": "source-images/desenhos-novo-05.jpg",
+        "bytes": 1364824
+      },
+      {
+        "path": "source-images/desenhos-novo-06.jpg",
+        "bytes": 1050498
+      },
+      {
+        "path": "source-images/desenhos-novo-07.jpg",
+        "bytes": 1222019
+      },
+      {
+        "path": "source-images/desenhos-novo-08.jpg",
+        "bytes": 1404164
+      },
+      {
+        "path": "source-images/desenhos-novo-09.jpg",
+        "bytes": 1823831
+      },
+      {
+        "path": "source-images/desenhos-novo-10.jpg",
+        "bytes": 1288660
+      },
+      {
+        "path": "source-images/desenhos-novo-11.jpg",
+        "bytes": 1083651
+      },
+      {
+        "path": "source-images/desenhos-novo-12.jpg",
+        "bytes": 1291278
+      },
+      {
+        "path": "source-images/desenhos-novo-13.jpg",
+        "bytes": 1103156
+      },
+      {
+        "path": "source-images/desenhos-novo-14.jpg",
+        "bytes": 1010339
+      },
+      {
+        "path": "source-images/desenhos-novo-15.jpg",
+        "bytes": 1152168
+      },
+      {
+        "path": "source-images/desenhos-novo-16.jpg",
+        "bytes": 1077122
+      },
+      {
+        "path": "source-images/desenhos-novo-17.jpg",
+        "bytes": 1339151
+      },
+      {
+        "path": "source-images/desenhos-novo-18.jpg",
+        "bytes": 1214656
+      },
+      {
+        "path": "source-images/desenhos-novo-19.jpg",
+        "bytes": 1303900
+      },
+      {
+        "path": "source-images/desenhos-novo-20.jpg",
+        "bytes": 1144485
+      },
+      {
+        "path": "source-images/desenhos-novo-21.jpg",
+        "bytes": 1175819
+      },
+      {
+        "path": "source-images/desenhos-novo-22.jpg",
+        "bytes": 1353218
+      },
+      {
+        "path": "source-images/desenhos-novo-23.jpg",
+        "bytes": 1320248
+      },
+      {
+        "path": "source-images/desenhos-novo-24.jpg",
+        "bytes": 1476063
+      },
+      {
+        "path": "source-images/desenhos-novo-25.jpg",
+        "bytes": 1160337
+      },
+      {
+        "path": "source-images/desenhos-novo-26.jpg",
+        "bytes": 1280354
+      },
+      {
+        "path": "source-images/desenhos-novo-27.jpg",
+        "bytes": 1272929
+      },
+      {
+        "path": "source-images/divertidas-unicornio-01.jpg",
+        "bytes": 1281502
+      },
+      {
+        "path": "source-images/divertidas-unicornio-02.jpg",
+        "bytes": 1437848
+      },
+      {
+        "path": "source-images/divertidas-unicornio-03.jpg",
+        "bytes": 1416901
+      },
+      {
+        "path": "source-images/divertidas-unicornio-04.jpg",
+        "bytes": 1222954
+      },
+      {
+        "path": "source-images/divertidas-unicornio-05.jpg",
+        "bytes": 1459380
+      },
+      {
+        "path": "source-images/divertidas-unicornio-06.jpg",
+        "bytes": 1460200
+      },
+      {
+        "path": "source-images/divertidas-unicornio-07.jpg",
+        "bytes": 1437128
+      },
+      {
+        "path": "source-images/divertidas-unicornio-08.jpg",
+        "bytes": 1250987
+      },
+      {
+        "path": "source-images/divertidas-unicornio-09.jpg",
+        "bytes": 1587654
+      },
+      {
+        "path": "source-images/divertidas-unicornio-10.jpg",
+        "bytes": 1289431
+      },
+      {
+        "path": "source-images/divertidas-unicornio-11.jpg",
+        "bytes": 1475220
+      },
+      {
+        "path": "source-images/divertidas-unicornio-12.jpg",
+        "bytes": 1251475
+      },
+      {
+        "path": "source-images/divertidas-unicornio-13.jpg",
+        "bytes": 1242348
+      },
+      {
+        "path": "source-images/divertidas-unicornio-14.jpg",
+        "bytes": 1256440
+      },
+      {
+        "path": "source-images/divertidas-unicornio-15.jpg",
+        "bytes": 1426929
+      },
+      {
+        "path": "source-images/fairy-tail-35.png",
+        "bytes": 2299268
+      },
+      {
+        "path": "source-images/fairy-tail-36.png",
+        "bytes": 1931771
+      },
+      {
+        "path": "source-images/fairy-tail-37.png",
+        "bytes": 2130616
+      },
+      {
+        "path": "source-images/fairy-tail-38.png",
+        "bytes": 1984675
+      },
+      {
+        "path": "source-images/fairy-tail-39.png",
+        "bytes": 1954030
+      },
+      {
+        "path": "source-images/fairy-tail-40.png",
+        "bytes": 2328276
+      },
+      {
+        "path": "source-images/fairy-tail-41.png",
+        "bytes": 2043094
+      },
+      {
+        "path": "source-images/fairy-tail-42.png",
+        "bytes": 2264425
+      },
+      {
+        "path": "source-images/fairy-tail-43.png",
+        "bytes": 1838182
+      },
+      {
+        "path": "source-images/games-among-us-01.jpg",
+        "bytes": 1081590
+      },
+      {
+        "path": "source-images/games-among-us-02.jpg",
+        "bytes": 1323587
+      },
+      {
+        "path": "source-images/games-among-us-03.jpg",
+        "bytes": 1135123
+      },
+      {
+        "path": "source-images/games-among-us-04.jpg",
+        "bytes": 1127208
+      },
+      {
+        "path": "source-images/games-angry-birds-01.jpg",
+        "bytes": 1489698
+      },
+      {
+        "path": "source-images/games-angry-birds-02.jpg",
+        "bytes": 1232397
+      },
+      {
+        "path": "source-images/games-angry-birds-03.jpg",
+        "bytes": 1463167
+      },
+      {
+        "path": "source-images/games-assassins-creed-01.jpg",
+        "bytes": 1311479
+      },
+      {
+        "path": "source-images/games-assassins-creed-02.jpg",
+        "bytes": 1404749
+      },
+      {
+        "path": "source-images/games-assassins-creed-03.jpg",
+        "bytes": 1478193
+      },
+      {
+        "path": "source-images/games-assassins-creed-04.jpg",
+        "bytes": 1343598
+      },
+      {
+        "path": "source-images/games-battlefield-01.jpg",
+        "bytes": 1286218
+      },
+      {
+        "path": "source-images/games-battlefield-02.jpg",
+        "bytes": 1399878
+      },
+      {
+        "path": "source-images/games-battlefield-03.jpg",
+        "bytes": 1293734
+      },
+      {
+        "path": "source-images/games-battlefield-04.jpg",
+        "bytes": 1415221
+      },
+      {
+        "path": "source-images/games-bloodborne-01.jpg",
+        "bytes": 1343608
+      },
+      {
+        "path": "source-images/games-bloodborne-02.jpg",
+        "bytes": 1326452
+      },
+      {
+        "path": "source-images/games-bloodborne-03.jpg",
+        "bytes": 1283534
+      },
+      {
+        "path": "source-images/games-bloodborne-04.jpg",
+        "bytes": 1334513
+      },
+      {
+        "path": "source-images/games-call-of-duty-01.jpg",
+        "bytes": 1281261
+      },
+      {
+        "path": "source-images/games-call-of-duty-02.jpg",
+        "bytes": 1282657
+      },
+      {
+        "path": "source-images/games-clash-royale-01.jpg",
+        "bytes": 1214846
+      },
+      {
+        "path": "source-images/games-clash-royale-02.jpg",
+        "bytes": 1358249
+      },
+      {
+        "path": "source-images/games-clash-royale-03.jpg",
+        "bytes": 1634559
+      },
+      {
+        "path": "source-images/games-controle-nintendo-01.jpg",
+        "bytes": 1350802
+      },
+      {
+        "path": "source-images/games-controle-nintendo-02.jpg",
+        "bytes": 1081056
+      },
+      {
+        "path": "source-images/games-controle-nintendo-03.jpg",
+        "bytes": 1058494
+      },
+      {
+        "path": "source-images/games-dark-souls-01.jpg",
+        "bytes": 1622127
+      },
+      {
+        "path": "source-images/games-dark-souls-02.jpg",
+        "bytes": 1326066
+      },
+      {
+        "path": "source-images/games-dark-souls-03.jpg",
+        "bytes": 1578160
+      },
+      {
+        "path": "source-images/games-fifa-01.jpg",
+        "bytes": 1398862
+      },
+      {
+        "path": "source-images/games-fifa-02.jpg",
+        "bytes": 1311579
+      },
+      {
+        "path": "source-images/games-fortnite-01.jpg",
+        "bytes": 1308613
+      },
+      {
+        "path": "source-images/games-fortnite-02.jpg",
+        "bytes": 1318612
+      },
+      {
+        "path": "source-images/games-fortnite-03.jpg",
+        "bytes": 1601126
+      },
+      {
+        "path": "source-images/games-fortnite-04.jpg",
+        "bytes": 1340500
+      },
+      {
+        "path": "source-images/games-free-fire-01.jpg",
+        "bytes": 1771907
+      },
+      {
+        "path": "source-images/games-free-fire-02.jpg",
+        "bytes": 1326254
+      },
+      {
+        "path": "source-images/games-free-fire-03.jpg",
+        "bytes": 1377921
+      },
+      {
+        "path": "source-images/games-free-fire-04.jpg",
+        "bytes": 1396445
+      },
+      {
+        "path": "source-images/games-gta-01.jpg",
+        "bytes": 1459848
+      },
+      {
+        "path": "source-images/games-gta-02.jpg",
+        "bytes": 1181484
+      },
+      {
+        "path": "source-images/games-gta-03.jpg",
+        "bytes": 1404833
+      },
+      {
+        "path": "source-images/games-gta-04.jpg",
+        "bytes": 1414312
+      },
+      {
+        "path": "source-images/games-minecraft-01.jpg",
+        "bytes": 1422704
+      },
+      {
+        "path": "source-images/games-minecraft-02.jpg",
+        "bytes": 1224957
+      },
+      {
+        "path": "source-images/games-minecraft-03.jpg",
+        "bytes": 1312195
+      },
+      {
+        "path": "source-images/games-minecraft-04.jpg",
+        "bytes": 1301996
+      },
+      {
+        "path": "source-images/games-super-mario-01.jpg",
+        "bytes": 1025541
+      },
+      {
+        "path": "source-images/games-the-last-of-us-01.jpg",
+        "bytes": 1264687
+      },
+      {
+        "path": "source-images/games-the-last-of-us-02.jpg",
+        "bytes": 1314446
+      },
+      {
+        "path": "source-images/games-the-last-of-us-03.jpg",
+        "bytes": 1182735
+      },
+      {
+        "path": "source-images/games-watch-dogs-01.jpg",
+        "bytes": 1458323
+      },
+      {
+        "path": "source-images/games-watch-dogs-02.jpg",
+        "bytes": 1504066
+      },
+      {
+        "path": "source-images/games-watch-dogs-03.jpg",
+        "bytes": 1231927
+      },
+      {
+        "path": "source-images/geek-extra-he-man-02.jpg",
+        "bytes": 1277340
+      },
+      {
+        "path": "source-images/geek-extra-he-man-03.jpg",
+        "bytes": 1242781
+      },
+      {
+        "path": "source-images/geek-extra-mega-man-02.jpg",
+        "bytes": 1267412
+      },
+      {
+        "path": "source-images/geek-extra-mega-man-03.jpg",
+        "bytes": 1353217
+      },
+      {
+        "path": "source-images/geek-extra-mega-man-04.jpg",
+        "bytes": 1240713
+      },
+      {
+        "path": "source-images/geek-extra-power-rangers-02.jpg",
+        "bytes": 1320716
+      },
+      {
+        "path": "source-images/geek-extra-power-rangers-03.jpg",
+        "bytes": 1282750
+      },
+      {
+        "path": "source-images/geek-extra-stranger-things-02.jpg",
+        "bytes": 1240959
+      },
+      {
+        "path": "source-images/geek-extra-stranger-things-03.jpg",
+        "bytes": 1300696
+      },
+      {
+        "path": "source-images/geek-extra-stranger-things-04.jpg",
+        "bytes": 1321044
+      },
+      {
+        "path": "source-images/geek-extra-tartarugas-ninja-02.jpg",
+        "bytes": 1300338
+      },
+      {
+        "path": "source-images/geek-extra-tartarugas-ninja-03.jpg",
+        "bytes": 1336825
+      },
+      {
+        "path": "source-images/geek-extra-tartarugas-ninja-04.jpg",
+        "bytes": 1177719
+      },
+      {
+        "path": "source-images/geek-mockup-01.jpg",
+        "bytes": 1215123
+      },
+      {
+        "path": "source-images/geek-mockup-02.jpg",
+        "bytes": 1388026
+      },
+      {
+        "path": "source-images/geek-mockup-03.jpg",
+        "bytes": 1337709
+      },
+      {
+        "path": "source-images/geek-mockup-04.jpg",
+        "bytes": 1326936
+      },
+      {
+        "path": "source-images/geek-mockup-05.jpg",
+        "bytes": 1557537
+      },
+      {
+        "path": "source-images/geek-mockup-06.jpg",
+        "bytes": 1352012
+      },
+      {
+        "path": "source-images/geek-mockup-07.jpg",
+        "bytes": 1422327
+      },
+      {
+        "path": "source-images/geek-mockup-08.jpg",
+        "bytes": 1378816
+      },
+      {
+        "path": "source-images/geek-mockup-09.jpg",
+        "bytes": 1326204
+      },
+      {
+        "path": "source-images/geek-mockup-10.jpg",
+        "bytes": 1723127
+      },
+      {
+        "path": "source-images/geek-mockup-11.jpg",
+        "bytes": 1671737
+      },
+      {
+        "path": "source-images/geek-mockup-12.jpg",
+        "bytes": 1645541
+      },
+      {
+        "path": "source-images/geek-mockup-13.jpg",
+        "bytes": 1464258
+      },
+      {
+        "path": "source-images/geek-mockup-14.jpg",
+        "bytes": 1362560
+      },
+      {
+        "path": "source-images/geek-mockup-15.jpg",
+        "bytes": 1386329
+      },
+      {
+        "path": "source-images/geek-mockup-16.jpg",
+        "bytes": 1276764
+      },
+      {
+        "path": "source-images/geek-mockup-17.jpg",
+        "bytes": 1314272
+      },
+      {
+        "path": "source-images/geek-mockup-18.jpg",
+        "bytes": 1696559
+      },
+      {
+        "path": "source-images/geek-mockup-19.jpg",
+        "bytes": 1437534
+      },
+      {
+        "path": "source-images/geek-mockup-20.jpg",
+        "bytes": 1558604
+      },
+      {
+        "path": "source-images/geek-mockup-21.jpg",
+        "bytes": 1201445
+      },
+      {
+        "path": "source-images/geek-mockup-22.jpg",
+        "bytes": 1224032
+      },
+      {
+        "path": "source-images/geek-mockup-23.jpg",
+        "bytes": 1614464
+      },
+      {
+        "path": "source-images/geek-mockup-24.jpg",
+        "bytes": 1443909
+      },
+      {
+        "path": "source-images/geek-mockup-25.jpg",
+        "bytes": 1368275
+      },
+      {
+        "path": "source-images/geek-mockup-26.jpg",
+        "bytes": 1355364
+      },
+      {
+        "path": "source-images/geek-mockup-27.jpg",
+        "bytes": 1434228
+      },
+      {
+        "path": "source-images/geek-mockup-28.jpg",
+        "bytes": 1245019
+      },
+      {
+        "path": "source-images/geek-mockup-29.jpg",
+        "bytes": 1487714
+      },
+      {
+        "path": "source-images/geek-mockup-30.jpg",
+        "bytes": 1350090
+      },
+      {
+        "path": "source-images/herois-marvel-01.jpg",
+        "bytes": 1373422
+      },
+      {
+        "path": "source-images/herois-marvel-02.jpg",
+        "bytes": 1785630
+      },
+      {
+        "path": "source-images/herois-marvel-03.jpg",
+        "bytes": 1355875
+      },
+      {
+        "path": "source-images/herois-marvel-04.jpg",
+        "bytes": 1670561
+      },
+      {
+        "path": "source-images/series-american-horror-story-01.jpg",
+        "bytes": 1464086
+      },
+      {
+        "path": "source-images/series-american-horror-story-02.jpg",
+        "bytes": 1393579
+      },
+      {
+        "path": "source-images/series-american-horror-story-03.jpg",
+        "bytes": 1375151
+      },
+      {
+        "path": "source-images/series-american-horror-story-04.jpg",
+        "bytes": 1323772
+      },
+      {
+        "path": "source-images/series-dexter-01.jpg",
+        "bytes": 1631775
+      },
+      {
+        "path": "source-images/series-dexter-02.jpg",
+        "bytes": 1211910
+      },
+      {
+        "path": "source-images/series-dexter-03.jpg",
+        "bytes": 1344056
+      },
+      {
+        "path": "source-images/series-friends-01.jpg",
+        "bytes": 1278599
+      },
+      {
+        "path": "source-images/series-game-of-thrones-01.jpg",
+        "bytes": 1318909
+      },
+      {
+        "path": "source-images/series-la-casa-de-papel-01.jpg",
+        "bytes": 1360178
+      },
+      {
+        "path": "source-images/series-lucifer-01.jpg",
+        "bytes": 1582702
+      },
+      {
+        "path": "source-images/series-lucifer-02.jpg",
+        "bytes": 1508289
+      },
+      {
+        "path": "source-images/series-lucifer-03.jpg",
+        "bytes": 1487060
+      },
+      {
+        "path": "source-images/series-lucifer-04.jpg",
+        "bytes": 1413002
+      },
+      {
+        "path": "source-images/series-outlander-01.jpg",
+        "bytes": 1382394
+      },
+      {
+        "path": "source-images/series-outlander-02.jpg",
+        "bytes": 1327128
+      },
+      {
+        "path": "source-images/series-outlander-03.jpg",
+        "bytes": 1346004
+      },
+      {
+        "path": "source-images/series-outlander-04.jpg",
+        "bytes": 1733527
+      },
+      {
+        "path": "source-images/series-ozark-01.jpg",
+        "bytes": 1173319
+      },
+      {
+        "path": "source-images/series-ozark-02.jpg",
+        "bytes": 1219708
+      },
+      {
+        "path": "source-images/series-ozark-03.jpg",
+        "bytes": 1440653
+      },
+      {
+        "path": "source-images/series-ozark-04.jpg",
+        "bytes": 1130999
+      },
+      {
+        "path": "source-images/series-prison-break-01.jpg",
+        "bytes": 1601305
+      },
+      {
+        "path": "source-images/series-prison-break-02.jpg",
+        "bytes": 1317506
+      },
+      {
+        "path": "source-images/series-prison-break-03.jpg",
+        "bytes": 1359754
+      },
+      {
+        "path": "source-images/series-prison-break-04.jpg",
+        "bytes": 1446316
+      },
+      {
+        "path": "source-images/series-sherlock-01.jpg",
+        "bytes": 1370397
+      },
+      {
+        "path": "source-images/series-sherlock-02.jpg",
+        "bytes": 1321565
+      },
+      {
+        "path": "source-images/series-sherlock-03.jpg",
+        "bytes": 1476749
+      },
+      {
+        "path": "source-images/series-suits-01.jpg",
+        "bytes": 1326933
+      },
+      {
+        "path": "source-images/series-suits-02.jpg",
+        "bytes": 1320722
+      },
+      {
+        "path": "source-images/series-suits-03.jpg",
+        "bytes": 1207037
+      },
+      {
+        "path": "source-images/series-suits-04.jpg",
+        "bytes": 1225414
+      },
+      {
+        "path": "source-images/series-supernatural-01.jpg",
+        "bytes": 1294491
+      },
+      {
+        "path": "source-images/series-supernatural-02.jpg",
+        "bytes": 1445321
+      },
+      {
+        "path": "source-images/series-supernatural-03.jpg",
+        "bytes": 1174185
+      },
+      {
+        "path": "source-images/series-supernatural-04.jpg",
+        "bytes": 1301193
+      },
+      {
+        "path": "source-images/series-teen-wolf-01.jpg",
+        "bytes": 1338939
+      },
+      {
+        "path": "source-images/series-teen-wolf-02.jpg",
+        "bytes": 1284799
+      },
+      {
+        "path": "source-images/series-teen-wolf-03.jpg",
+        "bytes": 1166900
+      },
+      {
+        "path": "source-images/series-teen-wolf-04.jpg",
+        "bytes": 1460176
+      },
+      {
+        "path": "source-images/series-the-100-01.jpg",
+        "bytes": 1285765
+      },
+      {
+        "path": "source-images/series-the-100-02.jpg",
+        "bytes": 1385794
+      },
+      {
+        "path": "source-images/series-the-100-03.jpg",
+        "bytes": 1288917
+      },
+      {
+        "path": "source-images/series-the-100-04.jpg",
+        "bytes": 1614515
+      },
+      {
+        "path": "source-images/series-the-big-bang-theory-01.jpg",
+        "bytes": 1264994
+      },
+      {
+        "path": "source-images/series-the-big-bang-theory-02.jpg",
+        "bytes": 1294246
+      },
+      {
+        "path": "source-images/series-the-big-bang-theory-03.jpg",
+        "bytes": 1255487
+      },
+      {
+        "path": "source-images/series-the-handmaids-tale-01.jpg",
+        "bytes": 1442745
+      },
+      {
+        "path": "source-images/series-the-handmaids-tale-02.jpg",
+        "bytes": 1537157
+      },
+      {
+        "path": "source-images/series-the-handmaids-tale-03.jpg",
+        "bytes": 1405694
+      },
+      {
+        "path": "source-images/series-the-handmaids-tale-04.jpg",
+        "bytes": 1435203
+      },
+      {
+        "path": "source-images/series-the-originals-01.jpg",
+        "bytes": 1257180
+      },
+      {
+        "path": "source-images/series-the-originals-02.jpg",
+        "bytes": 1235716
+      },
+      {
+        "path": "source-images/series-the-originals-03.jpg",
+        "bytes": 1325745
+      },
+      {
+        "path": "source-images/series-the-originals-04.jpg",
+        "bytes": 1263328
+      },
+      {
+        "path": "source-images/series-the-walking-dead-01.jpg",
+        "bytes": 1574591
+      },
+      {
+        "path": "source-images/series-the-walking-dead-02.jpg",
+        "bytes": 1254823
+      },
+      {
+        "path": "source-images/series-the-walking-dead-03.jpg",
+        "bytes": 1375020
+      },
+      {
+        "path": "source-images/series-the-walking-dead-04.jpg",
+        "bytes": 1314414
+      },
+      {
+        "path": "source-images/series-vikings-01.jpg",
+        "bytes": 1257686
+      }
+    ]
+  },
+  "backup": {
+    "file": "catalog-backup.json",
+    "sha256": "0e4c1f45af95d48ec9abd24747f631d823b746566eb91de85a3bc0a0c7a2e681"
+  }
+}
