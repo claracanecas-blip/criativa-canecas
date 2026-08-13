@@ -29,6 +29,8 @@ O pós-build consulta o Supabase e gera:
 
 O sitemap possui home, listagem, 17 coleções publicadas — inclusive as duas URLs legadas preservadas — e 341 produtos publicados. Rascunhos/arquivados são filtrados na consulta.
 
+Revalidação posterior confirmou que o gerador remove os metadados-base antes de injetar os específicos: `/informacoes` e `/produto/arrow-1` possuem exatamente um canonical cada no HTML estático.
+
 ## Preview Vercel
 
 O deployment `dpl_79pTTs5z3fEYPc62dk98MsNaY9Qh` foi consultado com bypass autenticado da proteção de preview:

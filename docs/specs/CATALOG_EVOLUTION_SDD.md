@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0, 1, 2, 3, 4, 5, 6 e 7 concluídas |
-| Versão | 1.9 |
+| Versão | 1.10 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -411,7 +411,7 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 | 2 — Banco | Concluída | 341 produtos reconciliados e RLS positiva/negativa verificada |
 | 3 — Integração frontend | Concluída | Catálogo remoto, fallback, 14 testes e validação navegada |
 | 4 — Administração | Concluída | RLS remota e ciclo administrativo E2E completo |
-| 5 — Produto e SEO | Concluída | 341 páginas, sitemap de 360 URLs, preview e Lighthouse |
+| 5 — Produto e SEO | Concluída | 341 páginas, canonical único por HTML, sitemap, preview e Lighthouse |
 | 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, Playwright/axe e Lighthouse no CI |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
 | 8 — Confiança e domínio | Em andamento | Base técnica/FAQ/moderação pronta; domínio e dados oficiais pendentes |

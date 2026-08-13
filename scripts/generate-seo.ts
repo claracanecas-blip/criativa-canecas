@@ -75,6 +75,8 @@ export function renderSeoHtml(
 
   return template
     .replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(meta.title)}</title>`)
+    .replace(/\s*<(?:meta|link)\b[^>]*\bdata-criativa-dynamic-meta\b[^>]*>/gi, '')
+    .replace(/\s*<script\b[^>]*\bdata-criativa-dynamic-meta\b[^>]*>[\s\S]*?<\/script>/gi, '')
     .replace(/\s*<meta[^>]+name="description"[^>]*>/i, '')
     .replace('</head>', `  ${head}\n</head>`)
     .replace('<div id="app"></div>', `<div id="app">${body}</div>`)

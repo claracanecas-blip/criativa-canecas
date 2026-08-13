@@ -60,6 +60,7 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - WhatsApp consolidado inclui quantidade, nome, SKU, subtotal, link e total estimado, com ressalvas de preço/prazo/disponibilidade e sem promessa de reserva/pedido.
 - Qualidade da Fase 7: 24 testes unitários, 8 E2E/axe e Lighthouse home P99/A98, coleção P99/A100 e produto P91/A100; Boas Práticas/SEO 100.
 - Base técnica da Fase 8 concluída: `/informacoes` está no rodapé, prerender e sitemap de 361 URLs; textos evitam promessas antes da confirmação no atendimento.
+- O gerador de SEO remove metadados-base antes do prerender; páginas estáticas devem conter exatamente um canonical, validado em `/informacoes` e `/produto/arrow-1`.
 - Depoimentos nascem em rascunho, só publicados aparecem na home e fotos exigem referência de consentimento. O banco permanece sem depoimentos fictícios.
 - Referências de consentimento e autoria não são colunas públicas; o painel lê os dados completos por RPC que exige papel administrativo.
 - `/admin/depoimentos` permite moderação; sete verificações RLS remotas e lint passaram. A suíte agora possui 26 testes e 9 E2E/axe.
