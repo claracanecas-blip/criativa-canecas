@@ -10,22 +10,24 @@ const props = withDefaults(defineProps<{ produto: Product; priority?: boolean }>
 })
 
 const link = computed(() =>
-  linkWhatsapp(`Olá! Tenho interesse na caneca ${props.produto.nome}.`),
+  linkWhatsapp(`Olá! Tenho interesse na caneca ${props.produto.nome} (${props.produto.sku}). ${window.location.origin}/produto/${props.produto.slug}`),
 )
 
 </script>
 
 <template>
   <article class="card">
-    <CatalogImage
-      class="product-media"
-      :src="produto.imagem"
-      :alt="produto.nome"
-      :loading="priority ? 'eager' : 'lazy'"
-      :fetchpriority="priority ? 'high' : 'auto'"
-    />
+    <RouterLink class="product-link" :to="`/produto/${produto.slug}`" :aria-label="`Ver detalhes de ${produto.nome}`">
+      <CatalogImage
+        class="product-media"
+        :src="produto.imagem"
+        :alt="produto.nome"
+        :loading="priority ? 'eager' : 'lazy'"
+        :fetchpriority="priority ? 'high' : 'auto'"
+      />
+    </RouterLink>
     <div class="info">
-      <h3>{{ produto.nome }}</h3>
+      <h3><RouterLink :to="`/produto/${produto.slug}`">{{ produto.nome }}</RouterLink></h3>
       <div class="price">{{ formatarPreco(produto.preco) }}</div>
       <a class="comprar" :href="link" target="_blank" rel="noopener">Comprar pelo WhatsApp</a>
     </div>
@@ -35,6 +37,7 @@ const link = computed(() =>
 <style scoped>
 .card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.08);display:flex;flex-direction:column}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.product-link{display:block}
 .product-media{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;background:#f4eef1}
 .info{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
 .info h3{margin:0;font-size:17px}

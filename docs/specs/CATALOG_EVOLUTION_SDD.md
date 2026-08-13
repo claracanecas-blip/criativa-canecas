@@ -6,8 +6,8 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fases 0, 1, 2, 3 e 4 concluídas |
-| Versão | 1.3 |
+| Estado | Em execução; Fases 0, 1, 2, 3, 4 e 5 concluídas |
+| Versão | 1.4 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -18,7 +18,7 @@ Este documento é a fonte de verdade para o próximo ciclo do produto. Cada fase
 
 A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 1.432 imagens WebP no bucket público `product-images` e o Postgres contém os metadados reconciliados do catálogo.
 
-O catálogo público é lido do Supabase por uma camada de repositório tipada e possui fallback operacional para os arquivos TypeScript. A manutenção cotidiana ainda depende de scripts administrativos até a entrega do painel. O fluxo comercial termina no WhatsApp e ainda não mede formalmente a jornada entre visualização, busca, seleção e contato.
+O catálogo público é lido do Supabase por uma camada de repositório tipada e possui fallback operacional para os arquivos TypeScript. A manutenção cotidiana é feita pelo painel administrativo protegido por Supabase Auth e RLS. O fluxo comercial termina no WhatsApp e ainda não mede formalmente a jornada entre visualização, busca, seleção e contato.
 
 ## 3. Objetivos do ciclo
 
@@ -284,11 +284,17 @@ Uma fase só está concluída quando:
 
 ### Fase 5 — Página de produto e SEO técnico
 
+**Estado:** concluída e validada em 13 de agosto de 2026.
+
 **Objetivo:** tornar cada item encontrável e compartilhável.
 
 **Entregas:** `/produto/:slug`, metadados, Open Graph, JSON-LD, sitemap, robots e breadcrumbs.
 
 **Aceite:** URL direta retorna `200`, prévia de compartilhamento correta, sitemap contém somente publicados e validadores não apontam erros críticos.
+
+**Rollback:** reverter o frontend para o commit anterior; não há mudança de banco. A rota SPA anterior e o catálogo por coleção permanecem disponíveis.
+
+**Evidências:** [`docs/baselines/2026-08-13-phase-5/PHASE_5.md`](../baselines/2026-08-13-phase-5/PHASE_5.md), HTML de preview validado via Vercel com `200`, canonical/OG/JSON-LD/conteúdo estático, sitemap de 360 URLs, testes automatizados e Lighthouse SEO 100 nas três páginas medidas.
 
 **Estimativa:** 3 a 5 dias.
 
@@ -379,9 +385,9 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 | 0 — Baseline | Concluída | `docs/baselines/2026-08-13/` e testes de integridade |
 | 1 — Imagens | Concluída | Produção P99/P98, CLS 0 e 1.432 objetos verificados |
 | 2 — Banco | Concluída | 341 produtos reconciliados e RLS positiva/negativa verificada |
-| 3 — Integração frontend | Não iniciada | — |
-| 4 — Administração | Não iniciada | — |
-| 5 — Produto e SEO | Não iniciada | — |
+| 3 — Integração frontend | Concluída | Catálogo remoto, fallback, 14 testes e validação navegada |
+| 4 — Administração | Concluída | RLS remota e ciclo administrativo E2E completo |
+| 5 — Produto e SEO | Concluída | 341 páginas, sitemap de 360 URLs, preview e Lighthouse |
 | 6 — Medição e qualidade | Não iniciada | — |
 | 7 — Orçamento | Não iniciada | — |
 | 8 — Confiança e domínio | Não iniciada | — |

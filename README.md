@@ -91,6 +91,19 @@ npm run admin:verify-e2e
 
 Ela exige URL, chave publicável e `service_role` somente no ambiente da execução. O relatório não armazena essas credenciais.
 
+## Página de produto e SEO
+
+Cada produto publicado possui a URL `/produto/:slug`, com código, preço, descrição, coleções, relacionados e mensagem de WhatsApp contendo SKU e link canônico.
+
+Ao final do build, `scripts/generate-seo.ts` consulta o catálogo público (ou usa o backup validado se o Supabase estiver indisponível) e gera:
+
+- HTML rastreável de produtos e coleções com canonical, Open Graph e conteúdo sem JavaScript;
+- JSON-LD `Product` e `BreadcrumbList`;
+- `sitemap.xml` apenas com registros publicados;
+- `robots.txt`, bloqueando `/admin`.
+
+Os arquivos SEO refletem o estado do catálogo no momento do deploy. Alterações administrativas aparecem imediatamente na interface dinâmica; metadados estáticos e sitemap são atualizados no próximo deploy.
+
 ## Planejamento e memória
 
 - [Especificação SDD e fases de evolução](docs/specs/CATALOG_EVOLUTION_SDD.md)

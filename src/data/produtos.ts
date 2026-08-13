@@ -286,6 +286,10 @@ export function produtosDaColecao(slug: string): Product[] {
       ...p,
       colecao: slug,
       preco: p.preco ?? PRECO_PADRAO,
+      slug: p.id,
+      sku: `CC-${p.id.toUpperCase().replace(/[^A-Z0-9]+/g, '-')}`,
+      descricao: `Caneca personalizada ${p.nome}, tema ${p.tema ?? p.nome}.`,
+      destaque: false,
     })),
   )
 }
@@ -297,6 +301,10 @@ export function todosProdutos(): Product[] {
       ...produto,
       colecao,
       preco: produto.preco ?? PRECO_PADRAO,
+      slug: produto.id,
+      sku: `CC-${produto.id.toUpperCase().replace(/[^A-Z0-9]+/g, '-')}`,
+      descricao: `Caneca personalizada ${produto.nome}, tema ${produto.tema ?? produto.nome}.`,
+      destaque: false,
     })),
   )
 }

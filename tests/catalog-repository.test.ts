@@ -23,6 +23,8 @@ test('repositório mapeia o catálogo importado com paridade de itens e imagens'
   assert.equal(snapshot.produtos.length, 341)
   assert.ok(snapshot.produtos.every((product) => product.imagem.endsWith('.webp')))
   assert.ok(snapshot.produtos.every((product) => product.colecao.length > 0))
+  assert.ok(snapshot.produtos.every((product) => product.slug.length > 0 && product.sku.startsWith('CC-')))
+  assert.ok(snapshot.produtos.every((product) => product.descricao.length > 0))
 })
 
 test('falha do Supabase usa a cópia TypeScript sem deixar o catálogo vazio', async () => {

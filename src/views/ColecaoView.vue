@@ -6,6 +6,8 @@ import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
 import NaoEncontradoView from '@/views/NaoEncontradoView.vue'
 import { useCatalog } from '@/composables/useCatalog'
+import { usePageMeta, type PageMeta } from '@/composables/usePageMeta'
+import { productImageUrl } from '@/utils/assets'
 
 const props = defineProps<{ slug: string }>()
 const catalog = useCatalog()
@@ -13,6 +15,24 @@ const catalog = useCatalog()
 const colecao = computed(() => catalog.buscarColecao(props.slug))
 const itens = computed(() => catalog.produtosDaColecao(props.slug))
 const catalogoPronto = computed(() => ['ready', 'fallback', 'error'].includes(catalog.state.value))
+const pageMeta = computed<PageMeta | null>(() => colecao.value ? {
+  title: `${colecao.value.nome} | Criativa Canecas`,
+  description: colecao.value.descricao || `Explore canecas da coleção ${colecao.value.nome} na Criativa Canecas.`,
+  canonical: `${window.location.origin}/colecao/${colecao.value.slug}`,
+  image: itens.value[0]?.imagem ? productImageUrl(itens.value[0].imagem, 'social') : undefined,
+  type: 'website',
+  jsonLd: [{
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: window.location.origin },
+      { '@type': 'ListItem', position: 2, name: 'Coleções', item: `${window.location.origin}/colecoes` },
+      { '@type': 'ListItem', position: 3, name: colecao.value.nome, item: `${window.location.origin}/colecao/${colecao.value.slug}` },
+    ],
+  }],
+} : null)
+
+usePageMeta(pageMeta)
 
 // filtro por tema (ex.: Arrow, Breaking Bad), montado a partir dos produtos
 const temas = computed(() => [...new Set(itens.value.map((p) => p.tema ?? p.nome))].sort())

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-08-13",
+  "products": 341,
+  "collections": 17,
+  "sitemapUrls": 360,
+  "previewDeploymentId": "dpl_79pTTs5z3fEYPc62dk98MsNaY9Qh",
+  "checks": {
+    "directProductHttp200": true,
+    "canonical": true,
+    "openGraph": true,
+    "productJsonLd": true,
+    "breadcrumbJsonLd": true,
+    "staticBody": true,
+    "robotsBlocksAdmin": true,
+    "publishedOnly": true
+  }
+}

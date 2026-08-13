@@ -46,6 +46,10 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Supabase Auth usa `https://criativa-canecas.vercel.app` como Site URL e permite callbacks de produção, previews do projeto e Vite local.
 - Um convite administrativo foi enviado ao e-mail proprietário do projeto; o destinatário define a própria senha por link do Supabase.
 - E2E Playwright comprovou login, 341 produtos iniciais, criação de coleção, publicação com quatro imagens, visualização pública, exclusões confirmadas e logout; nenhum sentinela permaneceu.
+- Fase 5 concluída: 341 URLs `/produto/:slug` exibem imagem, SKU, preço, descrição, coleções, relacionados e WhatsApp com SKU/URL.
+- O build gera 341 HTMLs de produto, 17 HTMLs de coleção, sitemap com 360 URLs e robots bloqueando `/admin`; HTML estático contém canonical, Open Graph, JSON-LD e conteúdo rastreável.
+- Vercel usa `cleanUrls` e dá precedência aos HTMLs gerados antes do fallback SPA; preview confirmou `200` e metadados sem executar JavaScript.
+- Lighthouse local da Fase 5: home P99/A93/B100/S100; coleção P99/A95/B100/S100; produto P90/A95/B100/S100, todos com CLS baixo/zero.
 
 ## Decisões tomadas
 
@@ -66,6 +70,8 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 15. Autorizar o painel em duas camadas: sessão válida no Supabase Auth e papel `admin` no banco/RLS.
 16. Gerar variantes de imagem no navegador antes de publicar; caminhos recebem nome versionado e objetos antigos não são apagados automaticamente.
 17. Não expor `created_by`/`updated_by` nas consultas públicas; administradores consultam autoria pelo log protegido.
+18. Prerenderizar HTML estático no build atual em vez de migrar para SSR/Nuxt sem evidência; manter a SPA para interatividade e fallback.
+19. Gerar SEO pelo catálogo remoto na Vercel e usar o backup local somente quando a leitura remota falhar durante o build.
 
 ## Histórico relevante
 
@@ -106,7 +112,7 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 - A coleta inicial de cache usou `HEAD` e foi inconclusiva para `GET`; a Fase 1 agora verifica por `GET` e confirmou `public, max-age=31536000` nos 1.432 objetos.
 - Objetos antigos do Storage são preservados quando um produto é excluído; uma rotina futura de limpeza deve remover somente órfãos comprovados.
-- Não existem páginas individuais de produto, sitemap dinâmico, JSON-LD de produto ou Open Graph por item.
+- Metadados estáticos e sitemap refletem o catálogo no momento do deploy; mudanças administrativas aparecem imediatamente na SPA, mas exigem novo deploy para atualizar prévias sociais e HTML rastreável.
 - Não existe medição formal de clique no WhatsApp, busca ou visualização de produto.
 - Não há carrinho de orçamento com vários itens.
 - O site ainda não possui domínio próprio registrado nesta memória.
@@ -114,9 +120,9 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Implementar a Fase 5 com rota canônica `/produto/:slug`, página de detalhe e produtos relacionados.
-2. Adicionar metadados, Open Graph, JSON-LD, breadcrumbs, `robots.txt` e sitemap somente com itens publicados.
-3. Avaliar prerenderização das rotas públicas e validar links diretos/compartilhamento antes de qualquer decisão sobre SSR.
+1. Implementar a Fase 6 com eventos tipados e sem PII para visualização, busca, coleção e WhatsApp.
+2. Adicionar consentimento somente para integrações opcionais que realmente precisem dele e impedir métricas em desenvolvimento.
+3. Ampliar Playwright/axe/Lighthouse no CI e adicionar monitoramento de erros sem dados pessoais.
 
 ## Protocolo de atualização da memória
 

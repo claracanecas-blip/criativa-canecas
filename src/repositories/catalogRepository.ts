@@ -51,8 +51,12 @@ export function mapCatalogRows(rows: CatalogDatabaseRows): CatalogSnapshot {
     const collectionsForProduct = collectionIdsByProduct.get(product.id) ?? []
     return {
       id: product.id,
+      slug: product.slug,
+      sku: product.sku,
       nome: product.name,
       tema: product.theme || product.name,
+      descricao: product.description,
+      destaque: product.is_featured,
       preco: Number(product.price),
       imagem: originalImageByProduct.get(product.id) ?? '',
       colecao: collectionsForProduct[0] ?? '',
@@ -100,7 +104,14 @@ export const typescriptCatalogRepository: CatalogRepository = {
         publicada: true,
         listada: colecoesLocais.some((listed) => listed.slug === collection.slug),
       })),
-      produtos: todosProdutos().map((product) => ({ ...product, colecoes: [product.colecao] })),
+      produtos: todosProdutos().map((product) => ({
+        ...product,
+        slug: product.id,
+        sku: `CC-${product.id.toUpperCase().replace(/[^A-Z0-9]+/g, '-')}`,
+        descricao: `Caneca personalizada ${product.nome}, tema ${product.tema ?? product.nome}.`,
+        destaque: false,
+        colecoes: [product.colecao],
+      })),
     }
   },
 }

@@ -53,6 +53,10 @@ export interface Product extends ProductInput {
   colecao: string
   colecoes?: string[]
   preco: number
+  slug: string
+  sku: string
+  descricao: string
+  destaque: boolean
 }
 
 export interface CatalogSnapshot {

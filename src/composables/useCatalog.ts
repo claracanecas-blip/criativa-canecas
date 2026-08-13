@@ -93,6 +93,10 @@ export function useCatalog() {
     return snapshot.value.colecoes.find((collection) => collection.slug === slug)
   }
 
+  function buscarProduto(slug: string) {
+    return snapshot.value.produtos.find((product) => product.slug === slug)
+  }
+
   function produtosDaColecao(slug: string): Product[] {
     const groups = new Set(collectionGroups[slug] ?? [slug])
     return snapshot.value.produtos.filter((product) =>
@@ -121,6 +125,7 @@ export function useCatalog() {
     todasColecoes,
     produtos,
     buscarColecao,
+    buscarProduto,
     produtosDaColecao,
     buscarProdutos,
     refresh,

@@ -56,5 +56,6 @@ test('rotas declaradas não se repetem', async () => {
   const routes = [...source.matchAll(/path:\s*'([^']+)'/g)].map((match) => match[1])
   assert.ok(routes.includes('/'))
   assert.ok(routes.includes('/colecao/:slug'))
+  assert.ok(routes.includes('/produto/:slug'))
   assert.equal(new Set(routes).size, routes.length)
 })

@@ -15,6 +15,9 @@ const targets = [
   { name: 'home', path: '/' },
   { name: 'collection-series', path: '/colecao/series' },
 ]
+if (process.env.BASELINE_INCLUDE_PRODUCT === 'true') {
+  targets.push({ name: 'product-arrow-1', path: '/produto/arrow-1' })
+}
 
 await mkdir(outputDirectory, { recursive: true })
 await mkdir(temporaryDirectory, { recursive: true })
