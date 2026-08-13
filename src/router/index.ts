@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import { currentAdmin } from '@/services/adminAuth'
 import { applyPageMeta } from '@/composables/usePageMeta'
+import { officialSiteUrl } from '@/data/site'
 import {
   collectionSource,
   productSource,
@@ -69,7 +70,7 @@ router.afterEach((to, from) => {
   applyPageMeta({
     title,
     description,
-    canonical: `${window.location.origin}${to.path}`,
+    canonical: officialSiteUrl(to.path),
     type: 'website',
     robots: String(to.name).startsWith('admin') ? 'noindex,nofollow' : undefined,
   })

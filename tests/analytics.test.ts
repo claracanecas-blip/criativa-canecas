@@ -14,6 +14,8 @@ test('analytics só habilita no hostname oficial em produção', () => {
   assert.equal(analyticsEnabled({ production: false, hostname: 'criativa-canecas.vercel.app' }), false)
   assert.equal(analyticsEnabled({ production: true, hostname: 'localhost' }), false)
   assert.equal(analyticsEnabled({ production: true, hostname: 'preview.vercel.app' }), false)
+  assert.equal(analyticsEnabled({ production: true, hostname: 'loja.exemplo.com.br' }, 'loja.exemplo.com.br'), true)
+  assert.equal(analyticsEnabled({ production: true, hostname: 'criativa-canecas.vercel.app' }, 'loja.exemplo.com.br'), false)
 })
 
 test('busca vira somente faixas numéricas sem carregar o texto consultado', () => {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { formatarPreco } from '@/data/produtos'
-import { linkWhatsapp } from '@/data/site'
+import { linkWhatsapp, officialSiteUrl } from '@/data/site'
 import CatalogImage from '@/components/ui/CatalogImage.vue'
 import type { Product } from '@/types/catalog'
 import { trackWhatsappClick } from '@/services/analytics'
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<{ produto: Product; priority?: boolean }>
 const cart = useQuoteCart()
 
 const link = computed(() =>
-  linkWhatsapp(`Olá! Tenho interesse na caneca ${props.produto.nome} (${props.produto.sku}). ${window.location.origin}/produto/${props.produto.slug}`),
+  linkWhatsapp(`Olá! Tenho interesse na caneca ${props.produto.nome} (${props.produto.sku}). ${officialSiteUrl(`/produto/${props.produto.slug}`)}`),
 )
 
 </script>

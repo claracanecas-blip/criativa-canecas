@@ -68,7 +68,9 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A página pública lê somente seções publicadas, usa backup local seguro em falha do Supabase e o prerender consulta a mesma fonte para produzir HTML rastreável. Nove textos-base seguros foram reconciliados sem inventar condições comerciais.
 - A migration remota `20260813221500` e o lint passaram; 11 verificações RLS confirmaram leitura pública limitada, escrita exclusiva de administrador, autoria privada, ciclo rascunho → publicação e limpeza integral dos dados temporários.
 - O fluxo real de `/admin/informacoes` passou seis verificações navegadas: proteção por login, abertura autorizada, criação de rascunho com autoria, invisibilidade pública, publicação visível e exclusão confirmada; conta e conteúdo temporários foram removidos.
-- Qualidade atual: 30 testes, 11 E2E/axe, typecheck e build aprovados; Lighthouse permanece home P99/A98, coleção P99/A100 e produto P90/A100, com Boas Práticas/SEO 100.
+- Qualidade atual: 32 testes, 11 E2E/axe, typecheck e build aprovados; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
+- A origem canônica foi centralizada em `VITE_SITE_URL`, configurada como variável pública na Vercel para Production, Preview e Development. Canonical, Open Graph, JSON-LD, sitemap, robots, links comerciais e analytics seguem a mesma origem.
+- Um build simulado com domínio alternativo atualizou home, produto e sitemap sem deixar canonical no hostname anterior; o procedimento de DNS, Supabase Auth, validação e rollback está em `docs/runbooks/CUSTOM_DOMAIN.md`.
 - Fase 9 de descoberta concluída com decisão de adiar checkout: faltam histórico de conversão e operação comercial definida; orçamento + WhatsApp permanece o fluxo oficial.
 
 ## Decisões tomadas
@@ -102,6 +104,7 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 27. Reavaliar checkout somente após 30 dias de métricas e operação pronta; gatilhos de investigação: 30 pedidos confirmáveis/mês ou perda documentada ≥10% por ausência de pagamento imediato.
 28. Se aprovado futuramente, começar por link/checkout hospedado após confirmação da arte, sem dados brutos de cartão no sistema.
 29. Manter FAQ e informações comerciais em seções versionadas no Supabase, com fallback local seguro; somente conteúdo publicado é público e a autoria fica restrita à RPC administrativa.
+30. Definir uma única origem oficial por `VITE_SITE_URL`; aliases e previews nunca devem virar canonical nem contaminar analytics.
 
 ## Histórico relevante
 
@@ -144,7 +147,7 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 - Objetos antigos do Storage são preservados quando um produto é excluído; uma rotina futura de limpeza deve remover somente órfãos comprovados.
 - Metadados estáticos e sitemap refletem o catálogo no momento do deploy; mudanças administrativas aparecem imediatamente na SPA, mas exigem novo deploy para atualizar prévias sociais e HTML rastreável.
 - O orçamento não sincroniza entre dispositivos e navegadores; isso é intencional enquanto não houver conta de cliente.
-- A allowlist de analytics contém apenas `criativa-canecas.vercel.app`; deve incluir o futuro domínio próprio no mesmo deploy da troca canônica.
+- O hostname aceito pelo analytics deriva de `VITE_SITE_URL`; a troca do domínio deve ocorrer no mesmo deploy das canônicas e da configuração do Supabase Auth.
 - Métricas são agregadas e não substituem uma plataforma de marketing/atribuição; adicionar Pixel ou GA depende de decisão de negócio e consentimento.
 - O site ainda não possui domínio próprio registrado nesta memória.
 - A Fase 8 depende de nome empresarial/CPF ou CNPJ, endereço/e-mail, condições comerciais oficiais, avaliações reais e acesso ao domínio/DNS.

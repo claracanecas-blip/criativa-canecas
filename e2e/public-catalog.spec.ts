@@ -34,8 +34,9 @@ test('fluxo busca → produto → WhatsApp preserva contexto comercial', async (
 
   await expect(page).toHaveURL(/\/produto\/arrow-/)
   await expect(page.getByText(/^Código CC-ARROW-/)).toBeVisible()
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /https:\/\/criativa-canecas\.vercel\.app\/produto\/arrow-/)
   const whatsapp = page.getByRole('link', { name: 'Pedir só este pelo WhatsApp' })
-  await expect(whatsapp).toHaveAttribute('href', /wa\.me\/.*CC-ARROW-.*produto%2Farrow-/)
+  await expect(whatsapp).toHaveAttribute('href', /wa\.me\/.*CC-ARROW-.*criativa-canecas\.vercel\.app%2Fproduto%2Farrow-/)
 })
 
 test('produto continua utilizável em viewport móvel e via teclado', async ({ page }) => {

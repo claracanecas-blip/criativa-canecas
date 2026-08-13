@@ -5,7 +5,7 @@ import CatalogImage from '@/components/ui/CatalogImage.vue'
 import { useCatalog } from '@/composables/useCatalog'
 import { useQuoteCart } from '@/composables/useQuoteCart'
 import { formatarPreco } from '@/data/produtos'
-import { linkWhatsapp } from '@/data/site'
+import { linkWhatsapp, officialSiteOrigin } from '@/data/site'
 import { buildQuoteMessage, quoteTotal } from '@/services/quoteCart'
 import { trackWhatsappClick } from '@/services/analytics'
 
@@ -20,7 +20,7 @@ const total = computed(() => quoteTotal(cart.items.value, catalog.produtos.value
 const whatsapp = computed(() => linkWhatsapp(buildQuoteMessage(
   cart.items.value,
   catalog.produtos.value,
-  window.location.origin,
+  officialSiteOrigin(),
 )))
 
 watch(cart.isOpen, async (open) => {

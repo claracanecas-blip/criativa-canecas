@@ -8,6 +8,7 @@ import {
   normalizePublicInformationContent,
   type PublicInformationContent,
 } from '../src/data/informationContent.ts'
+import { normalizeSiteOrigin } from '../src/data/site.ts'
 import { buildCatalogImportData } from './catalog-import-data.ts'
 
 interface SeoCollection {
@@ -37,7 +38,6 @@ export interface SeoCatalog {
   products: SeoProduct[]
 }
 
-const siteUrl = 'https://criativa-canecas.vercel.app'
 const storageUrl = 'https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images'
 
 function escapeHtml(value: string): string {
@@ -168,6 +168,7 @@ async function fallbackCatalog(): Promise<SeoCatalog> {
 
 export async function generateSeoAssets(outputDirectory = resolve('dist')): Promise<{ products: number; collections: number }> {
   const env = { ...loadEnv('production', process.cwd(), ''), ...process.env }
+  const siteUrl = normalizeSiteOrigin(env.VITE_SITE_URL)
   let catalog: SeoCatalog
   let informationContent = [...fallbackInformationContent]
   if (env.VITE_SUPABASE_URL && env.VITE_SUPABASE_PUBLISHABLE_KEY) {

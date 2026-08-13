@@ -8,7 +8,7 @@ import NaoEncontradoView from '@/views/NaoEncontradoView.vue'
 import { useCatalog } from '@/composables/useCatalog'
 import { usePageMeta, type PageMeta } from '@/composables/usePageMeta'
 import { formatarPreco } from '@/data/produtos'
-import { linkWhatsapp } from '@/data/site'
+import { linkWhatsapp, officialSiteOrigin, officialSiteUrl } from '@/data/site'
 import { productImageUrl } from '@/utils/assets'
 import { trackWhatsappClick } from '@/services/analytics'
 import { useQuoteCart } from '@/composables/useQuoteCart'
@@ -31,7 +31,7 @@ const related = computed(() => {
     .filter((item) => item.id !== product.value?.id && (item.colecoes ?? [item.colecao]).some((slug) => slugs.has(slug)))
     .slice(0, 4)
 })
-const canonical = computed(() => `${window.location.origin}/produto/${props.slug}`)
+const canonical = computed(() => officialSiteUrl(`/produto/${props.slug}`))
 const whatsapp = computed(() => product.value
   ? linkWhatsapp(`Olá! Tenho interesse na caneca ${product.value.nome} (${product.value.sku}). ${canonical.value}`)
   : '#')
@@ -61,8 +61,8 @@ const meta = computed<PageMeta | null>(() => product.value ? {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Início', item: window.location.origin },
-        { '@type': 'ListItem', position: 2, name: 'Coleções', item: `${window.location.origin}/colecoes` },
+        { '@type': 'ListItem', position: 1, name: 'Início', item: officialSiteOrigin() },
+        { '@type': 'ListItem', position: 2, name: 'Coleções', item: officialSiteUrl('/colecoes') },
         { '@type': 'ListItem', position: 3, name: product.value.nome, item: canonical.value },
       ],
     },

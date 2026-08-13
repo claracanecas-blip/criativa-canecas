@@ -12,6 +12,8 @@ Parte técnica concluída em 13 de agosto de 2026. A fase permanece em andamento
 - Foto só pode ser salva com uma referência de consentimento; nenhuma avaliação fictícia foi criada.
 - `site_content_sections` mantém cartões e FAQ com rascunho/publicado/arquivado; `/admin/informacoes` permite editar, ordenar e publicar sem deploy de código.
 - A página pública mostra somente conteúdo publicado, troca para backup local seguro em falha remota e o prerender inclui as mesmas nove seções no HTML rastreável.
+- `VITE_SITE_URL` controla a origem oficial em metadados, dados estruturados, sitemap, robots, links comerciais e analytics; a variável pública está configurada nos três ambientes da Vercel.
+- Um build com origem alternativa comprovou troca conjunta de home, produto e sitemap sem canonical residual no hostname anterior. O runbook `docs/runbooks/CUSTOM_DOMAIN.md` documenta ativação, validação e rollback.
 
 ## Segurança e qualidade
 
@@ -20,9 +22,9 @@ Parte técnica concluída em 13 de agosto de 2026. A fase permanece em andamento
 - Conteúdo institucional passou 11 verificações remotas: nove seções públicas reconciliadas, autoria privada, escritas anônima/não administrativa negadas, RPC administrativa protegida, rascunho oculto, publicação visível e limpeza confirmada.
 - O navegador validou seis etapas administrativas reais: redirecionamento ao login, autenticação, criação de rascunho com autoria, invisibilidade pública, publicação visível e exclusão confirmada.
 - Registros e usuário temporários removidos.
-- 30/30 testes, typecheck e build aprovados.
+- 32/32 testes, typecheck e build aprovados.
 - 11/11 Playwright/axe, incluindo conteúdo remoto/fallback em `/informacoes` e proteção da rota administrativa, sem violações automáticas WCAG 2.2 A/AA.
-- Lighthouse: home P99/A98/B100/S100; coleção P99/A100/B100/S100; produto P90/A100/B100/S100.
+- Lighthouse: home P98/A98/B100/S100; coleção P98/A100/B100/S100; produto P91/A100/B100/S100.
 
 ## Dependências externas restantes
 

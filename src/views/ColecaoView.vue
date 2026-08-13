@@ -8,6 +8,7 @@ import NaoEncontradoView from '@/views/NaoEncontradoView.vue'
 import { useCatalog } from '@/composables/useCatalog'
 import { usePageMeta, type PageMeta } from '@/composables/usePageMeta'
 import { productImageUrl } from '@/utils/assets'
+import { officialSiteOrigin, officialSiteUrl } from '@/data/site'
 
 const props = defineProps<{ slug: string }>()
 const catalog = useCatalog()
@@ -18,16 +19,16 @@ const catalogoPronto = computed(() => ['ready', 'fallback', 'error'].includes(ca
 const pageMeta = computed<PageMeta | null>(() => colecao.value ? {
   title: `${colecao.value.nome} | Criativa Canecas`,
   description: colecao.value.descricao || `Explore canecas da coleção ${colecao.value.nome} na Criativa Canecas.`,
-  canonical: `${window.location.origin}/colecao/${colecao.value.slug}`,
+  canonical: officialSiteUrl(`/colecao/${colecao.value.slug}`),
   image: itens.value[0]?.imagem ? productImageUrl(itens.value[0].imagem, 'social') : undefined,
   type: 'website',
   jsonLd: [{
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Início', item: window.location.origin },
-      { '@type': 'ListItem', position: 2, name: 'Coleções', item: `${window.location.origin}/colecoes` },
-      { '@type': 'ListItem', position: 3, name: colecao.value.nome, item: `${window.location.origin}/colecao/${colecao.value.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Início', item: officialSiteOrigin() },
+      { '@type': 'ListItem', position: 2, name: 'Coleções', item: officialSiteUrl('/colecoes') },
+      { '@type': 'ListItem', position: 3, name: colecao.value.nome, item: officialSiteUrl(`/colecao/${colecao.value.slug}`) },
     ],
   }],
 } : null)

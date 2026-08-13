@@ -1,6 +1,5 @@
 import { getSupabaseClient } from '@/services/supabase'
-
-const productionHosts = new Set(['criativa-canecas.vercel.app'])
+import { officialSiteHostname } from '@/data/site'
 
 export type RouteGroup =
   | 'home'
@@ -30,8 +29,8 @@ function browserRuntime(): AnalyticsRuntime {
   }
 }
 
-export function analyticsEnabled(runtime: AnalyticsRuntime = browserRuntime()) {
-  return runtime.production && productionHosts.has(runtime.hostname)
+export function analyticsEnabled(runtime: AnalyticsRuntime = browserRuntime(), productionHostname = officialSiteHostname()) {
+  return runtime.production && runtime.hostname === productionHostname
 }
 
 export function routeGroup(routeName: unknown): RouteGroup {
