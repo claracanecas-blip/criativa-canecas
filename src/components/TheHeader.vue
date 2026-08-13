@@ -1,6 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { ChevronDown } from '@lucide/vue'
+import AppIcon from '@/components/ui/AppIcon.vue'
 import MegaMenu from '@/components/MegaMenu.vue'
 import { menuPrincipal } from '@/data/colecoes'
 import { site, linkWhatsapp } from '@/data/site'
@@ -26,15 +28,17 @@ function buscar() {
 
       <form class="search-wrap" @submit.prevent="buscar">
         <input v-model="termo" type="search" placeholder="Digite o que você procura" aria-label="Buscar">
-        <button type="submit" aria-label="Buscar">⌕</button>
+        <button type="submit" aria-label="Buscar"><AppIcon name="Search" :size="19" /></button>
       </form>
 
       <div class="header-actions">
         <a class="head-link" :href="linkWhatsapp('Olá! Preciso de ajuda com um pedido.')" target="_blank" rel="noopener">
-          💬 Central de<br>Atendimento
+          <AppIcon name="MessageCircle" :size="21" />
+          <span>Central de<br>Atendimento</span>
         </a>
         <a class="head-link order" :href="linkWhatsapp('Olá! Gostaria de fazer um pedido.')" target="_blank" rel="noopener">
-          🛍 Meu pedido
+          <AppIcon name="ShoppingBag" :size="20" />
+          <span>Meu pedido</span>
         </a>
       </div>
     </div>
@@ -49,7 +53,7 @@ function buscar() {
         class="nav-link"
         :class="{ special: item.destaque }"
         :to="item.to"
-      >{{ item.nome }}</RouterLink>
+      >{{ item.nome }} <ChevronDown v-if="item.seta" :size="14" aria-hidden="true" /></RouterLink>
     </div>
   </nav>
 </template>
@@ -67,14 +71,14 @@ function buscar() {
 .search-wrap input:focus{border-color:#ef9fbb;box-shadow:0 0 0 3px #ffe8f0}
 .search-wrap button{position:absolute;right:5px;top:5px;width:36px;height:36px;border-radius:50%;border:0;background:var(--pink);color:#fff;cursor:pointer}
 .header-actions{display:flex;gap:9px;align-items:center}
-.head-link{padding:10px 11px;border-radius:13px;font-size:13px;font-weight:800;white-space:nowrap}
+.head-link{display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:13px;font-size:13px;font-weight:800;white-space:nowrap}
 .head-link:hover{background:var(--pink-soft)}
 .order{background:var(--pink);color:#fff;border-radius:999px;padding:11px 15px}
 .order:hover{background:var(--pink-dark)}
 
 .navbar{background:#fff;border-bottom:1px solid var(--line);position:relative;z-index:50}
 .nav-row{display:flex;align-items:center;gap:1px}
-.nav-link{padding:13px 15px;font-size:13px;font-weight:850;white-space:nowrap}
+.nav-link{display:flex;align-items:center;gap:3px;padding:13px 15px;font-size:13px;font-weight:850;white-space:nowrap}
 .nav-link:hover{color:var(--pink-dark)}
 .special{background:var(--pink);color:#fff}
 .special:hover{color:#fff;background:var(--pink-dark)}

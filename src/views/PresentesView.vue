@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import AppIcon from '@/components/ui/AppIcon.vue'
 import { colecoes } from '@/data/colecoes'
 import { produtosDaColecao } from '@/data/produtos'
 import { linkWhatsapp } from '@/data/site'
@@ -23,13 +24,13 @@ const cards = ocasioes
       total: produtosDaColecao(colecao.slug).length,
     }
   })
-  .filter(Boolean)
+  .filter((card) => card !== undefined)
 </script>
 
 <template>
   <section class="section container">
     <div class="section-title">
-      <h2>🎁 Presentes</h2>
+      <h2 class="flex items-center justify-center gap-2"><AppIcon name="Gift" :size="28" /> Presentes</h2>
       <p>Escolha pela ocasião — a gente ajuda a acertar</p>
     </div>
 
@@ -40,7 +41,7 @@ const cards = ocasioes
         class="ocasiao"
         :to="`/colecao/${card.slug}`"
       >
-        <div class="icone">{{ card.icone }}</div>
+        <div class="icone"><AppIcon :name="card.icone" :size="32" /></div>
         <strong>{{ card.titulo }}</strong>
         <span>Coleção {{ card.nome }}</span>
       </RouterLink>
@@ -60,7 +61,7 @@ const cards = ocasioes
 .ocasioes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .ocasiao{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;text-align:center;box-shadow:0 7px 20px rgba(70,35,50,.05)}
 .ocasiao:hover{border-color:#efacc3;transform:translateY(-2px)}
-.ocasiao .icone{font-size:32px;margin-bottom:10px}
+.ocasiao .icone{display:flex;justify-content:center;color:var(--pink);margin-bottom:10px}
 .ocasiao strong{display:block;font-size:16px}
 .ocasiao span{display:block;margin-top:5px;font-size:12px;color:var(--muted)}
 

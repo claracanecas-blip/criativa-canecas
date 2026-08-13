@@ -1,7 +1,7 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   { path: '/',              name: 'home',          component: HomeView,                                       meta: { titulo: 'Canecas Personalizadas' } },
   { path: '/colecoes',      name: 'colecoes',      component: () => import('@/views/ColecoesView.vue'),       meta: { titulo: 'Todas as coleções' } },
   { path: '/colecao/:slug', name: 'colecao',       component: () => import('@/views/ColecaoView.vue'),        props: true },
@@ -14,14 +14,14 @@ const routes = [
 ]
 
 const router = createRouter({
-  // hash history: funciona no GitHub Pages sem precisar de regra de rewrite
-  history: createWebHashHistory(),
+  // URLs limpas; a Vercel redireciona rotas internas para o index da SPA.
+  history: createWebHistory(),
   routes,
   scrollBehavior: (to, from, savedPosition) => savedPosition ?? { top: 0 },
 })
 
 router.afterEach((to) => {
-  const titulo = to.meta.titulo
+  const titulo = typeof to.meta.titulo === 'string' ? to.meta.titulo : undefined
   document.title = titulo ? `${titulo} | Criativa Canecas` : 'Criativa Canecas'
 })
 

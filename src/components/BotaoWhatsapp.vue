@@ -1,9 +1,12 @@
-<script setup>
+<script setup lang="ts">
+import { MessageCircle } from '@lucide/vue'
 import { linkWhatsapp } from '@/data/site'
 </script>
 
 <template>
-  <a class="wa" :href="linkWhatsapp()" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">☏</a>
+  <a class="wa" :href="linkWhatsapp()" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <MessageCircle :size="27" :stroke-width="2.2" aria-hidden="true" />
+  </a>
 </template>
 
 <style scoped>

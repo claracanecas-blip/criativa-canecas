@@ -1,14 +1,17 @@
-<script setup>
+<script setup lang="ts">
+import AppIcon from '@/components/ui/AppIcon.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import { colecoes, destaques } from '@/data/colecoes'
 import { produtosDaColecao } from '@/data/produtos'
 import { site } from '@/data/site'
+import { productImageUrl } from '@/utils/assets'
+import type { Collection, IconName } from '@/types/catalog'
 
-const beneficios = [
-  { icone: '🚚', titulo: 'Envio seguro',      texto: 'Seu pedido bem embalado' },
-  { icone: '💳', titulo: 'Pagamento fácil',   texto: 'Combine pelo atendimento' },
-  { icone: '🎁', titulo: 'Presente criativo', texto: 'Para todas as ocasiões' },
-  { icone: '💬', titulo: 'Atendimento rápido', texto: 'Direto pelo WhatsApp' },
+const beneficios: Array<{ icone: IconName; titulo: string; texto: string }> = [
+  { icone: 'Truck', titulo: 'Envio seguro',      texto: 'Seu pedido bem embalado' },
+  { icone: 'CreditCard', titulo: 'Pagamento fácil',   texto: 'Combine pelo atendimento' },
+  { icone: 'Gift', titulo: 'Presente criativo', texto: 'Para todas as ocasiões' },
+  { icone: 'MessageCircle', titulo: 'Atendimento rápido', texto: 'Direto pelo WhatsApp' },
 ]
 
 const banners = [
@@ -30,7 +33,7 @@ const banners = [
 
 const atalhos = destaques
   .map((slug) => colecoes.find((c) => c.slug === slug))
-  .filter(Boolean)
+  .filter((colecao): colecao is Collection => colecao !== undefined)
 
 const novidades = produtosDaColecao('series').slice(0, 8)
 </script>
@@ -51,7 +54,7 @@ const novidades = produtosDaColecao('series').slice(0, 8)
   <section class="benefits">
     <div class="container benefit-row">
       <div v-for="b in beneficios" :key="b.titulo" class="benefit">
-        <div class="icon">{{ b.icone }}</div>
+        <div class="icon"><AppIcon :name="b.icone" :size="25" /></div>
         <div>
           <b>{{ b.titulo }}</b>
           <span>{{ b.texto }}</span>
@@ -63,7 +66,7 @@ const novidades = produtosDaColecao('series').slice(0, 8)
   <section class="section container">
     <div class="promo-grid">
       <RouterLink v-for="banner in banners" :key="banner.titulo" class="promo" :to="banner.to">
-        <img :src="banner.imagem" alt="">
+        <img :src="productImageUrl(banner.imagem)" alt="" loading="lazy" decoding="async">
         <div class="promo-copy">
           <h3>{{ banner.titulo }}</h3>
           <p>{{ banner.texto }}</p>
@@ -84,9 +87,9 @@ const novidades = produtosDaColecao('series').slice(0, 8)
           v-for="colecao in atalhos"
           :key="colecao.slug"
           class="quick-card"
-          :to="`/colecao/${colecao.slug}`"
+          :to="colecao.to ?? `/colecao/${colecao.slug}`"
         >
-          <div>{{ colecao.icone }}</div>
+          <div><AppIcon :name="colecao.icone" :size="28" /></div>
           {{ colecao.nome }}
         </RouterLink>
       </div>
@@ -124,7 +127,7 @@ const novidades = produtosDaColecao('series').slice(0, 8)
 .benefit-row{display:grid;grid-template-columns:repeat(4,1fr)}
 .benefit{display:flex;justify-content:center;align-items:center;gap:11px;padding:13px 16px}
 .benefit+.benefit{border-left:1px solid var(--line)}
-.benefit .icon{font-size:25px}
+.benefit .icon{display:flex;color:var(--pink)}
 .benefit b{display:block;color:var(--pink-dark);font-size:13px}
 .benefit span{display:block;color:var(--muted);font-size:11px}
 
@@ -141,7 +144,7 @@ const novidades = produtosDaColecao('series').slice(0, 8)
 .quick-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
 .quick-card{padding:18px 12px;background:#fff;border:1px solid var(--line);border-radius:16px;text-align:center;font-size:13px;font-weight:850;box-shadow:0 7px 20px rgba(70,35,50,.05)}
 .quick-card:hover{border-color:#efacc3;transform:translateY(-2px)}
-.quick-card div{font-size:28px;margin-bottom:6px}
+.quick-card div{display:flex;justify-content:center;color:var(--pink);margin-bottom:6px}
 
 .ver-mais{text-align:center;margin-top:26px}
 

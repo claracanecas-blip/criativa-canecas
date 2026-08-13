@@ -1,5 +1,7 @@
-<script setup>
+<script setup lang="ts">
+import AppIcon from '@/components/ui/AppIcon.vue'
 import { linkWhatsapp } from '@/data/site'
+import type { IconName } from '@/types/catalog'
 
 const passos = [
   { n: 1, titulo: 'Escolha o modelo', texto: 'Caneca branca, mágica (muda com o calor) ou colorida.' },
@@ -8,18 +10,18 @@ const passos = [
   { n: 4, titulo: 'Receba em casa',   texto: 'Produção rápida e envio bem embalado.' },
 ]
 
-const opcoes = [
-  { icone: '⚪', nome: 'Caneca branca',  preco: 'R$ 39,90' },
-  { icone: '🪄', nome: 'Caneca mágica',  preco: 'R$ 54,90' },
-  { icone: '🌈', nome: 'Caneca colorida', preco: 'R$ 44,90' },
-  { icone: '📸', nome: 'Com foto',        preco: 'R$ 42,90' },
+const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
+  { icone: 'Coffee', nome: 'Caneca branca',  preco: 'R$ 39,90' },
+  { icone: 'WandSparkles', nome: 'Caneca mágica',  preco: 'R$ 54,90' },
+  { icone: 'Palette', nome: 'Caneca colorida', preco: 'R$ 44,90' },
+  { icone: 'Camera', nome: 'Com foto',        preco: 'R$ 42,90' },
 ]
 </script>
 
 <template>
   <section class="section container">
     <div class="section-title">
-      <h2>✨ Caneca Personalizada</h2>
+      <h2 class="flex items-center justify-center gap-2"><AppIcon name="Sparkles" :size="28" /> Caneca Personalizada</h2>
       <p>Você manda a ideia, a gente transforma em caneca</p>
     </div>
 
@@ -37,7 +39,7 @@ const opcoes = [
 
     <div class="opcoes">
       <div v-for="opcao in opcoes" :key="opcao.nome" class="opcao">
-        <div class="icone">{{ opcao.icone }}</div>
+        <div class="icone"><AppIcon :name="opcao.icone" :size="30" /></div>
         <strong>{{ opcao.nome }}</strong>
         <span>{{ opcao.preco }}</span>
       </div>
@@ -61,7 +63,7 @@ const opcoes = [
 .opcoes-titulo{margin-top:44px}
 .opcoes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .opcao{background:var(--pink-soft);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
-.opcao .icone{font-size:30px;margin-bottom:8px}
+.opcao .icone{display:flex;justify-content:center;color:var(--pink);margin-bottom:8px}
 .opcao span{display:block;margin-top:6px;color:var(--pink-dark);font-weight:900;font-size:18px}
 
 .cta{text-align:center;margin-top:34px}

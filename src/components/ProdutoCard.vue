@@ -1,20 +1,22 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import { formatarPreco } from '@/data/produtos'
 import { linkWhatsapp } from '@/data/site'
+import { productImageUrl } from '@/utils/assets'
+import type { Product } from '@/types/catalog'
 
-const props = defineProps({
-  produto: { type: Object, required: true },
-})
+const props = defineProps<{ produto: Product }>()
 
 const link = computed(() =>
   linkWhatsapp(`Olá! Tenho interesse na caneca ${props.produto.nome}.`),
 )
+
+const imagem = computed(() => productImageUrl(props.produto.imagem))
 </script>
 
 <template>
   <article class="card">
-    <img :src="produto.imagem" :alt="produto.nome" loading="lazy">
+    <img :src="imagem" :alt="produto.nome" width="1000" height="1000" loading="lazy" decoding="async">
     <div class="info">
       <h3>{{ produto.nome }}</h3>
       <div class="price">{{ formatarPreco(produto.preco) }}</div>

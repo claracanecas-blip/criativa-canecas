@@ -1,6 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { ChevronDown, ChevronRight, Menu } from '@lucide/vue'
 import { colecoes, menuLateral } from '@/data/colecoes'
 
 const route = useRoute()
@@ -15,7 +16,7 @@ const colunas = computed(() => {
   ).filter((coluna) => coluna.length)
 })
 
-function alternar(e) {
+function alternar(e: MouseEvent) {
   // no desktop o hover já abre; o clique só responde no próprio gatilho
   if (window.innerWidth <= 700 || e.target === e.currentTarget) {
     aberto.value = !aberto.value
@@ -27,7 +28,7 @@ watch(() => route.fullPath, () => { aberto.value = false })
 
 <template>
   <div class="categories-trigger" :class="{ open: aberto }" @click="alternar">
-    ☰ Todas as categorias ▾
+    <Menu :size="18" aria-hidden="true" /> Todas as categorias <ChevronDown :size="14" aria-hidden="true" />
 
     <div class="mega" @click.stop>
       <div class="mega-left">
@@ -37,7 +38,7 @@ watch(() => route.fullPath, () => { aberto.value = false })
           :to="item.to"
           :class="{ active: item.to === '/colecoes' }"
         >
-          {{ item.nome }}<span v-if="item.seta">›</span>
+          {{ item.nome }}<ChevronRight v-if="item.seta" :size="15" aria-hidden="true" />
         </RouterLink>
       </div>
 
@@ -48,11 +49,11 @@ watch(() => route.fullPath, () => { aberto.value = false })
             <RouterLink
               v-for="colecao in coluna"
               :key="colecao.slug"
-              :to="`/colecao/${colecao.slug}`"
+              :to="colecao.to ?? `/colecao/${colecao.slug}`"
             >{{ colecao.nome }}</RouterLink>
           </div>
         </div>
-        <RouterLink class="mega-todas" to="/colecoes">Ver todas as coleções ›</RouterLink>
+        <RouterLink class="mega-todas" to="/colecoes">Ver todas as coleções <ChevronRight :size="15" /></RouterLink>
       </div>
     </div>
   </div>
@@ -63,7 +64,7 @@ watch(() => route.fullPath, () => { aberto.value = false })
 </template>
 
 <style scoped>
-.categories-trigger{position:relative;padding:13px 15px;font-size:13px;font-weight:850;cursor:pointer;white-space:nowrap}
+.categories-trigger{position:relative;display:flex;align-items:center;gap:6px;padding:13px 15px;font-size:13px;font-weight:850;cursor:pointer;white-space:nowrap}
 .categories-trigger:hover{color:var(--pink-dark)}
 
 .mega-backdrop{position:fixed;inset:0;background:rgba(22,17,20,.48);z-index:38}
@@ -81,7 +82,7 @@ watch(() => route.fullPath, () => { aberto.value = false })
 .mega-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px 26px;max-height:330px;overflow:auto;padding-right:4px}
 .mega-grid a{display:block;padding:7px 0;font-size:13px;font-weight:750}
 .mega-grid a:hover{color:var(--pink);transform:translateX(3px)}
-.mega-todas{display:inline-block;margin-top:14px;font-size:13px;font-weight:850;color:var(--pink-dark)}
+.mega-todas{display:inline-flex;align-items:center;gap:3px;margin-top:14px;font-size:13px;font-weight:850;color:var(--pink-dark)}
 
 @media(max-width:950px){
   .mega-grid{grid-template-columns:repeat(4,1fr)}

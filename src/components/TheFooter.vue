@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { site, linkWhatsapp } from '@/data/site'
 
 const ano = new Date().getFullYear()

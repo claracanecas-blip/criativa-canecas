@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
 import { produtosDaColecao } from '@/data/produtos'
@@ -43,7 +43,7 @@ const frases = [
 
     <EstadoVazio
       v-else
-      icone="👔"
+      icone="Shirt"
       titulo="Coleção sendo preparada"
       texto="Os modelos de Dia dos Pais estão a caminho. Enquanto isso, personalizamos a sua do zero."
       mensagem="Olá! Quero uma caneca para o Dia dos Pais."

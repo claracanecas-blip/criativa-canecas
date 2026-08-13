@@ -1,84 +1,58 @@
 # Criativa Canecas
 
-Loja de canecas personalizadas — Vue 3 + Vite + Vue Router.
+Catálogo responsivo de canecas personalizadas, desenvolvido com Vue 3, TypeScript, Tailwind CSS, Lucide Icons e Vite. O site é publicado na Vercel e as imagens otimizadas são servidas pelo Supabase Storage.
 
-## Rodando localmente
+## Desenvolvimento local
+
+Requer Node.js 22 ou superior.
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173
-npm run build    # gera a pasta dist/
-npm run preview  # serve o build gerado
+npm run dev
+npm run typecheck
+npm run build
+npm run preview
 ```
 
-## Estrutura
+O endereço do bucket público pode ser substituído em `.env.local`:
 
+```dotenv
+VITE_SUPABASE_STORAGE_URL=https://SEU-PROJETO.supabase.co/storage/v1/object/public/product-images
 ```
-public/img/            imagens (produtos e logo)
-index.html             HTML de entrada do Vite
+
+Não coloque a chave `service_role` em arquivos do projeto ou em variáveis que começam com `VITE_`, pois elas ficam públicas no navegador.
+
+## Estrutura principal
+
+```text
 src/
-├── main.js            cria a app e monta em #app
-├── App.vue            layout: header + <RouterView> + footer
-├── assets/styles.css  variáveis de cor e estilos globais
-├── router/index.js    todas as rotas
-├── data/
-│   ├── site.js        nome, logo, WhatsApp
-│   ├── colecoes.js    catálogo de coleções e itens de menu
-│   └── produtos.js    produtos por coleção + busca
-├── components/
-│   ├── TheHeader.vue      barra de avisos, busca e menu
-│   ├── MegaMenu.vue       dropdown "Todas as categorias"
-│   ├── TheFooter.vue
-│   ├── BotaoWhatsapp.vue  botão flutuante
-│   ├── ProdutoCard.vue    card de produto
-│   └── EstadoVazio.vue    aviso de "coleção em breve"
-└── views/                 uma view por página
-    ├── HomeView.vue           /
-    ├── ColecoesView.vue       /colecoes
-    ├── ColecaoView.vue        /colecao/:slug   (serve todas as coleções)
-    ├── PersonalizadaView.vue  /personalizada
-    ├── ComFotosView.vue       /com-fotos
-    ├── PresentesView.vue      /presentes
-    ├── DiaDosPaisView.vue     /dia-dos-pais
-    ├── BuscaView.vue          /busca?q=...
-    └── NaoEncontradoView.vue  qualquer outra rota
+  components/       componentes Vue e ícones reutilizáveis
+  data/             coleções, produtos e dados do site
+  router/           rotas com URLs limpas
+  types/            tipos TypeScript do catálogo
+  utils/            resolução de imagens no Supabase
+  views/            páginas do catálogo
+scripts/            otimização, envio e verificação de imagens
+supabase/           configuração local do Supabase CLI
+vercel.json         fallback de rotas para a SPA
 ```
 
-As rotas usam **hash history** (`/#/colecao/series`), então o site funciona no
-GitHub Pages sem precisar de regra de redirecionamento no servidor.
+## Imagens de produtos
 
-## Como adicionar produtos
+Os arquivos originais ficam em `source-images/`, que não é enviado ao GitHub. Para preparar e sincronizar as imagens:
 
-1. Coloque as imagens em `public/img/` (nomes em minúsculas, sem espaços).
-2. Em `src/data/produtos.js`, adicione a chave da coleção:
-
-```js
-export const produtos = {
-  series: [ /* ... */ ],
-  animes: [
-    { id: 'naruto-1', nome: 'Naruto', imagem: './img/naruto-1.jpg' },
-    { id: 'one-piece-1', nome: 'One Piece', imagem: './img/one-piece-1.jpg', preco: 44.9 },
-  ],
-}
+```bash
+npm run images:optimize
+npm run images:upload
+npm run images:verify
 ```
 
-O preço é `R$ 39,90` quando `preco` não é informado.
+O script de otimização gera WebP com até 1000 × 1000 pixels em `tmp/supabase-upload/`. O envio exige as variáveis `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` somente no ambiente local da execução.
 
-## Como adicionar uma coleção nova
+Para cadastrar produtos, edite `src/data/produtos.ts`. Os caminhos legados `.jpg` e `.png` são convertidos automaticamente para o arquivo `.webp` correspondente no bucket.
 
-Basta acrescentar um item em `src/data/colecoes.js`:
+## Publicação
 
-```js
-{ slug: 'natal', nome: 'Natal', icone: '🎄' }
-```
+A Vercel detecta o Vite, executa `npm run build` e publica `dist/`. O arquivo `vercel.json` mantém as rotas do Vue Router funcionando ao abrir uma página diretamente.
 
-Ela já aparece no mega menu, na página `/colecoes` e ganha a rota
-`/colecao/natal` — nenhuma view precisa ser criada. Coleções sem produtos
-cadastrados exibem o aviso "em breve" com botão para o WhatsApp.
-
-## Publicando
-
-O conteúdo publicado é a pasta `dist/` gerada por `npm run build` — não o
-código-fonte. O workflow em `.github/workflows/deploy.yml` faz isso
-automaticamente a cada push na `main`; para ativá-lo, vá em
-**Settings › Pages › Build and deployment › Source** e escolha **GitHub Actions**.
+O workflow do GitHub executa instalação limpa, verificação TypeScript e build em cada push ou pull request. O deploy fica a cargo da integração GitHub–Vercel.

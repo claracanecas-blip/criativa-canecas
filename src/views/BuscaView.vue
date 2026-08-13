@@ -1,6 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import AppIcon from '@/components/ui/AppIcon.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
 import { colecoes } from '@/data/colecoes'
@@ -33,7 +34,7 @@ const colecoesEncontradas = computed(() => {
         :key="colecao.slug"
         class="chip"
         :to="`/colecao/${colecao.slug}`"
-      >{{ colecao.icone }} {{ colecao.nome }}</RouterLink>
+      ><AppIcon :name="colecao.icone" :size="16" /> {{ colecao.nome }}</RouterLink>
     </div>
 
     <div v-if="resultados.length" class="grid">
@@ -42,7 +43,7 @@ const colecoesEncontradas = computed(() => {
 
     <EstadoVazio
       v-else-if="!colecoesEncontradas.length"
-      icone="🔎"
+      icone="Search"
       titulo="Nada encontrado"
       texto="Não achamos nenhum modelo com esse termo. Conte o que você procura que a gente cria sob encomenda."
       :mensagem="`Olá! Estou procurando uma caneca de ${termo}.`"

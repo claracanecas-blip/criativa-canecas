@@ -5,15 +5,27 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vue-tsc --noEmit && vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "preview": "vite preview",
+    "images:optimize": "node scripts/optimize-product-images.mjs",
+    "images:upload": "node scripts/upload-product-images.mjs",
+    "images:verify": "node scripts/verify-product-images.mjs"
   },
   "dependencies": {
+    "@lucide/vue": "^1.31.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.2.0",
     "@vitejs/plugin-vue": "^5.2.1",
-    "vite": "^6.0.7"
+    "@vue/tsconfig": "^0.9.1",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~5.9.3",
+    "vite": "^6.0.7",
+    "vue-tsc": "^3.3.9"
   }
 }

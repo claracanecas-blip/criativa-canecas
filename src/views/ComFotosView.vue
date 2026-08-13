@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import AppIcon from '@/components/ui/AppIcon.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
 import { produtosDaColecao } from '@/data/produtos'
@@ -16,7 +17,7 @@ const dicas = [
 <template>
   <section class="section container">
     <div class="section-title">
-      <h2>📸 Canecas com Foto</h2>
+      <h2 class="flex items-center justify-center gap-2"><AppIcon name="Camera" :size="28" /> Canecas com Foto</h2>
       <p>Uma lembrança que acompanha o café de todo dia</p>
     </div>
 
@@ -26,7 +27,7 @@ const dicas = [
 
     <EstadoVazio
       v-else
-      icone="📸"
+      icone="Camera"
       titulo="Envie a sua foto"
       texto="Cada caneca com foto é feita sob encomenda. Mande a imagem pelo WhatsApp e devolvemos a prévia antes de imprimir."
       mensagem="Olá! Quero uma caneca com foto."

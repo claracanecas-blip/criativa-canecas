@@ -1,12 +1,11 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  // caminho relativo: o site funciona tanto na raiz do domínio
-  // quanto em https://usuario.github.io/criativa-canecas/
-  base: './',
-  plugins: [vue()],
+  base: '/',
+  plugins: [vue(), tailwindcss()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
