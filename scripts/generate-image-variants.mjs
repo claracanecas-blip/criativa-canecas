@@ -3,8 +3,10 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 
-const inputDirectory = fileURLToPath(new URL('../tmp/supabase-upload/', import.meta.url))
-const outputDirectory = fileURLToPath(new URL('../tmp/supabase-variants/', import.meta.url))
+const inputDirectory = process.env.IMAGE_VARIANTS_INPUT_DIR
+  ?? fileURLToPath(new URL('../tmp/supabase-upload/', import.meta.url))
+const outputDirectory = process.env.IMAGE_VARIANTS_OUTPUT_DIR
+  ?? fileURLToPath(new URL('../tmp/supabase-variants/', import.meta.url))
 const concurrency = 6
 const variants = [
   {

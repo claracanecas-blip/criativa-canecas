@@ -228,7 +228,7 @@ Uma fase só está concluída quando:
 
 **Rollback:** manter URLs WebP atuais até a validação das novas variantes.
 
-**Evidências locais:** [`docs/baselines/2026-08-13-phase-1-local/PHASE_1.md`](../baselines/2026-08-13-phase-1-local/PHASE_1.md), resumo Lighthouse móvel, oito testes automatizados e verificação pública dos 1.432 objetos.
+**Evidências locais:** [`docs/baselines/2026-08-13-phase-1-local/PHASE_1.md`](../baselines/2026-08-13-phase-1-local/PHASE_1.md), resumo Lighthouse móvel, suíte reproduzível de sete testes, validação local das 1.074 variantes e verificação pública dos 1.432 objetos.
 
 **Estimativa:** 1 a 2 dias.
 

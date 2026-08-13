@@ -26,7 +26,8 @@ Verificação local e no Supabase realizada em 13 de agosto de 2026. A publicaç
 
 ## Qualidade e desempenho local
 
-- Testes: 8 aprovados, incluindo integridade do catálogo, URLs do `srcset`, correspondência dos 358 nomes e dimensões das 1.074 variantes.
+- Testes locais antes do upload: 8 aprovados, incluindo integridade do catálogo, URLs do `srcset`, correspondência dos 358 nomes e dimensões das 1.074 variantes.
+- Suíte reproduzível em checkout limpo: 7 aprovados; o teste do gerador cria entradas sintéticas e valida as seis saídas sem depender de `tmp/` ou de originais não versionados.
 - `npm run typecheck`: aprovado.
 - `npm run build`: aprovado.
 - Lighthouse móvel local: home P100/A93/B100/S92, LCP 1,4 s e CLS 0; coleção P99/A95/B100/S92, LCP 1,7 s e CLS 0.
