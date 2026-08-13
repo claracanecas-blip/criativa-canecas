@@ -15,10 +15,13 @@ npm run build
 npm run preview
 ```
 
-O endereço do bucket público pode ser substituído em `.env.local`:
+O catálogo usa leitura pública do Supabase. Copie `.env.example` para `.env.local` e preencha a chave publicável:
 
 ```dotenv
 VITE_SUPABASE_STORAGE_URL=https://SEU-PROJETO.supabase.co/storage/v1/object/public/product-images
+VITE_SUPABASE_URL=https://SEU-PROJETO.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=sua_chave_publicavel
+VITE_CATALOG_SOURCE=supabase
 ```
 
 Não coloque a chave `service_role` em arquivos do projeto ou em variáveis que começam com `VITE_`, pois elas ficam públicas no navegador.
@@ -28,7 +31,9 @@ Não coloque a chave `service_role` em arquivos do projeto ou em variáveis que 
 ```text
 src/
   components/       componentes Vue e ícones reutilizáveis
-  data/             coleções, produtos e dados do site
+  composables/      cache e estado compartilhado do catálogo
+  data/             fallback local do catálogo e dados do site
+  repositories/     leitura tipada do Supabase e adaptador de fallback
   router/           rotas com URLs limpas
   types/            tipos TypeScript do catálogo
   utils/            resolução de imagens no Supabase
@@ -51,7 +56,7 @@ npm run images:verify
 
 O script de otimização gera WebP com até 1000 × 1000 pixels em `tmp/supabase-upload/`. O gerador de variantes cria cards de 320 × 320 e 640 × 640, além da imagem social de 1200 × 630, em `tmp/supabase-variants/`. O upload usa cache público de um ano e exige `SUPABASE_PROJECT_REF` (ou `SUPABASE_URL`) e `SUPABASE_SERVICE_KEY` (ou `SUPABASE_SERVICE_ROLE_KEY`) somente no ambiente local da execução.
 
-Para cadastrar produtos, edite `src/data/produtos.ts`. Os caminhos legados `.jpg` e `.png` são convertidos automaticamente para o arquivo `.webp` correspondente no bucket.
+O frontend consome os metadados do Supabase. Em caso de indisponibilidade temporária, o repositório exibe a cópia TypeScript de forma automática. Para rollback operacional, defina `VITE_CATALOG_SOURCE=typescript` na Vercel e faça um novo deploy. Os caminhos legados `.jpg` e `.png` continuam convertidos automaticamente para o arquivo `.webp` correspondente no bucket.
 
 ## Publicação
 

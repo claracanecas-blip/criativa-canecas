@@ -20,13 +20,15 @@ export const colecoes: Collection[] = [
 ]
 
 // Permite abrir favoritos e links antigos sem exibi-los novamente na vitrine.
-const colecoesLegadas: Collection[] = [
+export const colecoesLegadas: Collection[] = [
   { slug: 'desenhos', nome: 'Desenhos', icone: 'Palette' },
   { slug: 'herois', nome: 'Heróis', icone: 'Sparkles' },
 ]
 
+export const todasColecoes: Collection[] = [...colecoes, ...colecoesLegadas]
+
 export function buscarColecao(slug: string): Collection | undefined {
-  return [...colecoes, ...colecoesLegadas].find((colecao) => colecao.slug === slug)
+  return todasColecoes.find((colecao) => colecao.slug === slug)
 }
 
 /** Atalhos exibidos na home, em "Categorias em destaque". */

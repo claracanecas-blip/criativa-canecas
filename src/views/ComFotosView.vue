@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import AppIcon from '@/components/ui/AppIcon.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
-import { produtosDaColecao } from '@/data/produtos'
+import { useCatalog } from '@/composables/useCatalog'
 
-const itens = produtosDaColecao('com-fotos')
+const catalog = useCatalog()
+const itens = computed(() => catalog.produtosDaColecao('com-fotos'))
 
 const dicas = [
   'Use fotos nítidas, de preferência na horizontal.',

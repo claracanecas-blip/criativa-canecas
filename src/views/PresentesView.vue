@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import AppIcon from '@/components/ui/AppIcon.vue'
-import { colecoes } from '@/data/colecoes'
-import { produtosDaColecao } from '@/data/produtos'
+import { useCatalog } from '@/composables/useCatalog'
 import { linkWhatsapp } from '@/data/site'
+
+const catalog = useCatalog()
 
 // ocasiões de presente, cada uma apontando para uma coleção do catálogo
 const ocasioes = [
@@ -14,17 +16,17 @@ const ocasioes = [
   { slug: 'motivacional', titulo: 'Só para animar o dia' },
 ]
 
-const cards = ocasioes
+const cards = computed(() => ocasioes
   .map((ocasiao) => {
-    const colecao = colecoes.find((c) => c.slug === ocasiao.slug)
+    const colecao = catalog.colecoes.value.find((collection) => collection.slug === ocasiao.slug)
     return colecao && {
       ...ocasiao,
       icone: colecao.icone,
       nome: colecao.nome,
-      total: produtosDaColecao(colecao.slug).length,
+      total: catalog.produtosDaColecao(colecao.slug).length,
     }
   })
-  .filter((card) => card !== undefined)
+  .filter((card) => card !== undefined))
 </script>
 
 <template>

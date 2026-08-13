@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import AppIcon from '@/components/ui/AppIcon.vue'
-import { colecoes } from '@/data/colecoes'
-import { produtosDaColecao } from '@/data/produtos'
+import { useCatalog } from '@/composables/useCatalog'
+
+const catalog = useCatalog()
 
 const lista = computed(() =>
-  colecoes.map((colecao) => ({
+  catalog.colecoes.value.map((colecao) => ({
     ...colecao,
-    total: produtosDaColecao(colecao.slug).length,
+    total: catalog.produtosDaColecao(colecao.slug).length,
   })),
 )
 </script>
@@ -16,7 +17,7 @@ const lista = computed(() =>
   <section class="section container">
     <div class="section-title">
       <h2>Todas as coleções</h2>
-      <p>{{ colecoes.length }} temas para escolher a sua caneca</p>
+      <p>{{ catalog.colecoes.value.length }} temas para escolher a sua caneca</p>
     </div>
 
     <div class="colecoes-grid">

@@ -1,15 +1,18 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
-import { produtosDaColecao } from '@/data/produtos'
+import { useCatalog } from '@/composables/useCatalog'
 import { linkWhatsapp } from '@/data/site'
+
+const catalog = useCatalog()
 
 // campanha sazonal: enquanto não houver uma coleção própria,
 // mostramos sugestões vindas de outras coleções do catálogo
-const sugestoes = [
-  ...produtosDaColecao('pais'),
-  ...produtosDaColecao('series').slice(0, 4),
-]
+const sugestoes = computed(() => [
+  ...catalog.produtosDaColecao('pais'),
+  ...catalog.produtosDaColecao('series').slice(0, 4),
+])
 
 const frases = [
   'Melhor pai do mundo',

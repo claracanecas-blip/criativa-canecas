@@ -29,6 +29,9 @@ export interface Collection {
   nome: string
   icone: IconName
   to?: string
+  descricao?: string
+  publicada?: boolean
+  listada?: boolean
 }
 
 export interface MenuItem {
@@ -48,5 +51,11 @@ export interface ProductInput {
 
 export interface Product extends ProductInput {
   colecao: string
+  colecoes?: string[]
   preco: number
+}
+
+export interface CatalogSnapshot {
+  colecoes: Collection[]
+  produtos: Product[]
 }

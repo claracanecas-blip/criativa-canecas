@@ -5,13 +5,14 @@ import AppIcon from '@/components/ui/AppIcon.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
 import NaoEncontradoView from '@/views/NaoEncontradoView.vue'
-import { buscarColecao } from '@/data/colecoes'
-import { produtosDaColecao } from '@/data/produtos'
+import { useCatalog } from '@/composables/useCatalog'
 
 const props = defineProps<{ slug: string }>()
+const catalog = useCatalog()
 
-const colecao = computed(() => buscarColecao(props.slug))
-const itens = computed(() => produtosDaColecao(props.slug))
+const colecao = computed(() => catalog.buscarColecao(props.slug))
+const itens = computed(() => catalog.produtosDaColecao(props.slug))
+const catalogoPronto = computed(() => ['ready', 'fallback', 'error'].includes(catalog.state.value))
 
 // filtro por tema (ex.: Arrow, Breaking Bad), montado a partir dos produtos
 const temas = computed(() => [...new Set(itens.value.map((p) => p.tema ?? p.nome))].sort())
@@ -34,11 +35,10 @@ function selecionarTema(tema: string) {
 }
 
 watch(
-  () => props.slug,
-  (slug) => {
+  () => [props.slug, colecao.value?.nome] as const,
+  ([slug, nome]) => {
     temaAtivo.value = ''
     pagina.value = 1
-    const nome = buscarColecao(slug)?.nome
     document.title = nome ? `${nome} | Criativa Canecas` : 'Criativa Canecas'
   },
   { immediate: true },
@@ -46,9 +46,9 @@ watch(
 </script>
 
 <template>
-  <NaoEncontradoView v-if="!colecao" />
+  <NaoEncontradoView v-if="catalogoPronto && !colecao" />
 
-  <section v-else class="section container">
+  <section v-else-if="colecao" class="section container">
     <nav class="trilha">
       <RouterLink to="/">Início</RouterLink><ChevronRight :size="13" />
       <RouterLink to="/colecoes">Coleções</RouterLink><ChevronRight :size="13" />

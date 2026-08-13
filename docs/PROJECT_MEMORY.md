@@ -23,7 +23,7 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Originais: preservados localmente em `source-images/` e ignorados pelo Git.
 - Pacote de produção limpo: aproximadamente 2,1 MB e 21 arquivos na medição da migração.
 - Rotas usam `createWebHistory`; `vercel.json` fornece fallback de SPA.
-- Catálogo ainda é definido em `src/data/produtos.ts` e `src/data/colecoes.ts`.
+- O frontend consome o catálogo do Supabase por `src/repositories/catalogRepository.ts`; os dados TypeScript permanecem como fallback/rollback.
 - O frontend resolve caminhos antigos `.jpg`/`.png` para WebP no Supabase por `src/utils/assets.ts`.
 - Fluxo de compra atual: contato pelo WhatsApp, sem checkout próprio.
 - Fase 0 do roadmap concluída: 341 produtos/IDs únicos, 358 imagens locais/remotas, 21 arquivos e 2,10 MB no build limpo.
@@ -36,6 +36,10 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Fase 2 concluída no Supabase: 17 coleções publicadas (15 listadas), 341 produtos, 341 relações e 1.364 associações de imagem.
 - Migrations remotas `20260813184000`, `20260813190000` e `20260813191500` reconciliadas; tipos gerados em `src/types/database.ts` e `db lint` sem apontamentos.
 - RLS remota validada para anon, autenticado sem admin e administrador temporário; nenhum usuário ou produto de teste permaneceu.
+- Fase 3 concluída: listagem, coleção, busca, home e menus usam um cache compartilhado do catálogo remoto, com estados de carregamento, erro recuperável e fallback local.
+- Variáveis públicas `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` e `VITE_CATALOG_SOURCE` configuradas na Vercel para Production, Preview e Development; nenhuma chave administrativa foi adicionada.
+- Paridade navegada: 15 coleções listadas, 80 itens em `/colecao/series`, quatro resultados para `Arrow` e link legado `/colecao/desenhos` com 27 itens.
+- Lighthouse local da Fase 3: home P99/A93/B100/S92 e coleção P98/A95/B100/S92.
 
 ## Decisões tomadas
 
@@ -51,6 +55,8 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 10. Tratar caminhos de imagem como versionados: quando o conteúdo mudar, publicar um novo nome em vez de reutilizar indefinidamente uma URL com cache de um ano.
 11. Usar IDs textuais estáveis no banco para preservar os IDs/slugs existentes durante a migração.
 12. Separar `is_published` de `is_listed`: coleções legadas continuam acessíveis por URL, mas não voltam aos menus.
+13. Centralizar leitura do catálogo em um repositório tipado; a UI não acessa diretamente o cliente Supabase.
+14. Manter fallback automático para TypeScript em falhas transitórias e feature flag `VITE_CATALOG_SOURCE=typescript` para rollback integral.
 
 ## Histórico relevante
 
@@ -90,8 +96,7 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 ## Riscos e débitos conhecidos
 
 - A coleta inicial de cache usou `HEAD` e foi inconclusiva para `GET`; a Fase 1 agora verifica por `GET` e confirmou `public, max-age=31536000` nos 1.432 objetos.
-- Metadados do catálogo ainda exigem código e deploy.
-- O banco já contém o catálogo, mas o frontend continuará usando TypeScript até a feature flag/repositório resiliente da Fase 3 estar publicado.
+- A manutenção de metadados ainda exige script administrativo; o painel da Fase 4 eliminará essa dependência cotidiana.
 - Ainda não existe painel administrativo ou autenticação de administrador.
 - Não existem páginas individuais de produto, sitemap dinâmico, JSON-LD de produto ou Open Graph por item.
 - Não existe medição formal de clique no WhatsApp, busca ou visualização de produto.
@@ -101,9 +106,9 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Implementar a Fase 3 com cliente público tipado, repositório e feature flag de rollback para TypeScript.
-2. Exercitar carregamento, vazio e falha simulada sem tela branca.
-3. Publicar apenas após comprovar paridade dos 341 produtos, 15 coleções listadas e links legados.
+1. Implementar a Fase 4 com autenticação Supabase e rota `/admin` protegida.
+2. Entregar CRUD de produtos e coleções respeitando as políticas RLS já validadas.
+3. Implementar upload/validação de imagens e comprovar o ciclo criar → revisar → publicar → visualizar.
 
 ## Protocolo de atualização da memória
 

@@ -2,17 +2,19 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { ChevronDown, ChevronRight, Menu } from '@lucide/vue'
-import { colecoes, menuLateral } from '@/data/colecoes'
+import { useCatalog } from '@/composables/useCatalog'
+import { menuLateral } from '@/data/colecoes'
 
 const route = useRoute()
 const aberto = ref(false)
+const catalog = useCatalog()
 
 // as coleções são distribuídas em 5 colunas, na ordem do catálogo
 const COLUNAS = 5
 const colunas = computed(() => {
-  const porColuna = Math.ceil(colecoes.length / COLUNAS)
+  const porColuna = Math.ceil(catalog.colecoes.value.length / COLUNAS)
   return Array.from({ length: COLUNAS }, (_, i) =>
-    colecoes.slice(i * porColuna, (i + 1) * porColuna),
+    catalog.colecoes.value.slice(i * porColuna, (i + 1) * porColuna),
   ).filter((coluna) => coluna.length)
 })
 

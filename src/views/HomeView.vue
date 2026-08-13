@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import AppIcon from '@/components/ui/AppIcon.vue'
 import CatalogImage from '@/components/ui/CatalogImage.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
-import { colecoes, destaques } from '@/data/colecoes'
-import { produtosDaColecao } from '@/data/produtos'
+import { useCatalog } from '@/composables/useCatalog'
+import { destaques } from '@/data/colecoes'
 import { site } from '@/data/site'
 import type { Collection, IconName } from '@/types/catalog'
 
@@ -31,11 +32,12 @@ const banners = [
   },
 ]
 
-const atalhos = destaques
-  .map((slug) => colecoes.find((c) => c.slug === slug))
-  .filter((colecao): colecao is Collection => colecao !== undefined)
+const catalog = useCatalog()
+const atalhos = computed(() => destaques
+  .map((slug) => catalog.colecoes.value.find((collection) => collection.slug === slug))
+  .filter((collection): collection is Collection => collection !== undefined))
 
-const novidades = produtosDaColecao('series').slice(0, 8)
+const novidades = computed(() => catalog.produtosDaColecao('series').slice(0, 8))
 </script>
 
 <template>

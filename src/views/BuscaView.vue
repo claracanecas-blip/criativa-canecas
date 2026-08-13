@@ -4,18 +4,18 @@ import { useRoute } from 'vue-router'
 import AppIcon from '@/components/ui/AppIcon.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
-import { colecoes } from '@/data/colecoes'
-import { buscarProdutos } from '@/data/produtos'
+import { useCatalog } from '@/composables/useCatalog'
 
 const route = useRoute()
+const catalog = useCatalog()
 const termo = computed(() => String(route.query.q ?? ''))
 
-const resultados = computed(() => buscarProdutos(termo.value))
+const resultados = computed(() => catalog.buscarProdutos(termo.value))
 
 const colecoesEncontradas = computed(() => {
   const q = termo.value.trim().toLowerCase()
   if (!q) return []
-  return colecoes.filter(
+  return catalog.colecoes.value.filter(
     (c) => c.nome.toLowerCase().includes(q) || c.slug.includes(q),
   )
 })

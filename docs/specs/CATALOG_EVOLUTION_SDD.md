@@ -6,8 +6,8 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fases 0, 1 e 2 concluídas |
-| Versão | 1.1 |
+| Estado | Em execução; Fases 0, 1, 2 e 3 concluídas |
+| Versão | 1.2 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -18,7 +18,7 @@ Este documento é a fonte de verdade para o próximo ciclo do produto. Cada fase
 
 A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 1.432 imagens WebP no bucket público `product-images` e o Postgres contém os metadados reconciliados do catálogo.
 
-O catálogo ainda é definido em arquivos TypeScript. Isso exige alteração de código e um deploy para mudar nome, preço, ordem, coleção ou disponibilidade de um produto. O fluxo comercial termina no WhatsApp e ainda não mede formalmente a jornada entre visualização, busca, seleção e contato.
+O catálogo público é lido do Supabase por uma camada de repositório tipada e possui fallback operacional para os arquivos TypeScript. A manutenção cotidiana ainda depende de scripts administrativos até a entrega do painel. O fluxo comercial termina no WhatsApp e ainda não mede formalmente a jornada entre visualização, busca, seleção e contato.
 
 ## 3. Objetivos do ciclo
 
@@ -246,17 +246,23 @@ Uma fase só está concluída quando:
 
 **Rollback:** feature flag ou adaptador para retornar aos dados TypeScript.
 
-**Evidências:** [`docs/baselines/2026-08-13-phase-2/PHASE_2.md`](../baselines/2026-08-13-phase-2/PHASE_2.md), relatórios JSON de reconciliação/RLS, duas migrations remotas reconciliadas, tipos gerados e 11 testes locais.
+**Evidências:** [`docs/baselines/2026-08-13-phase-2/PHASE_2.md`](../baselines/2026-08-13-phase-2/PHASE_2.md), relatórios JSON de reconciliação/RLS, três migrations remotas reconciliadas, tipos gerados e 11 testes locais.
 
 **Estimativa:** 2 a 4 dias.
 
 ### Fase 3 — Frontend consumindo Supabase
+
+**Estado:** concluída e validada em 13 de agosto de 2026.
 
 **Objetivo:** fazer listagem, coleção e busca consumirem o novo catálogo.
 
 **Entregas:** camada de repositório, cache de consulta, estados de carregamento/erro e paginação.
 
 **Aceite:** paridade com o catálogo atual, links preservados e falha simulada sem tela branca.
+
+**Rollback:** definir `VITE_CATALOG_SOURCE=typescript` na Vercel e criar novo deploy; o adaptador local permanece versionado.
+
+**Evidências:** [`docs/baselines/2026-08-13-phase-3/PHASE_3.md`](../baselines/2026-08-13-phase-3/PHASE_3.md), suíte de 14 testes, validação navegada das rotas de listagem/coleção/busca/link legado e Lighthouse local P99/P98 com Supabase.
 
 **Estimativa:** 2 a 3 dias.
 
