@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import AppIcon from '@/components/ui/AppIcon.vue'
+import CatalogImage from '@/components/ui/CatalogImage.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import { colecoes, destaques } from '@/data/colecoes'
 import { produtosDaColecao } from '@/data/produtos'
 import { site } from '@/data/site'
-import { productImageUrl } from '@/utils/assets'
 import type { Collection, IconName } from '@/types/catalog'
 
 const beneficios: Array<{ icone: IconName; titulo: string; texto: string }> = [
@@ -66,7 +66,12 @@ const novidades = produtosDaColecao('series').slice(0, 8)
   <section class="section container">
     <div class="promo-grid">
       <RouterLink v-for="banner in banners" :key="banner.titulo" class="promo" :to="banner.to">
-        <img :src="productImageUrl(banner.imagem)" alt="" loading="lazy" decoding="async">
+        <CatalogImage
+          class="promo-media"
+          :src="banner.imagem"
+          :alt="banner.titulo"
+          sizes="(max-width: 700px) calc(100vw - 32px), 48vw"
+        />
         <div class="promo-copy">
           <h3>{{ banner.titulo }}</h3>
           <p>{{ banner.texto }}</p>
@@ -133,7 +138,7 @@ const novidades = produtosDaColecao('series').slice(0, 8)
 
 .promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .promo{min-height:220px;border-radius:22px;position:relative;overflow:hidden;box-shadow:var(--shadow);background:#eee;display:block}
-.promo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.promo-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .promo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,19,28,.78),rgba(40,19,28,.12))}
 .promo-copy{position:absolute;left:22px;top:50%;transform:translateY(-50%);z-index:2;color:#fff;width:54%}
 .promo-copy h3{font-size:26px;line-height:1.06;margin:0 0 8px}

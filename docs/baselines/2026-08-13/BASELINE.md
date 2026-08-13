@@ -26,7 +26,9 @@ As contagens de IDs estão reconciliadas quando “Produtos materializados” e 
 - Referências sem WebP local: 0
 - Imagens remotas inacessíveis: 0
 - WebP locais sem produto atual: 17
-- Distribuição de cache remoto: `{"no-cache":358}`
+- Distribuição observada por HEAD: `{"no-cache":358}`
+
+Nota metodológica: essa coleta inicial usou `HEAD`, que no endpoint público do Supabase não refletiu de forma confiável o cache entregue em `GET`. Portanto, o valor acima registra apenas a resposta HEAD histórica e não prova o cache GET anterior. A verificação da Fase 1 usa `GET` e cancela o corpo após ler os cabeçalhos.
 
 ## Mapa e resposta das rotas
 

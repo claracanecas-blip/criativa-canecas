@@ -148,14 +148,16 @@ const routeResults = online
 const imageResults = online
   ? await mapWithConcurrency(optimizedNames, 12, async (file) => {
       try {
-        const response = await fetch(`${storageUrl}/${encodeURIComponent(file)}`, { method: 'HEAD' })
-        return {
+        const response = await fetch(`${storageUrl}/${encodeURIComponent(file)}`)
+        const result = {
           file,
           status: response.status,
           contentType: response.headers.get('content-type'),
           cacheControl: response.headers.get('cache-control'),
           contentLength: Number(response.headers.get('content-length') ?? 0),
         }
+        await response.body?.cancel()
+        return result
       } catch (error) {
         return { file, status: 0, error: error instanceof Error ? error.message : String(error) }
       }
@@ -211,6 +213,7 @@ const summary = {
   },
   routes: routePaths,
   routeChecks: routeResults,
+  imageHeaderMethod: 'GET',
   imageHeaderDistribution: Object.fromEntries(
     [...new Set(imageResults.map((result) => result.cacheControl ?? 'ausente'))]
       .sort()
@@ -261,7 +264,7 @@ As contagens de IDs estão reconciliadas quando “Produtos materializados” e 
 - Referências sem WebP local: ${missingOptimizedReferences.length}
 - Imagens remotas inacessíveis: ${summary.anomalies.unreachableRemoteImages.length}
 - WebP locais sem produto atual: ${unreferencedOptimizedImages.length}
-- Distribuição de cache remoto: \`${JSON.stringify(summary.imageHeaderDistribution)}\`
+- Distribuição de cache remoto por GET: \`${JSON.stringify(summary.imageHeaderDistribution)}\`
 
 ## Mapa e resposta das rotas
 

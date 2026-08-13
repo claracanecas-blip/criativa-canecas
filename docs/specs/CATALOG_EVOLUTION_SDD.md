@@ -6,7 +6,7 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fase 0 concluída |
+| Estado | Em execução; Fase 0 pronta para publicação e Fase 1 verificada localmente |
 | Versão | 1.1 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
@@ -218,6 +218,8 @@ Uma fase só está concluída quando:
 
 ### Fase 1 — Cache e variantes de imagem
 
+**Estado:** implementação e verificações local/Storage concluídas em 13 de agosto de 2026; publicação e aferição final na Vercel pendentes da reautenticação do GitHub.
+
 **Objetivo:** reduzir tráfego e acelerar carregamento móvel.
 
 **Entregas:** correção de `Cache-Control`, geração de variantes, `srcset`, placeholder de falha e atualização dos scripts de upload/verificação.
@@ -225,6 +227,8 @@ Uma fase só está concluída quando:
 **Aceite:** resposta pública com cache prolongado, variante correta selecionada em celular e nenhuma imagem ausente.
 
 **Rollback:** manter URLs WebP atuais até a validação das novas variantes.
+
+**Evidências locais:** [`docs/baselines/2026-08-13-phase-1-local/PHASE_1.md`](../baselines/2026-08-13-phase-1-local/PHASE_1.md), resumo Lighthouse móvel, oito testes automatizados e verificação pública dos 1.432 objetos.
 
 **Estimativa:** 1 a 2 dias.
 
@@ -355,7 +359,7 @@ Um item está concluído quando código, migrations, testes, documentação, pre
 | Fase | Estado | Evidência |
 |---|---|---|
 | 0 — Baseline | Concluída | `docs/baselines/2026-08-13/` e testes de integridade |
-| 1 — Imagens | Não iniciada | — |
+| 1 — Imagens | Pronta para publicação | `docs/baselines/2026-08-13-phase-1-local/` e verificação de 1.432 objetos |
 | 2 — Banco | Não iniciada | — |
 | 3 — Integração frontend | Não iniciada | — |
 | 4 — Administração | Não iniciada | — |

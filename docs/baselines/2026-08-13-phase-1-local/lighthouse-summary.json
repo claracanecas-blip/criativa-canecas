@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T18:04:48.402Z",
+  "conditions": {
+    "label": "Fase 1 local — imagens responsivas",
+    "siteUrl": "http://127.0.0.1:4173",
+    "formFactor": "mobile",
+    "categories": [
+      "performance",
+      "accessibility",
+      "best-practices",
+      "seo"
+    ],
+    "note": "Resultado laboratorial; variações entre execuções são esperadas."
+  },
+  "reports": [
+    {
+      "name": "home",
+      "requestedUrl": "http://127.0.0.1:4173/",
+      "finalUrl": "http://127.0.0.1:4173/",
+      "fetchTime": "2026-08-13T18:04:31.053Z",
+      "lighthouseVersion": "13.4.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 100,
+        "accessibility": 93,
+        "bestPractices": 100,
+        "seo": 92
+      },
+      "metrics": {
+        "firstContentfulPaint": {
+          "value": 1211.6947,
+          "displayValue": "1.2 s"
+        },
+        "largestContentfulPaint": {
+          "value": 1367.54205,
+          "displayValue": "1.4 s"
+        },
+        "totalBlockingTime": {
+          "value": 44.5,
+          "displayValue": "40 ms"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "displayValue": "0"
+        },
+        "speedIndex": {
+          "value": 1211.6947,
+          "displayValue": "1.2 s"
+        },
+        "interactive": {
+          "value": 1523.2760075,
+          "displayValue": "1.5 s"
+        }
+      },
+      "imageRequests": {
+        "count": 12,
+        "transferBytes": 265161,
+        "variantDistribution": {
+          "other": 2,
+          "original": 2,
+          "card-640": 8
+        },
+        "items": [
+          {
+            "url": "http://127.0.0.1:4173/img/logo.webp",
+            "transferSize": 12094,
+            "resourceSize": 11826
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/breaking-bad-1.webp",
+            "transferSize": 57805,
+            "resourceSize": 57356
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/black-mirror-2.webp",
+            "transferSize": 41494,
+            "resourceSize": 41086
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-1.webp",
+            "transferSize": 15727,
+            "resourceSize": 15080
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-2.webp",
+            "transferSize": 24417,
+            "resourceSize": 24038
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-3.webp",
+            "transferSize": 13968,
+            "resourceSize": 13586
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-4.webp",
+            "transferSize": 15426,
+            "resourceSize": 15052
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-1.webp",
+            "transferSize": 18134,
+            "resourceSize": 17504
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-2.webp",
+            "transferSize": 25323,
+            "resourceSize": 24934
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-3.webp",
+            "transferSize": 21246,
+            "resourceSize": 20864
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/black-mirror-1.webp",
+            "transferSize": 19400,
+            "resourceSize": 19016
+          },
+          {
+            "url": "http://127.0.0.1:4173/img/logo.webp",
+            "transferSize": 127,
+            "resourceSize": 11826
+          }
+        ]
+      },
+      "diagnostics": {
+        "layoutShifts": []
+      }
+    },
+    {
+      "name": "collection-series",
+      "requestedUrl": "http://127.0.0.1:4173/colecao/series",
+      "finalUrl": "http://127.0.0.1:4173/colecao/series",
+      "fetchTime": "2026-08-13T18:04:41.807Z",
+      "lighthouseVersion": "13.4.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 99,
+        "accessibility": 95,
+        "bestPractices": 100,
+        "seo": 92
+      },
+      "metrics": {
+        "firstContentfulPaint": {
+          "value": 1403.256625,
+          "displayValue": "1.4 s"
+        },
+        "largestContentfulPaint": {
+          "value": 1661.1079499999998,
+          "displayValue": "1.7 s"
+        },
+        "totalBlockingTime": {
+          "value": 24,
+          "displayValue": "20 ms"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "displayValue": "0"
+        },
+        "speedIndex": {
+          "value": 1403.256625,
+          "displayValue": "1.4 s"
+        },
+        "interactive": {
+          "value": 2317.9714925000003,
+          "displayValue": "2.3 s"
+        }
+      },
+      "imageRequests": {
+        "count": 20,
+        "transferBytes": 401838,
+        "variantDistribution": {
+          "other": 2,
+          "card-640": 18
+        },
+        "items": [
+          {
+            "url": "http://127.0.0.1:4173/img/logo.webp",
+            "transferSize": 12094,
+            "resourceSize": 11826
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-1.webp",
+            "transferSize": 15694,
+            "resourceSize": 15080
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-2.webp",
+            "transferSize": 24657,
+            "resourceSize": 24038
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-3.webp",
+            "transferSize": 14197,
+            "resourceSize": 13586
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/arrow-4.webp",
+            "transferSize": 15700,
+            "resourceSize": 15052
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-1.webp",
+            "transferSize": 18119,
+            "resourceSize": 17504
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-2.webp",
+            "transferSize": 25557,
+            "resourceSize": 24934
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/blacklist-3.webp",
+            "transferSize": 21481,
+            "resourceSize": 20864
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/black-mirror-1.webp",
+            "transferSize": 19631,
+            "resourceSize": 19016
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/black-mirror-2.webp",
+            "transferSize": 18077,
+            "resourceSize": 17464
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/black-mirror-3.webp",
+            "transferSize": 26439,
+            "resourceSize": 25824
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/black-mirror-4.webp",
+            "transferSize": 19322,
+            "resourceSize": 18708
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-1.webp",
+            "transferSize": 25162,
+            "resourceSize": 24550
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-2.webp",
+            "transferSize": 22645,
+            "resourceSize": 22032
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-3.webp",
+            "transferSize": 29140,
+            "resourceSize": 28512
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-4.webp",
+            "transferSize": 17051,
+            "resourceSize": 16436
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-5.webp",
+            "transferSize": 19331,
+            "resourceSize": 18708
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-6.webp",
+            "transferSize": 34886,
+            "resourceSize": 34264
+          },
+          {
+            "url": "https://bqhqqgbdhglnecpfrbig.supabase.co/storage/v1/object/public/product-images/card/640/breaking-bad-7.webp",
+            "transferSize": 22528,
+            "resourceSize": 21908
+          },
+          {
+            "url": "http://127.0.0.1:4173/img/logo.webp",
+            "transferSize": 127,
+            "resourceSize": 11826
+          }
+        ]
+      },
+      "diagnostics": {
+        "layoutShifts": []
+      }
+    }
+  ]
+}

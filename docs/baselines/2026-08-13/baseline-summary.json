@@ -144,6 +144,8 @@
       "vercelCache": "HIT"
     }
   ],
+  "imageHeaderMethod": "HEAD",
+  "imageHeaderCaveat": "A resposta HEAD do Supabase não refletiu de forma confiável o Cache-Control entregue em GET; este valor é histórico e inconclusivo para GET.",
   "imageHeaderDistribution": {
     "no-cache": 358
   },

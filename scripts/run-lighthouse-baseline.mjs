@@ -5,8 +5,10 @@ import { fileURLToPath } from 'node:url'
 
 const projectRoot = fileURLToPath(new URL('../', import.meta.url))
 const baselineDate = process.env.BASELINE_DATE ?? new Date().toISOString().slice(0, 10)
+const runId = process.env.BASELINE_RUN_ID ?? baselineDate
+const runLabel = process.env.BASELINE_LABEL ?? `Baseline ${baselineDate}`
 const siteUrl = process.env.BASELINE_SITE_URL ?? 'https://criativa-canecas.vercel.app'
-const outputDirectory = join(projectRoot, 'docs', 'baselines', baselineDate)
+const outputDirectory = join(projectRoot, 'docs', 'baselines', runId)
 const temporaryDirectory = join(projectRoot, 'tmp', 'lighthouse-baseline')
 const lighthouseCli = join(projectRoot, 'node_modules', 'lighthouse', 'cli', 'index.js')
 const targets = [
@@ -53,6 +55,37 @@ for (const target of targets) {
     value: report.audits[id]?.numericValue ?? null,
     displayValue: report.audits[id]?.displayValue ?? null,
   })
+  const imageRequests = (report.audits['network-requests']?.details?.items ?? [])
+    .filter((item) => item.resourceType === 'Image' || item.mimeType?.startsWith('image/'))
+    .map((item) => ({
+      url: item.url,
+      transferSize: item.transferSize ?? null,
+      resourceSize: item.resourceSize ?? null,
+    }))
+  const imageVariant = (url) => {
+    if (url.includes('/card/320/')) return 'card-320'
+    if (url.includes('/card/640/')) return 'card-640'
+    if (url.includes('/social/')) return 'social'
+    if (url.includes('/product-images/')) return 'original'
+    return 'other'
+  }
+  const variantDistribution = Object.fromEntries(
+    [...new Set(imageRequests.map((item) => imageVariant(item.url)))]
+      .map((variant) => [variant, imageRequests.filter((item) => imageVariant(item.url) === variant).length]),
+  )
+  const layoutShifts = (report.audits['layout-shifts']?.details?.items ?? [])
+    .slice(0, 10)
+    .map((item) => ({
+      score: item.score ?? null,
+      selector: item.node?.selector ?? null,
+      snippet: item.node?.snippet ?? null,
+      sources: (item.sources ?? []).slice(0, 5).map((source) => ({
+        selector: source.node?.selector ?? null,
+        snippet: source.node?.snippet ?? null,
+        previousRect: source.previousRect ?? null,
+        currentRect: source.currentRect ?? null,
+      })),
+    }))
   reports.push({
     name: target.name,
     requestedUrl: report.requestedUrl,
@@ -74,6 +107,15 @@ for (const target of targets) {
       speedIndex: metric('speed-index'),
       interactive: metric('interactive'),
     },
+    imageRequests: {
+      count: imageRequests.length,
+      transferBytes: imageRequests.reduce((total, item) => total + (item.transferSize ?? 0), 0),
+      variantDistribution,
+      items: imageRequests,
+    },
+    diagnostics: {
+      layoutShifts,
+    },
   })
 }
 
@@ -81,6 +123,8 @@ const summary = {
   schemaVersion: 1,
   generatedAt: new Date().toISOString(),
   conditions: {
+    label: runLabel,
+    siteUrl,
     formFactor: 'mobile',
     categories: ['performance', 'accessibility', 'best-practices', 'seo'],
     note: 'Resultado laboratorial; variações entre execuções são esperadas.',
@@ -88,22 +132,21 @@ const summary = {
   reports,
 }
 
-const markdown = `# Baseline Lighthouse — ${baselineDate}
+const markdown = `# Lighthouse — ${runLabel}
 
-Medição móvel laboratorial. Variações entre execuções são esperadas; estes valores são a referência anterior às otimizações.
+Medição móvel laboratorial. Variações entre execuções são esperadas. URL medida: \`${siteUrl}\`.
 
 | Página | Performance | Acessibilidade | Boas práticas | SEO | LCP | CLS | TBT |
 |---|---:|---:|---:|---:|---:|---:|---:|
 ${reports.map((report) => `| ${report.name} | ${report.scores.performance} | ${report.scores.accessibility} | ${report.scores.bestPractices} | ${report.scores.seo} | ${report.metrics.largestContentfulPaint.displayValue ?? '—'} | ${report.metrics.cumulativeLayoutShift.displayValue ?? '—'} | ${report.metrics.totalBlockingTime.displayValue ?? '—'} |`).join('\n')}
 
-## Leitura inicial
+## Imagens requisitadas
 
-- A home está abaixo da meta de 90 em Performance e apresenta LCP elevado.
-- A coleção de séries apresenta deslocamento de layout acima do desejável.
-- Acessibilidade e SEO ainda têm pontos a corrigir antes da meta transversal de 90/AA.
-- Boas práticas atingiu 100 nas duas páginas medidas.
+| Página | Requisições | Transferência | Variantes |
+|---|---:|---:|---|
+${reports.map((report) => `| ${report.name} | ${report.imageRequests.count} | ${(report.imageRequests.transferBytes / 1024).toFixed(1)} KB | ${Object.entries(report.imageRequests.variantDistribution).map(([name, count]) => `${name}: ${count}`).join(', ') || '—'} |`).join('\n')}
 
-As causas devem ser confirmadas na Fase 1 antes de qualquer otimização. O JSON preserva métricas numéricas e as condições da auditoria.
+O JSON preserva métricas numéricas, condições da auditoria e as URLs efetivamente requisitadas pelo navegador móvel.
 `
 
 await writeFile(
@@ -111,7 +154,9 @@ await writeFile(
   `${JSON.stringify(summary, null, 2)}\n`,
 )
 await writeFile(join(outputDirectory, 'LIGHTHOUSE.md'), markdown)
-await rm(temporaryDirectory, { recursive: true, force: true })
+if (process.env.BASELINE_KEEP_RAW !== 'true') {
+  await rm(temporaryDirectory, { recursive: true, force: true })
+}
 
 for (const report of reports) {
   console.log(`${report.name}: P${report.scores.performance} A${report.scores.accessibility} B${report.scores.bestPractices} S${report.scores.seo}`)

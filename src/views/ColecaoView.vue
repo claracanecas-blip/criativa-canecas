@@ -72,7 +72,12 @@ watch(
     </div>
 
     <div v-if="visiveis.length" class="grid">
-      <ProdutoCard v-for="produto in itensDaPagina" :key="produto.id" :produto="produto" />
+      <ProdutoCard
+        v-for="(produto, indice) in itensDaPagina"
+        :key="produto.id"
+        :produto="produto"
+        :priority="indice === 0"
+      />
     </div>
 
     <nav v-if="totalPaginas > 1" class="paginacao" aria-label="Paginação de produtos">

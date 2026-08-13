@@ -3,7 +3,7 @@ import { extname, join, parse } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 
-const inputDirectory = fileURLToPath(new URL('../public/img/', import.meta.url))
+const inputDirectory = fileURLToPath(new URL('../source-images/', import.meta.url))
 const outputDirectory = fileURLToPath(new URL('../tmp/supabase-upload/', import.meta.url))
 const supportedExtensions = new Set(['.jpg', '.jpeg', '.png'])
 const ignoredFiles = new Set(['logo.png'])

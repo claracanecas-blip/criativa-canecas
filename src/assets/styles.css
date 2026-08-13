@@ -15,6 +15,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+main{min-height:calc(100vh - 170px)}
 a{text-decoration:none;color:inherit}
 button,input{font:inherit}
 .container{width:min(1180px,94%);margin:auto}

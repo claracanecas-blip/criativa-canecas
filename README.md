@@ -44,11 +44,12 @@ Os arquivos originais ficam em `source-images/`, que não é enviado ao GitHub. 
 
 ```bash
 npm run images:optimize
+npm run images:variants
 npm run images:upload
 npm run images:verify
 ```
 
-O script de otimização gera WebP com até 1000 × 1000 pixels em `tmp/supabase-upload/`. O envio exige as variáveis `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` somente no ambiente local da execução.
+O script de otimização gera WebP com até 1000 × 1000 pixels em `tmp/supabase-upload/`. O gerador de variantes cria cards de 320 × 320 e 640 × 640, além da imagem social de 1200 × 630, em `tmp/supabase-variants/`. O upload usa cache público de um ano e exige `SUPABASE_PROJECT_REF` (ou `SUPABASE_URL`) e `SUPABASE_SERVICE_KEY` (ou `SUPABASE_SERVICE_ROLE_KEY`) somente no ambiente local da execução.
 
 Para cadastrar produtos, edite `src/data/produtos.ts`. Os caminhos legados `.jpg` e `.png` são convertidos automaticamente para o arquivo `.webp` correspondente no bucket.
 

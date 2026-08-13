@@ -1,6 +1,6 @@
 export const site = {
   nome: 'Criativa Canecas',
-  logo: '/img/logo.png',
+  logo: '/img/logo.webp',
   whatsapp: '5548991992341',
   aviso: 'Personalizados com carinho • Escolha sua coleção e envie seu pedido pelo WhatsApp',
 } as const
