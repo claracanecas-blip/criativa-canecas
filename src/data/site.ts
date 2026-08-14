@@ -1,7 +1,9 @@
 export const site = {
   nome: 'Criativa Canecas',
+  responsavel: 'Viccenze Pfitscher da Costa',
   logo: '/img/logo.webp',
   whatsapp: '5548991992341',
+  telefone: '(48) 99199-2341',
   aviso: 'Personalizados com carinho • Escolha sua coleção e envie seu pedido pelo WhatsApp',
 } as const
 

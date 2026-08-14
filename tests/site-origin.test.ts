@@ -2,9 +2,11 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {
   DEFAULT_SITE_ORIGIN,
+  linkWhatsapp,
   normalizeSiteOrigin,
   officialSiteOrigin,
   officialSiteUrl,
+  site,
 } from '../src/data/site.ts'
 
 test('origem oficial remove caminho e barra final sem aceitar protocolos inseguros', () => {
@@ -19,4 +21,10 @@ test('URLs públicas usam a origem oficial padrão fora do bundle Vite', () => {
   assert.equal(officialSiteOrigin(), DEFAULT_SITE_ORIGIN)
   assert.equal(officialSiteUrl('/produto/arrow-1'), `${DEFAULT_SITE_ORIGIN}/produto/arrow-1`)
   assert.equal(officialSiteUrl('colecoes'), `${DEFAULT_SITE_ORIGIN}/colecoes`)
+})
+
+test('identidade e WhatsApp oficiais permanecem centralizados', () => {
+  assert.equal(site.responsavel, 'Viccenze Pfitscher da Costa')
+  assert.equal(site.telefone, '(48) 99199-2341')
+  assert.match(linkWhatsapp('Teste'), /^https:\/\/wa\.me\/5548991992341\?text=Teste$/)
 })

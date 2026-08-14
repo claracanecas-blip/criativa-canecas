@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9 concluídas, Fase 8 tecnicamente pronta e dependente de dados/domínio externos |
-| Versão | 1.14 |
+| Versão | 1.15 |
 | Data-base | 13 de agosto de 2026 |
 | Produção | https://criativa-canecas.vercel.app |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -340,7 +340,7 @@ Uma fase só está concluída quando:
 
 **Aceite:** domínio HTTPS ativo, apenas um domínio canônico indexável e conteúdo administrativo publicável.
 
-**Parcial entregue:** página de informações/FAQ com seções publicáveis em `/admin/informacoes`, fallback seguro e HTML rastreável; depoimentos moderados com RLS, administração e consentimento obrigatório para fotos; origem oficial centralizada em `VITE_SITE_URL` com runbook de domínio e rollback. Metadados de consentimento/autoria são privados e acessíveis integralmente somente por RPC administrativa. Nenhum conteúdo fictício ou condição comercial não confirmada foi publicado.
+**Parcial entregue:** página de informações/FAQ com seções publicáveis em `/admin/informacoes`, fallback seguro e HTML rastreável; depoimentos moderados com RLS, administração e consentimento obrigatório para fotos; origem oficial centralizada em `VITE_SITE_URL` com runbook de domínio e rollback; responsável público e WhatsApp oficial confirmados e exibidos no rodapé. Metadados de consentimento/autoria são privados e acessíveis integralmente somente por RPC administrativa. Nenhum CNPJ, depoimento fictício ou condição comercial não confirmada foi publicado.
 
 **Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, build com domínio alternativo, 32 testes e 55 cenários Playwright/axe entre os cinco perfis de navegador.
 
@@ -403,6 +403,7 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 - Necessidade comercial futura de Meta Pixel e respectivo fluxo de consentimento.
 - Conteúdo oficial de entrega, troca, materiais e cuidados.
 - Avaliações reais e referências de autorização para nomes/fotos.
+- CNPJ, e-mail e cidade/endereço público da operação.
 
 ## 17. Registro de progresso
 
@@ -416,5 +417,5 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 5 — Produto e SEO | Concluída | 341 páginas, canonical único por HTML, sitemap, preview e Lighthouse |
 | 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, 55 cenários em cinco perfis e Lighthouse no CI |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
-| 8 — Confiança e domínio | Em andamento | FAQ/moderação/RLS e troca canônica preparados; domínio, identidade e dados oficiais pendentes |
+| 8 — Confiança e domínio | Em andamento | FAQ/moderação/RLS e troca canônica preparados; responsável e WhatsApp confirmados; domínio e demais dados oficiais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |

@@ -26,7 +26,8 @@ const ano = new Date().getFullYear()
 
       <div>
         <strong>Atendimento</strong>
-        <a :href="linkWhatsapp()" target="_blank" rel="noopener" @click="trackWhatsappClick('footer')">WhatsApp</a>
+        <a :href="linkWhatsapp()" target="_blank" rel="noopener" @click="trackWhatsappClick('footer')">WhatsApp: {{ site.telefone }}</a>
+        <span>Responsável: {{ site.responsavel }}</span>
         <span>Pedidos sob encomenda</span>
         <RouterLink to="/informacoes">FAQ e pós-venda</RouterLink>
       </div>
