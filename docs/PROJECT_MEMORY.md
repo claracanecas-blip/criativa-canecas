@@ -1,10 +1,11 @@
 # Memória do projeto — Criativa Canecas
 
-Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
+Atualizada em 14 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
 
 ## Identidade e serviços
 
-- Produção: https://criativa-canecas.vercel.app
+- Produção: https://criativacanecas.com.br
+- Hostname anterior: `https://criativa-canecas.vercel.app`, com redirecionamento permanente para a produção
 - GitHub: https://github.com/claracanecas-blip/criativa-canecas
 - Branch de produção: `main`
 - Conta GitHub: `claracanecas-blip`
@@ -43,7 +44,7 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Fase 4 concluída: `/admin` exige sessão Supabase e papel em `admin_users`; login, recuperação/definição de senha, CRUD, múltiplas coleções, status, destaque, ordem e upload estão disponíveis.
 - Upload administrativo valida JPEG/PNG/WebP até 10 MB e no mínimo 640 × 640, gerando no navegador as quatro variantes WebP antes da publicação.
 - Auditoria remota registra criação/atualização/exclusão e ator; UUIDs de autoria foram removidos da superfície de leitura pública por privilégios de coluna.
-- Supabase Auth usa `https://criativa-canecas.vercel.app` como Site URL e permite callbacks de produção, previews do projeto e Vite local.
+- Supabase Auth usa `https://criativacanecas.com.br` como Site URL e permite callbacks do domínio principal, `www`, hostname anterior, previews do projeto e Vite local.
 - Um convite administrativo foi enviado ao e-mail proprietário do projeto; o destinatário define a própria senha por link do Supabase.
 - E2E Playwright comprovou login, 341 produtos iniciais, criação de coleção, publicação com quatro imagens, visualização pública, exclusões confirmadas e logout; nenhum sentinela permaneceu.
 - Fase 5 concluída: 341 URLs `/produto/:slug` exibem imagem, SKU, preço, descrição, coleções, relacionados e WhatsApp com SKU/URL.
@@ -68,11 +69,12 @@ Atualizada em 13 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A página pública lê somente seções publicadas, usa backup local seguro em falha do Supabase e o prerender consulta a mesma fonte para produzir HTML rastreável. Nove textos-base seguros foram reconciliados sem inventar condições comerciais.
 - A migration remota `20260813221500` e o lint passaram; 11 verificações RLS confirmaram leitura pública limitada, escrita exclusiva de administrador, autoria privada, ciclo rascunho → publicação e limpeza integral dos dados temporários.
 - O fluxo real de `/admin/informacoes` passou seis verificações navegadas: proteção por login, abertura autorizada, criação de rascunho com autoria, invisibilidade pública, publicação visível e exclusão confirmada; conta e conteúdo temporários foram removidos.
-- Qualidade atual: 32 testes, 11 E2E/axe, typecheck e build aprovados; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
+- Qualidade atual: 33 testes, 11 E2E/axe, typecheck e build aprovados; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
 - A origem canônica foi centralizada em `VITE_SITE_URL`, configurada como variável pública na Vercel para Production, Preview e Development. Canonical, Open Graph, JSON-LD, sitemap, robots, links comerciais e analytics seguem a mesma origem.
 - O responsável público e o WhatsApp oficial foram confirmados pelo proprietário e centralizados em `src/data/site.ts`; o rodapé exibe ambos de forma consistente. CNPJ e avaliações permanecem ausentes até o fornecimento de dados reais.
 - A auditoria `docs/audits/2026-08-13-SDD_COMPLETION_AUDIT.md` mapeia os 59 requisitos: todos têm evidência técnica; somente o aceite externo da Fase 8 continua pendente.
-- Um build simulado com domínio alternativo atualizou home, produto e sitemap sem deixar canonical no hostname anterior; o procedimento de DNS, Supabase Auth, validação e rollback está em `docs/runbooks/CUSTOM_DOMAIN.md`.
+- O domínio `criativacanecas.com.br` foi ativado em 14 de agosto de 2026 com HTTPS, canonical único, sitemap de 361 URLs e analytics no hostname novo; `www` e o hostname `vercel.app` redirecionam com `308`, preservando caminho e parâmetros.
+- A troca coordenada atualizou `VITE_SITE_URL` nos três ambientes da Vercel e a configuração versionada do Supabase Auth. O procedimento e o rollback estão em `docs/runbooks/CUSTOM_DOMAIN.md`; a evidência está em `docs/baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md`.
 - Fase 9 de descoberta concluída com decisão de adiar checkout: faltam histórico de conversão e operação comercial definida; orçamento + WhatsApp permanece o fluxo oficial.
 
 ## Decisões tomadas
@@ -149,15 +151,15 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 - Objetos antigos do Storage são preservados quando um produto é excluído; uma rotina futura de limpeza deve remover somente órfãos comprovados.
 - Metadados estáticos e sitemap refletem o catálogo no momento do deploy; mudanças administrativas aparecem imediatamente na SPA, mas exigem novo deploy para atualizar prévias sociais e HTML rastreável.
 - O orçamento não sincroniza entre dispositivos e navegadores; isso é intencional enquanto não houver conta de cliente.
-- O hostname aceito pelo analytics deriva de `VITE_SITE_URL`; a troca do domínio deve ocorrer no mesmo deploy das canônicas e da configuração do Supabase Auth.
+- O hostname aceito pelo analytics deriva de `VITE_SITE_URL`; qualquer troca futura de domínio deve ocorrer no mesmo deploy das canônicas e da configuração do Supabase Auth.
 - Métricas são agregadas e não substituem uma plataforma de marketing/atribuição; adicionar Pixel ou GA depende de decisão de negócio e consentimento.
-- O site ainda não possui domínio próprio registrado nesta memória.
-- A Fase 8 ainda depende de CNPJ, endereço/e-mail, condições comerciais oficiais, avaliações reais e acesso ao domínio/DNS; nome do responsável e WhatsApp já foram confirmados.
+- O DNS permanece administrado no Registro.br; os registros raiz e `www` apontam para a Vercel. Não trocar nameservers nem remover o hostname anterior antes de validar um rollback.
+- A Fase 8 ainda depende de CNPJ ou identificação pública aplicável, endereço/cidade e e-mail, condições comerciais oficiais e avaliações reais; domínio, nome do responsável e WhatsApp já foram confirmados.
 - Há atividade residual do GitHub Pages, mas produção oficial é Vercel; não desativar serviço externo sem autorização explícita.
 
 ## Próxima execução recomendada
 
-1. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e ativar domínio/DNS quando houver autorização específica.
+1. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md`.
 2. Cadastrar somente avaliações reais com autorização documentada.
 3. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
 

@@ -6,10 +6,10 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fases 0–7 e 9 concluídas, Fase 8 tecnicamente pronta e dependente de dados/domínio externos |
-| Versão | 1.15 |
-| Data-base | 13 de agosto de 2026 |
-| Produção | https://criativa-canecas.vercel.app |
+| Estado | Em execução; Fases 0–7 e 9 concluídas, domínio da Fase 8 ativo e dados comerciais externos pendentes |
+| Versão | 1.16 |
+| Data-base | 14 de agosto de 2026 |
+| Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
 
 Este documento é a fonte de verdade para o próximo ciclo do produto. Cada fase deve começar pela revisão dos requisitos relacionados e terminar com evidências de que seus critérios de aceite foram cumpridos.
@@ -332,7 +332,7 @@ Uma fase só está concluída quando:
 
 ### Fase 8 — Confiança, domínio e conteúdo comercial
 
-**Estado:** em andamento; base técnica concluída em 13 de agosto de 2026, aguardando decisões/dados externos.
+**Estado:** em andamento; base técnica concluída em 13 de agosto e domínio próprio ativado em 14 de agosto de 2026, aguardando dados comerciais e avaliações reais.
 
 **Objetivo:** aumentar credibilidade e conversão.
 
@@ -340,9 +340,9 @@ Uma fase só está concluída quando:
 
 **Aceite:** domínio HTTPS ativo, apenas um domínio canônico indexável e conteúdo administrativo publicável.
 
-**Parcial entregue:** página de informações/FAQ com seções publicáveis em `/admin/informacoes`, fallback seguro e HTML rastreável; depoimentos moderados com RLS, administração e consentimento obrigatório para fotos; origem oficial centralizada em `VITE_SITE_URL` com runbook de domínio e rollback; responsável público e WhatsApp oficial confirmados e exibidos no rodapé. Metadados de consentimento/autoria são privados e acessíveis integralmente somente por RPC administrativa. Nenhum CNPJ, depoimento fictício ou condição comercial não confirmada foi publicado.
+**Parcial entregue:** página de informações/FAQ com seções publicáveis em `/admin/informacoes`, fallback seguro e HTML rastreável; depoimentos moderados com RLS, administração e consentimento obrigatório para fotos; origem oficial `https://criativacanecas.com.br` ativa com HTTPS, canonical único e redirecionamentos permanentes de `www` e do hostname anterior; responsável público e WhatsApp oficial confirmados e exibidos no rodapé. Metadados de consentimento/autoria são privados e acessíveis integralmente somente por RPC administrativa. Nenhum CNPJ, depoimento fictício ou condição comercial não confirmada foi publicado.
 
-**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, build com domínio alternativo, 32 testes e 55 cenários Playwright/axe entre os cinco perfis de navegador.
+**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md`](../baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, domínio de produção validado, 33 testes atuais e 55 cenários Playwright/axe entre os cinco perfis de navegador.
 
 **Estimativa:** 2 a 4 dias, excluindo prazos de DNS e produção de conteúdo.
 
@@ -417,5 +417,5 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 5 — Produto e SEO | Concluída | 341 páginas, canonical único por HTML, sitemap, preview e Lighthouse |
 | 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, 55 cenários em cinco perfis e Lighthouse no CI |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
-| 8 — Confiança e domínio | Em andamento | FAQ/moderação/RLS e troca canônica preparados; responsável e WhatsApp confirmados; domínio e demais dados oficiais pendentes |
+| 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical e Auth concluídos; dados comerciais oficiais e avaliações reais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |

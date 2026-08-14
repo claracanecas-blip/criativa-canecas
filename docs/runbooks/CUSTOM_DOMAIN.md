@@ -1,6 +1,17 @@
 # Runbook — ativação de domínio próprio
 
-Este procedimento só deve ser executado depois de o proprietário escolher o domínio, autorizar eventual compra e disponibilizar controle do DNS. A origem atual permanece `https://criativa-canecas.vercel.app` até essa decisão.
+Este procedimento foi executado em 14 de agosto de 2026 para `https://criativacanecas.com.br`. A origem anterior `https://criativa-canecas.vercel.app` permanece disponível apenas como redirecionamento e caminho de rollback.
+
+## Estado atual
+
+- origem canônica: `https://criativacanecas.com.br`;
+- DNS raiz e `www`: registros `A` para `76.76.21.21`, administrados no Registro.br;
+- `www.criativacanecas.com.br` e `criativa-canecas.vercel.app`: redirecionamento permanente `308` para a origem canônica, preservando caminho e parâmetros;
+- certificado Vercel ativo e com renovação automática;
+- `VITE_SITE_URL` atualizado em Production, Preview e Development;
+- Supabase Auth usa o domínio novo como Site URL e mantém domínio principal, `www`, hostname anterior, previews e Vite local na lista permitida.
+
+Evidência da execução: [`docs/baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md`](../baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md).
 
 ## Pré-condições
 
