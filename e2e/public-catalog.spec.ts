@@ -86,6 +86,23 @@ test('coleção Futebol & Esportes contém os 50 modelos publicados', async ({ p
   await expect(page.getByRole('link', { name: 'Ver detalhes de Chelsea 03' })).toHaveCount(0)
 })
 
+test('coleção Profissões contém os 50 modelos com estampa disponível', async ({ page }) => {
+  await page.goto('/colecao/profissoes')
+  await expect(page.getByText('50 modelos disponíveis')).toBeVisible()
+  await expect(page.locator('article.card')).toHaveCount(20)
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Administração 01' })).toBeVisible()
+
+  await page.getByRole('button', { name: 'Próxima' }).click()
+  await expect(page.getByText('Página 2 de 3')).toBeVisible()
+  await expect(page.locator('article.card')).toHaveCount(20)
+
+  await page.getByRole('button', { name: 'Próxima' }).click()
+  await expect(page.getByText('Página 3 de 3')).toBeVisible()
+  await expect(page.locator('article.card')).toHaveCount(10)
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Veterinária 01' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Profissões 51' })).toHaveCount(0)
+})
+
 test('produto continua utilizável em viewport móvel e via teclado', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/produto/arrow-1')

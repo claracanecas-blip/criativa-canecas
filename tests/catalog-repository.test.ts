@@ -38,7 +38,7 @@ test('falha do Supabase usa a cópia TypeScript sem deixar o catálogo vazio', a
 
   assert.equal(result.state, 'fallback')
   assert.equal(result.source, 'typescript')
-  assert.equal(result.snapshot.produtos.length, 457)
+  assert.equal(result.snapshot.produtos.length, 507)
   assert.match(result.message ?? '', /temporariamente indisponível/)
 })
 

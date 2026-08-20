@@ -100,6 +100,28 @@ export const produtos: Record<string, ProductInput[]> = {
       imagem: `./img/futebol-${codigo}.png`,
     }
   }),
+  profissoes: ([
+    'Administração', 'Agronomia', 'Arquitetura', 'Artesã', 'Barbeiro',
+    'Biologia', 'Biomedicina', 'Bombeiro', 'Caminhoneiro', 'Ciência da Computação',
+    'Contabilidade', 'Costureira', 'Cuidadora', 'Design de Interiores', 'Design Gráfico',
+    'Direito', 'Educação Física', 'Enfermagem', 'Engenharia Civil', 'Engenharia de Produção',
+    'Engenharia Elétrica', 'Engenharia Mecânica', 'Esteticista', 'Farmácia', 'Fisioterapia',
+    'Fotografia', 'Gastronomia', 'Comissária de Bordo', 'Logística', 'Manicure',
+    'Maquiadora', 'Eletricista', 'Mecânico', 'Medicina', 'Nutrição',
+    'Odontologia', 'Pedagogia', 'Polícia', 'Professor', 'Programador',
+    'Psicologia', 'Publicidade', 'Química', 'Radiologia', 'Recursos Humanos',
+    'Secretária', 'Segurança do Trabalho', 'Serviço Social', 'Técnico de Informática', 'Veterinária',
+  ] as const).map((tema, indice) => {
+    const codigo = String(indice + 1).padStart(2, '0')
+
+    return {
+      id: `profissoes-${codigo}`,
+      nome: `${tema} 01`,
+      tema,
+      preco: 39.9,
+      imagem: `./img/profissoes-${codigo}.png`,
+    }
+  }),
   cafe: Array.from({ length: 6 }, (_, indice) => {
     const numero = indice + 1
     const codigo = String(numero).padStart(2, '0')
