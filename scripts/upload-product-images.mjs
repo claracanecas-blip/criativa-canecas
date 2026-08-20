@@ -8,8 +8,10 @@ const projectRef = process.env.SUPABASE_PROJECT_REF ?? (
 )
 const serviceKey = process.env.SUPABASE_SERVICE_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY
 const bucket = process.env.SUPABASE_STORAGE_BUCKET ?? 'product-images'
-const inputDirectory = fileURLToPath(new URL('../tmp/supabase-upload/', import.meta.url))
-const variantsDirectory = fileURLToPath(new URL('../tmp/supabase-variants/', import.meta.url))
+const inputDirectory = process.env.PRODUCT_IMAGES_INPUT_DIR
+  ?? fileURLToPath(new URL('../tmp/supabase-upload/', import.meta.url))
+const variantsDirectory = process.env.PRODUCT_IMAGE_VARIANTS_DIR
+  ?? fileURLToPath(new URL('../tmp/supabase-variants/', import.meta.url))
 const concurrency = 8
 
 if (!projectRef || !serviceKey) {

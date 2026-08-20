@@ -52,7 +52,7 @@ export const produtos: Record<string, ProductInput[]> = {
     { id: 'fairy-tail-42',                     nome: 'Fairy Tail 08', tema: 'Fairy Tail', preco: 39.9, imagem: './img/fairy-tail-42.png' },
     { id: 'fairy-tail-43',                     nome: 'Fairy Tail 09', tema: 'Fairy Tail', preco: 39.9, imagem: './img/fairy-tail-43.png' },
   ],
-  aniversario: Array.from({ length: 7 }, (_, indice) => {
+  aniversario: Array.from({ length: 23 }, (_, indice) => {
     const numero = indice + 1
     const codigo = String(numero).padStart(2, '0')
 

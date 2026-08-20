@@ -1,7 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { randomBytes } from 'node:crypto'
-import { buildCatalogImportData } from './catalog-import-data.ts'
 
 const projectUrl = (process.env.SUPABASE_URL ?? (
   process.env.SUPABASE_PROJECT_REF
@@ -16,7 +15,12 @@ if (!projectUrl || !anonKey || !serviceKey) {
   throw new Error('SUPABASE_URL, SUPABASE_ANON_KEY e SUPABASE_SERVICE_KEY são obrigatórios.')
 }
 
-const data = await buildCatalogImportData()
+const expectedCatalogCounts = {
+  collections: 17,
+  products: 357,
+  relations: 357,
+  images: 1428,
+}
 const checks: Array<{ name: string; passed: boolean; detail: string }> = []
 let temporaryUserId: string | undefined
 const sentinelId = `phase2-rls-${Date.now()}`
@@ -99,14 +103,10 @@ try {
   const publicProducts = await exactCount('products', 'id')
   const publicRelations = await exactCount('product_collections', 'product_id')
   const publicImages = await exactCount('product_images', 'id')
-  const expectedPublicRelations = data.product_collections.filter((relation) =>
-    data.collections.some((collection) => collection.id === relation.collection_id && collection.is_published),
-  ).length
-
-  record('leitura anônima de coleções publicadas', publicCollections === 17, `${publicCollections}/17`)
-  record('leitura anônima de produtos', publicProducts === 341, `${publicProducts}/341`)
-  record('leitura anônima de relações publicadas', publicRelations === expectedPublicRelations, `${publicRelations}/${expectedPublicRelations}`)
-  record('leitura anônima de imagens', publicImages === 1364, `${publicImages}/1364`)
+  record('leitura anônima de coleções publicadas', publicCollections === expectedCatalogCounts.collections, `${publicCollections}/${expectedCatalogCounts.collections}`)
+  record('leitura anônima de produtos', publicProducts === expectedCatalogCounts.products, `${publicProducts}/${expectedCatalogCounts.products}`)
+  record('leitura anônima de relações publicadas', publicRelations === expectedCatalogCounts.relations, `${publicRelations}/${expectedCatalogCounts.relations}`)
+  record('leitura anônima de imagens', publicImages === expectedCatalogCounts.images, `${publicImages}/${expectedCatalogCounts.images}`)
 
   const listedResponse = await fetch(`${projectUrl}/rest/v1/collections?is_listed=eq.true&select=id`, {
     headers: { ...apiHeaders(anonKey), prefer: 'count=exact' },

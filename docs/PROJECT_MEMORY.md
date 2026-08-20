@@ -1,6 +1,6 @@
 # Memória do projeto — Criativa Canecas
 
-Atualizada em 14 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
+Atualizada em 16 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
 
 ## Identidade e serviços
 
@@ -20,7 +20,7 @@ Atualizada em 14 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Stack: Vue 3, TypeScript 5.9, Vue Router, Tailwind CSS 4, Lucide Icons e Vite 6.
 - Hospedagem: Vercel ligada ao GitHub; push em `main` cria deploy de produção.
 - CI: GitHub Actions executa `npm ci`, `npm test` e `npm run build`.
-- Imagens: 358 originais WebP e 1.074 variantes verificadas no Supabase, totalizando 1.432 objetos.
+- Imagens: 374 originais WebP e 1.122 variantes verificadas no Supabase, totalizando 1.496 objetos.
 - Originais: preservados localmente em `source-images/` e ignorados pelo Git.
 - Pacote de produção limpo: aproximadamente 2,1 MB e 21 arquivos na medição da migração.
 - Rotas usam `createWebHistory`; `vercel.json` fornece fallback de SPA.
@@ -48,19 +48,19 @@ Atualizada em 14 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Um convite administrativo foi enviado ao e-mail proprietário do projeto; o destinatário define a própria senha por link do Supabase.
 - E2E Playwright comprovou login, 341 produtos iniciais, criação de coleção, publicação com quatro imagens, visualização pública, exclusões confirmadas e logout; nenhum sentinela permaneceu.
 - Fase 5 concluída: 341 URLs `/produto/:slug` exibem imagem, SKU, preço, descrição, coleções, relacionados e WhatsApp com SKU/URL.
-- O build gera 341 HTMLs de produto, 17 HTMLs de coleção, sitemap com 360 URLs e robots bloqueando `/admin`; HTML estático contém canonical, Open Graph, JSON-LD e conteúdo rastreável.
+- O build gera 357 HTMLs de produto, 17 HTMLs de coleção, sitemap com 377 URLs e robots bloqueando `/admin`; HTML estático contém canonical, Open Graph, JSON-LD e conteúdo rastreável.
 - Vercel usa `cleanUrls` e dá precedência aos HTMLs gerados antes do fallback SPA; preview confirmou `200` e metadados sem executar JavaScript.
 - Lighthouse local da Fase 5: home P99/A93/B100/S100; coleção P99/A95/B100/S100; produto P90/A95/B100/S100, todos com CLS baixo/zero.
 - Fase 6 concluída: eventos de produto, busca, coleção, WhatsApp e erro são agregados diariamente no Supabase, sem cookie, identificador de visitante, texto livre ou PII.
 - Analytics só envia no hostname oficial de produção; localhost e previews são ignorados. A função RPC aceita apenas eventos/dimensões fechados e slugs publicados.
 - RLS de analytics passou oito casos positivos/negativos; somente administradores leem os agregados e visitantes não acessam a tabela diretamente.
-- CI executa 32 testes unitários, typecheck, build, 55 cenários Playwright/axe e Lighthouse com gate 90. A matriz cobre Chrome, Edge atual em Windows, Firefox, WebKit desktop e perfil Safari móvel; Axe não aponta violações WCAG 2.2 A/AA nos fluxos públicos.
+- CI executa 32 testes unitários, typecheck, build, 55 cenários Playwright/axe e Lighthouse com gate 90. `actions/checkout@v5` e `actions/setup-node@v5` usam runtime Node 24; a matriz cobre Chrome, Edge atual em Windows, Firefox, WebKit desktop e perfil Safari móvel, sem violações Axe WCAG 2.2 A/AA nos fluxos públicos.
 - Lighthouse local da Fase 6: home P99/A98/B100/S100; coleção P99/A100/B100/S100; produto P90/A100/B100/S100.
 - Fase 7 concluída: visitantes adicionam/removem produtos, alteram quantidades e mantêm a seleção em `localStorage`, sem conta ou dado pessoal.
 - “Meu orçamento” abre drawer lateral no desktop e painel inferior no celular; contador, estado vazio, confirmação para limpar e anúncios acessíveis estão implementados.
 - WhatsApp consolidado inclui quantidade, nome, SKU, subtotal, link e total estimado, com ressalvas de preço/prazo/disponibilidade e sem promessa de reserva/pedido.
 - Qualidade da Fase 7: 24 testes unitários, 8 E2E/axe e Lighthouse home P99/A98, coleção P99/A100 e produto P91/A100; Boas Práticas/SEO 100.
-- Base técnica da Fase 8 concluída: `/informacoes` está no rodapé, prerender e sitemap de 361 URLs; textos evitam promessas antes da confirmação no atendimento.
+- Base técnica da Fase 8 concluída: `/informacoes` está no rodapé, prerender e sitemap de 377 URLs; textos evitam promessas antes da confirmação no atendimento.
 - O gerador de SEO remove metadados-base antes do prerender; páginas estáticas devem conter exatamente um canonical, validado em `/informacoes` e `/produto/arrow-1`.
 - Depoimentos nascem em rascunho, só publicados aparecem na home e fotos exigem referência de consentimento. O banco permanece sem depoimentos fictícios.
 - Referências de consentimento e autoria não são colunas públicas; o painel lê os dados completos por RPC que exige papel administrativo.
@@ -69,13 +69,15 @@ Atualizada em 14 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A página pública lê somente seções publicadas, usa backup local seguro em falha do Supabase e o prerender consulta a mesma fonte para produzir HTML rastreável. Nove textos-base seguros foram reconciliados sem inventar condições comerciais.
 - A migration remota `20260813221500` e o lint passaram; 11 verificações RLS confirmaram leitura pública limitada, escrita exclusiva de administrador, autoria privada, ciclo rascunho → publicação e limpeza integral dos dados temporários.
 - O fluxo real de `/admin/informacoes` passou seis verificações navegadas: proteção por login, abertura autorizada, criação de rascunho com autoria, invisibilidade pública, publicação visível e exclusão confirmada; conta e conteúdo temporários foram removidos.
-- Qualidade atual: 33 testes, 11 E2E/axe, typecheck e build aprovados; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
+- Qualidade atual: 36 testes, 12 E2E/axe por perfil, typecheck e build aprovados; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
 - A origem canônica foi centralizada em `VITE_SITE_URL`, configurada como variável pública na Vercel para Production, Preview e Development. Canonical, Open Graph, JSON-LD, sitemap, robots, links comerciais e analytics seguem a mesma origem.
 - O responsável público e o WhatsApp oficial foram confirmados pelo proprietário e centralizados em `src/data/site.ts`; o rodapé exibe ambos de forma consistente. CNPJ e avaliações permanecem ausentes até o fornecimento de dados reais.
 - A auditoria `docs/audits/2026-08-13-SDD_COMPLETION_AUDIT.md` mapeia os 59 requisitos: todos têm evidência técnica; somente o aceite externo da Fase 8 continua pendente.
 - O domínio `criativacanecas.com.br` foi ativado em 14 de agosto de 2026 com HTTPS, canonical único, sitemap de 361 URLs e analytics no hostname novo; `www` e o hostname `vercel.app` redirecionam com `308`, preservando caminho e parâmetros.
 - A troca coordenada atualizou `VITE_SITE_URL` nos três ambientes da Vercel e a configuração versionada do Supabase Auth. O procedimento e o rollback estão em `docs/runbooks/CUSTOM_DOMAIN.md`; a evidência está em `docs/baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md`.
 - Fase 9 de descoberta concluída com decisão de adiar checkout: faltam histórico de conversão e operação comercial definida; orçamento + WhatsApp permanece o fluxo oficial.
+- A coleção Aniversário foi ampliada em 16 de agosto de 2026 sem duplicar os sete itens existentes: 16 mockups novos (`aniversario-08` a `aniversario-23`), 64 objetos novos no Storage e migration remota `20260816200000`.
+- O catálogo remoto atual possui 357 produtos, 357 relações e 1.428 associações de imagem. RLS positiva/negativa, `db lint`, os 1.496 objetos públicos, typecheck e build foram validados; a evidência está em `docs/baselines/2026-08-16-anniversary-catalog/`.
 
 ## Decisões tomadas
 

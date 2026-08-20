@@ -7,8 +7,8 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9 concluídas, domínio da Fase 8 ativo e dados comerciais externos pendentes |
-| Versão | 1.16 |
-| Data-base | 14 de agosto de 2026 |
+| Versão | 1.17 |
+| Data-base | 16 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
 
@@ -16,7 +16,7 @@ Este documento é a fonte de verdade para o próximo ciclo do produto. Cada fase
 
 ## 2. Contexto atual
 
-A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 1.432 imagens WebP no bucket público `product-images` e o Postgres contém os metadados reconciliados do catálogo.
+A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 1.496 imagens WebP no bucket público `product-images` e o Postgres contém 357 produtos publicados com metadados reconciliados.
 
 O catálogo público é lido do Supabase por uma camada de repositório tipada e possui fallback operacional para os arquivos TypeScript. A manutenção cotidiana é feita pelo painel administrativo protegido por Supabase Auth e RLS. O fluxo comercial termina no WhatsApp e mede a jornada por agregados diários sem identificador de visitante ou texto livre.
 
@@ -342,7 +342,7 @@ Uma fase só está concluída quando:
 
 **Parcial entregue:** página de informações/FAQ com seções publicáveis em `/admin/informacoes`, fallback seguro e HTML rastreável; depoimentos moderados com RLS, administração e consentimento obrigatório para fotos; origem oficial `https://criativacanecas.com.br` ativa com HTTPS, canonical único e redirecionamentos permanentes de `www` e do hostname anterior; responsável público e WhatsApp oficial confirmados e exibidos no rodapé. Metadados de consentimento/autoria são privados e acessíveis integralmente somente por RPC administrativa. Nenhum CNPJ, depoimento fictício ou condição comercial não confirmada foi publicado.
 
-**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md`](../baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, domínio de produção validado, 33 testes atuais e 55 cenários Playwright/axe entre os cinco perfis de navegador.
+**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md`](../baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, domínio de produção validado, 36 testes atuais e 60 cenários Playwright/axe entre os cinco perfis de navegador.
 
 **Estimativa:** 2 a 4 dias, excluindo prazos de DNS e produção de conteúdo.
 
@@ -411,11 +411,15 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 |---|---|---|
 | 0 — Baseline | Concluída | `docs/baselines/2026-08-13/` e testes de integridade |
 | 1 — Imagens | Concluída | Produção P99/P98, CLS 0 e 1.432 objetos verificados |
-| 2 — Banco | Concluída | 341 produtos reconciliados e RLS positiva/negativa verificada |
+| 2 — Banco | Concluída | Importação inicial de 341 produtos; catálogo atual com 357 e RLS positiva/negativa verificada |
 | 3 — Integração frontend | Concluída | Catálogo remoto, fallback, 14 testes e validação navegada |
 | 4 — Administração | Concluída | RLS remota e ciclo administrativo E2E completo |
-| 5 — Produto e SEO | Concluída | 341 páginas, canonical único por HTML, sitemap, preview e Lighthouse |
-| 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, 55 cenários em cinco perfis e Lighthouse no CI |
+| 5 — Produto e SEO | Concluída | 357 páginas de produto, canonical único por HTML, sitemap de 377 URLs, preview e Lighthouse |
+| 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, 55 cenários em cinco perfis, Lighthouse e actions no runtime Node 24 |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
 | 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical e Auth concluídos; dados comerciais oficiais e avaliações reais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |
+
+## 18. Evoluções incrementais após o roadmap
+
+- **16 de agosto de 2026 — coleção Aniversário:** 16 artes novas foram selecionadas após deduplicação contra os sete itens existentes; os mockups `aniversario-08` a `aniversario-23`, suas quatro variantes, o fallback TypeScript e os metadados remotos foram publicados pela migration `20260816200000`. O catálogo passou a 357 produtos e 1.496 objetos públicos. Evidência: [`docs/baselines/2026-08-16-anniversary-catalog/ANNIVERSARY_CATALOG.md`](../baselines/2026-08-16-anniversary-catalog/ANNIVERSARY_CATALOG.md).

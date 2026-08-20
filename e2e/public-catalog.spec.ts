@@ -39,6 +39,19 @@ test('fluxo busca → produto → WhatsApp preserva contexto comercial', async (
   await expect(whatsapp).toHaveAttribute('href', /wa\.me\/.*CC-ARROW-.*criativa-canecas\.vercel\.app%2Fproduto%2Farrow-/)
 })
 
+test('coleção de aniversário contém somente os 23 modelos reconciliados', async ({ page }) => {
+  await page.goto('/colecao/aniversario')
+  await expect(page.getByText('23 modelos disponíveis')).toBeVisible()
+  await expect(page.locator('article.card')).toHaveCount(20)
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Aniversário 01' })).toBeVisible()
+
+  await page.getByRole('button', { name: 'Próxima' }).click()
+  await expect(page.getByText('Página 2 de 2')).toBeVisible()
+  await expect(page.locator('article.card')).toHaveCount(3)
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Aniversário 23' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Aniversário 24' })).toHaveCount(0)
+})
+
 test('produto continua utilizável em viewport móvel e via teclado', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/produto/arrow-1')
