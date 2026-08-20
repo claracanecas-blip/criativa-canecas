@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9 concluídas, domínio da Fase 8 ativo e dados comerciais externos pendentes |
-| Versão | 1.18 |
+| Versão | 1.19 |
 | Data-base | 20 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -16,7 +16,7 @@ Este documento é a fonte de verdade para o próximo ciclo do produto. Cada fase
 
 ## 2. Contexto atual
 
-A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 1.696 imagens WebP no bucket público `product-images` e o Postgres contém 407 produtos publicados com metadados reconciliados.
+A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 1.696 caminhos WebP ativos e quatro objetos anteriores preservados para rollback no bucket público `product-images`; o Postgres contém 407 produtos publicados com metadados reconciliados.
 
 O catálogo público é lido do Supabase por uma camada de repositório tipada e possui fallback operacional para os arquivos TypeScript. A manutenção cotidiana é feita pelo painel administrativo protegido por Supabase Auth e RLS. O fluxo comercial termina no WhatsApp e mede a jornada por agregados diários sem identificador de visitante ou texto livre.
 
@@ -342,7 +342,7 @@ Uma fase só está concluída quando:
 
 **Parcial entregue:** página de informações/FAQ com seções publicáveis em `/admin/informacoes`, fallback seguro e HTML rastreável; depoimentos moderados com RLS, administração e consentimento obrigatório para fotos; origem oficial `https://criativacanecas.com.br` ativa com HTTPS, canonical único e redirecionamentos permanentes de `www` e do hostname anterior; responsável público e WhatsApp oficial confirmados e exibidos no rodapé. Metadados de consentimento/autoria são privados e acessíveis integralmente somente por RPC administrativa. Nenhum CNPJ, depoimento fictício ou condição comercial não confirmada foi publicado.
 
-**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md`](../baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, domínio de produção validado, 40 testes atuais e 65 cenários Playwright/axe entre os cinco perfis de navegador.
+**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md`](../baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, domínio de produção validado, 41 testes atuais e 65 cenários Playwright/axe entre os cinco perfis de navegador.
 
 **Estimativa:** 2 a 4 dias, excluindo prazos de DNS e produção de conteúdo.
 
@@ -423,4 +423,4 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 ## 18. Evoluções incrementais após o roadmap
 
 - **16 de agosto de 2026 — coleção Aniversário:** 16 artes novas foram selecionadas após deduplicação contra os sete itens existentes; os mockups `aniversario-08` a `aniversario-23`, suas quatro variantes, o fallback TypeScript e os metadados remotos foram publicados pela migration `20260816200000`. O catálogo passou a 357 produtos e 1.496 objetos públicos. Evidência: [`docs/baselines/2026-08-16-anniversary-catalog/ANNIVERSARY_CATALOG.md`](../baselines/2026-08-16-anniversary-catalog/ANNIVERSARY_CATALOG.md).
-- **20 de agosto de 2026 — coleção Pets:** 50 mockups selecionados de cães e gatos foram publicados como `pets-01` a `pets-50`, com quatro variantes por produto, fallback TypeScript e migration `20260820115000`. O catálogo passou a 407 produtos e 1.696 objetos públicos. Evidência: [`docs/baselines/2026-08-20-pets-catalog/PETS_CATALOG.md`](../baselines/2026-08-20-pets-catalog/PETS_CATALOG.md).
+- **20 de agosto de 2026 — coleção Pets:** 50 mockups selecionados de cães e gatos foram publicados como `pets-01` a `pets-50`, com quatro variantes por produto, fallback TypeScript e migration `20260820115000`. A revisão visual posterior dos 50 itens identificou somente uma faixa sem estampa na caneca frontal de `pets-19`; a imagem foi corrigida e publicada em quatro caminhos `pets-19-r2.webp` pela migration `20260820193000`, mantendo os objetos anteriores para rollback. O catálogo permanece com 407 produtos e 1.696 caminhos de imagem ativos. Evidência: [`docs/baselines/2026-08-20-pets-catalog/PETS_CATALOG.md`](../baselines/2026-08-20-pets-catalog/PETS_CATALOG.md).

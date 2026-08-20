@@ -73,7 +73,7 @@ export const produtos: Record<string, ProductInput[]> = {
       nome: `Pets ${codigo}`,
       tema: 'Pets',
       preco: 39.9,
-      imagem: `./img/pets-${codigo}.png`,
+      imagem: numero === 19 ? './img/pets-19-r2.png' : `./img/pets-${codigo}.png`,
     }
   }),
   cafe: Array.from({ length: 6 }, (_, indice) => {

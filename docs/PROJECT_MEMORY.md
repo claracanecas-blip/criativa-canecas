@@ -20,7 +20,7 @@ Atualizada em 20 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Stack: Vue 3, TypeScript 5.9, Vue Router, Tailwind CSS 4, Lucide Icons e Vite 6.
 - Hospedagem: Vercel ligada ao GitHub; push em `main` cria deploy de produção.
 - CI: GitHub Actions executa `npm ci`, `npm test` e `npm run build`.
-- Imagens: 424 originais WebP e 1.272 variantes verificadas no Supabase, totalizando 1.696 objetos.
+- Imagens ativas: 424 originais WebP e 1.272 variantes verificadas no Supabase, totalizando 1.696 caminhos referenciados; quatro objetos anteriores de `pets-19` permanecem preservados para rollback, total físico de 1.700 objetos.
 - Originais: preservados localmente em `source-images/` e ignorados pelo Git.
 - Pacote de produção limpo: aproximadamente 2,1 MB e 21 arquivos na medição da migração.
 - Rotas usam `createWebHistory`; `vercel.json` fornece fallback de SPA.
@@ -54,7 +54,7 @@ Atualizada em 20 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Fase 6 concluída: eventos de produto, busca, coleção, WhatsApp e erro são agregados diariamente no Supabase, sem cookie, identificador de visitante, texto livre ou PII.
 - Analytics só envia no hostname oficial de produção; localhost e previews são ignorados. A função RPC aceita apenas eventos/dimensões fechados e slugs publicados.
 - RLS de analytics passou oito casos positivos/negativos; somente administradores leem os agregados e visitantes não acessam a tabela diretamente.
-- CI executa 40 testes unitários, typecheck, build, 65 cenários Playwright/axe e Lighthouse com gate 90. `actions/checkout@v5` e `actions/setup-node@v5` usam runtime Node 24; a matriz cobre Chrome, Edge atual em Windows, Firefox, WebKit desktop e perfil Safari móvel, sem violações Axe WCAG 2.2 A/AA nos fluxos públicos.
+- CI executa 41 testes unitários, typecheck, build, 65 cenários Playwright/axe e Lighthouse com gate 90. `actions/checkout@v5` e `actions/setup-node@v5` usam runtime Node 24; a matriz cobre Chrome, Edge atual em Windows, Firefox, WebKit desktop e perfil Safari móvel, sem violações Axe WCAG 2.2 A/AA nos fluxos públicos.
 - Lighthouse local da Fase 6: home P99/A98/B100/S100; coleção P99/A100/B100/S100; produto P90/A100/B100/S100.
 - Fase 7 concluída: visitantes adicionam/removem produtos, alteram quantidades e mantêm a seleção em `localStorage`, sem conta ou dado pessoal.
 - “Meu orçamento” abre drawer lateral no desktop e painel inferior no celular; contador, estado vazio, confirmação para limpar e anúncios acessíveis estão implementados.
@@ -69,7 +69,7 @@ Atualizada em 20 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A página pública lê somente seções publicadas, usa backup local seguro em falha do Supabase e o prerender consulta a mesma fonte para produzir HTML rastreável. Nove textos-base seguros foram reconciliados sem inventar condições comerciais.
 - A migration remota `20260813221500` e o lint passaram; 11 verificações RLS confirmaram leitura pública limitada, escrita exclusiva de administrador, autoria privada, ciclo rascunho → publicação e limpeza integral dos dados temporários.
 - O fluxo real de `/admin/informacoes` passou seis verificações navegadas: proteção por login, abertura autorizada, criação de rascunho com autoria, invisibilidade pública, publicação visível e exclusão confirmada; conta e conteúdo temporários foram removidos.
-- Qualidade atual: 40 testes, 13 E2E/axe por perfil, typecheck e build aprovados; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
+- Qualidade atual: 41 testes, 13 E2E/axe por perfil, typecheck e build aprovados; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
 - A origem canônica foi centralizada em `VITE_SITE_URL`, configurada como variável pública na Vercel para Production, Preview e Development. Canonical, Open Graph, JSON-LD, sitemap, robots, links comerciais e analytics seguem a mesma origem.
 - O responsável público e o WhatsApp oficial foram confirmados pelo proprietário e centralizados em `src/data/site.ts`; o rodapé exibe ambos de forma consistente. CNPJ e avaliações permanecem ausentes até o fornecimento de dados reais.
 - A auditoria `docs/audits/2026-08-13-SDD_COMPLETION_AUDIT.md` mapeia os 59 requisitos: todos têm evidência técnica; somente o aceite externo da Fase 8 continua pendente.
@@ -79,7 +79,8 @@ Atualizada em 20 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A coleção Aniversário foi ampliada em 16 de agosto de 2026 sem duplicar os sete itens existentes: 16 mockups novos (`aniversario-08` a `aniversario-23`), 64 objetos novos no Storage e migration remota `20260816200000`.
 - Após a expansão de Aniversário, o catálogo possuía 357 produtos, 357 relações e 1.428 associações de imagem. RLS positiva/negativa, `db lint`, os 1.496 objetos públicos, typecheck e build foram validados; a evidência está em `docs/baselines/2026-08-16-anniversary-catalog/`.
 - A coleção Pets foi publicada em 20 de agosto de 2026 com 50 produtos (`pets-01` a `pets-50`), 200 objetos WebP novos e migration remota `20260820115000`.
-- O catálogo remoto atual possui 407 produtos, 407 relações e 1.628 associações de imagem. RLS positiva/negativa, `db lint`, os 1.696 objetos públicos, typecheck, build e navegação paginada foram validados; a evidência está em `docs/baselines/2026-08-20-pets-catalog/`.
+- O catálogo remoto atual possui 407 produtos, 407 relações e 1.628 associações de imagem. RLS positiva/negativa, `db lint`, os 1.696 caminhos ativos, typecheck, build e navegação paginada foram validados; o Storage contém 1.700 objetos físicos devido ao rollback preservado de `pets-19`. A evidência está em `docs/baselines/2026-08-20-pets-catalog/`.
+- Os 50 mockups de Pets foram revisados visualmente em folhas de contato. Somente `pets-19` tinha uma faixa sem estampa na base da caneca frontal; o PNG foi corrigido, preservado com backup local e publicado nos quatro caminhos versionados `pets-19-r2.webp` pela migration `20260820193000`. Os quatro objetos anteriores permanecem disponíveis para rollback.
 
 ## Decisões tomadas
 

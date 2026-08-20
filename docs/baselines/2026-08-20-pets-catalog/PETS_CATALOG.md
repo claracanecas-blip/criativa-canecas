@@ -20,6 +20,12 @@ O pipeline oficial produziu para Pets:
 
 Os 200 objetos foram enviados isoladamente ao bucket público `product-images`, com `Content-Type: image/webp` e cache público de um ano. A verificação completa por `GET` confirmou 1.696 objetos acessíveis, sem ausência, tipo incorreto ou cache incorreto.
 
+### Revisão de preenchimento
+
+Os 50 mockups foram comparados visualmente em folhas de contato. Os fundos coloridos e os padrões dos itens 01–18 e 20–50 alcançam a borda natural das duas canecas; as áreas brancas restantes pertencem às próprias estampas. Somente `pets-19` apresentava uma faixa horizontal sem estampa na base da caneca frontal.
+
+O PNG de `pets-19` foi corrigido preservando composição, perspectiva, texto e arte original. A revisão `r2` usa quatro caminhos novos (`pets-19-r2.webp` e suas variantes `card-320`, `card-640` e `social`) para impedir que o cache anual mantenha a imagem anterior. Os quatro objetos antigos permanecem no Storage exclusivamente para rollback, portanto há 1.696 caminhos ativos e 1.700 objetos físicos.
+
 ## Catálogo e banco
 
 A migration `20260820115000_pets_catalog_expansion.sql` cadastrou 50 produtos publicados, 50 relações com a coleção `pets` e 200 associações de imagem. O estado remoto validado ficou em:
@@ -42,9 +48,11 @@ O relatório [`catalog-verify-report.json`](catalog-verify-report.json) registra
 - rascunho oculto ao público;
 - remoção integral do usuário, produto, auditoria e objeto sentinela.
 
-Também passaram `db lint`, 40 testes unitários, 13 cenários Playwright/axe no Chrome, `npm run typecheck`, `npm run build` e a paginação pública de 20 + 20 + 10 produtos.
+Também passaram `db lint`, 41 testes unitários, 13 cenários Playwright/axe no Chrome, `npm run typecheck`, `npm run build` e a paginação pública de 20 + 20 + 10 produtos. Após a correção de `pets-19`, a verificação remota de RLS voltou a aprovar todos os casos positivos, negativos e de limpeza.
 
 ## Rollback
+
+Para reverter somente a correção visual de `pets-19`, aplicar `supabase/rollback/20260820193000_pets_19_mockup_fill_fix.sql` e reverter o fallback TypeScript. Os quatro objetos anteriores continuam disponíveis.
 
 1. Aplicar `supabase/rollback/20260820115000_pets_catalog_expansion.sql` em ambiente autorizado.
 2. Reverter os arquivos de aplicação e testes do mesmo ciclo.
