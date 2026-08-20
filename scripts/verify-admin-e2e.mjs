@@ -107,8 +107,8 @@ try {
   await page.getByLabel('Senha').fill(password)
   await page.getByRole('button', { name: 'Entrar', exact: true }).click()
   await expect(page).toHaveURL(`${baseUrl}/admin`)
-  await expect(page.getByText('507', { exact: true }).first()).toBeVisible()
-  check('administrador autenticado abre painel', true, '507 produtos carregados')
+  await expect(page.getByText('557', { exact: true }).first()).toBeVisible()
+  check('administrador autenticado abre painel', true, '557 produtos carregados')
 
   await page.getByRole('button', { name: /Coleções/ }).click()
   await page.getByRole('button', { name: 'Novo', exact: true }).click()

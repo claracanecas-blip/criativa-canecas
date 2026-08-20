@@ -122,6 +122,35 @@ export const produtos: Record<string, ProductInput[]> = {
       imagem: `./img/profissoes-${codigo}.png`,
     }
   }),
+  religiao: ([
+    ['Fé Islâmica', 'Islâmica'], ['Fé Messiânica', 'Messiânica'], ['Nossa Senhora de Fátima 01', 'Católica'],
+    ['Assembleia de Deus', 'Evangélica'], ['Círio de Nazaré 01', 'Católica'], ['Esperança em Deus', 'Cristã'],
+    ['São Cosme e Damião', 'Católica'], ['Fé e Certeza', 'Cristã'], ['Nossa Senhora Aparecida 01', 'Católica'],
+    ['Oração', 'Cristã'], ['Nossa Senhora de Fátima 02', 'Católica'], ['Vivo por Jesus', 'Cristã'],
+    ['Santo Antônio', 'Católica'], ['Igreja do Evangelho Quadrangular', 'Evangélica'], ['Nossa Senhora Aparecida 02', 'Católica'],
+    ['Eu Amo a Bíblia', 'Cristã'], ['Sagrada Família', 'Católica'], ['Confia no Senhor', 'Católica'],
+    ['Nossa Senhora Aparecida 03', 'Católica'], ['O Senhor é Meu Pastor', 'Cristã'], ['Madre Teresa', 'Católica'],
+    ['Cristo Ressuscitou', 'Cristã'], ['Nossa Senhora Aparecida 04', 'Católica'], ['Amai-vos Uns aos Outros', 'Cristã'],
+    ['Nossa Senhora 01', 'Católica'], ['Fé, Amor e Esperança', 'Cristã'], ['Pastor', 'Evangélica'],
+    ['Pastora', 'Evangélica'], ['Nossa Senhora e o Menino Jesus', 'Católica'], ['Leão de Judá', 'Cristã'],
+    ['Jesus, Médico dos Médicos', 'Cristã'], ['Deus Nunca Falha', 'Cristã'], ['Promessa de Deus', 'Cristã'],
+    ['Eu Escolho Deus', 'Cristã'], ['Deus do Meu Viver', 'Cristã'], ['Conquiste a Paz', 'Cristã'],
+    ['Jesus Dá Descanso', 'Cristã'], ['Amor de Deus', 'Cristã'], ['Renovação da Fé', 'Cristã'],
+    ['Palavra de Deus', 'Cristã'], ['Deus Abriu o Mar', 'Cristã'], ['Agradecer a Deus', 'Cristã'],
+    ['Sem Fé é Impossível', 'Cristã'], ['Nas Mãos de Deus', 'Cristã'], ['Protegido por Jesus', 'Cristã'],
+    ['Meu Alvo é Cristo', 'Cristã'], ['Fé na Cruz', 'Cristã'], ['Deus é Grande', 'Cristã'],
+    ['Jesus Te Ama', 'Cristã'], ['Unidos pelo Amor do Pai', 'Cristã'],
+  ] as const).map(([nome, tradicao], indice) => {
+    const codigo = String(indice + 1).padStart(2, '0')
+
+    return {
+      id: `religiao-${codigo}`,
+      nome,
+      tema: tradicao,
+      preco: 39.9,
+      imagem: `./img/religiao-${codigo}.png`,
+    }
+  }),
   cafe: Array.from({ length: 6 }, (_, indice) => {
     const numero = indice + 1
     const codigo = String(numero).padStart(2, '0')
