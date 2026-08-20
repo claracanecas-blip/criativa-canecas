@@ -45,7 +45,7 @@ test('backup histórico é legível e permanece contido nas fontes atuais', asyn
   const currentProducts = todosProdutos()
   assert.equal(backup.materializedProducts.length, 341)
   assert.ok(currentProducts.length >= backup.materializedProducts.length)
-  assert.deepEqual(Object.keys(backup.productGroups).sort(), Object.keys(produtos).sort())
+  assert.ok(Object.keys(backup.productGroups).every((group) => group in produtos))
   const currentProductIds = new Set(currentProducts.map((product) => product.id))
   assert.ok(backup.materializedProducts.every((product: { id: string }) => currentProductIds.has(product.id)))
 })

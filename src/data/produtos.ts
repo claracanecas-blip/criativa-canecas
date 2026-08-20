@@ -64,6 +64,18 @@ export const produtos: Record<string, ProductInput[]> = {
       imagem: `./img/aniversario-${codigo}.jpg`,
     }
     }),
+  pets: Array.from({ length: 50 }, (_, indice) => {
+    const numero = indice + 1
+    const codigo = String(numero).padStart(2, '0')
+
+    return {
+      id: `pets-${codigo}`,
+      nome: `Pets ${codigo}`,
+      tema: 'Pets',
+      preco: 39.9,
+      imagem: `./img/pets-${codigo}.png`,
+    }
+  }),
   cafe: Array.from({ length: 6 }, (_, indice) => {
     const numero = indice + 1
     const codigo = String(numero).padStart(2, '0')

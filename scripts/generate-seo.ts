@@ -87,6 +87,13 @@ export function renderSeoHtml(
     .replace('<div id="app"></div>', `<div id="app">${body}</div>`)
 }
 
+export function renderCollectionBody(
+  collection: Pick<SeoCollection, 'name' | 'description'>,
+  products: Array<Pick<SeoProduct, 'slug' | 'name'>>,
+): string {
+  return `<main><section><h1>${escapeHtml(collection.name)}</h1><p>${escapeHtml(collection.description)}</p><ul>${products.map((product) => `<li><a href="/produto/${escapeHtml(product.slug)}">${escapeHtml(product.name)}</a></li>`).join('')}</ul></section></main>`
+}
+
 export function renderInformationBody(sections: PublicInformationContent[]): string {
   const cards = sections
     .filter((section) => section.kind === 'card')
@@ -219,7 +226,7 @@ export async function generateSeoAssets(outputDirectory = resolve('dist')): Prom
     const firstProduct = catalog.products.find((product) => product.collectionIds.includes(collection.id))
     const image = imageUrl(firstProduct?.imagePath ?? collection.image_path ?? 'logo.webp', 'social')
     const products = catalog.products.filter((product) => product.collectionIds.includes(collection.id))
-    const body = `<main><section><h1>${escapeHtml(collection.name)}</h1><p>${escapeHtml(collection.description)}</p><ul>${products.slice(0, 40).map((product) => `<li><a href="/produto/${escapeHtml(product.slug)}">${escapeHtml(product.name)}</a></li>`).join('')}</ul></section></main>`
+    const body = renderCollectionBody(collection, products)
     const jsonLd = [{
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Início', item: siteUrl },
