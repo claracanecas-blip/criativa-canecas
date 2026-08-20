@@ -20,7 +20,7 @@ Atualizada em 20 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Stack: Vue 3, TypeScript 5.9, Vue Router, Tailwind CSS 4, Lucide Icons e Vite 6.
 - Hospedagem: Vercel ligada ao GitHub; push em `main` cria deploy de produção.
 - CI: GitHub Actions executa `npm ci`, `npm test` e `npm run build`.
-- Imagens ativas: 424 originais WebP e 1.272 variantes verificadas no Supabase, totalizando 1.696 caminhos referenciados; quatro objetos anteriores de `pets-19` permanecem preservados para rollback, total físico de 1.700 objetos.
+- Imagens do conjunto atual: 474 originais WebP e 1.422 variantes verificadas no Supabase, totalizando 1.896 caminhos; quatro objetos anteriores de `pets-19` permanecem preservados para rollback, total físico de 1.900 objetos.
 - Originais: preservados localmente em `source-images/` e ignorados pelo Git.
 - Pacote de produção limpo: aproximadamente 2,1 MB e 21 arquivos na medição da migração.
 - Rotas usam `createWebHistory`; `vercel.json` fornece fallback de SPA.
@@ -48,19 +48,19 @@ Atualizada em 20 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Um convite administrativo foi enviado ao e-mail proprietário do projeto; o destinatário define a própria senha por link do Supabase.
 - E2E Playwright comprovou login, 341 produtos iniciais, criação de coleção, publicação com quatro imagens, visualização pública, exclusões confirmadas e logout; nenhum sentinela permaneceu.
 - Fase 5 concluída: 341 URLs `/produto/:slug` exibem imagem, SKU, preço, descrição, coleções, relacionados e WhatsApp com SKU/URL.
-- O build gera 407 HTMLs de produto, 17 HTMLs de coleção, sitemap com 427 URLs e robots bloqueando `/admin`; HTML estático contém canonical, Open Graph, JSON-LD e conteúdo rastreável.
+- O build gera 457 HTMLs de produto, 17 HTMLs de coleção, sitemap com 477 URLs e robots bloqueando `/admin`; HTML estático contém canonical, Open Graph, JSON-LD e conteúdo rastreável.
 - Vercel usa `cleanUrls` e dá precedência aos HTMLs gerados antes do fallback SPA; preview confirmou `200` e metadados sem executar JavaScript.
 - Lighthouse local da Fase 5: home P99/A93/B100/S100; coleção P99/A95/B100/S100; produto P90/A95/B100/S100, todos com CLS baixo/zero.
 - Fase 6 concluída: eventos de produto, busca, coleção, WhatsApp e erro são agregados diariamente no Supabase, sem cookie, identificador de visitante, texto livre ou PII.
 - Analytics só envia no hostname oficial de produção; localhost e previews são ignorados. A função RPC aceita apenas eventos/dimensões fechados e slugs publicados.
 - RLS de analytics passou oito casos positivos/negativos; somente administradores leem os agregados e visitantes não acessam a tabela diretamente.
-- CI executa 41 testes unitários, typecheck, build, 65 cenários Playwright/axe e Lighthouse com gate 90. `actions/checkout@v5` e `actions/setup-node@v5` usam runtime Node 24; a matriz cobre Chrome, Edge atual em Windows, Firefox, WebKit desktop e perfil Safari móvel, sem violações Axe WCAG 2.2 A/AA nos fluxos públicos.
+- CI executa 44 testes unitários, typecheck, build, 70 cenários Playwright/axe e Lighthouse com gate 90. `actions/checkout@v5` e `actions/setup-node@v5` usam runtime Node 24; a matriz cobre Chrome, Edge atual em Windows, Firefox, WebKit desktop e perfil Safari móvel, sem violações Axe WCAG 2.2 A/AA nos fluxos públicos.
 - Lighthouse local da Fase 6: home P99/A98/B100/S100; coleção P99/A100/B100/S100; produto P90/A100/B100/S100.
 - Fase 7 concluída: visitantes adicionam/removem produtos, alteram quantidades e mantêm a seleção em `localStorage`, sem conta ou dado pessoal.
 - “Meu orçamento” abre drawer lateral no desktop e painel inferior no celular; contador, estado vazio, confirmação para limpar e anúncios acessíveis estão implementados.
 - WhatsApp consolidado inclui quantidade, nome, SKU, subtotal, link e total estimado, com ressalvas de preço/prazo/disponibilidade e sem promessa de reserva/pedido.
 - Qualidade da Fase 7: 24 testes unitários, 8 E2E/axe e Lighthouse home P99/A98, coleção P99/A100 e produto P91/A100; Boas Práticas/SEO 100.
-- Base técnica da Fase 8 concluída: `/informacoes` está no rodapé, prerender e sitemap de 427 URLs; textos evitam promessas antes da confirmação no atendimento.
+- Base técnica da Fase 8 concluída: `/informacoes` está no rodapé, prerender e sitemap de 477 URLs; textos evitam promessas antes da confirmação no atendimento.
 - O gerador de SEO remove metadados-base antes do prerender; páginas estáticas devem conter exatamente um canonical, validado em `/informacoes` e `/produto/arrow-1`.
 - Depoimentos nascem em rascunho, só publicados aparecem na home e fotos exigem referência de consentimento. O banco permanece sem depoimentos fictícios.
 - Referências de consentimento e autoria não são colunas públicas; o painel lê os dados completos por RPC que exige papel administrativo.
@@ -69,7 +69,7 @@ Atualizada em 20 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A página pública lê somente seções publicadas, usa backup local seguro em falha do Supabase e o prerender consulta a mesma fonte para produzir HTML rastreável. Nove textos-base seguros foram reconciliados sem inventar condições comerciais.
 - A migration remota `20260813221500` e o lint passaram; 11 verificações RLS confirmaram leitura pública limitada, escrita exclusiva de administrador, autoria privada, ciclo rascunho → publicação e limpeza integral dos dados temporários.
 - O fluxo real de `/admin/informacoes` passou seis verificações navegadas: proteção por login, abertura autorizada, criação de rascunho com autoria, invisibilidade pública, publicação visível e exclusão confirmada; conta e conteúdo temporários foram removidos.
-- Qualidade atual: 41 testes, 13 E2E/axe por perfil, typecheck e build aprovados; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
+- Qualidade atual: 44 testes, 14 E2E/axe por perfil, typecheck e build aprovados; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
 - A origem canônica foi centralizada em `VITE_SITE_URL`, configurada como variável pública na Vercel para Production, Preview e Development. Canonical, Open Graph, JSON-LD, sitemap, robots, links comerciais e analytics seguem a mesma origem.
 - O responsável público e o WhatsApp oficial foram confirmados pelo proprietário e centralizados em `src/data/site.ts`; o rodapé exibe ambos de forma consistente. CNPJ e avaliações permanecem ausentes até o fornecimento de dados reais.
 - A auditoria `docs/audits/2026-08-13-SDD_COMPLETION_AUDIT.md` mapeia os 59 requisitos: todos têm evidência técnica; somente o aceite externo da Fase 8 continua pendente.
@@ -79,8 +79,9 @@ Atualizada em 20 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A coleção Aniversário foi ampliada em 16 de agosto de 2026 sem duplicar os sete itens existentes: 16 mockups novos (`aniversario-08` a `aniversario-23`), 64 objetos novos no Storage e migration remota `20260816200000`.
 - Após a expansão de Aniversário, o catálogo possuía 357 produtos, 357 relações e 1.428 associações de imagem. RLS positiva/negativa, `db lint`, os 1.496 objetos públicos, typecheck e build foram validados; a evidência está em `docs/baselines/2026-08-16-anniversary-catalog/`.
 - A coleção Pets foi publicada em 20 de agosto de 2026 com 50 produtos (`pets-01` a `pets-50`), 200 objetos WebP novos e migration remota `20260820115000`.
-- O catálogo remoto atual possui 407 produtos, 407 relações e 1.628 associações de imagem. RLS positiva/negativa, `db lint`, os 1.696 caminhos ativos, typecheck, build e navegação paginada foram validados; o Storage contém 1.700 objetos físicos devido ao rollback preservado de `pets-19`. A evidência está em `docs/baselines/2026-08-20-pets-catalog/`.
+- Após as expansões de Pets e Futebol, o catálogo remoto atual possui 457 produtos, 457 relações e 1.828 associações de imagem. RLS positiva/negativa, `db lint`, os 1.896 caminhos do conjunto atual, typecheck, build e navegação paginada foram validados; o Storage contém 1.900 objetos físicos devido ao rollback preservado de `pets-19`.
 - Os 50 mockups de Pets foram revisados visualmente em folhas de contato. Somente `pets-19` tinha uma faixa sem estampa na base da caneca frontal; o PNG foi corrigido, preservado com backup local e publicado nos quatro caminhos versionados `pets-19-r2.webp` pela migration `20260820193000`. Os quatro objetos anteriores permanecem disponíveis para rollback.
+- A coleção `Futebol & Esportes`, antes vazia, recebeu em 20 de agosto de 2026 50 produtos (`futebol-01` a `futebol-50`) de 20 clubes, 200 objetos WebP e migration remota `20260820210000`. Os 78 arquivos de origem foram triados por popularidade, qualidade e duplicidade; os 50 mockups finais foram revisados quanto a preenchimento, dimensões e unicidade. Evidência em `docs/baselines/2026-08-20-football-catalog/`.
 
 ## Decisões tomadas
 

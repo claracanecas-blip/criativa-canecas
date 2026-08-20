@@ -76,6 +76,30 @@ export const produtos: Record<string, ProductInput[]> = {
       imagem: numero === 19 ? './img/pets-19-r2.png' : `./img/pets-${codigo}.png`,
     }
   }),
+  futebol: ([
+    'Flamengo', 'Flamengo', 'Flamengo', 'Flamengo', 'Flamengo',
+    'Corinthians', 'Corinthians', 'Corinthians',
+    'São Paulo', 'São Paulo', 'São Paulo', 'São Paulo', 'São Paulo', 'São Paulo', 'São Paulo',
+    'Palmeiras', 'Palmeiras', 'Palmeiras', 'Palmeiras', 'Palmeiras', 'Palmeiras', 'Palmeiras',
+    'Cruzeiro', 'Cruzeiro', 'Vasco',
+    'Grêmio', 'Grêmio', 'Grêmio', 'Grêmio', 'Atlético Mineiro',
+    'Santos', 'Santos', 'Santos',
+    'Internacional', 'Internacional', 'Internacional',
+    'Botafogo', 'Botafogo', 'Fluminense', 'Bahia', 'Sport Recife', 'Fortaleza', 'Ceará',
+    'Athletico Paranaense', 'Real Madrid', 'Real Madrid', 'Barcelona', 'Barcelona', 'Chelsea', 'Chelsea',
+  ] as const).map((tema, indice, equipes) => {
+    const numero = indice + 1
+    const codigo = String(numero).padStart(2, '0')
+    const variacao = equipes.slice(0, numero).filter((equipe) => equipe === tema).length
+
+    return {
+      id: `futebol-${codigo}`,
+      nome: `${tema} ${String(variacao).padStart(2, '0')}`,
+      tema,
+      preco: 39.9,
+      imagem: `./img/futebol-${codigo}.png`,
+    }
+  }),
   cafe: Array.from({ length: 6 }, (_, indice) => {
     const numero = indice + 1
     const codigo = String(numero).padStart(2, '0')
