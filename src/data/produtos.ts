@@ -122,6 +122,30 @@ export const produtos: Record<string, ProductInput[]> = {
       imagem: `./img/profissoes-${codigo}.png`,
     }
   }),
+  divertidas: ([
+    ['Vem Ni Mim', 'Frases'], ['Aceita um Café?', 'Café'], ['Caneca Pilhada', 'Frases'],
+    ['Cuidado: Já Tem Dono', 'Humor'], ['Eu Digo Não para a Bebida', 'Bebidas'], ['Arrisco', 'Paródia'],
+    ['Tommy Cachaça', 'Bebidas'], ['Malgosto', 'Bebidas'], ['Beer: Beba Sempre', 'Bebidas'],
+    ['Danosse', 'Paródia'], ['Ardidas', 'Humor Adulto'], ['Game Over 01', 'Casamento'],
+    ['Wi Fe', 'Relacionamento'], ['No Stress, Uma Porra', 'Humor Adulto'], ['Só Ctrl+S Salva', 'Tecnologia'],
+    ['Viagra Electron', 'Humor Adulto'], ['Game Over 02', 'Casamento'], ['Enxuta', 'Humor Adulto'],
+    ['Pum', 'Humor'], ['Não Intendo', 'Paródia'], ['Vivo Sem Dinheiro', 'Humor'],
+    ['Hardcore', 'Paródia'], ['Azarado', 'Casamento'], ['Viagra', 'Humor Adulto'],
+    ['No Stress O Caralho', 'Humor Adulto'], ['Não Toque Nessa Caneca', 'Humor'], ['Frete Grátis', 'Compras Online'],
+    ['Tá com Inveja? Morra', 'Humor'], ['Bebaça Sem Limites', 'Bebidas'], ['Teu Cu', 'Humor Adulto'],
+    ['Teu Cu com Lhama', 'Humor Adulto'], ['Bolsonaro 100%', 'Política'], ['O Golpe Tá Aí', 'Humor'],
+    ['Que se Dane', 'Lhamas'], ['Sem Um Minuto de Paz', 'Humor Adulto'], ['Surte e Atirei o Pau na Dona Chica', 'Gatos'],
+  ] as const).map(([nome, tema], indice) => {
+    const codigo = String(indice + 1).padStart(2, '0')
+
+    return {
+      id: `divertidas-${codigo}`,
+      nome,
+      tema,
+      preco: 39.9,
+      imagem: `./img/divertidas-${codigo}.png`,
+    }
+  }),
   religiao: ([
     ['Fé Islâmica', 'Islâmica'], ['Fé Messiânica', 'Messiânica'], ['Nossa Senhora de Fátima 01', 'Católica'],
     ['Assembleia de Deus', 'Evangélica'], ['Círio de Nazaré 01', 'Católica'], ['Esperança em Deus', 'Cristã'],

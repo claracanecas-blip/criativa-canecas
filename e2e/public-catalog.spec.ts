@@ -120,6 +120,19 @@ test('coleção Religião contém 50 modelos com estampas respeitosamente identi
   await expect(page.getByRole('link', { name: 'Ver detalhes de Religião 51' })).toHaveCount(0)
 })
 
+test('coleção Divertidas contém somente os 36 mockups aprovados com estampa', async ({ page }) => {
+  await page.goto('/colecao/divertidas')
+  await expect(page.getByText('36 modelos disponíveis')).toBeVisible()
+  await expect(page.locator('article.card')).toHaveCount(20)
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Vem Ni Mim' })).toBeVisible()
+
+  await page.getByRole('button', { name: 'Próxima' }).click()
+  await expect(page.getByText('Página 2 de 2')).toBeVisible()
+  await expect(page.locator('article.card')).toHaveCount(16)
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Surte e Atirei o Pau na Dona Chica' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Divertidas 37' })).toHaveCount(0)
+})
+
 test('produto continua utilizável em viewport móvel e via teclado', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/produto/arrow-1')
