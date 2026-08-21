@@ -1,4 +1,5 @@
 import type { Product, ProductInput } from '@/types/catalog'
+import { novosProdutosAnimes } from '@/data/animeCatalogExpansion'
 
 /**
  * Produtos por coleção. A chave é o `slug` definido em data/colecoes.js.
@@ -51,6 +52,7 @@ export const produtos: Record<string, ProductInput[]> = {
     { id: 'fairy-tail-41',                     nome: 'Fairy Tail 07', tema: 'Fairy Tail', preco: 39.9, imagem: './img/fairy-tail-41.png' },
     { id: 'fairy-tail-42',                     nome: 'Fairy Tail 08', tema: 'Fairy Tail', preco: 39.9, imagem: './img/fairy-tail-42.png' },
     { id: 'fairy-tail-43',                     nome: 'Fairy Tail 09', tema: 'Fairy Tail', preco: 39.9, imagem: './img/fairy-tail-43.png' },
+    ...novosProdutosAnimes,
   ],
   aniversario: Array.from({ length: 23 }, (_, indice) => {
     const numero = indice + 1

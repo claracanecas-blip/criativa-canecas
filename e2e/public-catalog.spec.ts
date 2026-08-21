@@ -133,6 +133,21 @@ test('coleção Divertidas contém somente os 36 mockups aprovados com estampa',
   await expect(page.getByRole('link', { name: 'Ver detalhes de Divertidas 37' })).toHaveCount(0)
 })
 
+test('coleção Animes contém os 43 modelos anteriores e os 100 novos mockups', async ({ page }) => {
+  await page.goto('/colecao/animes')
+  await expect(page.getByText('143 modelos disponíveis')).toBeVisible()
+  await expect(page.locator('article.card')).toHaveCount(20)
+
+  for (let pageNumber = 2; pageNumber <= 8; pageNumber += 1) {
+    await page.getByRole('button', { name: 'Próxima' }).click()
+    await expect(page.getByText(`Página ${pageNumber} de 8`)).toBeVisible()
+  }
+
+  await expect(page.locator('article.card')).toHaveCount(3)
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Studio Ghibli 01' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Studio Ghibli 02' })).toHaveCount(0)
+})
+
 test('produto continua utilizável em viewport móvel e via teclado', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/produto/arrow-1')
