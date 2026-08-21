@@ -317,7 +317,7 @@ export const produtos: Record<string, ProductInput[]> = {
     { id: 'geek-extra-tartarugas-ninja-02', nome: 'Tartarugas Ninja 02', tema: 'Tartarugas Ninja', preco: 39.9, imagem: './img/geek-extra-tartarugas-ninja-02.jpg' },
     { id: 'geek-extra-tartarugas-ninja-03', nome: 'Tartarugas Ninja 03', tema: 'Tartarugas Ninja', preco: 39.9, imagem: './img/geek-extra-tartarugas-ninja-03.jpg' },
   ]),
-  amizade: Array.from({ length: 42 }, (_, indice) => {
+  amizade: Array.from({ length: 72 }, (_, indice) => {
     const numero = indice + 1
     const codigo = String(numero).padStart(2, '0')
 
@@ -326,7 +326,9 @@ export const produtos: Record<string, ProductInput[]> = {
       nome: `Amizade ${codigo}`,
       tema: 'Amizade',
       preco: 39.9,
-      imagem: `./img/amizade-nova-${codigo}.jpg`,
+      imagem: numero <= 42
+        ? `./img/amizade-nova-${codigo}.jpg`
+        : `./img/amizade-${codigo}.png`,
     }
   }),
   series: [

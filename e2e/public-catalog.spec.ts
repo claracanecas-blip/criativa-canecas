@@ -160,6 +160,26 @@ test('coleção Animes contém os 43 modelos anteriores e os 98 mockups aprovado
   await expect(page.getByRole('heading', { level: 1, name: 'Fairy Tail 01' })).toBeVisible()
 })
 
+test('coleção Amizade inclui os 30 novos mockups sem repetição de rota', async ({ page }) => {
+  await page.goto('/colecao/amizade')
+  await expect(page.getByText('72 modelos disponíveis')).toBeVisible()
+  await expect(page.locator('article.card')).toHaveCount(20)
+
+  for (let pageNumber = 2; pageNumber <= 4; pageNumber += 1) {
+    await page.getByRole('button', { name: 'Próxima' }).click()
+    await expect(page.getByText(`Página ${pageNumber} de 4`)).toBeVisible()
+  }
+
+  await expect(page.locator('article.card')).toHaveCount(12)
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Amizade 72' })).toBeVisible()
+
+  await page.goto('/produto/amizade-43')
+  await expect(page.getByRole('heading', { level: 1, name: 'Amizade 43' })).toBeVisible()
+
+  await page.goto('/produto/amizade-72')
+  await expect(page.getByRole('heading', { level: 1, name: 'Amizade 72' })).toBeVisible()
+})
+
 test('produto continua utilizável em viewport móvel e via teclado', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/produto/arrow-1')

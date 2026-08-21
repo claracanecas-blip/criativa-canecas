@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9 concluídas, domínio da Fase 8 ativo e dados comerciais externos pendentes |
-| Versão | 1.25 |
+| Versão | 1.26 |
 | Data-base | 21 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -16,7 +16,7 @@ Este documento é a fonte de verdade para o próximo ciclo do produto. Cada fase
 
 ## 2. Contexto atual
 
-A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 2.832 caminhos WebP do conjunto atual e 12 objetos anteriores preservados para rollback no bucket público `product-images`; o Postgres contém 691 produtos publicados com metadados reconciliados.
+A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 2.952 caminhos WebP do conjunto atual e 12 objetos anteriores preservados para rollback no bucket público `product-images`; o Postgres contém 721 produtos publicados com metadados reconciliados.
 
 O catálogo público é lido do Supabase por uma camada de repositório tipada e possui fallback operacional para os arquivos TypeScript. A manutenção cotidiana é feita pelo painel administrativo protegido por Supabase Auth e RLS. O fluxo comercial termina no WhatsApp e mede a jornada por agregados diários sem identificador de visitante ou texto livre.
 
@@ -411,10 +411,10 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 |---|---|---|
 | 0 — Baseline | Concluída | `docs/baselines/2026-08-13/` e testes de integridade |
 | 1 — Imagens | Concluída | Produção P99/P98, CLS 0 e 1.432 objetos verificados |
-| 2 — Banco | Concluída | Importação inicial de 341 produtos; catálogo atual com 691 e RLS positiva/negativa verificada |
+| 2 — Banco | Concluída | Importação inicial de 341 produtos; catálogo atual com 721 e RLS positiva/negativa verificada |
 | 3 — Integração frontend | Concluída | Catálogo remoto, fallback, 14 testes e validação navegada |
 | 4 — Administração | Concluída | RLS remota e ciclo administrativo E2E completo |
-| 5 — Produto e SEO | Concluída | 691 páginas de produto, canonical único por HTML, sitemap de 711 URLs, preview e Lighthouse |
+| 5 — Produto e SEO | Concluída | 721 páginas de produto, canonical único por HTML, sitemap de 741 URLs, preview e Lighthouse |
 | 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, 90 cenários em cinco perfis, Lighthouse e actions no runtime Node 24 |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
 | 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical e Auth concluídos; dados comerciais oficiais e avaliações reais pendentes |
@@ -429,3 +429,4 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 - **20 de agosto de 2026 — coleção Religião:** 210 imagens raster foram inventariadas e 50 estampas únicas foram convertidas em mockups revisados, cada uma com quatro variantes WebP. A migration `20260820230000` levou o catálogo a 557 produtos e 2.296 caminhos WebP no conjunto atual. A origem é predominantemente cristã: 49 itens são de raiz cristã e um é islâmico; ampliar o alcance geral depende de novas estampas autênticas de outras tradições. Evidência: [`docs/baselines/2026-08-20-religion-catalog/RELIGION_CATALOG.md`](../baselines/2026-08-20-religion-catalog/RELIGION_CATALOG.md).
 - **20 de agosto de 2026 — coleção Divertidas:** 46 estampas únicas foram triadas e 36 mockups aprovados foram publicados com quatro variantes WebP por produto. Uma imagem sem estampa plana, uma paródia de medicamento e oito artes bloqueadas pelo gerador ficaram de fora. A migration `20260820233000` levou o catálogo a 593 produtos e 2.440 caminhos WebP no conjunto atual; texto, preenchimento e unicidade foram revisados. Evidência: [`docs/baselines/2026-08-20-funny-catalog/FUNNY_CATALOG.md`](../baselines/2026-08-20-funny-catalog/FUNNY_CATALOG.md).
 - **21 de agosto de 2026 — coleção Animes:** 2.301 imagens raster foram inventariadas e 100 mockups foram gerados. A revisão corretiva identificou `animes-027` como Nanatsu no Taizai e `animes-083` como repetição visual de `animes-026`; a migration `20260821200000` retirou os dois do catálogo e classificou `animes-017` a `animes-020` como Cavaleiros do Zodíaco Dourados. Permanecem 98 produtos novos, 141 na coleção, 691 no catálogo e 2.832 caminhos WebP ativos. Os oito objetos retirados permanecem preservados para rollback. Evidência: [`docs/baselines/2026-08-21-anime-catalog/ANIME_CATALOG.md`](../baselines/2026-08-21-anime-catalog/ANIME_CATALOG.md).
+- **21 de agosto de 2026 — coleção Amizade:** a pasta adicional `71 - DIA DOS AMIGOS` forneceu 50 artes com hashes distintos das fontes usadas anteriormente. Trinta estampas genéricas foram selecionadas, excluindo uma arte de personagem conhecido; os mockups `amizade-43` a `amizade-72` foram revisados, possuem hashes únicos e receberam quatro variantes WebP cada. A migration `20260821210000` levou o catálogo a 721 produtos e 2.952 caminhos WebP ativos. Evidência: [`docs/baselines/2026-08-21-friendship-catalog/FRIENDSHIP_CATALOG.md`](../baselines/2026-08-21-friendship-catalog/FRIENDSHIP_CATALOG.md).
