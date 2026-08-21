@@ -17,9 +17,9 @@ if (!projectUrl || !anonKey || !serviceKey) {
 
 const expectedCatalogCounts = {
   collections: 17,
-  products: 693,
-  relations: 693,
-  images: 2772,
+  products: 691,
+  relations: 691,
+  images: 2764,
 }
 const checks: Array<{ name: string; passed: boolean; detail: string }> = []
 let temporaryUserId: string | undefined

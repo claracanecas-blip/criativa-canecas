@@ -45,17 +45,35 @@ const temasSelecionados = [
 
 const ocorrencias = new Map<string, number>()
 
-export const novosProdutosAnimes: ProductInput[] = temasSelecionados.map((tema, indice) => {
+const produtosRemovidos = new Set([27, 83])
+const cavaleirosDourados = new Map([
+  [17, 13],
+  [18, 14],
+  [19, 15],
+  [20, 16],
+])
+
+export const novosProdutosAnimes: ProductInput[] = temasSelecionados.flatMap((tema, indice) => {
   const numero = indice + 1
+  if (produtosRemovidos.has(numero)) return []
+
   const codigo = String(numero).padStart(3, '0')
   const variacao = (ocorrencias.get(tema) ?? 0) + 1
   ocorrencias.set(tema, variacao)
 
-  return {
+  const numeroDourado = cavaleirosDourados.get(numero)
+  const temaCorrigido = numeroDourado ? 'Cavaleiros do Zodíaco Dourados' : tema
+  const nomeCorrigido = numeroDourado
+    ? `${temaCorrigido} ${String(numeroDourado).padStart(2, '0')}`
+    : numero === 16
+      ? 'Cavaleiros do Zodíaco 08'
+      : `${tema} ${String(variacao).padStart(2, '0')}`
+
+  return [{
     id: `animes-${codigo}`,
-    nome: `${tema} ${String(variacao).padStart(2, '0')}`,
-    tema,
+    nome: nomeCorrigido,
+    tema: temaCorrigido,
     preco: 39.9,
     imagem: `./img/animes-${codigo}.png`,
-  }
+  }]
 })

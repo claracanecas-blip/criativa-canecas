@@ -133,9 +133,9 @@ test('coleção Divertidas contém somente os 36 mockups aprovados com estampa',
   await expect(page.getByRole('link', { name: 'Ver detalhes de Divertidas 37' })).toHaveCount(0)
 })
 
-test('coleção Animes contém os 43 modelos anteriores e os 100 novos mockups', async ({ page }) => {
+test('coleção Animes contém os 43 modelos anteriores e os 98 mockups aprovados', async ({ page }) => {
   await page.goto('/colecao/animes')
-  await expect(page.getByText('143 modelos disponíveis')).toBeVisible()
+  await expect(page.getByText('141 modelos disponíveis')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
 
   for (let pageNumber = 2; pageNumber <= 8; pageNumber += 1) {
@@ -143,9 +143,21 @@ test('coleção Animes contém os 43 modelos anteriores e os 100 novos mockups',
     await expect(page.getByText(`Página ${pageNumber} de 8`)).toBeVisible()
   }
 
-  await expect(page.locator('article.card')).toHaveCount(3)
+  await expect(page.locator('article.card')).toHaveCount(1)
   await expect(page.getByRole('link', { name: 'Ver detalhes de Studio Ghibli 01' })).toBeVisible()
   await expect(page.getByRole('link', { name: 'Ver detalhes de Studio Ghibli 02' })).toHaveCount(0)
+
+  await page.goto('/produto/animes-017')
+  await expect(page.getByRole('heading', { level: 1, name: 'Cavaleiros do Zodíaco Dourados 13' })).toBeVisible()
+
+  await page.goto('/produto/animes-027')
+  await expect(page.getByRole('heading', { level: 2, name: 'Página não encontrada' })).toBeVisible()
+
+  await page.goto('/produto/animes-083')
+  await expect(page.getByRole('heading', { level: 2, name: 'Página não encontrada' })).toBeVisible()
+
+  await page.goto('/produto/fairy-tail-35')
+  await expect(page.getByRole('heading', { level: 1, name: 'Fairy Tail 01' })).toBeVisible()
 })
 
 test('produto continua utilizável em viewport móvel e via teclado', async ({ page }) => {

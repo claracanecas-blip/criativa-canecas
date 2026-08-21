@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-21T16:47:31.307Z",
+  "generatedAt": "2026-08-21T17:47:05.494Z",
   "checks": [
     {
       "name": "leitura anônima de coleções publicadas",
@@ -10,17 +10,17 @@
     {
       "name": "leitura anônima de produtos",
       "passed": true,
-      "detail": "693/693"
+      "detail": "691/691"
     },
     {
       "name": "leitura anônima de relações publicadas",
       "passed": true,
-      "detail": "693/693"
+      "detail": "691/691"
     },
     {
       "name": "leitura anônima de imagens",
       "passed": true,
-      "detail": "2772/2772"
+      "detail": "2764/2764"
     },
     {
       "name": "somente 15 coleções listadas",
@@ -65,7 +65,7 @@
     {
       "name": "autoria administrativa registrada",
       "passed": true,
-      "detail": "HTTP 200, ator 22b0ce63-c991-4e8f-b41a-49c028a6d60a"
+      "detail": "HTTP 200, ator d56b79a1-6bf4-4390-a140-b0c5a4a19300"
     },
     {
       "name": "inserção registrada na auditoria",
