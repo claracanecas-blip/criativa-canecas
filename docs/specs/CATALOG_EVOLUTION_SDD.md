@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9 concluídas, Fases 8 e 10 em andamento |
-| Versão | 1.27 |
+| Versão | 1.28 |
 | Data-base | 26 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -373,7 +373,7 @@ Uma fase só está concluída quando:
 
 ### Fase 10 — Escala e descoberta do catálogo
 
-**Estado:** em andamento; incremento e preview concluídos em 26 de agosto de 2026, aguardando smoke autenticado, aceite visual e publicação.
+**Estado:** em andamento; incremento, preview, smoke autenticado e aceite visual concluídos em 26 de agosto de 2026, aguardando publicação e smoke de produção.
 
 **Objetivo:** sustentar o crescimento acima de 1.000 produtos e facilitar a descoberta do catálogo, especialmente no celular.
 
@@ -444,11 +444,11 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
 | 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical e Auth concluídos; dados comerciais oficiais e avaliações reais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |
-| 10 — Escala e descoberta | Em andamento | Preview Vercel aprovado no build; CI com 64 testes, 100 cenários E2E e Lighthouse P90+; smoke autenticado, aceite e produção pendentes |
+| 10 — Escala e descoberta | Em andamento | Preview, smoke autenticado e aceite responsivo aprovados; CI com 65 testes, 100 cenários E2E e Lighthouse P90+; produção pendente |
 
 ## 18. Evoluções incrementais após o roadmap
 
-- **26 de agosto de 2026 — escala e descoberta:** consultas públicas, administrativas e de SEO passaram a percorrer páginas de até 1.000 linhas até o fim do conjunto; a home reduziu os corpos REST observados de aproximadamente 598 KB para 287 KB e isolou o fallback TypeScript em chunk próprio. Busca ganhou normalização de acentos, SKU/slug e paginação; a home passou a misturar coleções; o cabeçalho/menu mobile foi compactado e tornado acessível; Dia dos Pais saiu da navegação fixa. O preview Vercel do commit `3cacea9` foi construído e o CI do PR `#1` aprovou 64 testes, 100 cenários E2E e Lighthouse P90+. O preview está protegido por login Vercel; smoke autenticado, aceite e produção continuam pendentes. Evidência em [`docs/baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md`](../baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md).
+- **26 de agosto de 2026 — escala e descoberta:** consultas públicas, administrativas e de SEO passaram a percorrer páginas de até 1.000 linhas até o fim do conjunto; a home reduziu os corpos REST observados de aproximadamente 598 KB para 287 KB e isolou o fallback TypeScript em chunk próprio. Busca ganhou normalização de acentos, SKU/slug e paginação; a home passou a misturar coleções; o cabeçalho/menu mobile foi compactado e tornado acessível; Dia dos Pais saiu da navegação fixa. O preview Vercel do commit `1bed0a6` foi construído e o CI do PR `#1` aprovou 65 testes, 100 cenários E2E e Lighthouse P90+. A sessão autenticada confirmou `200` na home, busca e produto corrigido; a inspeção responsiva do mesmo build e 40 cenários locais em Chrome/Safari móvel foram aprovados. Produção continua pendente. Evidência em [`docs/baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md`](../baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md).
 
 - **16 de agosto de 2026 — coleção Aniversário:** 16 artes novas foram selecionadas após deduplicação contra os sete itens existentes; os mockups `aniversario-08` a `aniversario-23`, suas quatro variantes, o fallback TypeScript e os metadados remotos foram publicados pela migration `20260816200000`. O catálogo passou a 357 produtos e 1.496 objetos públicos. Evidência: [`docs/baselines/2026-08-16-anniversary-catalog/ANNIVERSARY_CATALOG.md`](../baselines/2026-08-16-anniversary-catalog/ANNIVERSARY_CATALOG.md).
 - **20 de agosto de 2026 — coleção Pets:** 50 mockups selecionados de cães e gatos foram publicados como `pets-01` a `pets-50`, com quatro variantes por produto, fallback TypeScript e migration `20260820115000`. A revisão visual posterior dos 50 itens identificou somente uma faixa sem estampa na caneca frontal de `pets-19`; a imagem foi corrigida e publicada em quatro caminhos `pets-19-r2.webp` pela migration `20260820193000`, mantendo os objetos anteriores para rollback. O catálogo permanece com 407 produtos e 1.696 caminhos de imagem ativos. Evidência: [`docs/baselines/2026-08-20-pets-catalog/PETS_CATALOG.md`](../baselines/2026-08-20-pets-catalog/PETS_CATALOG.md).

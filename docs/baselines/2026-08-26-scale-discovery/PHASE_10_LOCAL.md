@@ -28,22 +28,22 @@ Os tamanhos REST são corpos decodificados observados pelo navegador local contr
 ## Verificações
 
 - `npm run typecheck`: aprovado;
-- `npm test`: 64 testes aprovados;
+- `npm test`: 65 testes aprovados;
 - `npm run build`: aprovado, com 721 HTMLs de produto, 17 de coleção e sitemap de 741 URLs;
 - Playwright Chrome: 20 cenários aprovados, incluindo Axe WCAG 2.2 A/AA, busca tolerante, paginação, catálogo, produto e orçamento;
 - inspeção visual local: home desktop, home mobile e menu mobile.
 
 ## Preview e CI
 
-- commit: `3cacea9`;
+- commit de aplicação e correção validado: `1bed0a6`;
 - draft PR: `https://github.com/claracanecas-blip/criativa-canecas/pull/1`;
-- preview Vercel: `https://criativa-canecas-fevvdqk1j-claracanecas-9141s-projects.vercel.app`;
+- preview Vercel: `https://criativa-canecas-git-phase-1-f52dc0-claracanecas-9141s-projects.vercel.app`;
 - build do preview: aprovado pela integração Vercel;
-- CI em instalação limpa: 64 testes, typecheck e build aprovados;
+- CI em instalação limpa: 65 testes, typecheck e build aprovados;
 - compatibilidade: 80 cenários nos perfis Chrome, Firefox, WebKit desktop e Safari móvel, mais 20 cenários no Edge;
 - Lighthouse CI: home P98/A98/B100/S100, coleção P99/A98/B100/S100 e produto P97/A100/B100/S100.
 
-O preview está protegido por autenticação Vercel. Requisições anônimas retornam a tela de login da plataforma, portanto o smoke remoto e o aceite visual precisam ser feitos em uma sessão autorizada.
+O preview está protegido por autenticação Vercel. Em 26 de agosto, a sessão autenticada da CLI confirmou `200` na home, em `/busca?q=sao%20paulo` e em `/produto/religiao-01`. O mesmo build foi inspecionado em 1440 × 1000 e 390 × 844: o menu mobile abre abaixo do gatilho, não cria overflow horizontal e mantém as categorias acessíveis. A repetição local aprovou 40 cenários Playwright nos perfis Chrome e Safari móvel, além dos 100 cenários do CI.
 
 ## Segurança, dados e rollback
 
@@ -51,7 +51,6 @@ Nenhuma migration, política RLS, credencial ou dado remoto foi alterado. O roll
 
 ## Pendente para concluir a fase
 
-- abrir o preview em sessão Vercel autorizada e repetir o smoke responsivo;
-- promover para produção somente após autorização e aceite do preview;
-- confirmar no preview autenticado a ausência de regressão não coberta pelo Lighthouse CI;
+- promover o PR aprovado para `main`;
+- repetir o smoke nas rotas oficiais após o deploy de produção;
 - avaliar consultas por rota como próximo passo para deixar de carregar os 721 produtos na home.
