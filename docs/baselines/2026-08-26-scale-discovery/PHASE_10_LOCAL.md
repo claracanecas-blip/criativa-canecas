@@ -1,4 +1,4 @@
-# Fase 10 — Escala e descoberta — evidência de preview
+# Fase 10 — Escala e descoberta — evidência de conclusão
 
 Data: 26 de agosto de 2026.
 
@@ -49,8 +49,14 @@ O preview está protegido por autenticação Vercel. Em 26 de agosto, a sessão 
 
 Nenhuma migration, política RLS, credencial ou dado remoto foi alterado. O rollback consiste em reverter os arquivos de aplicação, testes e documentação deste incremento; o catálogo e o Storage permanecem inalterados.
 
-## Pendente para concluir a fase
+## Produção
 
-- promover o PR aprovado para `main`;
-- repetir o smoke nas rotas oficiais após o deploy de produção;
-- avaliar consultas por rota como próximo passo para deixar de carregar os 721 produtos na home.
+- PR `#1` mesclado em `main` pelo commit `a71d71c`;
+- deployment Vercel `dpl_Ehkg11YwFUPWwBccNT6JAwvgMs7J` publicado e associado a `https://criativacanecas.com.br`;
+- CI da `main` (`33009721573`) aprovado com 65 testes, typecheck, build, 100 cenários Playwright/axe e Lighthouse acima do gate 90;
+- home, busca, coleção, produto, informações, sitemap e robots responderam `200` no domínio oficial;
+- `www` e o hostname anterior responderam `308`, preservando caminho e parâmetros;
+- sitemap confirmou 741 URLs, robots manteve `/admin` bloqueado e a página de `religiao-01` apresentou conteúdo e canonical oficiais;
+- navegação real confirmou busca sem acentos, busca por SKU, produto corrigido e menu mobile sem overflow em 390 px.
+
+A Fase 10 está concluída. Consultas por rota permanecem como próximo incremento para a home deixar de carregar todos os 721 produtos.

@@ -87,10 +87,10 @@ Atualizada em 26 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A coleção `Divertidas`, antes vazia, recebeu em 20 de agosto de 2026 36 produtos (`divertidas-01` a `divertidas-36`), 144 objetos WebP e migration remota `20260820233000`. Das 46 estampas únicas, uma foi excluída por ser apenas mockup sem estampa plana, uma por paródia de medicamento e oito porque o gerador bloqueou personagens conhecidos. Os 36 mockups aprovados foram revisados quanto a texto, fidelidade, preenchimento, dimensões e unicidade; o lote inclui humor adulto e uma arte política. Evidência em `docs/baselines/2026-08-20-funny-catalog/`.
 - A coleção `Animes` recebeu inicialmente 100 produtos (`animes-001` a `animes-100`) em 21 de agosto de 2026. A revisão visual posterior identificou `animes-027` como Nanatsu no Taizai, não Fairy Tail, e `animes-083` como repetição de `animes-026`; ambos foram removidos pela migration `20260821200000`, deixando 98 novos e 141 na coleção. `animes-017` a `animes-020` foram classificados como Cavaleiros do Zodíaco Dourados 13 a 16. Os 100 mockups locais permanecem preservados e o manifesto registra os dois não publicados; evidência em `docs/baselines/2026-08-21-anime-catalog/`.
 - A coleção `Amizade` recebeu 30 produtos adicionais (`amizade-43` a `amizade-72`) em 21 de agosto de 2026, selecionados da pasta `71 - DIA DOS AMIGOS` sem repetir as 42 artes anteriores. Os 30 mockups e as 30 origens possuem hashes únicos, foram revisados em folha de contato e publicados com 120 objetos WebP pela migration `20260821210000`. Evidência em `docs/baselines/2026-08-21-friendship-catalog/`.
-- A Fase 10 de escala e descoberta iniciou em 26 de agosto de 2026. O incremento local elimina truncamento acima de 1.000 linhas no catálogo público, admin e SEO, reduz a carga REST observada da home de aproximadamente 598 KB para 287 KB e separa o fallback TypeScript do bundle principal.
+- A Fase 10 de escala e descoberta foi concluída em produção em 26 de agosto de 2026. O incremento elimina truncamento acima de 1.000 linhas no catálogo público, admin e SEO, reduz a carga REST observada da home de aproximadamente 598 KB para 287 KB e separa o fallback TypeScript do bundle principal.
 - Busca local agora ignora acentos, aceita SKU/slug e pagina em 20 itens; `sao paulo` encontra os mesmos sete produtos de `São Paulo`, e `CC-ARROW-1` encontra `Arrow 01`.
 - A home local respeita `is_featured` e completa a vitrine com oito coleções diferentes. O menu mobile passou a usar botão acessível, abre abaixo do gatilho sem overflow e o cabeçalho caiu de aproximadamente 290 px para 210 px em viewport de 390 px.
-- O destaque fixo de Dia dos Pais saiu dos menus após a campanha; a rota foi preservada. O preview Vercel do commit `1bed0a6` foi construído com sucesso e o CI do PR `#1` aprovou instalação limpa, 65 testes, typecheck, build, 80 cenários Playwright nos quatro perfis principais, 20 no Edge e Lighthouse home P98/A98, coleção P99/A98 e produto P97/A100, todos com Boas Práticas/SEO 100. O smoke autenticado confirmou `200` na home, busca e produto corrigido; a inspeção responsiva do mesmo build e 40 cenários locais em Chrome/Safari móvel foram aprovados. Resta promover e validar produção.
+- O destaque fixo de Dia dos Pais saiu dos menus após a campanha; a rota foi preservada. O PR `#1` foi mesclado em `main` por `a71d71c`, e o deployment Vercel `dpl_Ehkg11YwFUPWwBccNT6JAwvgMs7J` ficou `Ready` no domínio oficial. O CI da `main` aprovou 65 testes, typecheck, build, 80 cenários nos quatro perfis principais, 20 no Edge e Lighthouse. O smoke de produção confirmou rotas `200`, redirects `308`, sitemap com 741 URLs, canonical oficial, buscas por acento/SKU, `Porque Ele Vive` e menu mobile sem overflow.
 
 ## Decisões tomadas
 
@@ -179,10 +179,9 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Promover o PR aprovado da Fase 10, acompanhar o deploy e concluir o smoke de produção.
-2. Especificar consultas por rota para a home não precisar carregar todos os produtos.
-3. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e cadastrar somente avaliações reais autorizadas.
-4. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
+1. Especificar consultas por rota para a home não precisar carregar todos os produtos.
+2. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e cadastrar somente avaliações reais autorizadas.
+3. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
 
 ## Protocolo de atualização da memória
 
