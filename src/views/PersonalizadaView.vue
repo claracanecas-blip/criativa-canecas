@@ -22,7 +22,7 @@ const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
 <template>
   <section class="section container">
     <div class="section-title">
-      <h2 class="flex items-center justify-center gap-2"><AppIcon name="Sparkles" :size="28" /> Caneca Personalizada</h2>
+      <h1 class="flex items-center justify-center gap-2"><AppIcon name="Sparkles" :size="28" /> Caneca Personalizada</h1>
       <p>Você manda a ideia, a gente transforma em caneca</p>
     </div>
 

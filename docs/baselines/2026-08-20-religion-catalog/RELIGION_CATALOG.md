@@ -2,6 +2,8 @@
 
 Data: 20 de agosto de 2026.
 
+> Correção posterior: em 26 de agosto de 2026, `religiao-01` foi substituído por `Porque Ele Vive`. Consulte [`../2026-08-26-religion-01-replacement/RELIGION_01_REPLACEMENT.md`](../2026-08-26-religion-01-replacement/RELIGION_01_REPLACEMENT.md). Este documento preserva a evidência histórica do lote original.
+
 ## Escopo e representatividade
 
 - Origem: `D:\estampas\146 - RELIGIÕES DIVERSAS`.

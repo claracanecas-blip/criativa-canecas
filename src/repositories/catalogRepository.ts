@@ -1,19 +1,24 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { colecoes as colecoesLocais, todasColecoes } from '@/data/colecoes'
-import { todosProdutos } from '@/data/produtos'
 import type { CatalogSnapshot, Collection, IconName, Product } from '@/types/catalog'
 import type { Database, Tables } from '@/types/database'
 import { getSupabaseClient } from '@/services/supabase'
+import { fetchAllQueryPages } from '@/utils/paginatedQuery'
 
 export interface CatalogRepository {
   load(): Promise<CatalogSnapshot>
 }
 
+type CatalogCollectionRow = Pick<Tables<'collections'>, 'slug' | 'name' | 'description' | 'icon_name' | 'is_published' | 'is_listed'>
+type CatalogProductRow = Pick<Tables<'products'>, 'id' | 'slug' | 'sku' | 'name' | 'theme' | 'description' | 'price' | 'is_featured'>
+type CatalogRelationRow = Pick<Tables<'product_collections'>, 'product_id' | 'collection_id' | 'display_order'>
+type CatalogImageRow = Pick<Tables<'product_images'>, 'product_id' | 'storage_path' | 'variant'>
+
 export interface CatalogDatabaseRows {
-  collections: Array<Omit<Tables<'collections'>, 'created_by' | 'updated_by'>>
-  products: Array<Omit<Tables<'products'>, 'created_by' | 'updated_by'>>
-  relations: Tables<'product_collections'>[]
-  images: Tables<'product_images'>[]
+  collections: CatalogCollectionRow[]
+  products: CatalogProductRow[]
+  relations: CatalogRelationRow[]
+  images: CatalogImageRow[]
 }
 
 const knownIcons = new Set<IconName>(todasColecoes.map((collection) => collection.icone))
@@ -76,28 +81,44 @@ export class SupabaseCatalogRepository implements CatalogRepository {
 
   async load(): Promise<CatalogSnapshot> {
     const [collections, products, relations, images] = await Promise.all([
-      this.client.from('collections').select('id,slug,name,description,icon_name,image_path,display_order,is_published,is_listed,seo_title,seo_description,created_at,updated_at').order('display_order'),
-      this.client.from('products').select('id,slug,sku,name,theme,description,price,status,is_featured,display_order,seo_title,seo_description,created_at,updated_at').eq('status', 'published').order('display_order').range(0, 999),
-      this.client.from('product_collections').select('*').order('display_order').range(0, 999),
-      this.client.from('product_images').select('*').eq('variant', 'original').order('display_order').range(0, 999),
+      this.client.from('collections').select('slug,name,description,icon_name,is_published,is_listed').order('display_order'),
+      fetchAllQueryPages<CatalogProductRow>((from, to) => this.client
+        .from('products')
+        .select('id,slug,sku,name,theme,description,price,is_featured')
+        .eq('status', 'published')
+        .order('display_order')
+        .order('id')
+        .range(from, to)),
+      fetchAllQueryPages<CatalogRelationRow>((from, to) => this.client
+        .from('product_collections')
+        .select('product_id,collection_id,display_order')
+        .order('display_order')
+        .order('product_id')
+        .order('collection_id')
+        .range(from, to)),
+      fetchAllQueryPages<CatalogImageRow>((from, to) => this.client
+        .from('product_images')
+        .select('product_id,storage_path,variant')
+        .eq('variant', 'original')
+        .order('display_order')
+        .order('product_id')
+        .range(from, to)),
     ])
 
     queryError('Falha ao carregar coleções', collections.error)
-    queryError('Falha ao carregar produtos', products.error)
-    queryError('Falha ao carregar relações', relations.error)
-    queryError('Falha ao carregar imagens', images.error)
 
     return mapCatalogRows({
       collections: collections.data ?? [],
-      products: products.data ?? [],
-      relations: relations.data ?? [],
-      images: images.data ?? [],
+      products,
+      relations,
+      images,
     })
   }
 }
 
 export const typescriptCatalogRepository: CatalogRepository = {
   async load() {
+    const { todosProdutos } = await import('@/data/produtos')
     return {
       colecoes: todasColecoes.map((collection) => ({
         ...collection,

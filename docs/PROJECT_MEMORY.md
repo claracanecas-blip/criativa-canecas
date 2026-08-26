@@ -1,6 +1,6 @@
 # Memória do projeto — Criativa Canecas
 
-Atualizada em 21 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
+Atualizada em 26 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
 
 ## Identidade e serviços
 
@@ -20,7 +20,7 @@ Atualizada em 21 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Stack: Vue 3, TypeScript 5.9, Vue Router, Tailwind CSS 4, Lucide Icons e Vite 6.
 - Hospedagem: Vercel ligada ao GitHub; push em `main` cria deploy de produção.
 - CI: GitHub Actions executa `npm ci`, `npm test` e `npm run build`.
-- Imagens do conjunto atual: 738 originais WebP e 2.214 variantes no Supabase, totalizando 2.952 caminhos ativos; quatro objetos anteriores de `pets-19` e oito objetos de `animes-027`/`animes-083` permanecem preservados para rollback, total físico de 2.964 objetos.
+- Imagens do conjunto atual: 738 originais WebP e 2.214 variantes no Supabase, totalizando 2.952 caminhos ativos; quatro objetos anteriores de `pets-19`, oito de `animes-027`/`animes-083` e quatro de `religiao-01` permanecem preservados para rollback, total físico de 2.968 objetos.
 - Originais: preservados localmente em `source-images/` e ignorados pelo Git.
 - Pacote de produção limpo: aproximadamente 2,1 MB e 21 arquivos na medição da migração.
 - Rotas usam `createWebHistory`; `vercel.json` fornece fallback de SPA.
@@ -79,14 +79,18 @@ Atualizada em 21 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A coleção Aniversário foi ampliada em 16 de agosto de 2026 sem duplicar os sete itens existentes: 16 mockups novos (`aniversario-08` a `aniversario-23`), 64 objetos novos no Storage e migration remota `20260816200000`.
 - Após a expansão de Aniversário, o catálogo possuía 357 produtos, 357 relações e 1.428 associações de imagem. RLS positiva/negativa, `db lint`, os 1.496 objetos públicos, typecheck e build foram validados; a evidência está em `docs/baselines/2026-08-16-anniversary-catalog/`.
 - A coleção Pets foi publicada em 20 de agosto de 2026 com 50 produtos (`pets-01` a `pets-50`), 200 objetos WebP novos e migration remota `20260820115000`.
-- Após a expansão de Amizade, o catálogo remoto possui 721 produtos, 721 relações e 2.884 associações de imagem. O conjunto atual referencia 2.952 caminhos; o Storage contém 2.964 objetos físicos porque preserva quatro WebPs antigos de `pets-19` e oito de `animes-027`/`animes-083` para rollback.
+- Após a expansão de Amizade, o catálogo remoto possui 721 produtos, 721 relações e 2.884 associações de imagem. O conjunto atual referencia 2.952 caminhos; o Storage contém 2.968 objetos físicos porque preserva quatro WebPs antigos de `pets-19`, oito de `animes-027`/`animes-083` e quatro de `religiao-01` para rollback.
 - Os 50 mockups de Pets foram revisados visualmente em folhas de contato. Somente `pets-19` tinha uma faixa sem estampa na base da caneca frontal; o PNG foi corrigido, preservado com backup local e publicado nos quatro caminhos versionados `pets-19-r2.webp` pela migration `20260820193000`. Os quatro objetos anteriores permanecem disponíveis para rollback.
 - A coleção `Futebol & Esportes`, antes vazia, recebeu em 20 de agosto de 2026 50 produtos (`futebol-01` a `futebol-50`) de 20 clubes, 200 objetos WebP e migration remota `20260820210000`. Os 78 arquivos de origem foram triados por popularidade, qualidade e duplicidade; os 50 mockups finais foram revisados quanto a preenchimento, dimensões e unicidade. Evidência em `docs/baselines/2026-08-20-football-catalog/`.
 - A coleção `Profissões`, antes vazia, recebeu em 20 de agosto de 2026 50 produtos (`profissoes-01` a `profissoes-50`) de 50 temas, 200 objetos WebP e migration remota `20260820220000`. A seleção excluiu pastas de mockups e exige uma estampa JPG/PNG existente para cada produto; o manifesto liga todos os mockups aos respectivos arquivos de produção. Evidência em `docs/baselines/2026-08-20-professions-catalog/`.
-- A coleção `Religião`, antes vazia, recebeu em 20 de agosto de 2026 50 produtos (`religiao-01` a `religiao-50`), 200 objetos WebP e migration remota `20260820230000`. As 210 imagens de origem foram inventariadas e os mockups foram revisados quanto a fidelidade, preenchimento, dimensões e unicidade. O acervo fornecido é predominantemente cristão: o lote contém 49 temas de raiz cristã e um islâmico; ampliar o alcance inter-religioso exige novas estampas autênticas de outras tradições. Evidência em `docs/baselines/2026-08-20-religion-catalog/`.
+- A coleção `Religião`, antes vazia, recebeu em 20 de agosto de 2026 50 produtos (`religiao-01` a `religiao-50`), 200 objetos WebP e migration remota `20260820230000`. Em 26 de agosto, `religiao-01` foi substituído a pedido do proprietário por `Porque Ele Vive`, com mockup e quatro caminhos versionados `religiao-01-r2.webp` pela migration `20260826150000`; os quatro objetos islâmicos anteriores permanecem somente para rollback. O conjunto ativo da coleção agora possui 49 temas cristãos e um messiânico. Evidências em `docs/baselines/2026-08-20-religion-catalog/` e `docs/baselines/2026-08-26-religion-01-replacement/`.
 - A coleção `Divertidas`, antes vazia, recebeu em 20 de agosto de 2026 36 produtos (`divertidas-01` a `divertidas-36`), 144 objetos WebP e migration remota `20260820233000`. Das 46 estampas únicas, uma foi excluída por ser apenas mockup sem estampa plana, uma por paródia de medicamento e oito porque o gerador bloqueou personagens conhecidos. Os 36 mockups aprovados foram revisados quanto a texto, fidelidade, preenchimento, dimensões e unicidade; o lote inclui humor adulto e uma arte política. Evidência em `docs/baselines/2026-08-20-funny-catalog/`.
 - A coleção `Animes` recebeu inicialmente 100 produtos (`animes-001` a `animes-100`) em 21 de agosto de 2026. A revisão visual posterior identificou `animes-027` como Nanatsu no Taizai, não Fairy Tail, e `animes-083` como repetição de `animes-026`; ambos foram removidos pela migration `20260821200000`, deixando 98 novos e 141 na coleção. `animes-017` a `animes-020` foram classificados como Cavaleiros do Zodíaco Dourados 13 a 16. Os 100 mockups locais permanecem preservados e o manifesto registra os dois não publicados; evidência em `docs/baselines/2026-08-21-anime-catalog/`.
 - A coleção `Amizade` recebeu 30 produtos adicionais (`amizade-43` a `amizade-72`) em 21 de agosto de 2026, selecionados da pasta `71 - DIA DOS AMIGOS` sem repetir as 42 artes anteriores. Os 30 mockups e as 30 origens possuem hashes únicos, foram revisados em folha de contato e publicados com 120 objetos WebP pela migration `20260821210000`. Evidência em `docs/baselines/2026-08-21-friendship-catalog/`.
+- A Fase 10 de escala e descoberta iniciou em 26 de agosto de 2026. O incremento local elimina truncamento acima de 1.000 linhas no catálogo público, admin e SEO, reduz a carga REST observada da home de aproximadamente 598 KB para 287 KB e separa o fallback TypeScript do bundle principal.
+- Busca local agora ignora acentos, aceita SKU/slug e pagina em 20 itens; `sao paulo` encontra os mesmos sete produtos de `São Paulo`, e `CC-ARROW-1` encontra `Arrow 01`.
+- A home local respeita `is_featured` e completa a vitrine com oito coleções diferentes. O menu mobile passou a usar botão acessível, abre abaixo do gatilho sem overflow e o cabeçalho caiu de aproximadamente 290 px para 210 px em viewport de 390 px.
+- O destaque fixo de Dia dos Pais saiu dos menus após a campanha; a rota foi preservada. O preview Vercel do commit `1bed0a6` foi construído com sucesso e o CI do PR `#1` aprovou instalação limpa, 65 testes, typecheck, build, 80 cenários Playwright nos quatro perfis principais, 20 no Edge e Lighthouse home P98/A98, coleção P99/A98 e produto P97/A100, todos com Boas Práticas/SEO 100. O smoke autenticado confirmou `200` na home, busca e produto corrigido; a inspeção responsiva do mesmo build e 40 cenários locais em Chrome/Safari móvel foram aprovados. Resta promover e validar produção.
 
 ## Decisões tomadas
 
@@ -121,6 +125,9 @@ Atualizada em 21 de agosto de 2026. Este arquivo preserva contexto operacional e
 28. Se aprovado futuramente, começar por link/checkout hospedado após confirmação da arte, sem dados brutos de cartão no sistema.
 29. Manter FAQ e informações comerciais em seções versionadas no Supabase, com fallback local seguro; somente conteúdo publicado é público e a autoria fica restrita à RPC administrativa.
 30. Definir uma única origem oficial por `VITE_SITE_URL`; aliases e previews nunca devem virar canonical nem contaminar analytics.
+31. Paginar consultas Supabase em blocos de até 1.000 linhas até receber uma página incompleta; nenhuma camada pode assumir que o catálogo permanecerá abaixo do limite do PostgREST.
+32. Consultar no frontend somente colunas realmente consumidas e carregar o catálogo TypeScript de fallback sob demanda.
+33. Campanhas sazonais permanecem acessíveis por rota quando necessário, mas só entram nos menus durante período ativo ou gestão explícita.
 
 ## Histórico relevante
 
@@ -168,12 +175,14 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 - O DNS permanece administrado no Registro.br; os registros raiz e `www` apontam para a Vercel. Não trocar nameservers nem remover o hostname anterior antes de validar um rollback.
 - A Fase 8 ainda depende de CNPJ ou identificação pública aplicável, endereço/cidade e e-mail, condições comerciais oficiais e avaliações reais; domínio, nome do responsável e WhatsApp já foram confirmados.
 - Há atividade residual do GitHub Pages, mas produção oficial é Vercel; não desativar serviço externo sem autorização explícita.
+- Mesmo após a redução de aproximadamente 52%, a home ainda carrega o catálogo remoto completo para sustentar busca, menus e orçamento compartilhados. Consultas por rota são o próximo passo de escala, mas exigem redesenhar cache, busca e resolução dos itens persistidos.
 
 ## Próxima execução recomendada
 
-1. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md`.
-2. Cadastrar somente avaliações reais com autorização documentada.
-3. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
+1. Promover o PR aprovado da Fase 10, acompanhar o deploy e concluir o smoke de produção.
+2. Especificar consultas por rota para a home não precisar carregar todos os produtos.
+3. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e cadastrar somente avaliações reais autorizadas.
+4. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
 
 ## Protocolo de atualização da memória
 

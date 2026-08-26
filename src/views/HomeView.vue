@@ -39,7 +39,19 @@ const atalhos = computed(() => destaques
   .map((slug) => catalog.colecoes.value.find((collection) => collection.slug === slug))
   .filter((collection): collection is Collection => collection !== undefined))
 
-const novidades = computed(() => catalog.produtosDaColecao('series').slice(0, 8))
+const colecoesDaVitrine = ['amizade', 'animes', 'pets', 'futebol', 'profissoes', 'divertidas', 'religiao', 'series']
+const modelosEmDestaque = computed(() => {
+  const candidatos = [
+    ...catalog.produtos.value.filter((produto) => produto.destaque),
+    ...colecoesDaVitrine.flatMap((slug) => catalog.produtosDaColecao(slug).slice(0, 1)),
+  ]
+  const vistos = new Set<string>()
+  return candidatos.filter((produto) => {
+    if (vistos.has(produto.id)) return false
+    vistos.add(produto.id)
+    return true
+  }).slice(0, 8)
+})
 const { testimonials } = useTestimonials()
 </script>
 
@@ -106,16 +118,16 @@ const { testimonials } = useTestimonials()
     </div>
   </section>
 
-  <section v-if="novidades.length" class="section container">
+  <section v-if="modelosEmDestaque.length" class="section container">
     <div class="section-title">
       <h2>Modelos em destaque</h2>
-      <p>Alguns favoritos da coleção de séries</p>
+      <p>Uma seleção especial de diferentes coleções</p>
     </div>
     <div class="grid">
-      <ProdutoCard v-for="produto in novidades" :key="produto.id" :produto="produto" />
+      <ProdutoCard v-for="produto in modelosEmDestaque" :key="produto.id" :produto="produto" />
     </div>
     <p class="ver-mais">
-      <RouterLink class="btn" to="/colecao/series">Ver toda a coleção</RouterLink>
+      <RouterLink class="btn" to="/colecoes">Explorar todas as coleções</RouterLink>
     </p>
   </section>
 

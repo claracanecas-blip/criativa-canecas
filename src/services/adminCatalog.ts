@@ -1,10 +1,12 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import type { Database, Tables } from '@/types/database'
 import { prepareProductImageVariants, uploadProductImageVariants } from '@/utils/adminImages'
+import { fetchAllQueryPages } from '@/utils/paginatedQuery'
 
 export type ProductStatus = 'draft' | 'published' | 'archived'
 
 type AdminCollection = Omit<Tables<'collections'>, 'created_by' | 'updated_by'>
+type AdminProductRow = Omit<Tables<'products'>, 'created_by' | 'updated_by'>
 
 export interface AdminProduct extends Omit<Tables<'products'>, 'created_by' | 'updated_by'> {
   collectionIds: string[]
@@ -53,26 +55,39 @@ function assertQuery(error: { message: string } | null): void {
 export async function loadAdminCatalog(client: SupabaseClient<Database>): Promise<AdminCatalog> {
   const [collections, products, relations, images] = await Promise.all([
     client.from('collections').select('id,slug,name,description,icon_name,image_path,display_order,is_published,is_listed,seo_title,seo_description,created_at,updated_at').order('display_order'),
-    client.from('products').select('id,slug,sku,name,theme,description,price,status,is_featured,display_order,seo_title,seo_description,created_at,updated_at').order('updated_at', { ascending: false }).range(0, 999),
-    client.from('product_collections').select('*').range(0, 999),
-    client.from('product_images').select('*').eq('variant', 'original').range(0, 999),
+    fetchAllQueryPages<AdminProductRow>((from, to) => client
+      .from('products')
+      .select('id,slug,sku,name,theme,description,price,status,is_featured,display_order,seo_title,seo_description,created_at,updated_at')
+      .order('updated_at', { ascending: false })
+      .order('id')
+      .range(from, to)),
+    fetchAllQueryPages<Tables<'product_collections'>>((from, to) => client
+      .from('product_collections')
+      .select('*')
+      .order('product_id')
+      .order('collection_id')
+      .range(from, to)),
+    fetchAllQueryPages<Tables<'product_images'>>((from, to) => client
+      .from('product_images')
+      .select('*')
+      .eq('variant', 'original')
+      .order('product_id')
+      .order('id')
+      .range(from, to)),
   ])
   assertQuery(collections.error)
-  assertQuery(products.error)
-  assertQuery(relations.error)
-  assertQuery(images.error)
 
   const relationMap = new Map<string, string[]>()
-  for (const relation of relations.data ?? []) {
+  for (const relation of relations) {
     const ids = relationMap.get(relation.product_id) ?? []
     ids.push(relation.collection_id)
     relationMap.set(relation.product_id, ids)
   }
-  const imageMap = new Map((images.data ?? []).map((image) => [image.product_id, image.storage_path]))
+  const imageMap = new Map(images.map((image) => [image.product_id, image.storage_path]))
 
   return {
     collections: collections.data ?? [],
-    products: (products.data ?? []).map((product) => ({
+    products: products.map((product) => ({
       ...product,
       collectionIds: relationMap.get(product.id) ?? [],
       imagePath: imageMap.get(product.id) ?? null,

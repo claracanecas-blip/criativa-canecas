@@ -11,3 +11,4 @@ tmp/
 cartao-*.png
 qr-*.png
 scripts/*.ps1
+docs/guides/

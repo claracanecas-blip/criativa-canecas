@@ -1,0 +1,21 @@
+{
+  "date": "2026-08-26",
+  "product_id": "religiao-01",
+  "name": "Porque Ele Vive",
+  "theme": "Cristã",
+  "migration": "20260826150000",
+  "storage": [
+    { "path": "religiao-01-r2.webp", "width": 1000, "height": 1000, "bytes": 116136, "sha256": "235daf4e0487e82666975a84b3c64472e97a4b0bbbb2536df6078664026a009d", "http_status": 200, "hash_match": true },
+    { "path": "card/320/religiao-01-r2.webp", "width": 320, "height": 320, "bytes": 18144, "sha256": "51923a5b9f3828e94c9c7754dcb88319e73a93e6c6f8ffe0839d2c9264e4e57d", "http_status": 200, "hash_match": true },
+    { "path": "card/640/religiao-01-r2.webp", "width": 640, "height": 640, "bytes": 53162, "sha256": "556babe1fd015450a278650dc99875fe87273def07615c7957c135f133def752", "http_status": 200, "hash_match": true },
+    { "path": "social/religiao-01-r2.webp", "width": 1200, "height": 630, "bytes": 55890, "sha256": "351f44004de749548043f07dd05f8175b5f4af2b8c3eb3fccbf8565c7877300d", "http_status": 200, "hash_match": true }
+  ],
+  "cache_control": "public, max-age=31536000",
+  "content_type": "image/webp",
+  "rls": {
+    "anonymous_published_read": "pass",
+    "anonymous_product_update": "denied"
+  },
+  "db_lint": "pass",
+  "rollback": "supabase/rollback/20260826150000_replace_religion_01_mockup.sql"
+}

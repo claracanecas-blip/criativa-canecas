@@ -39,6 +39,21 @@ test('fluxo busca → produto → WhatsApp preserva contexto comercial', async (
   await expect(whatsapp).toHaveAttribute('href', /wa\.me\/.*CC-ARROW-.*criativa-canecas\.vercel\.app%2Fproduto%2Farrow-/)
 })
 
+test('busca ignora acentos, aceita SKU e pagina resultados extensos', async ({ page }) => {
+  await page.goto('/busca?q=sao%20paulo')
+  await expect(page.getByText('7 produtos e 0 coleções')).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Ver detalhes de São Paulo 01' })).toBeVisible()
+
+  await page.goto('/busca?q=CC-ARROW-1')
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Arrow 01' })).toBeVisible()
+
+  await page.goto('/busca?q=01')
+  await expect(page.locator('article.card')).toHaveCount(20)
+  await expect(page.getByText(/Página 1 de/)).toBeVisible()
+  await page.getByRole('button', { name: 'Próxima' }).click()
+  await expect(page.getByText(/Página 2 de/)).toBeVisible()
+})
+
 test('coleção de aniversário contém somente os 23 modelos reconciliados', async ({ page }) => {
   await page.goto('/colecao/aniversario')
   await expect(page.getByText('23 modelos disponíveis')).toBeVisible()
@@ -107,7 +122,7 @@ test('coleção Religião contém 50 modelos com estampas respeitosamente identi
   await page.goto('/colecao/religiao')
   await expect(page.getByText('50 modelos disponíveis')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
-  await expect(page.getByRole('link', { name: 'Ver detalhes de Fé Islâmica' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Porque Ele Vive' })).toBeVisible()
 
   await page.getByRole('button', { name: 'Próxima' }).click()
   await expect(page.getByText('Página 2 de 3')).toBeVisible()

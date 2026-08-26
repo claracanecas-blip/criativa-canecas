@@ -6,9 +6,9 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fases 0–7 e 9 concluídas, domínio da Fase 8 ativo e dados comerciais externos pendentes |
-| Versão | 1.26 |
-| Data-base | 21 de agosto de 2026 |
+| Estado | Em execução; Fases 0–7 e 9 concluídas, Fases 8 e 10 em andamento |
+| Versão | 1.28 |
+| Data-base | 26 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
 
@@ -16,7 +16,7 @@ Este documento é a fonte de verdade para o próximo ciclo do produto. Cada fase
 
 ## 2. Contexto atual
 
-A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 2.952 caminhos WebP do conjunto atual e 12 objetos anteriores preservados para rollback no bucket público `product-images`; o Postgres contém 721 produtos publicados com metadados reconciliados.
+A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 2.952 caminhos WebP do conjunto atual e 16 objetos anteriores preservados para rollback no bucket público `product-images`; o Postgres contém 721 produtos publicados com metadados reconciliados.
 
 O catálogo público é lido do Supabase por uma camada de repositório tipada e possui fallback operacional para os arquivos TypeScript. A manutenção cotidiana é feita pelo painel administrativo protegido por Supabase Auth e RLS. O fluxo comercial termina no WhatsApp e mede a jornada por agregados diários sem identificador de visitante ou texto livre.
 
@@ -136,6 +136,15 @@ Para cada incremento:
 - **SOC-002:** fotos de clientes exigem consentimento registrado fora ou dentro do fluxo administrativo.
 - **SOC-003:** informações de produção, entrega, materiais e cuidados devem ser acessíveis.
 - **SOC-004:** contatos e identidade visual devem ser consistentes em todas as páginas.
+
+### ESC — Escala e descoberta
+
+- **ESC-001:** catálogo público, painel administrativo e geração de SEO não podem truncar silenciosamente ao ultrapassar 1.000 produtos, relações ou imagens.
+- **ESC-002:** consultas públicas devem transferir somente os campos necessários e carregar o fallback local apenas quando ele for usado.
+- **ESC-003:** busca deve ignorar diferenças de acentuação, aceitar SKU/slug e paginar conjuntos extensos.
+- **ESC-004:** a home deve respeitar destaques administrativos e evitar concentrar toda a vitrine em uma única coleção.
+- **ESC-005:** a navegação mobile deve caber na viewport, ser acionável por teclado e expor corretamente o estado aberto/fechado.
+- **ESC-006:** campanhas sazonais não podem permanecer como destaque fixo fora do período ativo.
 
 ## 8. Requisitos não funcionais
 
@@ -362,6 +371,20 @@ Uma fase só está concluída quando:
 
 **Estimativa:** 1 a 2 dias para descoberta; implementação é uma especificação separada.
 
+### Fase 10 — Escala e descoberta do catálogo
+
+**Estado:** em andamento; incremento, preview, smoke autenticado e aceite visual concluídos em 26 de agosto de 2026, aguardando publicação e smoke de produção.
+
+**Objetivo:** sustentar o crescimento acima de 1.000 produtos e facilitar a descoberta do catálogo, especialmente no celular.
+
+**Entregas locais:** paginação integral nas consultas públicas, administrativas e de SEO; payload público reduzido; fallback sob demanda; busca tolerante a acentos/SKU com paginação; vitrine diversificada; cabeçalho e menu mobile acessíveis; remoção do destaque sazonal vencido; hierarquia `h1` nas páginas principais.
+
+**Aceite:** simulação acima de 1.000 linhas sem perda; busca `sao paulo` equivalente a `São Paulo`; SKU encontrável; no máximo 20 cards por página de busca; menu mobile sem overflow e operável por teclado; home sem campanha vencida; typecheck, testes, build, E2E/axe, preview e smoke de produção aprovados.
+
+**Rollback:** reverter somente os arquivos de aplicação, testes e documentação do incremento. Não há migration nem alteração de dados remotos.
+
+**Evidência local:** [`docs/baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md`](../baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md).
+
 ## 13. Ordem, dependências e marcos
 
 ```text
@@ -369,6 +392,7 @@ Fase 0 → Fase 1
       └→ Fase 2 → Fase 3 → Fase 4
                          └→ Fase 5 → Fase 6 → Fase 7 → Fase 8
                                                         └→ Fase 9
+                                                        └→ Fase 10
 ```
 
 - **Marco A — Base rápida:** fases 0 e 1.
@@ -376,6 +400,7 @@ Fase 0 → Fase 1
 - **Marco C — Aquisição mensurável:** fases 5 e 6.
 - **Marco D — Conversão comercial:** fases 7 e 8.
 - **Marco E — Decisão de checkout:** fase 9.
+- **Marco F — Escala e descoberta:** fase 10.
 
 ## 14. Estratégia de testes
 
@@ -419,14 +444,18 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
 | 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical e Auth concluídos; dados comerciais oficiais e avaliações reais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |
+| 10 — Escala e descoberta | Em andamento | Preview, smoke autenticado e aceite responsivo aprovados; CI com 65 testes, 100 cenários E2E e Lighthouse P90+; produção pendente |
 
 ## 18. Evoluções incrementais após o roadmap
+
+- **26 de agosto de 2026 — escala e descoberta:** consultas públicas, administrativas e de SEO passaram a percorrer páginas de até 1.000 linhas até o fim do conjunto; a home reduziu os corpos REST observados de aproximadamente 598 KB para 287 KB e isolou o fallback TypeScript em chunk próprio. Busca ganhou normalização de acentos, SKU/slug e paginação; a home passou a misturar coleções; o cabeçalho/menu mobile foi compactado e tornado acessível; Dia dos Pais saiu da navegação fixa. O preview Vercel do commit `1bed0a6` foi construído e o CI do PR `#1` aprovou 65 testes, 100 cenários E2E e Lighthouse P90+. A sessão autenticada confirmou `200` na home, busca e produto corrigido; a inspeção responsiva do mesmo build e 40 cenários locais em Chrome/Safari móvel foram aprovados. Produção continua pendente. Evidência em [`docs/baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md`](../baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md).
 
 - **16 de agosto de 2026 — coleção Aniversário:** 16 artes novas foram selecionadas após deduplicação contra os sete itens existentes; os mockups `aniversario-08` a `aniversario-23`, suas quatro variantes, o fallback TypeScript e os metadados remotos foram publicados pela migration `20260816200000`. O catálogo passou a 357 produtos e 1.496 objetos públicos. Evidência: [`docs/baselines/2026-08-16-anniversary-catalog/ANNIVERSARY_CATALOG.md`](../baselines/2026-08-16-anniversary-catalog/ANNIVERSARY_CATALOG.md).
 - **20 de agosto de 2026 — coleção Pets:** 50 mockups selecionados de cães e gatos foram publicados como `pets-01` a `pets-50`, com quatro variantes por produto, fallback TypeScript e migration `20260820115000`. A revisão visual posterior dos 50 itens identificou somente uma faixa sem estampa na caneca frontal de `pets-19`; a imagem foi corrigida e publicada em quatro caminhos `pets-19-r2.webp` pela migration `20260820193000`, mantendo os objetos anteriores para rollback. O catálogo permanece com 407 produtos e 1.696 caminhos de imagem ativos. Evidência: [`docs/baselines/2026-08-20-pets-catalog/PETS_CATALOG.md`](../baselines/2026-08-20-pets-catalog/PETS_CATALOG.md).
 - **20 de agosto de 2026 — coleção Futebol & Esportes:** 78 artes foram triadas por popularidade, qualidade e duplicidade; 50 mockups de 20 clubes foram publicados como `futebol-01` a `futebol-50`, com quatro variantes por produto, fallback TypeScript e migration `20260820210000`. O catálogo passou a 457 produtos e 1.896 caminhos WebP no conjunto atual; a auditoria visual confirmou 50 arquivos únicos, 1254 × 1254 e sem faixas inferiores sem estampa. Evidência: [`docs/baselines/2026-08-20-football-catalog/FOOTBALL_CATALOG.md`](../baselines/2026-08-20-football-catalog/FOOTBALL_CATALOG.md).
 - **20 de agosto de 2026 — coleção Profissões:** 1.770 imagens raster foram inventariadas e 50 estampas JPG/PNG de profissões distintas foram selecionadas, excluindo pastas de mockups. Cada produto possui estampa de produção comprovada no manifesto, mockup revisado e quatro variantes WebP; a migration `20260820220000` levou o catálogo a 507 produtos e 2.096 caminhos WebP no conjunto atual. Evidência: [`docs/baselines/2026-08-20-professions-catalog/PROFESSIONS_CATALOG.md`](../baselines/2026-08-20-professions-catalog/PROFESSIONS_CATALOG.md).
 - **20 de agosto de 2026 — coleção Religião:** 210 imagens raster foram inventariadas e 50 estampas únicas foram convertidas em mockups revisados, cada uma com quatro variantes WebP. A migration `20260820230000` levou o catálogo a 557 produtos e 2.296 caminhos WebP no conjunto atual. A origem é predominantemente cristã: 49 itens são de raiz cristã e um é islâmico; ampliar o alcance geral depende de novas estampas autênticas de outras tradições. Evidência: [`docs/baselines/2026-08-20-religion-catalog/RELIGION_CATALOG.md`](../baselines/2026-08-20-religion-catalog/RELIGION_CATALOG.md).
+- **26 de agosto de 2026 — substituição de `religiao-01`:** a arte `Fé Islâmica` foi substituída, por decisão do proprietário, por `Porque Ele Vive`, selecionada do acervo original. O ID/SKU e a URL foram preservados; metadados e quatro caminhos de imagem passaram a usar a versão `religiao-01-r2`. A migration `20260826150000` passou em lint e RLS positiva/negativa; os objetos anteriores permanecem disponíveis para rollback. Evidência: [`docs/baselines/2026-08-26-religion-01-replacement/RELIGION_01_REPLACEMENT.md`](../baselines/2026-08-26-religion-01-replacement/RELIGION_01_REPLACEMENT.md).
 - **20 de agosto de 2026 — coleção Divertidas:** 46 estampas únicas foram triadas e 36 mockups aprovados foram publicados com quatro variantes WebP por produto. Uma imagem sem estampa plana, uma paródia de medicamento e oito artes bloqueadas pelo gerador ficaram de fora. A migration `20260820233000` levou o catálogo a 593 produtos e 2.440 caminhos WebP no conjunto atual; texto, preenchimento e unicidade foram revisados. Evidência: [`docs/baselines/2026-08-20-funny-catalog/FUNNY_CATALOG.md`](../baselines/2026-08-20-funny-catalog/FUNNY_CATALOG.md).
 - **21 de agosto de 2026 — coleção Animes:** 2.301 imagens raster foram inventariadas e 100 mockups foram gerados. A revisão corretiva identificou `animes-027` como Nanatsu no Taizai e `animes-083` como repetição visual de `animes-026`; a migration `20260821200000` retirou os dois do catálogo e classificou `animes-017` a `animes-020` como Cavaleiros do Zodíaco Dourados. Permanecem 98 produtos novos, 141 na coleção, 691 no catálogo e 2.832 caminhos WebP ativos. Os oito objetos retirados permanecem preservados para rollback. Evidência: [`docs/baselines/2026-08-21-anime-catalog/ANIME_CATALOG.md`](../baselines/2026-08-21-anime-catalog/ANIME_CATALOG.md).
 - **21 de agosto de 2026 — coleção Amizade:** a pasta adicional `71 - DIA DOS AMIGOS` forneceu 50 artes com hashes distintos das fontes usadas anteriormente. Trinta estampas genéricas foram selecionadas, excluindo uma arte de personagem conhecido; os mockups `amizade-43` a `amizade-72` foram revisados, possuem hashes únicos e receberam quatro variantes WebP cada. A migration `20260821210000` levou o catálogo a 721 produtos e 2.952 caminhos WebP ativos. Evidência: [`docs/baselines/2026-08-21-friendship-catalog/FRIENDSHIP_CATALOG.md`](../baselines/2026-08-21-friendship-catalog/FRIENDSHIP_CATALOG.md).

@@ -16,7 +16,7 @@ const lista = computed(() =>
 <template>
   <section class="section container">
     <div class="section-title">
-      <h2>Todas as coleções</h2>
+      <h1>Todas as coleções</h1>
       <p>{{ catalog.colecoes.value.length }} temas para escolher a sua caneca</p>
     </div>
 
