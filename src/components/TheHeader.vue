@@ -35,11 +35,11 @@ function buscar() {
       </form>
 
       <div class="header-actions">
-        <a class="head-link" :href="linkWhatsapp('Olá! Preciso de ajuda com um pedido.')" target="_blank" rel="noopener" @click="trackWhatsappClick('header_help')">
+        <a class="head-link" :href="linkWhatsapp('Olá! Preciso de ajuda com um pedido.')" target="_blank" rel="noopener" aria-label="Falar com a central de atendimento" @click="trackWhatsappClick('header_help')">
           <AppIcon name="MessageCircle" :size="21" />
-          <span>Central de<br>Atendimento</span>
+          <span class="help-copy">Central de<br>Atendimento</span>
         </a>
-        <button type="button" class="head-link order" aria-haspopup="dialog" @click="cart.open">
+        <button type="button" class="head-link order" aria-haspopup="dialog" aria-label="Meu orçamento" @click="cart.open">
           <AppIcon name="ShoppingBag" :size="20" />
           <span>Meu orçamento</span>
           <b v-if="cart.totalQuantity.value" class="cart-count" :aria-label="`${cart.totalQuantity.value} itens no orçamento`">{{ cart.totalQuantity.value }}</b>
@@ -94,9 +94,19 @@ function buscar() {
   .header-actions{grid-column:1/-1;justify-content:flex-end}
 }
 @media(max-width:700px){
-  .header-row{grid-template-columns:1fr}
-  .brand{justify-content:center}
-  .header-actions{justify-content:center;flex-wrap:wrap}
-  .nav-row{overflow-x:auto}
+  .notice{padding:6px 10px;font-size:11px}
+  .header-row{grid-template-columns:auto 1fr;gap:8px 12px;padding:9px 0 11px}
+  .brand{grid-column:1;grid-row:1;justify-content:flex-start}
+  .brand img{width:50px;height:50px}
+  .brand strong{font-size:19px}
+  .search-wrap{grid-column:1/-1;grid-row:2}
+  .search-wrap input{height:42px}
+  .search-wrap button{top:3px}
+  .header-actions{grid-column:2;grid-row:1;justify-content:flex-end;gap:3px}
+  .head-link{padding:9px}
+  .help-copy{display:none}
+  .order{padding:10px 12px}
+  .nav-row{overflow:visible}
+  .nav-link{display:none}
 }
 </style>

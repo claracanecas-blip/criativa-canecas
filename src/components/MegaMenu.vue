@@ -18,21 +18,26 @@ const colunas = computed(() => {
   ).filter((coluna) => coluna.length)
 })
 
-function alternar(e: MouseEvent) {
-  // no desktop o hover já abre; o clique só responde no próprio gatilho
-  if (window.innerWidth <= 700 || e.target === e.currentTarget) {
-    aberto.value = !aberto.value
-  }
+function alternar() {
+  aberto.value = !aberto.value
 }
 
 watch(() => route.fullPath, () => { aberto.value = false })
 </script>
 
 <template>
-  <div class="categories-trigger" :class="{ open: aberto }" @click="alternar">
-    <Menu :size="18" aria-hidden="true" /> Todas as categorias <ChevronDown :size="14" aria-hidden="true" />
+  <div class="categories" :class="{ open: aberto }" @keydown.esc="aberto = false">
+    <button
+      type="button"
+      class="categories-trigger"
+      aria-controls="catalog-mega-menu"
+      :aria-expanded="aberto"
+      @click.stop="alternar"
+    >
+      <Menu :size="18" aria-hidden="true" /> Todas as categorias <ChevronDown :size="14" aria-hidden="true" />
+    </button>
 
-    <div class="mega" @click.stop>
+    <div id="catalog-mega-menu" class="mega" @click.stop>
       <div class="mega-left">
         <RouterLink
           v-for="item in menuLateral"
@@ -66,14 +71,14 @@ watch(() => route.fullPath, () => { aberto.value = false })
 </template>
 
 <style scoped>
-.categories-trigger{position:relative;display:flex;align-items:center;gap:6px;padding:13px 15px;font-size:13px;font-weight:850;cursor:pointer;white-space:nowrap}
+.categories{position:relative}
+.categories-trigger{display:flex;align-items:center;gap:6px;padding:13px 15px;border:0;background:transparent;color:inherit;font-size:13px;font-weight:850;cursor:pointer;white-space:nowrap}
 .categories-trigger:hover{color:var(--pink-dark)}
 
 .mega-backdrop{position:fixed;inset:0;background:rgba(22,17,20,.48);z-index:38}
 
 .mega{display:none;position:absolute;top:100%;left:0;width:min(930px,92vw);background:#fff;border:1px solid var(--line);box-shadow:0 25px 55px rgba(40,25,32,.22);border-radius:0 0 8px 8px;z-index:60;overflow:hidden;color:var(--ink);cursor:default}
-.categories-trigger:hover .mega,
-.categories-trigger.open .mega{display:grid;grid-template-columns:205px 1fr}
+.categories.open .mega{display:grid;grid-template-columns:205px 1fr}
 
 .mega-left{background:#fff;border-right:1px solid #eee;padding:10px 0}
 .mega-left a{display:flex;justify-content:space-between;align-items:center;padding:11px 22px;font-size:13px;font-weight:750}
@@ -90,10 +95,10 @@ watch(() => route.fullPath, () => { aberto.value = false })
   .mega-grid{grid-template-columns:repeat(4,1fr)}
 }
 @media(max-width:700px){
-  .categories-trigger{position:static}
-  .mega{position:fixed;left:3%;right:3%;top:170px;width:auto;max-height:67vh;overflow:auto;grid-template-columns:1fr}
-  .categories-trigger:hover .mega{display:none}
-  .categories-trigger.open .mega{display:grid}
+  .categories{width:100%}
+  .categories-trigger{width:100%;justify-content:center;padding:12px 15px}
+  .mega{position:absolute;left:0;top:100%;width:94vw;max-height:calc(100vh - 190px);overflow:auto;grid-template-columns:1fr}
+  .categories.open .mega{display:grid;grid-template-columns:1fr}
   .mega-grid{grid-template-columns:repeat(2,1fr)}
   .mega-left{border-right:0;border-bottom:1px solid #eee}
 }

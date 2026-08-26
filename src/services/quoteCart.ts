@@ -1,4 +1,4 @@
-import { formatarPreco } from '@/data/produtos'
+import { formatarPreco } from '@/utils/currency'
 import type { Product } from '@/types/catalog'
 
 export const QUOTE_CART_STORAGE_KEY = 'criativa-canecas:quote-cart:v1'

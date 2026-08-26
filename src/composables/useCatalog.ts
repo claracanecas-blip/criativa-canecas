@@ -6,6 +6,7 @@ import {
 } from '@/repositories/catalogRepository'
 import type { CatalogSnapshot, Product } from '@/types/catalog'
 import { reportClientError, routeGroup } from '@/services/analytics'
+import { normalizeSearchText } from '@/utils/search'
 
 export type CatalogState = 'idle' | 'loading' | 'ready' | 'fallback' | 'error'
 export type CatalogSource = 'supabase' | 'typescript' | null
@@ -110,15 +111,19 @@ export function useCatalog() {
   }
 
   function buscarProdutos(term: string): Product[] {
-    const query = term.trim().toLocaleLowerCase('pt-BR')
+    const query = normalizeSearchText(term)
     if (!query) return []
     return snapshot.value.produtos.filter((product) => {
       const collectionNames = (product.colecoes ?? [product.colecao])
         .map((slug) => buscarColecao(slug)?.nome ?? slug)
         .join(' ')
-      return `${product.nome} ${product.tema ?? ''} ${collectionNames}`
-        .toLocaleLowerCase('pt-BR')
-        .includes(query)
+      return normalizeSearchText([
+        product.nome,
+        product.tema ?? '',
+        product.sku,
+        product.slug,
+        collectionNames,
+      ].join(' ')).includes(query)
     })
   }
 

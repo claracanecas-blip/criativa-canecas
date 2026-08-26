@@ -43,7 +43,6 @@ export const menuLateral: MenuItem[] = [
   { nome: 'Canecas com Foto', to: '/com-fotos' },
   { nome: 'Presentes', to: '/presentes', seta: true },
   { nome: 'Personalize do seu Jeito', to: '/personalizada', seta: true },
-  { nome: 'DIA DOS PAIS', to: '/dia-dos-pais' },
 ]
 
 /** Links do menu principal (barra horizontal). */
@@ -53,5 +52,4 @@ export const menuPrincipal: MenuItem[] = [
   { nome: 'Canecas com Foto', to: '/com-fotos' },
   { nome: 'Presentes', to: '/presentes', seta: true },
   { nome: 'Personalize do seu jeito', to: '/personalizada', seta: true },
-  { nome: 'DIA DOS PAIS', to: '/dia-dos-pais', destaque: true },
 ]

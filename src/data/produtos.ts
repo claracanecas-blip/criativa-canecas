@@ -1,5 +1,6 @@
 import type { Product, ProductInput } from '@/types/catalog'
 import { novosProdutosAnimes } from '@/data/animeCatalogExpansion'
+export { formatarPreco } from '@/utils/currency'
 
 /**
  * Produtos por coleção. A chave é o `slug` definido em data/colecoes.js.
@@ -431,8 +432,4 @@ export function buscarProdutos(termo: string): Product[] {
   return todosProdutos().filter(
     (p) => p.nome.toLowerCase().includes(q) || p.colecao.includes(q),
   )
-}
-
-export function formatarPreco(valor: number): string {
-  return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 }

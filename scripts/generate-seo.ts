@@ -9,6 +9,7 @@ import {
   type PublicInformationContent,
 } from '../src/data/informationContent.ts'
 import { normalizeSiteOrigin } from '../src/data/site.ts'
+import { fetchAllQueryPages } from '../src/utils/paginatedQuery.ts'
 import { buildCatalogImportData } from './catalog-import-data.ts'
 
 interface SeoCollection {
@@ -31,6 +32,18 @@ interface SeoProduct {
   updated_at?: string
   collectionIds: string[]
   imagePath: string
+}
+
+interface SeoRelation {
+  product_id: string
+  collection_id: string
+  display_order: number
+}
+
+interface SeoImage {
+  product_id: string
+  storage_path: string
+  variant: string
 }
 
 export interface SeoCatalog {
@@ -123,23 +136,38 @@ async function remoteCatalog(url: string, key: string): Promise<SeoCatalog> {
   const client = createClient(url, key, { auth: { persistSession: false } })
   const [collections, products, relations, images] = await Promise.all([
     client.from('collections').select('id,slug,name,description,image_path,updated_at').eq('is_published', true).order('display_order'),
-    client.from('products').select('id,slug,sku,name,theme,description,price,updated_at').eq('status', 'published').order('display_order').range(0, 999),
-    client.from('product_collections').select('product_id,collection_id,display_order').order('display_order').range(0, 999),
-    client.from('product_images').select('product_id,storage_path,variant').eq('variant', 'original').range(0, 999),
+    fetchAllQueryPages<Omit<SeoProduct, 'price' | 'collectionIds' | 'imagePath'> & { price: number | string }>((from, to) => client
+      .from('products')
+      .select('id,slug,sku,name,theme,description,price,updated_at')
+      .eq('status', 'published')
+      .order('display_order')
+      .order('id')
+      .range(from, to)),
+    fetchAllQueryPages<SeoRelation>((from, to) => client
+      .from('product_collections')
+      .select('product_id,collection_id,display_order')
+      .order('display_order')
+      .order('product_id')
+      .order('collection_id')
+      .range(from, to)),
+    fetchAllQueryPages<SeoImage>((from, to) => client
+      .from('product_images')
+      .select('product_id,storage_path,variant')
+      .eq('variant', 'original')
+      .order('product_id')
+      .range(from, to)),
   ])
-  for (const result of [collections, products, relations, images]) {
-    if (result.error) throw result.error
-  }
+  if (collections.error) throw collections.error
   const relationMap = new Map<string, string[]>()
-  for (const relation of relations.data ?? []) {
+  for (const relation of relations) {
     const ids = relationMap.get(relation.product_id) ?? []
     ids.push(relation.collection_id)
     relationMap.set(relation.product_id, ids)
   }
-  const imageMap = new Map((images.data ?? []).map((image) => [image.product_id, image.storage_path]))
+  const imageMap = new Map(images.map((image) => [image.product_id, image.storage_path]))
   return {
     collections: collections.data ?? [],
-    products: (products.data ?? []).map((product) => ({
+    products: products.map((product) => ({
       ...product,
       price: Number(product.price),
       collectionIds: relationMap.get(product.id) ?? [],

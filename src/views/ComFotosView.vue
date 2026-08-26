@@ -19,7 +19,7 @@ const dicas = [
 <template>
   <section class="section container">
     <div class="section-title">
-      <h2 class="flex items-center justify-center gap-2"><AppIcon name="Camera" :size="28" /> Canecas com Foto</h2>
+      <h1 class="flex items-center justify-center gap-2"><AppIcon name="Camera" :size="28" /> Canecas com Foto</h1>
       <p>Uma lembrança que acompanha o café de todo dia</p>
     </div>
 

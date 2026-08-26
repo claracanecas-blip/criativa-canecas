@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { formatarPreco } from '@/data/produtos'
+import { formatarPreco } from '@/utils/currency'
 import { linkWhatsapp, officialSiteUrl } from '@/data/site'
 import CatalogImage from '@/components/ui/CatalogImage.vue'
 import type { Product } from '@/types/catalog'

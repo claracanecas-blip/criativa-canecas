@@ -33,7 +33,7 @@ const cards = computed(() => ocasioes
 <template>
   <section class="section container">
     <div class="section-title">
-      <h2 class="flex items-center justify-center gap-2"><AppIcon name="Gift" :size="28" /> Presentes</h2>
+      <h1 class="flex items-center justify-center gap-2"><AppIcon name="Gift" :size="28" /> Presentes</h1>
       <p>Escolha pela ocasião — a gente ajuda a acertar</p>
     </div>
 

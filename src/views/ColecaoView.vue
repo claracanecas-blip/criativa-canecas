@@ -77,7 +77,7 @@ watch(
     </nav>
 
     <div class="section-title">
-      <h2 class="flex items-center justify-center gap-2"><AppIcon :name="colecao.icone" :size="28" /> {{ colecao.nome }}</h2>
+      <h1 class="flex items-center justify-center gap-2"><AppIcon :name="colecao.icone" :size="28" /> {{ colecao.nome }}</h1>
       <p v-if="itens.length">{{ itens.length }} modelos disponíveis</p>
     </div>
 

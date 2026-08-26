@@ -1,6 +1,6 @@
 # Memória do projeto — Criativa Canecas
 
-Atualizada em 21 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
+Atualizada em 26 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
 
 ## Identidade e serviços
 
@@ -87,6 +87,10 @@ Atualizada em 21 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A coleção `Divertidas`, antes vazia, recebeu em 20 de agosto de 2026 36 produtos (`divertidas-01` a `divertidas-36`), 144 objetos WebP e migration remota `20260820233000`. Das 46 estampas únicas, uma foi excluída por ser apenas mockup sem estampa plana, uma por paródia de medicamento e oito porque o gerador bloqueou personagens conhecidos. Os 36 mockups aprovados foram revisados quanto a texto, fidelidade, preenchimento, dimensões e unicidade; o lote inclui humor adulto e uma arte política. Evidência em `docs/baselines/2026-08-20-funny-catalog/`.
 - A coleção `Animes` recebeu inicialmente 100 produtos (`animes-001` a `animes-100`) em 21 de agosto de 2026. A revisão visual posterior identificou `animes-027` como Nanatsu no Taizai, não Fairy Tail, e `animes-083` como repetição de `animes-026`; ambos foram removidos pela migration `20260821200000`, deixando 98 novos e 141 na coleção. `animes-017` a `animes-020` foram classificados como Cavaleiros do Zodíaco Dourados 13 a 16. Os 100 mockups locais permanecem preservados e o manifesto registra os dois não publicados; evidência em `docs/baselines/2026-08-21-anime-catalog/`.
 - A coleção `Amizade` recebeu 30 produtos adicionais (`amizade-43` a `amizade-72`) em 21 de agosto de 2026, selecionados da pasta `71 - DIA DOS AMIGOS` sem repetir as 42 artes anteriores. Os 30 mockups e as 30 origens possuem hashes únicos, foram revisados em folha de contato e publicados com 120 objetos WebP pela migration `20260821210000`. Evidência em `docs/baselines/2026-08-21-friendship-catalog/`.
+- A Fase 10 de escala e descoberta iniciou em 26 de agosto de 2026. O incremento local elimina truncamento acima de 1.000 linhas no catálogo público, admin e SEO, reduz a carga REST observada da home de aproximadamente 598 KB para 287 KB e separa o fallback TypeScript do bundle principal.
+- Busca local agora ignora acentos, aceita SKU/slug e pagina em 20 itens; `sao paulo` encontra os mesmos sete produtos de `São Paulo`, e `CC-ARROW-1` encontra `Arrow 01`.
+- A home local respeita `is_featured` e completa a vitrine com oito coleções diferentes. O menu mobile passou a usar botão acessível, abre abaixo do gatilho sem overflow e o cabeçalho caiu de aproximadamente 290 px para 210 px em viewport de 390 px.
+- O destaque fixo de Dia dos Pais saiu dos menus após a campanha; a rota foi preservada. Typecheck, 64 testes, build com 741 URLs e 20 cenários Playwright Chrome passaram. Preview e produção ainda não foram executados.
 
 ## Decisões tomadas
 
@@ -121,6 +125,9 @@ Atualizada em 21 de agosto de 2026. Este arquivo preserva contexto operacional e
 28. Se aprovado futuramente, começar por link/checkout hospedado após confirmação da arte, sem dados brutos de cartão no sistema.
 29. Manter FAQ e informações comerciais em seções versionadas no Supabase, com fallback local seguro; somente conteúdo publicado é público e a autoria fica restrita à RPC administrativa.
 30. Definir uma única origem oficial por `VITE_SITE_URL`; aliases e previews nunca devem virar canonical nem contaminar analytics.
+31. Paginar consultas Supabase em blocos de até 1.000 linhas até receber uma página incompleta; nenhuma camada pode assumir que o catálogo permanecerá abaixo do limite do PostgREST.
+32. Consultar no frontend somente colunas realmente consumidas e carregar o catálogo TypeScript de fallback sob demanda.
+33. Campanhas sazonais permanecem acessíveis por rota quando necessário, mas só entram nos menus durante período ativo ou gestão explícita.
 
 ## Histórico relevante
 
@@ -168,12 +175,14 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 - O DNS permanece administrado no Registro.br; os registros raiz e `www` apontam para a Vercel. Não trocar nameservers nem remover o hostname anterior antes de validar um rollback.
 - A Fase 8 ainda depende de CNPJ ou identificação pública aplicável, endereço/cidade e e-mail, condições comerciais oficiais e avaliações reais; domínio, nome do responsável e WhatsApp já foram confirmados.
 - Há atividade residual do GitHub Pages, mas produção oficial é Vercel; não desativar serviço externo sem autorização explícita.
+- Mesmo após a redução de aproximadamente 52%, a home ainda carrega o catálogo remoto completo para sustentar busca, menus e orçamento compartilhados. Consultas por rota são o próximo passo de escala, mas exigem redesenhar cache, busca e resolução dos itens persistidos.
 
 ## Próxima execução recomendada
 
-1. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md`.
-2. Cadastrar somente avaliações reais com autorização documentada.
-3. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
+1. Publicar preview da Fase 10, validar responsividade/Lighthouse e promover somente após aceite.
+2. Especificar consultas por rota para a home não precisar carregar todos os produtos.
+3. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e cadastrar somente avaliações reais autorizadas.
+4. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
 
 ## Protocolo de atualização da memória
 
