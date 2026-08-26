@@ -90,7 +90,7 @@ Atualizada em 26 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A Fase 10 de escala e descoberta iniciou em 26 de agosto de 2026. O incremento local elimina truncamento acima de 1.000 linhas no catálogo público, admin e SEO, reduz a carga REST observada da home de aproximadamente 598 KB para 287 KB e separa o fallback TypeScript do bundle principal.
 - Busca local agora ignora acentos, aceita SKU/slug e pagina em 20 itens; `sao paulo` encontra os mesmos sete produtos de `São Paulo`, e `CC-ARROW-1` encontra `Arrow 01`.
 - A home local respeita `is_featured` e completa a vitrine com oito coleções diferentes. O menu mobile passou a usar botão acessível, abre abaixo do gatilho sem overflow e o cabeçalho caiu de aproximadamente 290 px para 210 px em viewport de 390 px.
-- O destaque fixo de Dia dos Pais saiu dos menus após a campanha; a rota foi preservada. Typecheck, 64 testes, build com 741 URLs e 20 cenários Playwright Chrome passaram. Preview e produção ainda não foram executados.
+- O destaque fixo de Dia dos Pais saiu dos menus após a campanha; a rota foi preservada. O preview Vercel do commit `3cacea9` foi construído com sucesso e o CI do PR `#1` aprovou instalação limpa, 64 testes, typecheck, build, 80 cenários Playwright nos quatro perfis principais, 20 no Edge e Lighthouse home P98/A98, coleção P99/A98 e produto P97/A100, todos com Boas Práticas/SEO 100. O preview exige login Vercel, portanto smoke remoto autenticado, aceite visual e produção permanecem pendentes.
 
 ## Decisões tomadas
 
@@ -179,7 +179,7 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Publicar preview da Fase 10, validar responsividade/Lighthouse e promover somente após aceite.
+1. Abrir o preview autenticado da Fase 10, concluir o smoke responsivo/aceite visual e promover somente após aceite.
 2. Especificar consultas por rota para a home não precisar carregar todos os produtos.
 3. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e cadastrar somente avaliações reais autorizadas.
 4. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.

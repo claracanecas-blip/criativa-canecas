@@ -1,4 +1,4 @@
-# Fase 10 — Escala e descoberta — evidência local
+# Fase 10 — Escala e descoberta — evidência de preview
 
 Data: 26 de agosto de 2026.
 
@@ -33,13 +33,25 @@ Os tamanhos REST são corpos decodificados observados pelo navegador local contr
 - Playwright Chrome: 20 cenários aprovados, incluindo Axe WCAG 2.2 A/AA, busca tolerante, paginação, catálogo, produto e orçamento;
 - inspeção visual local: home desktop, home mobile e menu mobile.
 
+## Preview e CI
+
+- commit: `3cacea9`;
+- draft PR: `https://github.com/claracanecas-blip/criativa-canecas/pull/1`;
+- preview Vercel: `https://criativa-canecas-fevvdqk1j-claracanecas-9141s-projects.vercel.app`;
+- build do preview: aprovado pela integração Vercel;
+- CI em instalação limpa: 64 testes, typecheck e build aprovados;
+- compatibilidade: 80 cenários nos perfis Chrome, Firefox, WebKit desktop e Safari móvel, mais 20 cenários no Edge;
+- Lighthouse CI: home P98/A98/B100/S100, coleção P99/A98/B100/S100 e produto P97/A100/B100/S100.
+
+O preview está protegido por autenticação Vercel. Requisições anônimas retornam a tela de login da plataforma, portanto o smoke remoto e o aceite visual precisam ser feitos em uma sessão autorizada.
+
 ## Segurança, dados e rollback
 
 Nenhuma migration, política RLS, credencial ou dado remoto foi alterado. O rollback consiste em reverter os arquivos de aplicação, testes e documentação deste incremento; o catálogo e o Storage permanecem inalterados.
 
 ## Pendente para concluir a fase
 
-- publicar um preview Vercel e repetir smoke responsivo;
+- abrir o preview em sessão Vercel autorizada e repetir o smoke responsivo;
 - promover para produção somente após autorização e aceite do preview;
-- medir a home publicada e confirmar ausência de regressão de Lighthouse;
+- confirmar no preview autenticado a ausência de regressão não coberta pelo Lighthouse CI;
 - avaliar consultas por rota como próximo passo para deixar de carregar os 721 produtos na home.
