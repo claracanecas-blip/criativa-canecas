@@ -150,7 +150,7 @@ export const produtos: Record<string, ProductInput[]> = {
     }
   }),
   religiao: ([
-    ['Fé Islâmica', 'Islâmica'], ['Fé Messiânica', 'Messiânica'], ['Nossa Senhora de Fátima 01', 'Católica'],
+    ['Porque Ele Vive', 'Cristã'], ['Fé Messiânica', 'Messiânica'], ['Nossa Senhora de Fátima 01', 'Católica'],
     ['Assembleia de Deus', 'Evangélica'], ['Círio de Nazaré 01', 'Católica'], ['Esperança em Deus', 'Cristã'],
     ['São Cosme e Damião', 'Católica'], ['Fé e Certeza', 'Cristã'], ['Nossa Senhora Aparecida 01', 'Católica'],
     ['Oração', 'Cristã'], ['Nossa Senhora de Fátima 02', 'Católica'], ['Vivo por Jesus', 'Cristã'],
@@ -175,7 +175,7 @@ export const produtos: Record<string, ProductInput[]> = {
       nome,
       tema: tradicao,
       preco: 39.9,
-      imagem: `./img/religiao-${codigo}.png`,
+      imagem: indice === 0 ? './img/religiao-01-r2.png' : `./img/religiao-${codigo}.png`,
     }
   }),
   cafe: Array.from({ length: 6 }, (_, indice) => {

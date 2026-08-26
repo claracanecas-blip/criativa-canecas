@@ -122,7 +122,7 @@ test('coleção Religião contém 50 modelos com estampas respeitosamente identi
   await page.goto('/colecao/religiao')
   await expect(page.getByText('50 modelos disponíveis')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
-  await expect(page.getByRole('link', { name: 'Ver detalhes de Fé Islâmica' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Ver detalhes de Porque Ele Vive' })).toBeVisible()
 
   await page.getByRole('button', { name: 'Próxima' }).click()
   await expect(page.getByText('Página 2 de 3')).toBeVisible()
