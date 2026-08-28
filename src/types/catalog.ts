@@ -57,6 +57,7 @@ export interface Product extends ProductInput {
   sku: string
   descricao: string
   destaque: boolean
+  imagens?: string[]
 }
 
 export interface CatalogSnapshot {

@@ -219,7 +219,7 @@ test('produto continua utilizável em viewport móvel e via teclado', async ({ p
   await page.goto('/produto/arrow-1')
   await expect(page.getByRole('heading', { level: 1, name: 'Arrow 01' })).toBeVisible()
   await expect(page.getByRole('heading', { level: 2, name: 'Escolha como receber' })).toBeVisible()
-  await expect(page.getByText('O valor exibido corresponde à caneca. O frete não está incluído.')).toBeVisible()
+  await expect(page.locator('.delivery-options').getByText('O valor exibido corresponde à caneca. O frete não está incluído.')).toBeVisible()
   await expect(page.getByRole('link', { name: 'Personalizar e pedir pelo WhatsApp' })).toBeVisible()
 
   await page.goto('/')
@@ -228,6 +228,51 @@ test('produto continua utilizável em viewport móvel e via teclado', async ({ p
     document.activeElement?.matches('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'),
   )
   expect(focusIsInteractive).toBe(true)
+})
+
+test('galeria do produto amplia a imagem e oferece controles acessíveis de zoom', async ({ page }) => {
+  await page.goto('/produto/arrow-1')
+  await page.getByRole('button', { name: 'Ampliar imagem de Arrow 01' }).click()
+
+  const dialog = page.getByRole('dialog', { name: 'Imagem ampliada de Arrow 01' })
+  await expect(dialog).toBeVisible()
+  await expect(dialog.getByText('100%')).toBeVisible()
+  await dialog.getByRole('button', { name: 'Aumentar zoom' }).click()
+  await expect(dialog.getByText('150%')).toBeVisible()
+  await dialog.getByRole('button', { name: 'Restaurar zoom' }).click()
+  await expect(dialog.getByText('100%')).toBeVisible()
+  await dialog.getByRole('button', { name: 'Fechar imagem ampliada' }).click()
+  await expect(dialog).toBeHidden()
+})
+
+test('coleção pode ser refinada por tema, preço e ordenação', async ({ page }) => {
+  await page.goto('/colecao/series')
+  await page.getByLabel('Filtrar por tema').selectOption({ label: 'Arrow' })
+  await expect(page.getByText('4 modelos encontrados')).toBeVisible()
+  await expect(page.locator('article.card')).toHaveCount(4)
+
+  await page.getByLabel('Faixa de preço').selectOption('over-50')
+  await expect(page.getByText('0 modelos encontrados')).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Nenhum modelo neste filtro' })).toBeVisible()
+
+  await page.getByRole('button', { name: 'Limpar filtros' }).click()
+  await expect(page.locator('article.card')).toHaveCount(20)
+})
+
+test('prévia local de personalização preserva contexto no WhatsApp', async ({ page }) => {
+  await page.goto('/personalizada')
+  await page.getByLabel('Modelo da caneca').selectOption('Caneca colorida')
+  await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
+  await page.getByLabel('Observações para a criação').fill('Usar tons de rosa')
+
+  const whatsapp = page.getByRole('link', { name: 'Continuar pelo WhatsApp' })
+  const href = await whatsapp.getAttribute('href')
+  const message = new URL(href ?? '').searchParams.get('text') ?? ''
+  expect(message).toContain('Modelo escolhido: Caneca colorida')
+  expect(message).toContain('Melhor mãe do mundo')
+  expect(message).toContain('Usar tons de rosa')
+  expect(message).toContain('prévia do site é apenas uma simulação')
+  expect(message).toContain('Minha cidade/CEP')
 })
 
 test('orçamento persiste, ajusta quantidade e gera mensagem consolidada', async ({ page }) => {

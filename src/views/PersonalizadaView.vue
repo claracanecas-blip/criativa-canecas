@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import AppIcon from '@/components/ui/AppIcon.vue'
 import DeliveryOptions from '@/components/DeliveryOptions.vue'
-import { deliveryPolicy, linkWhatsapp } from '@/data/site'
+import PersonalizationPreview from '@/components/PersonalizationPreview.vue'
 import type { IconName } from '@/types/catalog'
-import { trackWhatsappClick } from '@/services/analytics'
 
 const passos = [
   { n: 1, titulo: 'Escolha o modelo', texto: 'Caneca branca, mágica (muda com o calor) ou colorida.' },
@@ -18,6 +17,7 @@ const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
   { icone: 'Palette', nome: 'Caneca colorida', preco: 'R$ 44,90' },
   { icone: 'Camera', nome: 'Com foto',        preco: 'R$ 42,90' },
 ]
+const modelNames = opcoes.map((opcao) => opcao.nome)
 </script>
 
 <template>
@@ -47,13 +47,9 @@ const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
       </div>
     </div>
 
-    <DeliveryOptions class="delivery" />
+    <PersonalizationPreview :models="modelNames" />
 
-    <div class="cta">
-      <a class="btn" :href="linkWhatsapp(`Olá! Quero criar uma caneca personalizada. ${deliveryPolicy.contactPrompt}`)" target="_blank" rel="noopener" @click="trackWhatsappClick('personalized')">
-        Personalizar e pedir pelo WhatsApp
-      </a>
-    </div>
+    <DeliveryOptions class="delivery" />
   </section>
 </template>
 
@@ -70,8 +66,6 @@ const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
 .opcao .icone{display:flex;justify-content:center;color:var(--pink);margin-bottom:8px}
 .opcao span{display:block;margin-top:6px;color:#a12645;font-weight:900;font-size:18px}
 .delivery{margin-top:28px}
-
-.cta{text-align:center;margin-top:34px}
 
 @media(max-width:950px){
   .passos,.opcoes{grid-template-columns:repeat(2,1fr)}
