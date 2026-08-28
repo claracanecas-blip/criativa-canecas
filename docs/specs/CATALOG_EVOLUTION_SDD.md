@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9–10 concluídas, Fase 8 em andamento |
-| Versão | 1.31 |
+| Versão | 1.32 |
 | Data-base | 28 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -387,7 +387,7 @@ Uma fase só está concluída quando:
 
 ### Fase 11 — Experiência de escolha e personalização
 
-**Estado:** implementação local concluída em 27 de agosto de 2026; preview, CI e produção pendentes.
+**Estado:** implementação, preview e CI concluídos em 28 de agosto de 2026; produção pendente.
 
 **Objetivo:** permitir inspeção detalhada do mockup, reduzir dúvidas sobre produto e facilitar a descoberta e a personalização antes do WhatsApp.
 
@@ -399,7 +399,7 @@ Uma fase só está concluída quando:
 
 **Rollback:** reverter somente componentes, utilitários, views, testes e documentação da fase. Não há migration nem alteração remota.
 
-**Evidência local:** [`docs/baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md`](../baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md).
+**Evidência:** [`docs/baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md`](../baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md), PR `#3`, preview Vercel `Ready`, 69 testes, 130 cenários Playwright/Axe nos cinco perfis e Lighthouse com todas as categorias em pelo menos 90.
 
 ## 13. Ordem, dependências e marcos
 
@@ -463,11 +463,11 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical, Auth e opções de entrega concluídos; dados comerciais oficiais restantes e avaliações reais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |
 | 10 — Escala e descoberta | Concluída | Produção validada; 65 testes, 100 cenários E2E/axe, Lighthouse P90+, redirects, SEO, buscas e menu mobile aprovados |
-| 11 — Experiência assistida | Local concluído | Zoom/galeria, detalhes seguros, prova social moderada, filtros e prévia 2D; preview/CI/produção pendentes |
+| 11 — Experiência assistida | Preview/CI concluídos | Zoom/galeria, detalhes seguros, prova social moderada, filtros e prévia 2D; produção pendente |
 
 ## 18. Evoluções incrementais após o roadmap
 
-- **27–28 de agosto de 2026 — experiência de escolha e personalização:** produto ganhou zoom acessível e suporte a múltiplas imagens, detalhes/cuidados sem inventar especificações e prova social condicionada a depoimentos reais publicados. Coleções e busca ganharam filtros/ordenação; `/personalizada` recebeu prévia 2D local que não armazena nem envia o arquivo e leva o resumo ao WhatsApp. A validação local atual aprovou 69 testes, typecheck, build com 741 URLs e 104 de 104 cenários Playwright/Axe nos perfis Chrome, Firefox, Safari desktop e Safari móvel. Evidência em [`docs/baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md`](../baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md).
+- **27–28 de agosto de 2026 — experiência de escolha e personalização:** produto ganhou zoom acessível e suporte a múltiplas imagens, detalhes/cuidados sem inventar especificações e prova social condicionada a depoimentos reais publicados. Coleções e busca ganharam filtros/ordenação; `/personalizada` recebeu prévia 2D local que não armazena nem envia o arquivo e leva o resumo ao WhatsApp. A validação aprovou 69 testes, typecheck, build local com 741 URLs, 104 de 104 cenários Playwright/Axe nos perfis Chrome, Firefox, Safari desktop e Safari móvel, 26 de 26 no Edge e Lighthouse com todas as categorias em pelo menos 90. O preview do PR `#3` ficou `Ready` e respondeu `200` nas cinco rotas críticas. Evidência em [`docs/baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md`](../baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md).
 
 - **27 de agosto de 2026 — clareza de preço e entrega:** política centralizada informa que o valor exibido corresponde à caneca e não inclui frete; a UI diferencia entrega/retirada em Araranguá, com mimo conforme disponibilidade, de envio pelos Correios com cálculo pelo CEP. Home, produto, informações, personalizada, presentes, cards, orçamento e mensagens do WhatsApp foram reconciliados. O PR `#2` cobre 66 testes, typecheck, build com 741 URLs, 115 cenários Playwright/Axe nos cinco perfis e Lighthouse; preview Vercel `Ready` e smoke autenticado concluído. Uma falha transitória de imagem revelou e levou à correção do contraste do placeholder, agora testado de forma determinística. A evidência está em [`docs/baselines/2026-08-27-delivery-clarity/DELIVERY_CLARITY.md`](../baselines/2026-08-27-delivery-clarity/DELIVERY_CLARITY.md).
 

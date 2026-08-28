@@ -54,6 +54,14 @@ Reduzir dúvidas na escolha de uma caneca, melhorar a inspeção visual do mocku
 - A camada de repositório possui teste específico para preservar todas as imagens originais na ordem da galeria.
 - Inspeção visual: produto/zoom e personalização em desktop e viewport móvel de 390 × 844.
 
+## Preview e CI
+
+- PR `#3` sem conflitos e com checks obrigatórios aprovados.
+- Preview Vercel `Ready`; home, produto, coleção, busca e personalizada responderam `200` por acesso autenticado.
+- CI em instalação limpa: 69 testes, typecheck e build aprovados.
+- Matriz remota: 104 cenários Playwright/Axe nos quatro perfis principais e 26 no Edge.
+- Lighthouse CI: todas as categorias avaliadas ficaram em pelo menos 90.
+
 ## Limitações deliberadas
 
 - O catálogo atual possui uma imagem por produto; a galeria já aceita várias, mas novas fotos reais precisam ser cadastradas e autorizadas.

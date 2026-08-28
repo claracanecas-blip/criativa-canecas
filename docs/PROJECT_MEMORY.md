@@ -95,7 +95,8 @@ Atualizada em 28 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A validação desse incremento cobre 66 testes, typecheck, build com 741 URLs, 92 cenários Playwright/Axe em Chrome, Firefox, WebKit desktop e Safari móvel e 23 no Edge/Windows. O Edge local encerra antes de criar páginas, mas a matriz do GitHub Actions cobre esse perfil.
 - Uma oscilação de carregamento de imagens no CI revelou contraste insuficiente no placeholder (`3,79:1`). O texto foi escurecido e o E2E agora aborta o Storage deliberadamente para validar esse estado de erro em toda execução.
 - O PR `#2` foi mesclado em `main` por `1d7cf9a` em 28 de agosto de 2026. O deployment Vercel de produção ficou `Ready`; smoke navegável confirmou home, produto, personalizada e informações com status `200`, canonical oficial, texto de frete e redirecionamentos `308` preservando caminho e parâmetros.
-- A Fase 11 de experiência assistida está concluída localmente em branch própria: produto possui zoom de 100% a 300% e galeria preparada para múltiplas imagens; detalhes seguros e depoimentos moderados entram no contexto do produto; coleção/busca têm filtros e ordenação; `/personalizada` possui prévia 2D local com resumo para WhatsApp. Não houve migration, upload ou persistência da imagem do cliente.
+- A Fase 11 de experiência assistida está tecnicamente aprovada no PR `#3`: produto possui zoom de 100% a 300% e galeria preparada para múltiplas imagens; detalhes seguros e depoimentos moderados entram no contexto do produto; coleção/busca têm filtros e ordenação; `/personalizada` possui prévia 2D local com resumo para WhatsApp. Não houve migration, upload ou persistência da imagem do cliente.
+- O preview Vercel da Fase 11 ficou `Ready` e respondeu `200` nas rotas home, produto, coleção, busca e personalizada. O CI aprovou 69 testes, typecheck, build, 104 cenários Playwright/Axe nos quatro perfis principais, 26 no Edge e Lighthouse com todas as categorias em pelo menos 90.
 
 ## Decisões tomadas
 
@@ -188,7 +189,7 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Publicar a branch da Fase 11 em PR próprio, validar preview/CI e, após aceite, promover a experiência assistida à produção.
+1. Mesclar o PR `#3` e validar a experiência assistida no domínio oficial.
 2. Coletar dados técnicos por modelo, fotos adicionais reais e avaliações autorizadas para completar ficha, galeria e prova social sem conteúdo inventado.
 3. Especificar consultas por rota para a home não precisar carregar todos os produtos.
 4. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
