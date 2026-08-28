@@ -25,6 +25,24 @@ for (const target of publicPages) {
   })
 }
 
+test('home apresenta produto, caminhos de compra e processo antes da entrega detalhada', async ({ page }) => {
+  await page.goto('/')
+
+  await expect(page.getByRole('heading', { level: 1, name: /Canecas personalizadas feitas para encantar/ })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Ver modelos' })).toHaveAttribute('href', '/colecoes')
+  await expect(page.getByRole('link', { name: 'Criar minha caneca' })).toHaveAttribute('href', '/personalizada')
+  await expect(page.getByRole('link', { name: 'Ver modelo Aniversário 01' })).toHaveAttribute('href', '/produto/aniversario-01')
+  await expect(page.getByRole('heading', { level: 2, name: 'Categorias em destaque' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 2, name: 'Da ideia à caneca em três passos' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 2, name: 'Escolha como receber' })).toBeVisible()
+
+  const sectionOrder = await page.locator('main section').evaluateAll((sections) =>
+    sections.map((section) => section.textContent?.trim() ?? ''),
+  )
+  expect(sectionOrder.findIndex((text) => text.includes('Categorias em destaque')))
+    .toBeLessThan(sectionOrder.findIndex((text) => text.includes('Escolha como receber')))
+})
+
 test('placeholder de imagem permanece acessível quando o Storage falha', async ({ page }) => {
   await page.route('**/storage/v1/object/public/product-images/**', (route) => route.abort())
   await page.goto('/produto/arrow-1')

@@ -4,7 +4,7 @@ export const site = {
   logo: '/img/logo.webp',
   whatsapp: '5548991992341',
   telefone: '(48) 99199-2341',
-  aviso: 'Personalizados com carinho • Escolha sua coleção e envie seu pedido pelo WhatsApp',
+  aviso: 'Entrega ou retirada em Araranguá • Envio pelos Correios',
 } as const
 
 export const deliveryPolicy = {

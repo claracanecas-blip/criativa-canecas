@@ -100,6 +100,8 @@ Atualizada em 28 de agosto de 2026. Este arquivo preserva contexto operacional e
 - O preview Vercel da Fase 11 ficou `Ready` e respondeu `200` nas rotas home, produto, coleção, busca e personalizada. O CI aprovou 69 testes, typecheck, build, 104 cenários Playwright/Axe nos quatro perfis principais, 26 no Edge e Lighthouse com todas as categorias em pelo menos 90.
 - Nos modelos prontos do catálogo, os CTAs agora dizem `Pedir pelo WhatsApp` nos cards e `Pedir este modelo pelo WhatsApp` na página do produto. A mensagem identifica interesse no modelo, SKU e URL; `personalizar` permanece reservado ao fluxo `/personalizada`.
 - A seção comercial de `/personalizada` apresenta somente canecas prontas e personalizadas: tradicional, mágica, colorida e com foto. Cada opção informa o que o cliente recebe, personalização inclusa e valor; nenhuma caneca sem estampa é anunciada ou oferecida.
+- A nova home aprovada em 28 de agosto de 2026 coloca produtos reais e os caminhos `Ver modelos`/`Criar minha caneca` na primeira dobra, antecipa categorias com miniaturas, mantém oito modelos em destaque e apresenta personalização e entrega em uma sequência comercial clara. O hero rosa usa somente textura pontilhada, curvas e brilhos discretos, com composição específica para celular.
+- A faixa superior da home passou a comunicar entrega ou retirada em Araranguá e envio pelos Correios. A mudança não altera banco, catálogo ou política comercial; typecheck, build com 741 URLs, 69 testes e os cenários E2E de estrutura/acessibilidade da home foram aprovados localmente antes da publicação direta autorizada na `main`.
 
 ## Decisões tomadas
 
@@ -140,6 +142,7 @@ Atualizada em 28 de agosto de 2026. Este arquivo preserva contexto operacional e
 34. Centralizar a política de entrega junto à identidade do site: preço da caneca sem frete, atendimento local em Araranguá e envio pelos Correios para outras cidades. Cidade/CEP entram somente na mensagem do WhatsApp e não são persistidos pela aplicação.
 35. Manter a prévia de personalização inteiramente no navegador: arquivo temporário não é persistido nem enviado automaticamente; o cliente anexa a imagem no WhatsApp e aprova a arte final antes da produção.
 36. Exibir ficha e prova social apenas com dados seguros: material/capacidade permanecem como confirmação por modelo e avaliações/fotos só aparecem após moderação e consentimento reais.
+37. Manter produto e decisão comercial na primeira dobra da home; detalhes decorativos devem ter baixo contraste, não competir com as canecas e ser reduzidos no celular.
 
 ## Histórico relevante
 
