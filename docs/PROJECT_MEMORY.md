@@ -1,6 +1,6 @@
 # Memória do projeto — Criativa Canecas
 
-Atualizada em 26 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
+Atualizada em 27 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
 
 ## Identidade e serviços
 
@@ -69,7 +69,7 @@ Atualizada em 26 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A página pública lê somente seções publicadas, usa backup local seguro em falha do Supabase e o prerender consulta a mesma fonte para produzir HTML rastreável. Nove textos-base seguros foram reconciliados sem inventar condições comerciais.
 - A migration remota `20260813221500` e o lint passaram; 11 verificações RLS confirmaram leitura pública limitada, escrita exclusiva de administrador, autoria privada, ciclo rascunho → publicação e limpeza integral dos dados temporários.
 - O fluxo real de `/admin/informacoes` passou seis verificações navegadas: proteção por login, abertura autorizada, criação de rascunho com autoria, invisibilidade pública, publicação visível e exclusão confirmada; conta e conteúdo temporários foram removidos.
-- Qualidade atual: 61 testes, 19 E2E/axe por perfil, typecheck e build; Lighthouse atual: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
+- Qualidade local atual: 66 testes, 23 E2E/axe por perfil, typecheck e build; Lighthouse mais recente: home P98/A98, coleção P98/A100 e produto P91/A100, com Boas Práticas/SEO 100.
 - A origem canônica foi centralizada em `VITE_SITE_URL`, configurada como variável pública na Vercel para Production, Preview e Development. Canonical, Open Graph, JSON-LD, sitemap, robots, links comerciais e analytics seguem a mesma origem.
 - O responsável público e o WhatsApp oficial foram confirmados pelo proprietário e centralizados em `src/data/site.ts`; o rodapé exibe ambos de forma consistente. CNPJ e avaliações permanecem ausentes até o fornecimento de dados reais.
 - A auditoria `docs/audits/2026-08-13-SDD_COMPLETION_AUDIT.md` mapeia os 59 requisitos: todos têm evidência técnica; somente o aceite externo da Fase 8 continua pendente.
@@ -91,6 +91,10 @@ Atualizada em 26 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Busca local agora ignora acentos, aceita SKU/slug e pagina em 20 itens; `sao paulo` encontra os mesmos sete produtos de `São Paulo`, e `CC-ARROW-1` encontra `Arrow 01`.
 - A home local respeita `is_featured` e completa a vitrine com oito coleções diferentes. O menu mobile passou a usar botão acessível, abre abaixo do gatilho sem overflow e o cabeçalho caiu de aproximadamente 290 px para 210 px em viewport de 390 px.
 - O destaque fixo de Dia dos Pais saiu dos menus após a campanha; a rota foi preservada. O PR `#1` foi mesclado em `main` por `a71d71c`, e o deployment Vercel `dpl_Ehkg11YwFUPWwBccNT6JAwvgMs7J` ficou `Ready` no domínio oficial. O CI da `main` aprovou 65 testes, typecheck, build, 80 cenários nos quatro perfis principais, 20 no Edge e Lighthouse. O smoke de produção confirmou rotas `200`, redirects `308`, sitemap com 741 URLs, canonical oficial, buscas por acento/SKU, `Porque Ele Vive` e menu mobile sem overflow.
+- O incremento local de clareza de preço e entrega centraliza em `src/data/site.ts` que o valor exibido corresponde à caneca e não inclui frete. A interface diferencia entrega/retirada em Araranguá, com mimo conforme disponibilidade, de envio pelos Correios para outras cidades com cálculo por CEP; mensagens do WhatsApp e orçamento pedem cidade/CEP sem armazenar esse dado no site.
+- A validação desse incremento cobre 66 testes, typecheck, build com 741 URLs, 92 cenários Playwright/Axe em Chrome, Firefox, WebKit desktop e Safari móvel e 23 no Edge/Windows. O Edge local encerra antes de criar páginas, mas a matriz do GitHub Actions cobre esse perfil.
+- Uma oscilação de carregamento de imagens no CI revelou contraste insuficiente no placeholder (`3,79:1`). O texto foi escurecido e o E2E agora aborta o Storage deliberadamente para validar esse estado de erro em toda execução.
+- O PR `#2` está tecnicamente aprovado; o deployment de preview `dpl_54N6ZsnGVFzzATLknPBFR6kH883Z` ficou `Ready`. Smoke autenticado confirmou o HTML da aplicação, títulos e canonical único nas quatro rotas alteradas; merge em `main` aguarda aceite para publicar em produção.
 
 ## Decisões tomadas
 
@@ -128,6 +132,7 @@ Atualizada em 26 de agosto de 2026. Este arquivo preserva contexto operacional e
 31. Paginar consultas Supabase em blocos de até 1.000 linhas até receber uma página incompleta; nenhuma camada pode assumir que o catálogo permanecerá abaixo do limite do PostgREST.
 32. Consultar no frontend somente colunas realmente consumidas e carregar o catálogo TypeScript de fallback sob demanda.
 33. Campanhas sazonais permanecem acessíveis por rota quando necessário, mas só entram nos menus durante período ativo ou gestão explícita.
+34. Centralizar a política de entrega junto à identidade do site: preço da caneca sem frete, atendimento local em Araranguá e envio pelos Correios para outras cidades. Cidade/CEP entram somente na mensagem do WhatsApp e não são persistidos pela aplicação.
 
 ## Histórico relevante
 
@@ -173,15 +178,16 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 - O hostname aceito pelo analytics deriva de `VITE_SITE_URL`; qualquer troca futura de domínio deve ocorrer no mesmo deploy das canônicas e da configuração do Supabase Auth.
 - Métricas são agregadas e não substituem uma plataforma de marketing/atribuição; adicionar Pixel ou GA depende de decisão de negócio e consentimento.
 - O DNS permanece administrado no Registro.br; os registros raiz e `www` apontam para a Vercel. Não trocar nameservers nem remover o hostname anterior antes de validar um rollback.
-- A Fase 8 ainda depende de CNPJ ou identificação pública aplicável, endereço/cidade e e-mail, condições comerciais oficiais e avaliações reais; domínio, nome do responsável e WhatsApp já foram confirmados.
+- A Fase 8 ainda depende de CNPJ ou identificação pública aplicável, endereço e e-mail, condições oficiais restantes de troca, materiais, cuidados e prazos, além de avaliações reais; domínio, cidade de atendimento local, nome do responsável, WhatsApp e opções de entrega já foram confirmados.
 - Há atividade residual do GitHub Pages, mas produção oficial é Vercel; não desativar serviço externo sem autorização explícita.
 - Mesmo após a redução de aproximadamente 52%, a home ainda carrega o catálogo remoto completo para sustentar busca, menus e orçamento compartilhados. Consultas por rota são o próximo passo de escala, mas exigem redesenhar cache, busca e resolução dos itens persistidos.
 
 ## Próxima execução recomendada
 
-1. Especificar consultas por rota para a home não precisar carregar todos os produtos.
-2. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e cadastrar somente avaliações reais autorizadas.
-3. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
+1. Revisar o preview do PR `#2` e, após aceite, mesclar em `main` para promover a clareza de preço e entrega à produção.
+2. Especificar consultas por rota para a home não precisar carregar todos os produtos.
+3. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e cadastrar somente avaliações reais autorizadas.
+4. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
 
 ## Protocolo de atualização da memória
 

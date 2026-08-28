@@ -51,10 +51,11 @@ const cards = computed(() => ocasioes
     </div>
 
     <div class="kit">
-      <h3>Kit presente</h3>
-      <p>Caneca + caixa personalizada + cartão escrito à mão. Combine tudo pelo atendimento.</p>
-      <a class="btn" :href="linkWhatsapp('Olá! Quero montar um kit presente.')" target="_blank" rel="noopener" @click="trackWhatsappClick('gifts')">
-        Montar meu kit
+      <small>Opção adicional</small>
+      <h3>Presente Criativa</h3>
+      <p>Uma opção separada da caneca, com embalagem e complementos combinados no atendimento. A composição e o valor são confirmados antes do pedido.</p>
+      <a class="btn" :href="linkWhatsapp('Olá! Quero conhecer as opções e o valor do Presente Criativa.')" target="_blank" rel="noopener" @click="trackWhatsappClick('gifts')">
+        Conhecer opções de presente
       </a>
     </div>
   </section>
@@ -69,6 +70,7 @@ const cards = computed(() => ocasioes
 .ocasiao span{display:block;margin-top:5px;font-size:12px;color:var(--muted)}
 
 .kit{margin-top:40px;text-align:center;background:linear-gradient(135deg,var(--pink),var(--pink-dark));color:#fff;border-radius:22px;padding:34px 24px}
+.kit small{font-weight:900;letter-spacing:.1em;text-transform:uppercase}
 .kit h3{margin:0 0 8px;font-size:26px}
 .kit p{margin:0 0 18px;color:#fff2f6}
 .kit .btn{background:#fff;color:var(--pink-dark)}

@@ -7,8 +7,8 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9–10 concluídas, Fase 8 em andamento |
-| Versão | 1.29 |
-| Data-base | 26 de agosto de 2026 |
+| Versão | 1.30 |
+| Data-base | 27 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
 
@@ -349,9 +349,9 @@ Uma fase só está concluída quando:
 
 **Aceite:** domínio HTTPS ativo, apenas um domínio canônico indexável e conteúdo administrativo publicável.
 
-**Parcial entregue:** página de informações/FAQ com seções publicáveis em `/admin/informacoes`, fallback seguro e HTML rastreável; depoimentos moderados com RLS, administração e consentimento obrigatório para fotos; origem oficial `https://criativacanecas.com.br` ativa com HTTPS, canonical único e redirecionamentos permanentes de `www` e do hostname anterior; responsável público e WhatsApp oficial confirmados e exibidos no rodapé. Metadados de consentimento/autoria são privados e acessíveis integralmente somente por RPC administrativa. Nenhum CNPJ, depoimento fictício ou condição comercial não confirmada foi publicado.
+**Parcial entregue:** página de informações/FAQ com seções publicáveis em `/admin/informacoes`, fallback seguro e HTML rastreável; depoimentos moderados com RLS, administração e consentimento obrigatório para fotos; origem oficial `https://criativacanecas.com.br` ativa com HTTPS, canonical único e redirecionamentos permanentes de `www` e do hostname anterior; responsável público e WhatsApp oficial confirmados e exibidos no rodapé; política de entrega centralizada com preço da caneca sem frete, entrega/retirada em Araranguá e envio pelos Correios calculado por CEP. Metadados de consentimento/autoria são privados e acessíveis integralmente somente por RPC administrativa. Nenhum CNPJ, depoimento fictício ou condição comercial não confirmada foi publicado.
 
-**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md`](../baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, domínio de produção validado, 57 testes atuais e 90 cenários Playwright/axe entre os cinco perfis de navegador.
+**Evidências:** [`docs/baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md`](../baselines/2026-08-13-phase-8/PHASE_8_TECHNICAL.md), [`docs/baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md`](../baselines/2026-08-14-phase-8-domain/DOMAIN_ACTIVATION.md), [`docs/baselines/2026-08-27-delivery-clarity/DELIVERY_CLARITY.md`](../baselines/2026-08-27-delivery-clarity/DELIVERY_CLARITY.md), [`docs/runbooks/CUSTOM_DOMAIN.md`](../runbooks/CUSTOM_DOMAIN.md), 18 verificações RLS remotas, seis verificações administrativas navegadas, domínio de produção validado, 66 testes atuais e matriz de 115 cenários Playwright/Axe nos cinco perfis pelo CI do PR `#2`; preview Vercel `Ready` e smoke autenticado concluído.
 
 **Estimativa:** 2 a 4 dias, excluindo prazos de DNS e produção de conteúdo.
 
@@ -426,7 +426,7 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 - Domínio próprio desejado e responsável pelo DNS.
 - Ativação final do convite pela conta administrativa proprietária, se ainda pendente.
 - Necessidade comercial futura de Meta Pixel e respectivo fluxo de consentimento.
-- Conteúdo oficial de entrega, troca, materiais e cuidados.
+- Conteúdo oficial restante de troca, materiais, cuidados e prazos.
 - Avaliações reais e referências de autorização para nomes/fotos.
 - CNPJ, e-mail e cidade/endereço público da operação.
 
@@ -442,11 +442,13 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 5 — Produto e SEO | Concluída | 721 páginas de produto, canonical único por HTML, sitemap de 741 URLs, preview e Lighthouse |
 | 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, 90 cenários em cinco perfis, Lighthouse e actions no runtime Node 24 |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
-| 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical e Auth concluídos; dados comerciais oficiais e avaliações reais pendentes |
+| 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical, Auth e opções de entrega concluídos; dados comerciais oficiais restantes e avaliações reais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |
 | 10 — Escala e descoberta | Concluída | Produção validada; 65 testes, 100 cenários E2E/axe, Lighthouse P90+, redirects, SEO, buscas e menu mobile aprovados |
 
 ## 18. Evoluções incrementais após o roadmap
+
+- **27 de agosto de 2026 — clareza de preço e entrega:** política centralizada informa que o valor exibido corresponde à caneca e não inclui frete; a UI diferencia entrega/retirada em Araranguá, com mimo conforme disponibilidade, de envio pelos Correios com cálculo pelo CEP. Home, produto, informações, personalizada, presentes, cards, orçamento e mensagens do WhatsApp foram reconciliados. O PR `#2` cobre 66 testes, typecheck, build com 741 URLs, 115 cenários Playwright/Axe nos cinco perfis e Lighthouse; preview Vercel `Ready` e smoke autenticado concluído. Uma falha transitória de imagem revelou e levou à correção do contraste do placeholder, agora testado de forma determinística. A evidência está em [`docs/baselines/2026-08-27-delivery-clarity/DELIVERY_CLARITY.md`](../baselines/2026-08-27-delivery-clarity/DELIVERY_CLARITY.md).
 
 - **26 de agosto de 2026 — escala e descoberta:** consultas públicas, administrativas e de SEO passaram a percorrer páginas de até 1.000 linhas até o fim do conjunto; a home reduziu os corpos REST observados de aproximadamente 598 KB para 287 KB e isolou o fallback TypeScript em chunk próprio. Busca ganhou normalização de acentos, SKU/slug e paginação; a home passou a misturar coleções; o cabeçalho/menu mobile foi compactado e tornado acessível; Dia dos Pais saiu da navegação fixa. O PR `#1` foi mesclado em `main` por `a71d71c`; Vercel e CI ficaram verdes com 65 testes, 100 cenários E2E/axe e Lighthouse P90+. O smoke no domínio oficial confirmou rotas `200`, redirects `308`, sitemap com 741 URLs, canonical oficial, buscas tolerantes, produto corrigido e menu mobile sem overflow. Evidência em [`docs/baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md`](../baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md).
 
