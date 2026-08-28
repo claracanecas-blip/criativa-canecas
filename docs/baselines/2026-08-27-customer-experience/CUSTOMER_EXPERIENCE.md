@@ -62,6 +62,14 @@ Reduzir dúvidas na escolha de uma caneca, melhorar a inspeção visual do mocku
 - Matriz remota: 104 cenários Playwright/Axe nos quatro perfis principais e 26 no Edge.
 - Lighthouse CI: todas as categorias avaliadas ficaram em pelo menos 90.
 
+## Correção do zoom e produção
+
+- Após a primeira publicação, o proprietário definiu que a ampliação deveria permanecer dentro da caixa da imagem em computador e celular.
+- O PR `#4` substituiu o modal por zoom de 2,4× com origem proporcional ao cursor, ao toque ou às setas do teclado.
+- A correção repetiu 69 testes, typecheck, build com 741 URLs, 104 cenários Playwright/Axe nos quatro perfis principais, 26 no Edge e Lighthouse P90+.
+- O deployment Vercel de produção ficou `Ready` no commit `3e51a2c`.
+- O smoke oficial confirmou `scale(2.4)`, origem `72% 34%` no cursor desktop, origem proporcional ao toque no celular, nenhum diálogo e nenhum overflow.
+
 ## Limitações deliberadas
 
 - O catálogo atual possui uma imagem por produto; a galeria já aceita várias, mas novas fotos reais precisam ser cadastradas e autorizadas.
