@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<{ produto: Product; priority?: boolean }>
 const cart = useQuoteCart()
 
 const link = computed(() =>
-  linkWhatsapp(`Olá! Quero personalizar e pedir a caneca ${props.produto.nome} (${props.produto.sku}). ${officialSiteUrl(`/produto/${props.produto.slug}`)}\n\n${deliveryPolicy.contactPrompt}`),
+  linkWhatsapp(`Olá! Tenho interesse na caneca ${props.produto.nome} (${props.produto.sku}). ${officialSiteUrl(`/produto/${props.produto.slug}`)}\n\n${deliveryPolicy.contactPrompt}`),
 )
 
 </script>
@@ -35,7 +35,7 @@ const link = computed(() =>
       <div class="price-row"><span class="price">{{ formatarPreco(produto.preco) }}</span><small>frete não incluso</small></div>
       <p class="local-benefit">{{ deliveryPolicy.local.title }}: {{ deliveryPolicy.local.cardNote }}</p>
       <button type="button" class="add-quote" :aria-label="`Adicionar ${produto.nome} ao orçamento`" @click="cart.add(produto.slug, produto.nome)"><ShoppingBag :size="17" /> Adicionar ao orçamento</button>
-      <a class="comprar" :href="link" target="_blank" rel="noopener" @click="trackWhatsappClick('product_card', produto.slug)">Personalizar pelo WhatsApp</a>
+      <a class="comprar" :href="link" target="_blank" rel="noopener" @click="trackWhatsappClick('product_card', produto.slug)">Pedir pelo WhatsApp</a>
     </div>
   </article>
 </template>

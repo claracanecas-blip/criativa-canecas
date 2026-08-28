@@ -52,9 +52,11 @@ test('fluxo busca → produto → WhatsApp preserva contexto comercial', async (
   await expect(page).toHaveURL(/\/produto\/arrow-/)
   await expect(page.getByText(/^Código CC-ARROW-/)).toBeVisible()
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /https:\/\/criativa-canecas\.vercel\.app\/produto\/arrow-/)
-  const whatsapp = page.getByRole('link', { name: 'Personalizar e pedir pelo WhatsApp' })
+  const whatsapp = page.getByRole('link', { name: 'Pedir este modelo pelo WhatsApp' })
   await expect(whatsapp).toHaveAttribute('href', /wa\.me\/.*CC-ARROW-.*criativa-canecas\.vercel\.app%2Fproduto%2Farrow-/)
   const message = new URL(await whatsapp.getAttribute('href') ?? '').searchParams.get('text') ?? ''
+  expect(message).toContain('Tenho interesse na caneca')
+  expect(message).not.toContain('personalizar')
   expect(message).toContain('Minha cidade/CEP')
 })
 
@@ -220,7 +222,7 @@ test('produto continua utilizável em viewport móvel e via teclado', async ({ p
   await expect(page.getByRole('heading', { level: 1, name: 'Arrow 01' })).toBeVisible()
   await expect(page.getByRole('heading', { level: 2, name: 'Escolha como receber' })).toBeVisible()
   await expect(page.locator('.delivery-options').getByText('O valor exibido corresponde à caneca. O frete não está incluído.')).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Personalizar e pedir pelo WhatsApp' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Pedir este modelo pelo WhatsApp' })).toBeVisible()
 
   await page.goto('/')
   await page.keyboard.press('Tab')
