@@ -5,17 +5,37 @@ import PersonalizationPreview from '@/components/PersonalizationPreview.vue'
 import type { IconName } from '@/types/catalog'
 
 const passos = [
-  { n: 1, titulo: 'Escolha o modelo', texto: 'Caneca branca, mágica (muda com o calor) ou colorida.' },
+  { n: 1, titulo: 'Escolha sua opção', texto: 'Tradicional, mágica, colorida ou personalizada com foto.' },
   { n: 2, titulo: 'Envie sua arte',   texto: 'Foto, frase, logo ou desenho — pode mandar do jeito que tiver.' },
   { n: 3, titulo: 'Aprove a prévia',  texto: 'Enviamos uma simulação antes de imprimir.' },
   { n: 4, titulo: 'Escolha a entrega', texto: 'Combine retirada ou entrega local, ou receba pelos Correios.' },
 ]
 
-const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
-  { icone: 'Coffee', nome: 'Caneca branca',  preco: 'R$ 39,90' },
-  { icone: 'WandSparkles', nome: 'Caneca mágica',  preco: 'R$ 54,90' },
-  { icone: 'Palette', nome: 'Caneca colorida', preco: 'R$ 44,90' },
-  { icone: 'Camera', nome: 'Com foto',        preco: 'R$ 42,90' },
+const opcoes: Array<{ icone: IconName; nome: string; descricao: string; preco: string }> = [
+  {
+    icone: 'Coffee',
+    nome: 'Caneca tradicional personalizada',
+    descricao: 'Personalização com sua arte, frase ou logo em uma caneca de visual clássico.',
+    preco: 'R$ 39,90',
+  },
+  {
+    icone: 'WandSparkles',
+    nome: 'Caneca mágica personalizada',
+    descricao: 'A caneca muda com o calor e revela a personalização escolhida.',
+    preco: 'R$ 54,90',
+  },
+  {
+    icone: 'Palette',
+    nome: 'Caneca colorida personalizada',
+    descricao: 'Uma opção colorida para combinar com o estilo da sua arte, frase ou logo.',
+    preco: 'R$ 44,90',
+  },
+  {
+    icone: 'Camera',
+    nome: 'Caneca personalizada com foto',
+    descricao: 'Sua foto preparada em uma composição personalizada para a caneca.',
+    preco: 'R$ 42,90',
+  },
 ]
 const modelNames = opcoes.map((opcao) => opcao.nome)
 </script>
@@ -36,15 +56,24 @@ const modelNames = opcoes.map((opcao) => opcao.nome)
     </div>
 
     <div class="section-title opcoes-titulo">
-      <h2>Modelos e valores</h2>
+      <small>O que você está comprando</small>
+      <h2>Opções personalizadas e valores</h2>
+      <p>Todos os valores correspondem à caneca pronta e personalizada com a arte escolhida. Não vendemos canecas sem estampa.</p>
     </div>
 
     <div class="opcoes">
-      <div v-for="opcao in opcoes" :key="opcao.nome" class="opcao">
-        <div class="icone"><AppIcon :name="opcao.icone" :size="30" /></div>
-        <strong>{{ opcao.nome }}</strong>
-        <span>{{ opcao.preco }}</span>
-      </div>
+      <article v-for="opcao in opcoes" :key="opcao.nome" class="opcao">
+        <div class="opcao-cabecalho">
+          <div class="icone"><AppIcon :name="opcao.icone" :size="28" /></div>
+          <span class="inclusa">Personalização inclusa</span>
+        </div>
+        <h3>{{ opcao.nome }}</h3>
+        <p>{{ opcao.descricao }}</p>
+        <div class="opcao-preco">
+          <small>Valor da caneca personalizada</small>
+          <strong>{{ opcao.preco }}</strong>
+        </div>
+      </article>
     </div>
 
     <PersonalizationPreview :models="modelNames" />
@@ -60,11 +89,10 @@ const modelNames = opcoes.map((opcao) => opcao.nome)
 .passo strong{display:block;margin-bottom:6px}
 .passo p{margin:0;font-size:13px;color:var(--muted)}
 
-.opcoes-titulo{margin-top:44px}
+.opcoes-titulo{margin-top:44px}.opcoes-titulo small{display:block;margin-bottom:5px;color:var(--pink-dark);font-size:11px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}.opcoes-titulo p{max-width:720px;margin:8px auto 0;color:var(--muted);font-size:14px;line-height:1.55}
 .opcoes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.opcao{background:var(--pink-soft);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
-.opcao .icone{display:flex;justify-content:center;color:var(--pink);margin-bottom:8px}
-.opcao span{display:block;margin-top:6px;color:#a12645;font-weight:900;font-size:18px}
+.opcao{display:flex;flex-direction:column;min-height:285px;background:#fff;border:1px solid #edc5d3;border-radius:18px;padding:20px;box-shadow:0 8px 24px rgba(70,35,50,.07)}
+.opcao-cabecalho{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}.opcao .icone{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--pink-soft);color:var(--pink-dark)}.inclusa{padding:5px 8px;border-radius:999px;background:#e8f7ee;color:#08733c;font-size:10px;font-weight:900;letter-spacing:.02em;text-transform:uppercase}.opcao h3{margin:0 0 9px;font-size:17px;line-height:1.25}.opcao>p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.opcao-preco{margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}.opcao-preco small{display:block;margin-bottom:3px;color:var(--muted);font-size:10px;font-weight:750}.opcao-preco strong{color:#a12645;font-size:21px}
 .delivery{margin-top:28px}
 
 @media(max-width:950px){

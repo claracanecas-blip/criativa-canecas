@@ -99,6 +99,7 @@ Atualizada em 28 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Após revisão do proprietário, o zoom modal de tela cheia foi substituído por ampliação de 2,4× recortada na própria caixa: acompanha o cursor no computador, ativa por toque e arraste no celular e continua operável por teclado. O PR `#4` foi mesclado por `3e51a2c`; Vercel ficou `Ready` e o smoke de produção confirmou foco proporcional ao cursor/toque, ausência de modal e ausência de overflow.
 - O preview Vercel da Fase 11 ficou `Ready` e respondeu `200` nas rotas home, produto, coleção, busca e personalizada. O CI aprovou 69 testes, typecheck, build, 104 cenários Playwright/Axe nos quatro perfis principais, 26 no Edge e Lighthouse com todas as categorias em pelo menos 90.
 - Nos modelos prontos do catálogo, os CTAs agora dizem `Pedir pelo WhatsApp` nos cards e `Pedir este modelo pelo WhatsApp` na página do produto. A mensagem identifica interesse no modelo, SKU e URL; `personalizar` permanece reservado ao fluxo `/personalizada`.
+- A seção comercial de `/personalizada` apresenta somente canecas prontas e personalizadas: tradicional, mágica, colorida e com foto. Cada opção informa o que o cliente recebe, personalização inclusa e valor; nenhuma caneca sem estampa é anunciada ou oferecida.
 
 ## Decisões tomadas
 
