@@ -43,5 +43,5 @@ watch(() => props.src, () => { failed.value = false })
 </template>
 
 <style scoped>
-.catalog-image-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#fff4f7,#f2e8ed);color:#8d727d;text-align:center;font-size:12px;font-weight:800}
+.catalog-image-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#fff4f7,#f2e8ed);color:#5e5157;text-align:center;font-size:12px;font-weight:800}
 </style>

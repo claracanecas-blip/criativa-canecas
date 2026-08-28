@@ -25,6 +25,21 @@ for (const target of publicPages) {
   })
 }
 
+test('placeholder de imagem permanece acessível quando o Storage falha', async ({ page }) => {
+  await page.route('**/storage/v1/object/public/product-images/**', (route) => route.abort())
+  await page.goto('/produto/arrow-1')
+
+  const fallback = page.getByRole('img', { name: /Arrow 01.*imagem indisponível/i })
+  await expect(fallback).toBeVisible()
+
+  const results = await new AxeBuilder({ page })
+    .include('.catalog-image-fallback')
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
+    .analyze()
+
+  expect(results.violations).toEqual([])
+})
+
 test('fluxo busca → produto → WhatsApp preserva contexto comercial', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('searchbox', { name: 'Buscar' }).fill('Arrow')
