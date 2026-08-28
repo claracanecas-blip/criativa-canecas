@@ -9,9 +9,9 @@ Reduzir dúvidas na escolha de uma caneca, melhorar a inspeção visual do mocku
 ## Entregas
 
 1. **Zoom e galeria de produto**
-   - a imagem principal virou um controle acessível para abrir a ampliação;
-   - o diálogo oferece zoom de 100% a 300%, restauração, fechamento por teclado e navegação entre imagens quando houver mais de uma;
-   - mouse, teclado e toque podem percorrer a imagem ampliada;
+   - a imagem principal virou um controle acessível que amplia 2,4× dentro da própria caixa, sem cobrir a página;
+   - no computador, a área ampliada acompanha a posição do cursor; no celular, o toque ativa e o arraste reposiciona a imagem;
+   - teclado ativa/desativa o zoom e usa as setas para percorrer a imagem; `Esc` restaura o estado normal;
    - o repositório agora preserva todas as imagens `original` ordenadas de um produto, mantendo compatibilidade com o catálogo atual de uma imagem.
 
 2. **Detalhes e cuidados**

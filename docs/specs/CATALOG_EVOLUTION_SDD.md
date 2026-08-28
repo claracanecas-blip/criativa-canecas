@@ -387,11 +387,11 @@ Uma fase só está concluída quando:
 
 ### Fase 11 — Experiência de escolha e personalização
 
-**Estado:** implementação, preview e CI concluídos em 28 de agosto de 2026; produção pendente.
+**Estado:** publicada inicialmente em 28 de agosto de 2026; correção local do zoom aguarda preview, CI e produção.
 
 **Objetivo:** permitir inspeção detalhada do mockup, reduzir dúvidas sobre produto e facilitar a descoberta e a personalização antes do WhatsApp.
 
-**Entregas locais:** zoom acessível de 100% a 300% e galeria preparada para múltiplas imagens; bloco seguro de detalhes/cuidados; depoimentos moderados no contexto do produto; filtros por tema, coleção e preço com ordenação; prévia 2D local com imagem, frase, posicionamento e resumo para WhatsApp.
+**Entregas:** zoom acessível de 2,4× recortado na própria caixa e galeria preparada para múltiplas imagens; bloco seguro de detalhes/cuidados; depoimentos moderados no contexto do produto; filtros por tema, coleção e preço com ordenação; prévia 2D local com imagem, frase, posicionamento e resumo para WhatsApp.
 
 **Aceite:** ampliação operável por mouse, teclado e toque; filtros não alteram o catálogo de origem e tratam zero resultados; prévia não persiste nem envia a imagem; mensagem do WhatsApp preserva escolhas e ressalva de simulação; nenhum material, capacidade, foto ou avaliação não confirmada é publicado; typecheck, testes, build, E2E/axe, preview e inspeção desktop/celular aprovados.
 
@@ -463,7 +463,7 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical, Auth e opções de entrega concluídos; dados comerciais oficiais restantes e avaliações reais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |
 | 10 — Escala e descoberta | Concluída | Produção validada; 65 testes, 100 cenários E2E/axe, Lighthouse P90+, redirects, SEO, buscas e menu mobile aprovados |
-| 11 — Experiência assistida | Preview/CI concluídos | Zoom/galeria, detalhes seguros, prova social moderada, filtros e prévia 2D; produção pendente |
+| 11 — Experiência assistida | Correção local | Galeria, detalhes seguros, prova social moderada, filtros e prévia 2D publicados; zoom na própria caixa aguarda preview/CI/produção |
 
 ## 18. Evoluções incrementais após o roadmap
 

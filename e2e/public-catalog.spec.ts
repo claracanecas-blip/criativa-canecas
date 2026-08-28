@@ -230,19 +230,31 @@ test('produto continua utilizável em viewport móvel e via teclado', async ({ p
   expect(focusIsInteractive).toBe(true)
 })
 
-test('galeria do produto amplia a imagem e oferece controles acessíveis de zoom', async ({ page }) => {
+test('galeria amplia dentro da própria imagem por cursor, toque e teclado', async ({ page }, testInfo) => {
   await page.goto('/produto/arrow-1')
-  await page.getByRole('button', { name: 'Ampliar imagem de Arrow 01' }).click()
+  const gallery = page.getByRole('button', { name: 'Zoom de Arrow 01' })
+  if (testInfo.project.name === 'mobile-safari') {
+    await gallery.tap()
+    await expect(gallery).toHaveAttribute('aria-pressed', 'true')
+    await expect(gallery.locator('img')).toHaveCSS('transform', /matrix\(2\.4/)
+    await gallery.tap()
+    await expect(gallery).toHaveAttribute('aria-pressed', 'false')
+  } else {
+    const bounds = await gallery.boundingBox()
+    expect(bounds).not.toBeNull()
+    await page.mouse.move((bounds?.x ?? 0) + (bounds?.width ?? 0) * 0.75, (bounds?.y ?? 0) + (bounds?.height ?? 0) * 0.3)
+    await expect(gallery).toHaveAttribute('aria-pressed', 'true')
+    await expect(gallery.locator('img')).toHaveCSS('transform', /matrix\(2\.4/)
+    expect(await gallery.locator('img').evaluate((image) => image.style.transformOrigin)).not.toBe('50% 50%')
+    await page.mouse.move(0, 0)
+    await expect(gallery).toHaveAttribute('aria-pressed', 'false')
+  }
 
-  const dialog = page.getByRole('dialog', { name: 'Imagem ampliada de Arrow 01' })
-  await expect(dialog).toBeVisible()
-  await expect(dialog.getByText('100%')).toBeVisible()
-  await dialog.getByRole('button', { name: 'Aumentar zoom' }).click()
-  await expect(dialog.getByText('150%')).toBeVisible()
-  await dialog.getByRole('button', { name: 'Restaurar zoom' }).click()
-  await expect(dialog.getByText('100%')).toBeVisible()
-  await dialog.getByRole('button', { name: 'Fechar imagem ampliada' }).click()
-  await expect(dialog).toBeHidden()
+  await gallery.focus()
+  await page.keyboard.press('Enter')
+  await expect(gallery).toHaveAttribute('aria-pressed', 'true')
+  await page.keyboard.press('Escape')
+  await expect(gallery).toHaveAttribute('aria-pressed', 'false')
 })
 
 test('coleção pode ser refinada por tema, preço e ordenação', async ({ page }) => {
