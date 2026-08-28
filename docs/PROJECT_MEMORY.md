@@ -92,7 +92,8 @@ Atualizada em 27 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A home local respeita `is_featured` e completa a vitrine com oito coleções diferentes. O menu mobile passou a usar botão acessível, abre abaixo do gatilho sem overflow e o cabeçalho caiu de aproximadamente 290 px para 210 px em viewport de 390 px.
 - O destaque fixo de Dia dos Pais saiu dos menus após a campanha; a rota foi preservada. O PR `#1` foi mesclado em `main` por `a71d71c`, e o deployment Vercel `dpl_Ehkg11YwFUPWwBccNT6JAwvgMs7J` ficou `Ready` no domínio oficial. O CI da `main` aprovou 65 testes, typecheck, build, 80 cenários nos quatro perfis principais, 20 no Edge e Lighthouse. O smoke de produção confirmou rotas `200`, redirects `308`, sitemap com 741 URLs, canonical oficial, buscas por acento/SKU, `Porque Ele Vive` e menu mobile sem overflow.
 - O incremento local de clareza de preço e entrega centraliza em `src/data/site.ts` que o valor exibido corresponde à caneca e não inclui frete. A interface diferencia entrega/retirada em Araranguá, com mimo conforme disponibilidade, de envio pelos Correios para outras cidades com cálculo por CEP; mensagens do WhatsApp e orçamento pedem cidade/CEP sem armazenar esse dado no site.
-- A validação local desse incremento aprovou 66 testes, typecheck, build com 741 URLs e 88 cenários Playwright/Axe em Chrome, Firefox, WebKit desktop e Safari móvel. O Edge local encerra antes de criar páginas, inclusive em lançamento vazio, então a matriz Windows do GitHub Actions é a verificação pendente desse perfil.
+- A validação desse incremento aprovou 66 testes, typecheck, build com 741 URLs, 88 cenários Playwright/Axe em Chrome, Firefox, WebKit desktop e Safari móvel e 22 no Edge/Windows. O Edge local encerra antes de criar páginas, mas passou integralmente na matriz do GitHub Actions.
+- O PR `#2` está tecnicamente aprovado; o deployment de preview `dpl_54N6ZsnGVFzzATLknPBFR6kH883Z` ficou `Ready`. Smoke autenticado confirmou o HTML da aplicação, títulos e canonical único nas quatro rotas alteradas; merge em `main` aguarda aceite para publicar em produção.
 
 ## Decisões tomadas
 
@@ -182,7 +183,7 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 
 ## Próxima execução recomendada
 
-1. Validar o incremento de clareza de preço e entrega no CI/preview antes de promovê-lo à produção.
+1. Revisar o preview do PR `#2` e, após aceite, mesclar em `main` para promover a clareza de preço e entrega à produção.
 2. Especificar consultas por rota para a home não precisar carregar todos os produtos.
 3. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e cadastrar somente avaliações reais autorizadas.
 4. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.

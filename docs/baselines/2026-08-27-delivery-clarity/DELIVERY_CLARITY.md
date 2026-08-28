@@ -27,11 +27,19 @@ Nenhum dado pessoal novo é armazenado. A cidade ou o CEP são preenchidos pelo 
 - `npm run typecheck`: aprovado.
 - `npm test`: 66/66 testes aprovados.
 - `npm run build`: aprovado; 721 produtos, 17 coleções e 741 URLs geradas.
-- Playwright/Axe em Chrome, Firefox, WebKit desktop e Safari móvel: 88/88 cenários aprovados.
+- Playwright/Axe em Chrome, Firefox, WebKit desktop e Safari móvel: 88/88 cenários aprovados localmente e no CI.
+- Microsoft Edge no Windows do GitHub Actions: 22/22 cenários aprovados.
 - Axe incluiu `/personalizada` e `/presentes`; nenhuma violação WCAG 2.2 A/AA permaneceu.
 - Inspeção visual em 1440 × 1000 e 390 × 844: home, produto e personalizada sem overflow ou sobreposição; opções e CTAs permanecem legíveis.
 
-O Microsoft Edge local 151.0.4129.72 encerrou antes de criar qualquer página, inclusive em um lançamento Playwright vazio. Os 22 cenários não chegaram a acessar a aplicação; a execução Windows do GitHub Actions permanece como verificação definitiva desse perfil para o incremento.
+O Microsoft Edge local 151.0.4129.72 encerrou antes de criar qualquer página, inclusive em um lançamento Playwright vazio. A matriz Windows passou integralmente e confirmou que a limitação é da instalação local, não da aplicação.
+
+## Preview e CI
+
+- PR `#2`: jobs `build` e `edge` aprovados, totalizando 110 cenários Playwright/Axe nos cinco perfis.
+- Vercel deployment `dpl_54N6ZsnGVFzzATLknPBFR6kH883Z`: estado `Ready` no target `preview`.
+- Smoke autenticado pela CLI da Vercel confirmou HTML da aplicação em `/`, `/produto/arrow-1`, `/personalizada` e `/informacoes`, com títulos específicos e exatamente um canonical por página.
+- O preview exige autenticação Vercel; os textos interativos renderizados pelo Vue foram validados no E2E do CI e na inspeção visual local.
 
 ## Rollback
 
