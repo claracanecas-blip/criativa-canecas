@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { formatarPreco } from '@/utils/currency'
-import { linkWhatsapp, officialSiteUrl } from '@/data/site'
+import { deliveryPolicy, linkWhatsapp, officialSiteUrl } from '@/data/site'
 import CatalogImage from '@/components/ui/CatalogImage.vue'
 import type { Product } from '@/types/catalog'
 import { trackWhatsappClick } from '@/services/analytics'
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<{ produto: Product; priority?: boolean }>
 const cart = useQuoteCart()
 
 const link = computed(() =>
-  linkWhatsapp(`Olá! Tenho interesse na caneca ${props.produto.nome} (${props.produto.sku}). ${officialSiteUrl(`/produto/${props.produto.slug}`)}`),
+  linkWhatsapp(`Olá! Quero personalizar e pedir a caneca ${props.produto.nome} (${props.produto.sku}). ${officialSiteUrl(`/produto/${props.produto.slug}`)}\n\n${deliveryPolicy.contactPrompt}`),
 )
 
 </script>
@@ -32,9 +32,10 @@ const link = computed(() =>
     </RouterLink>
     <div class="info">
       <h3><RouterLink :to="`/produto/${produto.slug}`">{{ produto.nome }}</RouterLink></h3>
-      <div class="price">{{ formatarPreco(produto.preco) }}</div>
+      <div class="price-row"><span class="price">{{ formatarPreco(produto.preco) }}</span><small>frete não incluso</small></div>
+      <p class="local-benefit">{{ deliveryPolicy.local.title }}: {{ deliveryPolicy.local.cardNote }}</p>
       <button type="button" class="add-quote" :aria-label="`Adicionar ${produto.nome} ao orçamento`" @click="cart.add(produto.slug, produto.nome)"><ShoppingBag :size="17" /> Adicionar ao orçamento</button>
-      <a class="comprar" :href="link" target="_blank" rel="noopener" @click="trackWhatsappClick('product_card', produto.slug)">WhatsApp agora</a>
+      <a class="comprar" :href="link" target="_blank" rel="noopener" @click="trackWhatsappClick('product_card', produto.slug)">Personalizar pelo WhatsApp</a>
     </div>
   </article>
 </template>
@@ -46,7 +47,7 @@ const link = computed(() =>
 .product-media{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;background:#f4eef1}
 .info{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
 .info h3{margin:0;font-size:17px}
-.price{font-size:24px;color:var(--pink);font-weight:900}
+.price-row{display:flex;align-items:baseline;gap:6px}.price{font-size:24px;color:var(--pink);font-weight:900}.price-row small{color:var(--muted);font-weight:750}.local-benefit{margin:-3px 0 2px;color:var(--pink-dark);font-size:11px;line-height:1.3;font-weight:750}
 .add-quote{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:auto;border:1px solid var(--pink-dark);background:#fff;color:var(--pink-dark);padding:10px 8px;border-radius:8px;font-weight:850;font-size:13px;cursor:pointer}.add-quote:hover{background:var(--pink-soft)}
 .comprar{text-align:center;background:#087f3f;color:#fff;padding:10px;border-radius:8px;font-weight:800;font-size:13px}
 .comprar:hover{background:#075e35}

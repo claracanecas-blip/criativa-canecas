@@ -41,5 +41,8 @@ test('mensagem consolidada contém quantidades, SKUs, links, total e ressalvas',
   assert.match(message, /https:\/\/criativa-canecas\.vercel\.app\/produto\/arrow-1/)
   assert.equal(quoteTotal(items, selected), 119.7)
   assert.match(message, /Total estimado: R\$\s*119,70/)
+  assert.match(message, /não inclui frete/i)
+  assert.match(message, /cidade\/CEP/i)
+  assert.match(message, /envio pelos Correios/i)
   assert.match(message, /não reserva estoque nem confirma o pedido/i)
 })

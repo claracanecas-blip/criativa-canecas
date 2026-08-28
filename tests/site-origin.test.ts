@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {
   DEFAULT_SITE_ORIGIN,
+  deliveryPolicy,
   linkWhatsapp,
   normalizeSiteOrigin,
   officialSiteOrigin,
@@ -27,4 +28,14 @@ test('identidade e WhatsApp oficiais permanecem centralizados', () => {
   assert.equal(site.responsavel, 'Viccenze Pfitscher da Costa')
   assert.equal(site.telefone, '(48) 99199-2341')
   assert.match(linkWhatsapp('Teste'), /^https:\/\/wa\.me\/5548991992341\?text=Teste$/)
+})
+
+test('política de entrega mantém preço, atendimento local e envio centralizados', () => {
+  assert.match(deliveryPolicy.priceNote, /frete não está incluído/i)
+  assert.equal(deliveryPolicy.local.title, 'Araranguá')
+  assert.match(deliveryPolicy.local.subtitle, /entrega ou retirada local/i)
+  assert.match(deliveryPolicy.local.description, /mimo especial, conforme disponibilidade/i)
+  assert.match(deliveryPolicy.shipping.subtitle, /Correios/i)
+  assert.match(deliveryPolicy.shipping.description, /frete.*CEP/i)
+  assert.match(deliveryPolicy.contactPrompt, /cidade\/CEP/i)
 })

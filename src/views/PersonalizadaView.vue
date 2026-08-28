@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppIcon from '@/components/ui/AppIcon.vue'
-import { linkWhatsapp } from '@/data/site'
+import DeliveryOptions from '@/components/DeliveryOptions.vue'
+import { deliveryPolicy, linkWhatsapp } from '@/data/site'
 import type { IconName } from '@/types/catalog'
 import { trackWhatsappClick } from '@/services/analytics'
 
@@ -8,7 +9,7 @@ const passos = [
   { n: 1, titulo: 'Escolha o modelo', texto: 'Caneca branca, mágica (muda com o calor) ou colorida.' },
   { n: 2, titulo: 'Envie sua arte',   texto: 'Foto, frase, logo ou desenho — pode mandar do jeito que tiver.' },
   { n: 3, titulo: 'Aprove a prévia',  texto: 'Enviamos uma simulação antes de imprimir.' },
-  { n: 4, titulo: 'Receba em casa',   texto: 'Produção rápida e envio bem embalado.' },
+  { n: 4, titulo: 'Escolha a entrega', texto: 'Combine retirada ou entrega local, ou receba pelos Correios.' },
 ]
 
 const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
@@ -46,9 +47,11 @@ const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
       </div>
     </div>
 
+    <DeliveryOptions class="delivery" />
+
     <div class="cta">
-      <a class="btn" :href="linkWhatsapp('Olá! Quero criar uma caneca personalizada.')" target="_blank" rel="noopener" @click="trackWhatsappClick('personalized')">
-        Criar minha caneca no WhatsApp
+      <a class="btn" :href="linkWhatsapp(`Olá! Quero criar uma caneca personalizada. ${deliveryPolicy.contactPrompt}`)" target="_blank" rel="noopener" @click="trackWhatsappClick('personalized')">
+        Personalizar e pedir pelo WhatsApp
       </a>
     </div>
   </section>
@@ -65,7 +68,8 @@ const opcoes: Array<{ icone: IconName; nome: string; preco: string }> = [
 .opcoes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .opcao{background:var(--pink-soft);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
 .opcao .icone{display:flex;justify-content:center;color:var(--pink);margin-bottom:8px}
-.opcao span{display:block;margin-top:6px;color:var(--pink-dark);font-weight:900;font-size:18px}
+.opcao span{display:block;margin-top:6px;color:#a12645;font-weight:900;font-size:18px}
+.delivery{margin-top:28px}
 
 .cta{text-align:center;margin-top:34px}
 

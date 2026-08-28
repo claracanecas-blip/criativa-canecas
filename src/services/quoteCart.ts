@@ -1,4 +1,5 @@
 import { formatarPreco } from '@/utils/currency'
+import { deliveryPolicy } from '@/data/site'
 import type { Product } from '@/types/catalog'
 
 export const QUOTE_CART_STORAGE_KEY = 'criativa-canecas:quote-cart:v1'
@@ -75,6 +76,8 @@ export function buildQuoteMessage(items: QuoteCartItem[], products: Product[], o
     ...lines,
     '',
     `Total estimado: ${formatarPreco(total)}`,
+    '',
+    `O valor dos produtos não inclui frete. ${deliveryPolicy.contactPrompt}`,
     '',
     'Os valores são estimativas. Vou confirmar personalização, prazo e disponibilidade no atendimento; esta mensagem não reserva estoque nem confirma o pedido.',
   ].join('\n')

@@ -7,6 +7,8 @@ const publicPages = [
   { name: 'busca', path: '/busca?q=Arrow' },
   { name: 'produto', path: '/produto/arrow-1' },
   { name: 'informações', path: '/informacoes' },
+  { name: 'personalizada', path: '/personalizada' },
+  { name: 'presentes', path: '/presentes' },
 ]
 
 for (const target of publicPages) {
@@ -35,8 +37,10 @@ test('fluxo busca → produto → WhatsApp preserva contexto comercial', async (
   await expect(page).toHaveURL(/\/produto\/arrow-/)
   await expect(page.getByText(/^Código CC-ARROW-/)).toBeVisible()
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /https:\/\/criativa-canecas\.vercel\.app\/produto\/arrow-/)
-  const whatsapp = page.getByRole('link', { name: 'Pedir só este pelo WhatsApp' })
+  const whatsapp = page.getByRole('link', { name: 'Personalizar e pedir pelo WhatsApp' })
   await expect(whatsapp).toHaveAttribute('href', /wa\.me\/.*CC-ARROW-.*criativa-canecas\.vercel\.app%2Fproduto%2Farrow-/)
+  const message = new URL(await whatsapp.getAttribute('href') ?? '').searchParams.get('text') ?? ''
+  expect(message).toContain('Minha cidade/CEP')
 })
 
 test('busca ignora acentos, aceita SKU e pagina resultados extensos', async ({ page }) => {
@@ -199,7 +203,9 @@ test('produto continua utilizável em viewport móvel e via teclado', async ({ p
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/produto/arrow-1')
   await expect(page.getByRole('heading', { level: 1, name: 'Arrow 01' })).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Pedir só este pelo WhatsApp' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 2, name: 'Escolha como receber' })).toBeVisible()
+  await expect(page.getByText('O valor exibido corresponde à caneca. O frete não está incluído.')).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Personalizar e pedir pelo WhatsApp' })).toBeVisible()
 
   await page.goto('/')
   await page.keyboard.press('Tab')
@@ -228,6 +234,8 @@ test('orçamento persiste, ajusta quantidade e gera mensagem consolidada', async
   expect(message).toContain('2x Arrow 01 (CC-ARROW-1)')
   expect(message).toContain('/produto/arrow-1')
   expect(message).toContain('Total estimado:')
+  expect(message).toContain('não inclui frete')
+  expect(message).toContain('Minha cidade/CEP')
   expect(message).toContain('não reserva estoque nem confirma o pedido')
 
   page.once('dialog', (confirmation) => confirmation.accept())

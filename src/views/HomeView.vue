@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import AppIcon from '@/components/ui/AppIcon.vue'
 import CatalogImage from '@/components/ui/CatalogImage.vue'
+import DeliveryOptions from '@/components/DeliveryOptions.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import { useCatalog } from '@/composables/useCatalog'
 import { destaques } from '@/data/colecoes'
@@ -80,6 +81,10 @@ const { testimonials } = useTestimonials()
     </div>
   </section>
 
+  <section class="delivery-section section container">
+    <DeliveryOptions />
+  </section>
+
   <section class="section container">
     <div class="promo-grid">
       <RouterLink v-for="banner in banners" :key="banner.titulo" class="promo" :to="banner.to">
@@ -154,6 +159,7 @@ const { testimonials } = useTestimonials()
 .benefit .icon{display:flex;color:var(--pink)}
 .benefit b{display:block;color:var(--pink-dark);font-size:13px}
 .benefit span{display:block;color:var(--muted);font-size:11px}
+.delivery-section{padding-bottom:0}
 
 .promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .promo{min-height:220px;border-radius:22px;position:relative;overflow:hidden;box-shadow:var(--shadow);background:#eee;display:block}

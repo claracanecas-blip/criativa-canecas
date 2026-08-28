@@ -7,6 +7,22 @@ export const site = {
   aviso: 'Personalizados com carinho • Escolha sua coleção e envie seu pedido pelo WhatsApp',
 } as const
 
+export const deliveryPolicy = {
+  priceNote: 'O valor exibido corresponde à caneca. O frete não está incluído.',
+  contactPrompt: 'Minha cidade/CEP para combinar entrega local ou envio pelos Correios é: ',
+  local: {
+    title: 'Araranguá',
+    subtitle: 'Entrega ou retirada local',
+    description: 'Combine pelo WhatsApp. O pedido local pode acompanhar um mimo especial, conforme disponibilidade.',
+    cardNote: 'mimo local conforme disponibilidade',
+  },
+  shipping: {
+    title: 'Outras cidades',
+    subtitle: 'Envio pelos Correios',
+    description: 'O frete é calculado separadamente conforme o CEP, com embalagem preparada para transporte.',
+  },
+} as const
+
 export const DEFAULT_SITE_ORIGIN = 'https://criativa-canecas.vercel.app'
 
 export function normalizeSiteOrigin(value?: string): string {
