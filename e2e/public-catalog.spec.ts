@@ -275,14 +275,18 @@ test('coleção pode ser refinada por tema, preço e ordenação', async ({ page
 
 test('prévia local de personalização preserva contexto no WhatsApp', async ({ page }) => {
   await page.goto('/personalizada')
-  await page.getByLabel('Modelo da caneca').selectOption('Caneca colorida')
+  await expect(page.getByRole('heading', { name: 'Opções personalizadas e valores' })).toBeVisible()
+  await expect(page.getByText('Não vendemos canecas sem estampa.')).toBeVisible()
+  await expect(page.getByRole('heading', { level: 3, name: 'Caneca tradicional personalizada' })).toBeVisible()
+  await expect(page.getByText('Caneca branca', { exact: true })).toHaveCount(0)
+  await page.getByLabel('Modelo da caneca').selectOption('Caneca colorida personalizada')
   await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
   await page.getByLabel('Observações para a criação').fill('Usar tons de rosa')
 
   const whatsapp = page.getByRole('link', { name: 'Continuar pelo WhatsApp' })
   const href = await whatsapp.getAttribute('href')
   const message = new URL(href ?? '').searchParams.get('text') ?? ''
-  expect(message).toContain('Modelo escolhido: Caneca colorida')
+  expect(message).toContain('Modelo escolhido: Caneca colorida personalizada')
   expect(message).toContain('Melhor mãe do mundo')
   expect(message).toContain('Usar tons de rosa')
   expect(message).toContain('prévia do site é apenas uma simulação')

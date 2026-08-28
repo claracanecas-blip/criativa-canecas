@@ -7,7 +7,7 @@ import { validateImageCandidate } from '@/utils/adminImages'
 
 const props = defineProps<{ models: string[] }>()
 
-const selectedModel = ref(props.models[0] ?? 'Caneca branca')
+const selectedModel = ref(props.models[0] ?? 'Caneca tradicional personalizada')
 const phrase = ref('')
 const notes = ref('')
 const imageUrl = ref('')
