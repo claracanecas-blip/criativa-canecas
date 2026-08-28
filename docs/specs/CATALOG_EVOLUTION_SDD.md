@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9–10 concluídas, Fase 8 em andamento |
-| Versão | 1.33 |
+| Versão | 1.34 |
 | Data-base | 28 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -391,9 +391,9 @@ Uma fase só está concluída quando:
 
 **Objetivo:** permitir inspeção detalhada do mockup, reduzir dúvidas sobre produto e facilitar a descoberta e a personalização antes do WhatsApp.
 
-**Entregas:** zoom acessível de 2,4× recortado na própria caixa e galeria preparada para múltiplas imagens; bloco seguro de detalhes/cuidados; depoimentos moderados no contexto do produto; filtros por tema, coleção e preço com ordenação; prévia 2D local com imagem, frase, posicionamento e resumo para WhatsApp.
+**Entregas:** zoom acessível de 2,4× recortado na própria caixa e galeria preparada para múltiplas imagens; bloco seguro de detalhes/cuidados; depoimentos moderados no contexto do produto; filtros por tema, coleção e preço com ordenação; prévia 2D local com imagem, frase, posicionamento e resumo para WhatsApp; CTAs dos modelos prontos distinguidos do fluxo de personalização, com modelo, SKU e URL preservados na mensagem.
 
-**Aceite:** ampliação operável por mouse, teclado e toque; filtros não alteram o catálogo de origem e tratam zero resultados; prévia não persiste nem envia a imagem; mensagem do WhatsApp preserva escolhas e ressalva de simulação; nenhum material, capacidade, foto ou avaliação não confirmada é publicado; typecheck, testes, build, E2E/axe, preview e inspeção desktop/celular aprovados.
+**Aceite:** ampliação operável por mouse, teclado e toque; filtros não alteram o catálogo de origem e tratam zero resultados; prévia não persiste nem envia a imagem; mensagem do WhatsApp preserva escolhas e ressalva de simulação; modelos prontos usam linguagem de pedido sem sugerir personalização, enquanto `/personalizada` mantém a proposta sob medida; nenhum material, capacidade, foto ou avaliação não confirmada é publicado; typecheck, testes, build, E2E/axe, preview e inspeção desktop/celular aprovados.
 
 **Dependências externas:** fotos adicionais reais, dados técnicos por modelo e avaliações autorizadas são conteúdo comercial, não bloqueiam a infraestrutura e permanecem ocultos/condicionados enquanto ausentes.
 

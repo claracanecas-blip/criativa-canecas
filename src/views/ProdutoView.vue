@@ -36,7 +36,7 @@ const related = computed(() => {
 })
 const canonical = computed(() => officialSiteUrl(`/produto/${props.slug}`))
 const whatsapp = computed(() => product.value
-  ? linkWhatsapp(`Olá! Quero personalizar e pedir a caneca ${product.value.nome} (${product.value.sku}). ${canonical.value}\n\n${deliveryPolicy.contactPrompt}`)
+  ? linkWhatsapp(`Olá! Tenho interesse na caneca ${product.value.nome} (${product.value.sku}). ${canonical.value}\n\n${deliveryPolicy.contactPrompt}`)
   : '#')
 const meta = computed<PageMeta | null>(() => product.value ? {
   title: `${product.value.nome} | Criativa Canecas`,
@@ -95,8 +95,8 @@ usePageMeta(meta)
         <p class="description">{{ product.descricao }}</p>
         <div class="collection-links"><RouterLink v-for="collection in collections" :key="collection.slug" :to="collection.to ?? `/colecao/${collection.slug}`">{{ collection.nome }}</RouterLink></div>
         <button type="button" class="add-quote" :aria-label="`Adicionar ${product.nome} ao orçamento`" @click="cart.add(product.slug, product.nome)"><ShoppingBag :size="21" /> Adicionar ao orçamento</button>
-        <a class="whatsapp" :href="whatsapp" target="_blank" rel="noopener" @click="trackWhatsappClick('product_page', product.slug)"><MessageCircle :size="21" /> Personalizar e pedir pelo WhatsApp</a>
-        <p class="estimate"><ShieldCheck :size="18" /> Valor estimado da caneca; confirme personalização, entrega e prazo no atendimento.</p>
+        <a class="whatsapp" :href="whatsapp" target="_blank" rel="noopener" @click="trackWhatsappClick('product_page', product.slug)"><MessageCircle :size="21" /> Pedir este modelo pelo WhatsApp</a>
+        <p class="estimate"><ShieldCheck :size="18" /> Valor estimado da caneca; confirme modelo, quantidade, entrega e prazo no atendimento.</p>
       </section>
     </div>
 
