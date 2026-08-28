@@ -7,8 +7,8 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9–10 concluídas, Fase 8 em andamento |
-| Versão | 1.30 |
-| Data-base | 27 de agosto de 2026 |
+| Versão | 1.31 |
+| Data-base | 28 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
 
@@ -385,6 +385,22 @@ Uma fase só está concluída quando:
 
 **Evidência:** [`docs/baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md`](../baselines/2026-08-26-scale-discovery/PHASE_10_LOCAL.md), PR `#1`, CI da `main` e smoke navegável no domínio oficial.
 
+### Fase 11 — Experiência de escolha e personalização
+
+**Estado:** implementação local concluída em 27 de agosto de 2026; preview, CI e produção pendentes.
+
+**Objetivo:** permitir inspeção detalhada do mockup, reduzir dúvidas sobre produto e facilitar a descoberta e a personalização antes do WhatsApp.
+
+**Entregas locais:** zoom acessível de 100% a 300% e galeria preparada para múltiplas imagens; bloco seguro de detalhes/cuidados; depoimentos moderados no contexto do produto; filtros por tema, coleção e preço com ordenação; prévia 2D local com imagem, frase, posicionamento e resumo para WhatsApp.
+
+**Aceite:** ampliação operável por mouse, teclado e toque; filtros não alteram o catálogo de origem e tratam zero resultados; prévia não persiste nem envia a imagem; mensagem do WhatsApp preserva escolhas e ressalva de simulação; nenhum material, capacidade, foto ou avaliação não confirmada é publicado; typecheck, testes, build, E2E/axe, preview e inspeção desktop/celular aprovados.
+
+**Dependências externas:** fotos adicionais reais, dados técnicos por modelo e avaliações autorizadas são conteúdo comercial, não bloqueiam a infraestrutura e permanecem ocultos/condicionados enquanto ausentes.
+
+**Rollback:** reverter somente componentes, utilitários, views, testes e documentação da fase. Não há migration nem alteração remota.
+
+**Evidência local:** [`docs/baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md`](../baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md).
+
 ## 13. Ordem, dependências e marcos
 
 ```text
@@ -393,6 +409,7 @@ Fase 0 → Fase 1
                          └→ Fase 5 → Fase 6 → Fase 7 → Fase 8
                                                         └→ Fase 9
                                                         └→ Fase 10
+                                                                └→ Fase 11
 ```
 
 - **Marco A — Base rápida:** fases 0 e 1.
@@ -401,6 +418,7 @@ Fase 0 → Fase 1
 - **Marco D — Conversão comercial:** fases 7 e 8.
 - **Marco E — Decisão de checkout:** fase 9.
 - **Marco F — Escala e descoberta:** fase 10.
+- **Marco G — Experiência assistida:** fase 11.
 
 ## 14. Estratégia de testes
 
@@ -445,8 +463,11 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical, Auth e opções de entrega concluídos; dados comerciais oficiais restantes e avaliações reais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |
 | 10 — Escala e descoberta | Concluída | Produção validada; 65 testes, 100 cenários E2E/axe, Lighthouse P90+, redirects, SEO, buscas e menu mobile aprovados |
+| 11 — Experiência assistida | Local concluído | Zoom/galeria, detalhes seguros, prova social moderada, filtros e prévia 2D; preview/CI/produção pendentes |
 
 ## 18. Evoluções incrementais após o roadmap
+
+- **27–28 de agosto de 2026 — experiência de escolha e personalização:** produto ganhou zoom acessível e suporte a múltiplas imagens, detalhes/cuidados sem inventar especificações e prova social condicionada a depoimentos reais publicados. Coleções e busca ganharam filtros/ordenação; `/personalizada` recebeu prévia 2D local que não armazena nem envia o arquivo e leva o resumo ao WhatsApp. A validação local atual aprovou 69 testes, typecheck, build com 741 URLs e 104 de 104 cenários Playwright/Axe nos perfis Chrome, Firefox, Safari desktop e Safari móvel. Evidência em [`docs/baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md`](../baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md).
 
 - **27 de agosto de 2026 — clareza de preço e entrega:** política centralizada informa que o valor exibido corresponde à caneca e não inclui frete; a UI diferencia entrega/retirada em Araranguá, com mimo conforme disponibilidade, de envio pelos Correios com cálculo pelo CEP. Home, produto, informações, personalizada, presentes, cards, orçamento e mensagens do WhatsApp foram reconciliados. O PR `#2` cobre 66 testes, typecheck, build com 741 URLs, 115 cenários Playwright/Axe nos cinco perfis e Lighthouse; preview Vercel `Ready` e smoke autenticado concluído. Uma falha transitória de imagem revelou e levou à correção do contraste do placeholder, agora testado de forma determinística. A evidência está em [`docs/baselines/2026-08-27-delivery-clarity/DELIVERY_CLARITY.md`](../baselines/2026-08-27-delivery-clarity/DELIVERY_CLARITY.md).
 

@@ -1,6 +1,6 @@
 # Memória do projeto — Criativa Canecas
 
-Atualizada em 27 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
+Atualizada em 28 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
 
 ## Identidade e serviços
 
@@ -94,7 +94,8 @@ Atualizada em 27 de agosto de 2026. Este arquivo preserva contexto operacional e
 - O incremento local de clareza de preço e entrega centraliza em `src/data/site.ts` que o valor exibido corresponde à caneca e não inclui frete. A interface diferencia entrega/retirada em Araranguá, com mimo conforme disponibilidade, de envio pelos Correios para outras cidades com cálculo por CEP; mensagens do WhatsApp e orçamento pedem cidade/CEP sem armazenar esse dado no site.
 - A validação desse incremento cobre 66 testes, typecheck, build com 741 URLs, 92 cenários Playwright/Axe em Chrome, Firefox, WebKit desktop e Safari móvel e 23 no Edge/Windows. O Edge local encerra antes de criar páginas, mas a matriz do GitHub Actions cobre esse perfil.
 - Uma oscilação de carregamento de imagens no CI revelou contraste insuficiente no placeholder (`3,79:1`). O texto foi escurecido e o E2E agora aborta o Storage deliberadamente para validar esse estado de erro em toda execução.
-- O PR `#2` está tecnicamente aprovado; o deployment de preview `dpl_54N6ZsnGVFzzATLknPBFR6kH883Z` ficou `Ready`. Smoke autenticado confirmou o HTML da aplicação, títulos e canonical único nas quatro rotas alteradas; merge em `main` aguarda aceite para publicar em produção.
+- O PR `#2` foi mesclado em `main` por `1d7cf9a` em 28 de agosto de 2026. O deployment Vercel de produção ficou `Ready`; smoke navegável confirmou home, produto, personalizada e informações com status `200`, canonical oficial, texto de frete e redirecionamentos `308` preservando caminho e parâmetros.
+- A Fase 11 de experiência assistida está concluída localmente em branch própria: produto possui zoom de 100% a 300% e galeria preparada para múltiplas imagens; detalhes seguros e depoimentos moderados entram no contexto do produto; coleção/busca têm filtros e ordenação; `/personalizada` possui prévia 2D local com resumo para WhatsApp. Não houve migration, upload ou persistência da imagem do cliente.
 
 ## Decisões tomadas
 
@@ -133,6 +134,8 @@ Atualizada em 27 de agosto de 2026. Este arquivo preserva contexto operacional e
 32. Consultar no frontend somente colunas realmente consumidas e carregar o catálogo TypeScript de fallback sob demanda.
 33. Campanhas sazonais permanecem acessíveis por rota quando necessário, mas só entram nos menus durante período ativo ou gestão explícita.
 34. Centralizar a política de entrega junto à identidade do site: preço da caneca sem frete, atendimento local em Araranguá e envio pelos Correios para outras cidades. Cidade/CEP entram somente na mensagem do WhatsApp e não são persistidos pela aplicação.
+35. Manter a prévia de personalização inteiramente no navegador: arquivo temporário não é persistido nem enviado automaticamente; o cliente anexa a imagem no WhatsApp e aprova a arte final antes da produção.
+36. Exibir ficha e prova social apenas com dados seguros: material/capacidade permanecem como confirmação por modelo e avaliações/fotos só aparecem após moderação e consentimento reais.
 
 ## Histórico relevante
 
@@ -179,14 +182,15 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 - Métricas são agregadas e não substituem uma plataforma de marketing/atribuição; adicionar Pixel ou GA depende de decisão de negócio e consentimento.
 - O DNS permanece administrado no Registro.br; os registros raiz e `www` apontam para a Vercel. Não trocar nameservers nem remover o hostname anterior antes de validar um rollback.
 - A Fase 8 ainda depende de CNPJ ou identificação pública aplicável, endereço e e-mail, condições oficiais restantes de troca, materiais, cuidados e prazos, além de avaliações reais; domínio, cidade de atendimento local, nome do responsável, WhatsApp e opções de entrega já foram confirmados.
+- A Fase 11 está funcional sem esses dados, mas a ficha só poderá informar material/capacidade exatos e a galeria/prova social só ficará completa após o fornecimento de especificações, fotos reais e avaliações autorizadas.
 - Há atividade residual do GitHub Pages, mas produção oficial é Vercel; não desativar serviço externo sem autorização explícita.
 - Mesmo após a redução de aproximadamente 52%, a home ainda carrega o catálogo remoto completo para sustentar busca, menus e orçamento compartilhados. Consultas por rota são o próximo passo de escala, mas exigem redesenhar cache, busca e resolução dos itens persistidos.
 
 ## Próxima execução recomendada
 
-1. Revisar o preview do PR `#2` e, após aceite, mesclar em `main` para promover a clareza de preço e entrega à produção.
-2. Especificar consultas por rota para a home não precisar carregar todos os produtos.
-3. Coletar os dados oficiais restantes pelo modelo `docs/templates/PHASE_8_BUSINESS_INPUT.md` e cadastrar somente avaliações reais autorizadas.
+1. Publicar a branch da Fase 11 em PR próprio, validar preview/CI e, após aceite, promover a experiência assistida à produção.
+2. Coletar dados técnicos por modelo, fotos adicionais reais e avaliações autorizadas para completar ficha, galeria e prova social sem conteúdo inventado.
+3. Especificar consultas por rota para a home não precisar carregar todos os produtos.
 4. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
 
 ## Protocolo de atualização da memória
