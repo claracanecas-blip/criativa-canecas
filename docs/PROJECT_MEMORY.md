@@ -107,6 +107,7 @@ Atualizada em 29 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A revisão do PR `#8` acrescentou um editor plano complementar para fotos: o cliente arrasta a imagem dentro da área aproximada de impressão, usa ações de foto inteira, preenchimento e centralização, controla zoom até 250% e conserva ajustes finos e teclado. A mesma composição atualiza imediatamente a caneca 3D e o fallback 2D, sem upload.
 - O gabarito de produção da caneca cerâmica branca foi confirmado no acervo operacional como `21 × 8,7 cm`. O editor agora usa essa proporção e gera no próprio navegador uma prévia PNG de `2480 × 1028 px`, com metadado de `300 dpi`; a interface oferece download e, em dispositivos compatíveis, compartilhamento nativo. A mensagem do WhatsApp registra arquivo original, zoom, posição e nome da prévia, enquanto orienta o envio da prévia e da foto original.
 - A personalização do PR `#8` adota fluxo híbrido. `Quero ver e ajustar` mantém a prévia automática e deixa o editor detalhado recolhido como opção; `Quero que vocês criem` coleta foto, frase e orientação sem exigir enquadramento nem download do gabarito. O WhatsApp distingue os dois pedidos: no primeiro solicita prévia e original; no segundo solicita o original e registra que a equipe preparará o mockup final para aprovação.
+- O caminho `Quero ver e ajustar` ganhou uma conferência guiada após o upload: a interface anuncia que a prévia automática está pronta e oferece as ações diretas `Ver na caneca` e `Ajustar foto`. A primeira leva foco e rolagem à caneca 3D, que agora possui título e instrução contextual; a segunda abre/fecha explicitamente o editor. Uma arte real do acervo operacional foi usada somente em teste local, sem cópia, upload ou versionamento, e confirmou fotos/texto legíveis e exportação `2480 × 1028 px`/`300 dpi`.
 
 ## Decisões tomadas
 
@@ -153,6 +154,7 @@ Atualizada em 29 de agosto de 2026. Este arquivo preserva contexto operacional e
 40. Separar as responsabilidades de interação: usar uma área plana e delimitada para enquadrar a foto sem disputar gestos com a câmera, e manter a caneca 3D como visualização do resultado curvo.
 41. Usar o gabarito confirmado de `21 × 8,7 cm` para a prévia exportável, em `2480 × 1028 px` com metadado de `300 dpi`; manter a geração local e pedir no WhatsApp tanto a prévia de enquadramento quanto a foto original, sem upload automático ou integração paga com a API da Meta.
 42. Manter a participação do cliente sem transformar edição em obrigação: oferecer prévia automática com ajustes opcionais e, em paralelo, um atendimento assistido no qual a equipe cria o mockup a partir da foto e das orientações. IA pode apoiar a criação interna, mas a arte final continua sujeita à revisão humana e aprovação do cliente.
+43. No modo ajustável, priorizar conferência antes de controles: após o upload, oferecer `Ver na caneca` como ação principal e `Ajustar foto` como alternativa opcional, mantendo foco programático e status acessível sem abrir o editor automaticamente.
 
 ## Histórico relevante
 

@@ -21,6 +21,7 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 - Dispositivos sem WebGL 2 mantêm uma simulação 2D e o fluxo comercial continua utilizável.
 - O seletor comercial foi simplificado para `Caneca personalizada` e `Caneca personalizada com foto`; caneca mágica e opção colorida separada foram removidas por decisão do proprietário.
 - A jornada passou a oferecer dois caminhos antes do formulário: `Quero ver e ajustar`, com centralização automática e editor detalhado opcional, e `Quero que vocês criem`, sem obrigação de enquadrar ou baixar a prévia.
+- Depois do upload no caminho ajustável, `Ver na caneca` leva rolagem e foco acessível à conferência 3D; `Ajustar foto` abre/fecha o editor explicitamente. A caneca recebeu título e orientação contextual para tornar a próxima ação evidente.
 - O caminho assistido mantém a caneca 3D somente como referência, coleta a descrição livre da ideia e pede no WhatsApp que a equipe prepare o mockup final para aprovação.
 
 ## Privacidade e dados
@@ -46,6 +47,7 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 - `npm run typecheck`: aprovado.
 - `npm run build`: aprovado, com 721 produtos, 17 coleções e 741 URLs no SEO.
 - Playwright: seis cenários direcionados aprovados em Chrome desktop e Safari móvel, cobrindo os modos ajustável e assistido, editor fechado por padrão, upload, enquadramento por preset e arraste, centralização, download em `2480 × 1028 px`/`300 dpi`, duas opções comerciais, contexto específico do WhatsApp, controles 3D, acessibilidade e foto/frase no fallback 2D.
+- Uma arte real com fotos, texto e fundo, mantida fora do projeto, foi exercitada localmente nos estados fechado/aberto e no download; o arquivo gerado preservou `2480 × 1028 px` e `300 dpi`. Nenhum arquivo do acervo foi copiado, enviado ou versionado.
 - Axe: `/personalizada` sem violações automáticas WCAG 2.2 A/AA em Chrome desktop e Safari móvel.
 - Inspeção visual concluída em 1440 × 1000 e 390 × 844 com imagem, frase, textura curva e layout responsivo.
 
