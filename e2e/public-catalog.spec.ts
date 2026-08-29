@@ -295,7 +295,9 @@ test('coleção pode ser refinada por tema, preço e ordenação', async ({ page
 test('prévia local de personalização preserva contexto no WhatsApp', async ({ page }) => {
   await page.goto('/personalizada')
   await expect(page.getByRole('heading', { name: 'Opções personalizadas e valores' })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Monte sua prévia em 3D' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Escolha como criar sua caneca' })).toBeVisible()
+  await expect(page.getByRole('radio', { name: /Quero ver e ajustar/ })).toBeChecked()
+  await expect(page.getByRole('radio', { name: /Quero que vocês criem/ })).toBeVisible()
   await expect(page.getByText('Prévia 3D', { exact: true })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Girar caneca para a esquerda' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Centralizar' })).toBeVisible()
@@ -309,6 +311,9 @@ test('prévia local de personalização preserva contexto no WhatsApp', async ({
   await page.getByLabel('Modelo da caneca').selectOption('Caneca personalizada com foto')
   await page.locator('input[type=file]').setInputFiles('public/img/logo.png')
   await expect(page.locator('.upload-button')).toContainText('logo.png')
+  await expect(page.getByText('A prévia foi centralizada automaticamente.')).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Ajuste sua foto' })).toHaveCount(0)
+  await page.getByText('Ajustar enquadramento').click()
   await expect(page.getByRole('heading', { name: 'Ajuste sua foto' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Foto inteira' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Preencher' })).toBeEnabled()
@@ -367,6 +372,21 @@ test('prévia local de personalização preserva contexto no WhatsApp', async ({
   expect(message).toContain('Usar tons de rosa')
   expect(message).toContain('prévia do site é apenas uma simulação')
   expect(message).toContain('Minha cidade/CEP')
+
+  await page.getByRole('radio', { name: /Quero que vocês criem/ }).check()
+  await expect(page.getByRole('heading', { name: 'Ajuste sua foto' })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Baixar prévia 21 × 8,7 cm' })).toHaveCount(0)
+  await expect(page.getByText('O enquadramento final será preparado por nós.')).toBeVisible()
+  await expect(page.getByLabel('Como você imagina sua caneca?')).toHaveValue('Usar tons de rosa')
+
+  const assistedWhatsapp = page.getByRole('link', { name: 'Pedir criação pelo WhatsApp' })
+  const assistedHref = await assistedWhatsapp.getAttribute('href')
+  const assistedMessage = new URL(assistedHref ?? '').searchParams.get('text') ?? ''
+  expect(assistedMessage).toContain('quero que a Criativa Canecas prepare o mockup para mim')
+  expect(assistedMessage).toContain('Foto original: “logo.png”')
+  expect(assistedMessage).toContain('podem propor a melhor composição')
+  expect(assistedMessage).not.toContain('Enquadramento escolhido')
+  expect(assistedMessage).not.toContain('gabarito 21 × 8,7 cm')
 })
 
 test('personalização mantém imagem e frase no fallback sem WebGL 2', async ({ page }) => {

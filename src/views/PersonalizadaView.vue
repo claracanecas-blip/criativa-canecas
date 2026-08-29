@@ -5,9 +5,9 @@ import PersonalizationPreview from '@/components/PersonalizationPreview.vue'
 import type { IconName } from '@/types/catalog'
 
 const passos = [
-  { n: 1, titulo: 'Escolha sua opção', texto: 'Personalizada com arte ou personalizada com foto.' },
-  { n: 2, titulo: 'Envie sua arte',   texto: 'Foto, frase, logo ou desenho — pode mandar do jeito que tiver.' },
-  { n: 3, titulo: 'Aprove a prévia',  texto: 'Enviamos uma simulação antes de imprimir.' },
+  { n: 1, titulo: 'Escolha como criar', texto: 'Ajuste a foto no site ou peça nossa ajuda com o mockup.' },
+  { n: 2, titulo: 'Envie sua ideia',   texto: 'Foto, frase, logo ou desenho — pode mandar do jeito que tiver.' },
+  { n: 3, titulo: 'Aprove a arte final', texto: 'Preparamos e confirmamos o mockup antes de imprimir.' },
   { n: 4, titulo: 'Escolha a entrega', texto: 'Combine retirada ou entrega local, ou receba pelos Correios.' },
 ]
 
