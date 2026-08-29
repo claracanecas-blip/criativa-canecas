@@ -1,4 +1,4 @@
-# Prévia 3D local de personalização
+# Prévia 3D de personalização
 
 Data: 29 de agosto de 2026.
 
@@ -21,7 +21,7 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 - JPEG, PNG e WebP continuam usando somente uma URL temporária criada pelo navegador.
 - O arquivo não é enviado ao Supabase, não entra em analytics e é descartado ao sair ou recarregar.
 - A mensagem do WhatsApp registra somente o nome do arquivo e orienta o cliente a anexá-lo na conversa.
-- Não houve migration, upload, serviço pago ou alteração remota.
+- Não houve migration, upload, serviço pago ou alteração de banco, Storage ou produção.
 
 ## Acessibilidade e compatibilidade
 
@@ -38,6 +38,14 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 - Playwright: seis cenários direcionados aprovados em Chrome desktop e Safari móvel, cobrindo upload, duas opções comerciais, contexto do WhatsApp, controles 3D, acessibilidade e foto/frase no fallback 2D.
 - Axe: `/personalizada` sem violações automáticas WCAG 2.2 A/AA em Chrome desktop e Safari móvel.
 - Inspeção visual concluída em 1440 × 1000 e 390 × 844 com imagem, frase, textura curva e layout responsivo.
+
+## Preview de avaliação
+
+- Branch: `feat/personalizacao-3d`.
+- PR em rascunho: `#8`.
+- Vercel: deployment `Ready` em `https://criativa-canecas-git-feat-pe-5eb553-claracanecas-9141s-projects.vercel.app`.
+- A proteção de previews do projeto redireciona visitantes sem sessão para o login da Vercel.
+- A branch `main` e o site oficial permanecem inalterados até a aprovação do proprietário.
 
 ## Limites conhecidos
 

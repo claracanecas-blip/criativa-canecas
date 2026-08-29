@@ -387,7 +387,7 @@ Uma fase só está concluída quando:
 
 ### Fase 11 — Experiência de escolha e personalização
 
-**Estado:** concluída e validada em produção em 28 de agosto de 2026; incremento 3D validado localmente em 29 de agosto e pendente de publicação.
+**Estado:** concluída e validada em produção em 28 de agosto de 2026; incremento 3D validado localmente e publicado em preview protegido pelo PR em rascunho `#8` em 29 de agosto, pendente de aprovação para produção.
 
 **Objetivo:** permitir inspeção detalhada do mockup, reduzir dúvidas sobre produto e facilitar a descoberta e a personalização antes do WhatsApp.
 
@@ -399,7 +399,7 @@ Uma fase só está concluída quando:
 
 **Rollback:** reverter somente componentes, utilitários, views, testes e documentação da fase. Não há migration nem alteração remota.
 
-**Evidência:** [`docs/baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md`](../baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md), [`docs/baselines/2026-08-29-personalization-3d/PERSONALIZATION_3D.md`](../baselines/2026-08-29-personalization-3d/PERSONALIZATION_3D.md), PRs `#3` e `#4`, previews Vercel `Ready`, validação local do incremento 3D, Lighthouse com todas as categorias em pelo menos 90 e smoke do zoom em produção por cursor e toque.
+**Evidência:** [`docs/baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md`](../baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md), [`docs/baselines/2026-08-29-personalization-3d/PERSONALIZATION_3D.md`](../baselines/2026-08-29-personalization-3d/PERSONALIZATION_3D.md), PRs `#3`, `#4` e `#8`, previews Vercel `Ready`, validação local do incremento 3D, Lighthouse com todas as categorias em pelo menos 90 e smoke do zoom em produção por cursor e toque.
 
 ## 13. Ordem, dependências e marcos
 
@@ -463,11 +463,11 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical, Auth e opções de entrega concluídos; dados comerciais oficiais restantes e avaliações reais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |
 | 10 — Escala e descoberta | Concluída | Produção validada; 65 testes, 100 cenários E2E/axe, Lighthouse P90+, redirects, SEO, buscas e menu mobile aprovados |
-| 11 — Experiência assistida | Concluída; incremento local | Galeria e zoom validados em produção; prévia 3D local com textura dinâmica, fallback 2D, privacidade e acessibilidade verificadas |
+| 11 — Experiência assistida | Concluída; incremento em preview | Galeria e zoom validados em produção; prévia 3D do PR `#8` com textura dinâmica, fallback 2D, privacidade e acessibilidade verificadas |
 
 ## 18. Evoluções incrementais após o roadmap
 
-- **29 de agosto de 2026 — prévia 3D de personalização:** `/personalizada` passou a renderizar uma caneca procedural com Three.js e aplicar imagem/frase por textura de canvas mantida somente no navegador. O cliente gira por mouse, toque, teclado ou botões, aproxima por roda/pinça e conserva os controles de escala e posição; falta de WebGL 2 aciona fallback 2D. A oferta foi simplificada para `Caneca personalizada` e `Caneca personalizada com foto`, removendo mágica e colorida como produtos separados. O aceite local cobriu 72 testes, typecheck, build com 741 URLs, Playwright/Axe em Chrome e Safari móvel e inspeção em 1440 × 1000 e 390 × 844. Não houve migration, upload ou alteração remota; rollback consiste em restaurar a prévia 2D e retirar as dependências 3D.
+- **29 de agosto de 2026 — prévia 3D de personalização:** `/personalizada` passou a renderizar uma caneca procedural com Three.js e aplicar imagem/frase por textura de canvas mantida somente no navegador. O cliente gira por mouse, toque, teclado ou botões, aproxima por roda/pinça e conserva os controles de escala e posição; falta de WebGL 2 aciona fallback 2D. A oferta foi simplificada para `Caneca personalizada` e `Caneca personalizada com foto`, removendo mágica e colorida como produtos separados. O aceite local cobriu 72 testes, typecheck, build com 741 URLs, Playwright/Axe em Chrome e Safari móvel e inspeção em 1440 × 1000 e 390 × 844. O PR em rascunho `#8` gerou preview Vercel `Ready`, protegido por autenticação, sem alterar `main`, produção, banco ou Storage; rollback consiste em restaurar a prévia 2D e retirar as dependências 3D.
 
 - **28 de agosto de 2026 — apresentação comercial da home:** a primeira dobra passou a mostrar canecas reais, preço de referência e dois caminhos distintos para modelos prontos e personalização. Categorias com miniaturas aparecem antes dos banners e da entrega detalhada; oito modelos continuam compondo a vitrine; o processo de aprovação e recebimento é explicado em três passos. A identidade rosa ganhou somente curvas, pontilhado e brilhos de baixo contraste, com redução específica no celular. O aceite local cobriu revisão visual em 1440 × 1000 e 390 × 844, 69 testes, typecheck, build com 741 URLs e E2E de hierarquia mais Axe WCAG 2.2 A/AA. Não houve migration, upload nem alteração de dados remotos; rollback consiste em reverter os arquivos da home, aviso e teste relacionado.
 
