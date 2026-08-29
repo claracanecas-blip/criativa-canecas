@@ -53,6 +53,7 @@ let mugGroup: Group | undefined
 let artworkTexture: CanvasTexture | undefined
 let bodyMaterial: MeshPhysicalMaterial | undefined
 let handleMaterial: MeshPhysicalMaterial | undefined
+let handleGuardMaterial: MeshPhysicalMaterial | undefined
 let interiorMaterial: MeshPhysicalMaterial | undefined
 let rimMaterial: MeshPhysicalMaterial | undefined
 let resizeObserver: ResizeObserver | undefined
@@ -114,6 +115,7 @@ function updateMugAppearance() {
   const appearance = resolveMugAppearance(props.model)
   bodyMaterial?.color.setHex(appearance.body)
   handleMaterial?.color.setHex(appearance.handle)
+  handleGuardMaterial?.color.setHex(appearance.body)
   interiorMaterial?.color.setHex(appearance.interior)
   rimMaterial?.color.setHex(appearance.rim)
   drawArtwork()
@@ -235,6 +237,13 @@ async function initialize() {
 
     bodyMaterial = new MeshPhysicalMaterial({ roughness: 0.24, clearcoat: 1, clearcoatRoughness: 0.1 })
     handleMaterial = new MeshPhysicalMaterial({ roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.12 })
+    handleGuardMaterial = new MeshPhysicalMaterial({
+      roughness: 0.24,
+      clearcoat: 1,
+      clearcoatRoughness: 0.1,
+      polygonOffset: true,
+      polygonOffsetFactor: -4,
+    })
     interiorMaterial = new MeshPhysicalMaterial({ roughness: 0.34, side: BackSide })
     rimMaterial = new MeshPhysicalMaterial({ roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.08 })
 
@@ -292,7 +301,16 @@ async function initialize() {
       artworkMaterial,
     )
     artwork.position.y = -0.02
+    artwork.renderOrder = 1
     mugGroup.add(artwork)
+
+    const handleGuard = new Mesh(
+      new CylinderGeometry(1.369, 1.249, 2.17, 48, 1, true, Math.PI * 0.35, Math.PI * 0.3),
+      handleGuardMaterial,
+    )
+    handleGuard.position.y = -0.02
+    handleGuard.renderOrder = 2
+    mugGroup.add(handleGuard)
 
     const floorMaterial = new ShadowMaterial({ color: 0x6d4454, opacity: 0.18 })
     const floor = new Mesh(new PlaneGeometry(8, 6), floorMaterial)

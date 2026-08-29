@@ -6,6 +6,7 @@ import Mug3DPreview from '@/components/Mug3DPreview.vue'
 import { deliveryPolicy, linkWhatsapp } from '@/data/site'
 import { trackWhatsappClick } from '@/services/analytics'
 import { validateImageCandidate } from '@/utils/adminImages'
+import { calculateAutomaticScalePercent } from '@/utils/mugPersonalization'
 import { buildArtworkFilename, createPersonalizationArtworkFile } from '@/utils/personalizationExport'
 
 const props = defineProps<{ models: string[] }>()
@@ -83,8 +84,21 @@ function selectImage(event: Event) {
     return
   }
   releaseImage()
-  imageUrl.value = URL.createObjectURL(file)
+  const nextImageUrl = URL.createObjectURL(file)
+  imageUrl.value = nextImageUrl
   imageName.value = file.name
+  const image = new Image()
+  image.decoding = 'async'
+  image.onload = () => {
+    if (imageUrl.value !== nextImageUrl) return
+    imageScale.value = calculateAutomaticScalePercent(
+      image.naturalWidth || 1,
+      image.naturalHeight || 1,
+      Boolean(phrase.value.trim()),
+    )
+    previewGuideStatus.value = 'Foto ampliada automaticamente dentro da área sublimável.'
+  }
+  image.src = nextImageUrl
 }
 
 function focusMugPreview() {
@@ -205,7 +219,7 @@ onBeforeUnmount(releaseImage)
 
         <div v-if="imageUrl" class="selected-image">
           <div v-if="!isAssisted" class="preview-ready">
-            <p><ShieldCheck :size="17" /> <span><strong>Prévia automática pronta.</strong> Primeiro confira na caneca. Se algo ficar cortado, abra os ajustes.</span></p>
+            <p><ShieldCheck :size="17" /> <span><strong>Prévia automática pronta.</strong> A foto já entra mais preenchida e respeita a proteção próxima à alça. Se precisar, abra os ajustes.</span></p>
             <div class="preview-choice-actions" aria-label="Próximo passo da prévia">
               <button type="button" @click="focusMugPreview"><Eye :size="17" /> Ver na caneca</button>
               <button type="button" :aria-expanded="showEditor" aria-controls="photo-editor-panel" @click="showEditor = !showEditor">

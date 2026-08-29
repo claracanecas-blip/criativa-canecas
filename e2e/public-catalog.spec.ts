@@ -322,7 +322,10 @@ test('prévia local de personalização preserva contexto no WhatsApp', async ({
   await expect(page.getByRole('button', { name: 'Foto inteira' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Preencher' })).toBeEnabled()
   await expect(page.getByRole('button', { name: 'Centralizar' })).toHaveCount(2)
+  await expect(page.getByText(/Proteção da alça:/)).toBeVisible()
+  await expect(page.locator('.handle-guard')).toHaveCount(2)
   const zoom = page.getByRole('slider', { name: 'Zoom da foto' })
+  await expect.poll(async () => Number(await zoom.inputValue())).toBeGreaterThan(100)
   await page.getByRole('button', { name: 'Preencher' }).click()
   expect(Number(await zoom.inputValue())).toBeGreaterThan(100)
 
@@ -361,6 +364,10 @@ test('prévia local de personalização preserva contexto no WhatsApp', async ({
   expect(exportedMetadata.width).toBe(2480)
   expect(exportedMetadata.height).toBe(1028)
   expect(exportedMetadata.density).toBe(300)
+  const exportedPixels = await sharp(downloadedPath).ensureAlpha().raw().toBuffer()
+  const middleRow = Math.floor(1028 / 2)
+  expect(exportedPixels[(middleRow * 2480 + 20) * 4 + 3]).toBe(0)
+  expect(exportedPixels[(middleRow * 2480 + 2460) * 4 + 3]).toBe(0)
   await expect(page.getByText(/Prévia “logo-previa-21x8-7cm.png” salva/)).toBeVisible()
 
   const whatsapp = page.getByRole('link', { name: 'Abrir WhatsApp e enviar' })

@@ -14,6 +14,8 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 - Escala e posição da imagem continuam disponíveis nos controles acessíveis existentes.
 - A foto ganhou uma área plana complementar de enquadramento: arraste direto, teclado, zoom de 70% a 250%, ações de `Foto inteira`, `Preencher` e `Centralizar`, além de sliders de ajuste fino.
 - A área plana segue o gabarito operacional confirmado da caneca cerâmica branca: `21 × 8,7 cm`.
+- Ao carregar uma foto, o site escolhe automaticamente um preenchimento de até `140%`; `Foto inteira` continua restaurando o enquadramento a `100%`.
+- O gabarito reserva faixas transparentes de `3%` em cada lateral como proteção próxima à alça. O editor mostra as faixas hachuradas, o arraste respeita a área útil, o PNG recebe o mesmo recorte e o 3D cobre com cerâmica branca a região localizada sob a alça.
 - O navegador gera uma prévia PNG de `2480 × 1028 px`, com metadado de `300 dpi`, e oferece download ou compartilhamento nativo quando o dispositivo aceita arquivos.
 - Um indicador de resolução avisa quando o zoom exigiria ampliar demais a foto de origem.
 - Separar o enquadramento plano do giro da caneca evita que o mesmo gesto tente mover a foto e a câmera 3D ao mesmo tempo.
@@ -43,13 +45,14 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 
 ## Validação
 
-- 77 testes unitários aprovados, incluindo aparência das opções, cálculo de proporção, escala, preenchimento, deslocamento, resolução estimada, nome do arquivo e metadado PNG de densidade.
+- 79 testes unitários aprovados, incluindo aparência das opções, cálculo de proporção, escala, preenchimento automático, limites laterais da alça, deslocamento, resolução estimada, nome do arquivo e metadado PNG de densidade.
 - `npm run typecheck`: aprovado.
 - `npm run build`: aprovado, com 721 produtos, 17 coleções e 741 URLs no SEO.
-- Playwright: seis cenários direcionados aprovados em Chrome desktop e Safari móvel, cobrindo os modos ajustável e assistido, editor fechado por padrão, upload, enquadramento por preset e arraste, centralização, download em `2480 × 1028 px`/`300 dpi`, duas opções comerciais, contexto específico do WhatsApp, controles 3D, acessibilidade e foto/frase no fallback 2D.
-- Uma arte real com fotos, texto e fundo, mantida fora do projeto, foi exercitada localmente nos estados fechado/aberto e no download; o arquivo gerado preservou `2480 × 1028 px` e `300 dpi`. Nenhum arquivo do acervo foi copiado, enviado ou versionado.
+- Playwright: `112/112` cenários aprovados em Chrome, Firefox, Safari desktop e Safari móvel, cobrindo os modos ajustável e assistido, editor fechado por padrão, upload, preenchimento inicial acima de `100%`, proteção visual da alça, enquadramento por preset e arraste, centralização, download em `2480 × 1028 px`/`300 dpi`, laterais transparentes, duas opções comerciais, contexto específico do WhatsApp, controles 3D e foto/frase no fallback 2D. O Edge local repetiu a falha conhecida de encerrar no lançamento antes de abrir uma página; esse perfil permanece coberto pelo GitHub Actions.
+- Uma arte real com fotos, texto e fundo, mantida fora do projeto, foi exercitada localmente no editor e no 3D; a inspeção confirmou composição mais preenchida e cerâmica branca antes da alça. Nenhum arquivo do acervo foi copiado, enviado ou versionado.
 - Axe: `/personalizada` sem violações automáticas WCAG 2.2 A/AA em Chrome desktop e Safari móvel.
 - Inspeção visual concluída em 1440 × 1000 e 390 × 844 com imagem, frase, textura curva e layout responsivo.
+- Lighthouse repetido após uma oscilação local: home `99/100/100/100`, coleção `92/98/100/100` e produto `91/100/100/100`; todas as categorias ficaram em pelo menos `90`.
 
 ## Preview de avaliação
 

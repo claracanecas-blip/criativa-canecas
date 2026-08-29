@@ -2,6 +2,9 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {
   ARTWORK_SCALE_MAX,
+  ARTWORK_SAFE_LEFT,
+  ARTWORK_SAFE_WIDTH,
+  calculateAutomaticScalePercent,
   calculateArtworkPlacement,
   calculateArtworkQuality,
   calculateFillScalePercent,
@@ -42,7 +45,24 @@ test('preenchimento amplia fotos verticais sem ultrapassar o limite seguro', () 
 
   assert.ok(portraitScale > 100)
   assert.equal(portraitScale, ARTWORK_SCALE_MAX)
-  assert.equal(landscapeScale, 100)
+  assert.ok(landscapeScale > 100)
+})
+
+test('enquadramento automático preenche mais sem aplicar zoom excessivo', () => {
+  const automaticScale = calculateAutomaticScalePercent(1600, 900, false)
+
+  assert.ok(automaticScale > 100)
+  assert.ok(automaticScale <= 140)
+})
+
+test('foto ajustada respeita a proteção lateral próxima à alça', () => {
+  const smallPhoto = calculateArtworkPlacement(2400, 800, 70, 35, 0, false)
+  const oversizedPhoto = calculateArtworkPlacement(1600, 900, ARTWORK_SCALE_MAX, 35, 0, false)
+
+  assert.ok(smallPhoto.x >= ARTWORK_SAFE_LEFT)
+  assert.ok(smallPhoto.x + smallPhoto.width <= ARTWORK_SAFE_LEFT + ARTWORK_SAFE_WIDTH)
+  assert.ok(oversizedPhoto.x <= ARTWORK_SAFE_LEFT)
+  assert.ok(oversizedPhoto.x + oversizedPhoto.width >= ARTWORK_SAFE_LEFT + ARTWORK_SAFE_WIDTH)
 })
 
 test('gabarito de exportação corresponde a 21 por 8,7 cm em 300 dpi', () => {

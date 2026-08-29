@@ -8,14 +8,18 @@ export const MUG_TEXTURE_HEIGHT = PRINT_EXPORT_HEIGHT / 2
 export const ARTWORK_SCALE_MIN = 70
 export const ARTWORK_SCALE_MAX = 250
 export const ARTWORK_OFFSET_LIMIT = 35
+export const ARTWORK_HANDLE_GUARD_RATIO = 0.03
 
-const ARTWORK_MAX_WIDTH = MUG_TEXTURE_WIDTH * (760 / 1024)
-const ARTWORK_MAX_HEIGHT = MUG_TEXTURE_HEIGHT * (390 / 512)
+export const ARTWORK_SAFE_LEFT = MUG_TEXTURE_WIDTH * ARTWORK_HANDLE_GUARD_RATIO
+export const ARTWORK_SAFE_WIDTH = MUG_TEXTURE_WIDTH * (1 - ARTWORK_HANDLE_GUARD_RATIO * 2)
+const ARTWORK_SAFE_RIGHT = ARTWORK_SAFE_LEFT + ARTWORK_SAFE_WIDTH
+const ARTWORK_MAX_WIDTH = ARTWORK_SAFE_WIDTH
+const ARTWORK_MAX_HEIGHT = MUG_TEXTURE_HEIGHT * 0.9
 const ARTWORK_MAX_HEIGHT_WITH_PHRASE = MUG_TEXTURE_HEIGHT * (300 / 512)
-const ARTWORK_FILL_WIDTH = MUG_TEXTURE_WIDTH * (560 / 1024)
 const ARTWORK_HORIZONTAL_TRAVEL = MUG_TEXTURE_WIDTH * (180 / 1024)
 const ARTWORK_VERTICAL_TRAVEL = MUG_TEXTURE_HEIGHT * (82 / 512)
 const ARTWORK_PHRASE_CENTER_Y = MUG_TEXTURE_HEIGHT * (210 / 512)
+const ARTWORK_AUTOMATIC_SCALE_MAX = 140
 
 export type MugAppearance = {
   body: number
@@ -58,6 +62,12 @@ export function clampArtworkOffset(value: number) {
   return clamp(value, -ARTWORK_OFFSET_LIMIT, ARTWORK_OFFSET_LIMIT)
 }
 
+function constrainCenter(center: number, size: number, start: number, end: number) {
+  const availableSize = end - start
+  if (size <= availableSize) return clamp(center, start + size / 2, end - size / 2)
+  return clamp(center, end - size / 2, start + size / 2)
+}
+
 export function resolveMugAppearance(model: string): MugAppearance {
   void model
   return {
@@ -83,9 +93,11 @@ export function calculateArtworkPlacement(
   const requestedScale = clampArtworkScale(scalePercent) / 100
   const width = safeWidth * baseScale * requestedScale
   const height = safeHeight * baseScale * requestedScale
-  const centerX = MUG_TEXTURE_WIDTH / 2 + (clampArtworkOffset(xPercent) / ARTWORK_OFFSET_LIMIT) * ARTWORK_HORIZONTAL_TRAVEL
+  const requestedCenterX = MUG_TEXTURE_WIDTH / 2 + (clampArtworkOffset(xPercent) / ARTWORK_OFFSET_LIMIT) * ARTWORK_HORIZONTAL_TRAVEL
   const baseCenterY = hasPhrase ? ARTWORK_PHRASE_CENTER_Y : MUG_TEXTURE_HEIGHT / 2
-  const centerY = baseCenterY + (clampArtworkOffset(yPercent) / ARTWORK_OFFSET_LIMIT) * ARTWORK_VERTICAL_TRAVEL
+  const requestedCenterY = baseCenterY + (clampArtworkOffset(yPercent) / ARTWORK_OFFSET_LIMIT) * ARTWORK_VERTICAL_TRAVEL
+  const centerX = constrainCenter(requestedCenterX, width, ARTWORK_SAFE_LEFT, ARTWORK_SAFE_RIGHT)
+  const centerY = constrainCenter(requestedCenterY, height, 0, MUG_TEXTURE_HEIGHT)
 
   return {
     x: centerX - width / 2,
@@ -98,8 +110,12 @@ export function calculateArtworkPlacement(
 export function calculateFillScalePercent(imageWidth: number, imageHeight: number, hasPhrase: boolean) {
   const fitted = calculateArtworkPlacement(imageWidth, imageHeight, 100, 0, 0, hasPhrase)
   const targetHeight = hasPhrase ? ARTWORK_MAX_HEIGHT_WITH_PHRASE : ARTWORK_MAX_HEIGHT
-  const requiredScale = Math.max(ARTWORK_FILL_WIDTH / fitted.width, targetHeight / fitted.height) * 100
+  const requiredScale = Math.max(ARTWORK_SAFE_WIDTH / fitted.width, targetHeight / fitted.height) * 100
   return Math.round(clampArtworkScale(requiredScale))
+}
+
+export function calculateAutomaticScalePercent(imageWidth: number, imageHeight: number, hasPhrase: boolean) {
+  return Math.min(ARTWORK_AUTOMATIC_SCALE_MAX, Math.max(100, calculateFillScalePercent(imageWidth, imageHeight, hasPhrase)))
 }
 
 export function calculateArtworkQuality(
@@ -144,6 +160,9 @@ export function drawPersonalizationArtwork(
   context.clearRect(0, 0, canvasWidth, canvasHeight)
   context.save()
   context.scale(canvasWidth / MUG_TEXTURE_WIDTH, canvasHeight / MUG_TEXTURE_HEIGHT)
+  context.beginPath()
+  context.rect(ARTWORK_SAFE_LEFT, 0, ARTWORK_SAFE_WIDTH, MUG_TEXTURE_HEIGHT)
+  context.clip()
   const hasPhrase = Boolean(options.phrase.trim())
 
   if (options.image) {
@@ -164,7 +183,7 @@ export function drawPersonalizationArtwork(
     context.textAlign = 'center'
     context.textBaseline = 'middle'
     context.lineJoin = 'round'
-    const lines = wrapPhrase(context, options.phrase, MUG_TEXTURE_WIDTH * (790 / 1024))
+    const lines = wrapPhrase(context, options.phrase, ARTWORK_SAFE_WIDTH - 30)
     const lineHeight = fontSize * 1.08
     const totalHeight = lines.length * lineHeight
     const centerY = options.image ? MUG_TEXTURE_HEIGHT * (425 / 512) : MUG_TEXTURE_HEIGHT / 2
