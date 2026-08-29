@@ -1,5 +1,7 @@
 # Prévia 3D de personalização
 
+> Registro histórico: este protótipo foi removido do PR `#8` por decisão posterior do proprietário. O fluxo vigente está documentado em [`../2026-08-29-assisted-personalization/PERSONALIZATION_HANDOFF.md`](../2026-08-29-assisted-personalization/PERSONALIZATION_HANDOFF.md).
+
 Data: 29 de agosto de 2026.
 
 ## Objetivo

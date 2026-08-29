@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { MessageCircle } from '@lucide/vue'
+import { useRoute } from 'vue-router'
 import { linkWhatsapp } from '@/data/site'
 import { trackWhatsappClick } from '@/services/analytics'
+
+const route = useRoute()
 </script>
 
 <template>
-  <a class="wa" :href="linkWhatsapp()" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" @click="trackWhatsappClick('floating')">
+  <a v-if="route.name !== 'personalizada'" class="wa" :href="linkWhatsapp()" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" @click="trackWhatsappClick('floating')">
     <MessageCircle :size="27" :stroke-width="2.2" aria-hidden="true" />
   </a>
 </template>

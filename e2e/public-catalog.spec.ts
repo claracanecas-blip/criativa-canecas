@@ -1,6 +1,5 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
-import sharp from 'sharp'
 
 const publicPages = [
   { name: 'home', path: '/' },
@@ -292,16 +291,28 @@ test('coleção pode ser refinada por tema, preço e ordenação', async ({ page
   await expect(page.locator('article.card')).toHaveCount(20)
 })
 
-test('prévia local de personalização preserva contexto no WhatsApp', async ({ page }) => {
+test('pedido assistido encaminha a foto e preserva o contexto no WhatsApp', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'canShare', {
+      configurable: true,
+      value: (data: ShareData) => Boolean(data.files?.length),
+    })
+    Object.defineProperty(navigator, 'share', {
+      configurable: true,
+      value: async (data: ShareData) => {
+        const target = window as typeof window & { __sharedRequest?: { files: string[]; text: string } }
+        target.__sharedRequest = {
+          files: data.files?.map((file) => file.name) ?? [],
+          text: data.text ?? '',
+        }
+      },
+    })
+  })
+
   await page.goto('/personalizada')
   await expect(page.getByRole('heading', { name: 'Opções personalizadas e valores' })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Escolha como criar sua caneca' })).toBeVisible()
-  await expect(page.getByRole('radio', { name: /Quero ver e ajustar/ })).toBeChecked()
-  await expect(page.getByRole('radio', { name: /Quero que vocês criem/ })).toBeVisible()
-  await expect(page.getByText('Prévia 3D', { exact: true })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Girar caneca para a esquerda' })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Centralizar' })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Girar caneca para a direita' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Envie sua foto e conte sua ideia' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Envie para criarmos o mockup' })).toBeVisible()
   await expect(page.getByText('Não vendemos canecas sem estampa.')).toBeVisible()
   await expect(page.getByRole('heading', { level: 3, name: 'Caneca personalizada', exact: true })).toBeVisible()
   await expect(page.getByRole('heading', { level: 3, name: 'Caneca personalizada com foto' })).toBeVisible()
@@ -311,110 +322,45 @@ test('prévia local de personalização preserva contexto no WhatsApp', async ({
   await page.getByLabel('Modelo da caneca').selectOption('Caneca personalizada com foto')
   await page.locator('input[type=file]').setInputFiles('public/img/logo.png')
   await expect(page.locator('.upload-button')).toContainText('logo.png')
-  await expect(page.getByText('Prévia automática pronta.')).toBeVisible()
+  await expect(page.locator('.selected-file')).toContainText('Imagem pronta para enviar: logo.png')
+  await expect(page.getByText('O site não armazena nem envia sua imagem sozinho.')).toBeVisible()
+  await expect(page.getByText('Prévia 3D', { exact: true })).toHaveCount(0)
   await expect(page.getByRole('heading', { name: 'Ajuste sua foto' })).toHaveCount(0)
-  await page.getByRole('button', { name: 'Ver na caneca' }).click()
-  await expect(page.getByRole('heading', { name: 'Sua prévia na caneca' })).toBeVisible()
-  await expect(page.locator('.preview-result')).toBeFocused()
-  await page.getByRole('button', { name: /Ajustar foto/ }).click()
-  await expect(page.getByRole('button', { name: 'Fechar ajustes' })).toHaveAttribute('aria-expanded', 'true')
-  await expect(page.getByRole('heading', { name: 'Ajuste sua foto' })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Foto inteira' })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Preencher' })).toBeEnabled()
-  await expect(page.getByRole('button', { name: 'Centralizar' })).toHaveCount(2)
-  await expect(page.getByText(/Proteção da alça:/)).toBeVisible()
-  await expect(page.locator('.handle-guard')).toHaveCount(2)
-  const zoom = page.getByRole('slider', { name: 'Zoom da foto' })
-  await expect.poll(async () => Number(await zoom.inputValue())).toBeGreaterThan(100)
-  await page.getByRole('button', { name: 'Preencher' }).click()
-  expect(Number(await zoom.inputValue())).toBeGreaterThan(100)
-
-  await page.getByText('Ajuste fino de posição').click()
-  const horizontalPosition = page.getByLabel('Posição horizontal da foto')
-  const verticalPosition = page.getByLabel('Posição vertical da foto')
-  await horizontalPosition.fill('20')
-  await verticalPosition.fill('-12')
-  await page.locator('.quick-actions').getByRole('button', { name: 'Centralizar' }).click()
-  await expect(horizontalPosition).toHaveValue('0')
-  await expect(verticalPosition).toHaveValue('0')
-
-  const editor = page.getByRole('group', { name: 'Área para posicionar a foto' })
-  const editorBounds = await editor.boundingBox()
-  if (!editorBounds) throw new Error('Editor visual da foto não possui dimensões')
-  await page.mouse.move(editorBounds.x + editorBounds.width / 2, editorBounds.y + editorBounds.height / 2)
-  await page.mouse.down()
-  await page.mouse.move(editorBounds.x + editorBounds.width * 0.65, editorBounds.y + editorBounds.height * 0.4, { steps: 3 })
-  await page.mouse.up()
-  expect(await horizontalPosition.inputValue()).not.toBe('0')
-
-  await page.getByRole('button', { name: 'Foto inteira' }).click()
-  await expect(zoom).toHaveValue('100')
-  await expect(horizontalPosition).toHaveValue('0')
-  await expect(verticalPosition).toHaveValue('0')
+  await expect(page.getByRole('button', { name: 'Baixar prévia 21 × 8,7 cm' })).toHaveCount(0)
   await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
-  await page.getByLabel('Observações para a criação').fill('Usar tons de rosa')
+  await page.getByLabel('Como você imagina sua caneca?').fill('Usar tons de rosa')
 
-  const downloadPromise = page.waitForEvent('download')
-  await page.getByRole('button', { name: 'Baixar prévia 21 × 8,7 cm' }).click()
-  const download = await downloadPromise
-  expect(download.suggestedFilename()).toBe('logo-previa-21x8-7cm.png')
-  const downloadedPath = await download.path()
-  if (!downloadedPath) throw new Error('Prévia baixada não possui caminho temporário')
-  const exportedMetadata = await sharp(downloadedPath).metadata()
-  expect(exportedMetadata.width).toBe(2480)
-  expect(exportedMetadata.height).toBe(1028)
-  expect(exportedMetadata.density).toBe(300)
-  const exportedPixels = await sharp(downloadedPath).ensureAlpha().raw().toBuffer()
-  const middleRow = Math.floor(1028 / 2)
-  expect(exportedPixels[(middleRow * 2480 + 20) * 4 + 3]).toBe(0)
-  expect(exportedPixels[(middleRow * 2480 + 2460) * 4 + 3]).toBe(0)
-  await expect(page.getByText(/Prévia “logo-previa-21x8-7cm.png” salva/)).toBeVisible()
+  await page.getByRole('button', { name: 'Compartilhar foto e pedido' }).click()
+  await expect(page.getByText(/Foto e pedido compartilhados/)).toBeVisible()
+  const sharedRequest = await page.evaluate(() => {
+    const target = window as typeof window & { __sharedRequest?: { files: string[]; text: string } }
+    return target.__sharedRequest
+  })
+  expect(sharedRequest?.files).toEqual(['logo.png'])
+  expect(sharedRequest?.text).toContain('prepare o mockup')
+  expect(sharedRequest?.text).toContain('Melhor mãe do mundo')
 
-  const whatsapp = page.getByRole('link', { name: 'Abrir WhatsApp e enviar' })
+  const whatsapp = page.getByRole('link', { name: 'Abrir conversa no WhatsApp' })
   const href = await whatsapp.getAttribute('href')
   const message = new URL(href ?? '').searchParams.get('text') ?? ''
   expect(message).toContain('Modelo escolhido: Caneca personalizada com foto')
   expect(message).toContain('Foto original: “logo.png”')
-  expect(message).toContain('Enquadramento escolhido: zoom 100%')
-  expect(message).toContain('logo-previa-21x8-7cm.png')
-  expect(message).toContain('gabarito 21 × 8,7 cm')
-  expect(message).toContain('use também a foto original')
+  expect(message).toContain('prepare o mockup para eu aprovar')
+  expect(message).toContain('Vou anexar a foto original')
   expect(message).toContain('Melhor mãe do mundo')
   expect(message).toContain('Usar tons de rosa')
-  expect(message).toContain('prévia do site é apenas uma simulação')
+  expect(message).toContain('Aguardo o mockup')
   expect(message).toContain('Minha cidade/CEP')
+  expect(message).not.toContain('Enquadramento escolhido')
+  expect(message).not.toContain('gabarito 21 × 8,7 cm')
 
-  await page.getByRole('radio', { name: /Quero que vocês criem/ }).check()
-  await expect(page.getByRole('heading', { name: 'Ajuste sua foto' })).toHaveCount(0)
-  await expect(page.getByRole('button', { name: 'Baixar prévia 21 × 8,7 cm' })).toHaveCount(0)
-  await expect(page.getByText('O enquadramento final será preparado por nós.')).toBeVisible()
-  await expect(page.getByLabel('Como você imagina sua caneca?')).toHaveValue('Usar tons de rosa')
-
-  const assistedWhatsapp = page.getByRole('link', { name: 'Pedir criação pelo WhatsApp' })
-  const assistedHref = await assistedWhatsapp.getAttribute('href')
-  const assistedMessage = new URL(assistedHref ?? '').searchParams.get('text') ?? ''
-  expect(assistedMessage).toContain('quero que a Criativa Canecas prepare o mockup para mim')
-  expect(assistedMessage).toContain('Foto original: “logo.png”')
-  expect(assistedMessage).toContain('podem propor a melhor composição')
-  expect(assistedMessage).not.toContain('Enquadramento escolhido')
-  expect(assistedMessage).not.toContain('gabarito 21 × 8,7 cm')
-})
-
-test('personalização mantém imagem e frase no fallback sem WebGL 2', async ({ page }) => {
-  await page.addInitScript(() => {
-    const originalGetContext = HTMLCanvasElement.prototype.getContext
-    HTMLCanvasElement.prototype.getContext = function (contextId: string, ...args: unknown[]) {
-      if (contextId === 'webgl2') return null
-      return originalGetContext.call(this, contextId, ...args)
-    } as typeof HTMLCanvasElement.prototype.getContext
+  await page.getByRole('button', { name: 'Remover imagem' }).click()
+  await page.evaluate(() => {
+    Object.defineProperty(navigator, 'canShare', { configurable: true, value: () => false })
   })
-
-  await page.goto('/personalizada')
-  await expect(page.getByText('Prévia 2D ativa')).toBeVisible()
   await page.locator('input[type=file]').setInputFiles('public/img/logo.png')
-  await page.getByLabel('Nome ou frase').fill('Nossa caneca')
-  await expect(page.getByAltText('Imagem escolhida na simulação 2D')).toBeVisible()
-  await expect(page.locator('.fallback-print')).toContainText('Nossa caneca')
+  await expect(page.getByRole('button', { name: 'Compartilhar foto e pedido' })).toHaveCount(0)
+  await expect(page.getByText(/Se não estiver, anexe-a manualmente na conversa/)).toBeVisible()
 })
 
 test('orçamento persiste, ajusta quantidade e gera mensagem consolidada', async ({ page }) => {
