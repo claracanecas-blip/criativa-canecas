@@ -104,6 +104,7 @@ Atualizada em 29 de agosto de 2026. Este arquivo preserva contexto operacional e
 - A faixa superior da home passou a comunicar entrega ou retirada em Araranguá e envio pelos Correios. A mudança não altera banco, catálogo ou política comercial; typecheck, build com 741 URLs, 69 testes e os cenários E2E de estrutura/acessibilidade da home foram aprovados localmente antes da publicação direta autorizada na `main`.
 - Um incremento local de 29 de agosto substituiu a caneca plana em CSS de `/personalizada` por uma prévia 3D procedural com Three.js. Imagem e frase viram uma textura dinâmica local; mouse, toque, teclado e botões giram a caneca, roda/pinça controlam zoom e dispositivos sem WebGL 2 recebem fallback 2D. A rota continua sem upload ou persistência do arquivo do cliente.
 - Por decisão do proprietário, `/personalizada` oferece somente `Caneca personalizada` e `Caneca personalizada com foto`. Caneca mágica e a opção colorida separada foram removidas; a cor deixa de ser apresentada como produto independente. O incremento está no PR em rascunho `#8`, com preview Vercel `Ready` protegido por autenticação; `main` e a produção permanecem inalteradas até aprovação. A evidência está em `docs/baselines/2026-08-29-personalization-3d/`.
+- A revisão do PR `#8` acrescentou um editor plano complementar para fotos: o cliente arrasta a imagem dentro da área aproximada de impressão, usa ações de foto inteira, preenchimento e centralização, controla zoom até 250% e conserva ajustes finos e teclado. A mesma composição atualiza imediatamente a caneca 3D e o fallback 2D, sem upload.
 
 ## Decisões tomadas
 
@@ -147,6 +148,7 @@ Atualizada em 29 de agosto de 2026. Este arquivo preserva contexto operacional e
 37. Manter produto e decisão comercial na primeira dobra da home; detalhes decorativos devem ter baixo contraste, não competir com as canecas e ser reduzidos no celular.
 38. Renderizar a prévia 3D somente na rota personalizada, manter controles HTML acessíveis e preservar fallback 2D quando WebGL 2 estiver indisponível; o arquivo do cliente continua exclusivamente local.
 39. Tratar a área 3D como simulação comercial, não como prova dimensional de produção, até confirmar medidas reais da caneca e da área imprimível.
+40. Separar as responsabilidades de interação: usar uma área plana e delimitada para enquadrar a foto sem disputar gestos com a câmera, e manter a caneca 3D como visualização do resultado curvo.
 
 ## Histórico relevante
 

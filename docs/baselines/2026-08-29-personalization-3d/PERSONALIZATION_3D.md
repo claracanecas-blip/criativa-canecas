@@ -12,6 +12,8 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 - A imagem e a frase são compostas em um canvas local e aplicadas à área curva por uma textura dinâmica.
 - A caneca pode ser girada por mouse, toque, botões ou teclado; zoom funciona por roda do mouse e gesto de pinça.
 - Escala e posição da imagem continuam disponíveis nos controles acessíveis existentes.
+- A foto ganhou uma área plana complementar de enquadramento: arraste direto, teclado, zoom de 70% a 250%, ações de `Foto inteira`, `Preencher` e `Centralizar`, além de sliders de ajuste fino.
+- Separar o enquadramento plano do giro da caneca evita que o mesmo gesto tente mover a foto e a câmera 3D ao mesmo tempo.
 - O renderizador limita a densidade de pixels e só pertence ao chunk sob demanda da rota personalizada.
 - Dispositivos sem WebGL 2 mantêm uma simulação 2D e o fluxo comercial continua utilizável.
 - O seletor comercial foi simplificado para `Caneca personalizada` e `Caneca personalizada com foto`; caneca mágica e opção colorida separada foram removidas por decisão do proprietário.
@@ -27,15 +29,16 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 
 - A área 3D possui descrição, status anunciado e foco visível.
 - Botões permitem girar e centralizar sem gesto; setas e `Home` oferecem operação por teclado.
+- O editor da foto aceita arraste por ponteiro/toque; setas movem, `+`/`−` alteram o zoom e `Home` centraliza. Os mesmos ajustes permanecem disponíveis em controles HTML.
 - O canvas não substitui os campos e controles HTML que descrevem e alteram a personalização.
 - A simulação continua identificada como aproximada e não substitui a arte final aprovada antes da produção.
 
 ## Validação
 
-- 72 testes unitários aprovados, incluindo aparência das opções e cálculo de proporção, escala e deslocamento da arte.
+- 73 testes unitários aprovados, incluindo aparência das opções, cálculo de proporção, escala, preenchimento e deslocamento da arte.
 - `npm run typecheck`: aprovado.
 - `npm run build`: aprovado, com 721 produtos, 17 coleções e 741 URLs no SEO.
-- Playwright: seis cenários direcionados aprovados em Chrome desktop e Safari móvel, cobrindo upload, duas opções comerciais, contexto do WhatsApp, controles 3D, acessibilidade e foto/frase no fallback 2D.
+- Playwright: seis cenários direcionados aprovados em Chrome desktop e Safari móvel, cobrindo upload, enquadramento por preset e arraste, centralização, duas opções comerciais, contexto do WhatsApp, controles 3D, acessibilidade e foto/frase no fallback 2D.
 - Axe: `/personalizada` sem violações automáticas WCAG 2.2 A/AA em Chrome desktop e Safari móvel.
 - Inspeção visual concluída em 1440 × 1000 e 390 × 844 com imagem, frase, textura curva e layout responsivo.
 
@@ -51,7 +54,7 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 
 - A geometria representa uma caneca genérica. Fidelidade dimensional da área imprimível depende das medidas reais do modelo produzido.
 - O 3D melhora a decisão visual, mas não garante corte, cor ou posição final de impressão; a aprovação humana permanece obrigatória.
-- O chunk 3D é carregado somente em `/personalizada`, mas ainda adiciona aproximadamente 140 KB gzip nessa rota.
+- O chunk 3D e o editor são carregados somente em `/personalizada`, adicionando aproximadamente 143 KB gzip nessa rota.
 
 ## Rollback
 

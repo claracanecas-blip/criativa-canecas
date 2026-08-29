@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from 'vue'
 import { ImagePlus, MessageCircle, ShieldCheck, Trash2 } from '@lucide/vue'
+import ArtworkPositionEditor from '@/components/ArtworkPositionEditor.vue'
 import Mug3DPreview from '@/components/Mug3DPreview.vue'
 import { deliveryPolicy, linkWhatsapp } from '@/data/site'
 import { trackWhatsappClick } from '@/services/analytics'
@@ -76,17 +77,24 @@ onBeforeUnmount(releaseImage)
 
         <label class="upload-control">
           <span>Imagem ou foto</span>
-          <span class="upload-button"><ImagePlus :size="19" /> {{ imageName || 'Escolher imagem' }}</span>
+          <span class="upload-button"><ImagePlus :size="19" /> {{ imageName ? `Trocar foto · ${imageName}` : 'Escolher foto' }}</span>
           <input ref="fileInput" type="file" accept="image/jpeg,image/png,image/webp" @change="selectImage">
           <small>JPEG, PNG ou WebP, até 10 MB.</small>
         </label>
         <p v-if="errorMessage" class="error" role="alert">{{ errorMessage }}</p>
 
         <div v-if="imageUrl" class="adjustments">
-          <label>Tamanho da imagem <input v-model.number="imageScale" type="range" min="70" max="170" step="5"></label>
-          <label>Posição horizontal <input v-model.number="imageX" type="range" min="-35" max="35" step="1"></label>
-          <label>Posição vertical <input v-model.number="imageY" type="range" min="-35" max="35" step="1"></label>
-          <button type="button" @click="releaseImage"><Trash2 :size="16" /> Remover imagem</button>
+          <ArtworkPositionEditor
+            :image-url="imageUrl"
+            :image-scale="imageScale"
+            :image-x="imageX"
+            :image-y="imageY"
+            :phrase="phrase"
+            @update:image-scale="imageScale = $event"
+            @update:image-x="imageX = $event"
+            @update:image-y="imageY = $event"
+          />
+          <button class="remove-image" type="button" @click="releaseImage"><Trash2 :size="16" /> Remover foto</button>
         </div>
 
         <label>Nome ou frase
@@ -115,6 +123,6 @@ onBeforeUnmount(releaseImage)
 </template>
 
 <style scoped>
-.personalization-preview{margin-top:38px;padding:28px;border:1px solid #efbfd0;border-radius:22px;background:linear-gradient(135deg,#fff7fa,#fff)}.personalization-preview>header{text-align:center;margin-bottom:24px}.personalization-preview>header small{color:var(--pink-dark);font-size:11px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}.personalization-preview h2{margin:5px 0 5px;font-size:28px}.personalization-preview>header p{max-width:650px;margin:0 auto;color:var(--muted);font-size:13px;line-height:1.5}.preview-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.9fr);gap:28px;align-items:start}.preview-form{display:grid;gap:14px}.preview-form label{display:grid;gap:6px;color:#5e3141;font-size:12px;font-weight:900}.preview-form input[type=text],.preview-form select,.preview-form textarea{width:100%;padding:11px 12px;border:1px solid #d8c8cf;border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-weight:500;outline:none}.preview-form input:focus,.preview-form select:focus,.preview-form textarea:focus{border-color:var(--pink);box-shadow:0 0 0 3px #ffe4ee}.upload-control input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.upload-button{display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border:1px dashed var(--pink-dark);border-radius:10px;background:#fff;color:var(--pink-dark);cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.upload-control:focus-within .upload-button{outline:3px solid #ffd0e0}.upload-control small{color:var(--muted);font-weight:600}.error{margin:0;color:#9a233b;font-size:12px;font-weight:850}.adjustments{display:grid;gap:8px;padding:12px;border-radius:12px;background:#fff}.adjustments label{grid-template-columns:145px 1fr;align-items:center;font-size:11px}.adjustments button{display:flex;align-items:center;gap:5px;justify-self:start;border:0;background:transparent;color:#8b304e;font-weight:800;cursor:pointer}.preview-result{position:sticky;top:18px}.simulation-note{display:flex;align-items:center;justify-content:center;gap:7px;color:var(--muted);font-size:11px;line-height:1.4}.preview-whatsapp{display:flex;align-items:center;justify-content:center;gap:7px;padding:13px;border-radius:10px;background:#087f3f;color:#fff;font-weight:900}.preview-whatsapp:hover{background:#075e35}.attachment-note{margin:8px 0 0;text-align:center;color:var(--muted);font-size:11px;line-height:1.4}
+.personalization-preview{margin-top:38px;padding:28px;border:1px solid #efbfd0;border-radius:22px;background:linear-gradient(135deg,#fff7fa,#fff)}.personalization-preview>header{text-align:center;margin-bottom:24px}.personalization-preview>header small{color:var(--pink-dark);font-size:11px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}.personalization-preview h2{margin:5px 0 5px;font-size:28px}.personalization-preview>header p{max-width:650px;margin:0 auto;color:var(--muted);font-size:13px;line-height:1.5}.preview-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.9fr);gap:28px;align-items:start}.preview-form{display:grid;gap:14px}.preview-form>label{display:grid;gap:6px;color:#5e3141;font-size:12px;font-weight:900}.preview-form input[type=text],.preview-form select,.preview-form textarea{width:100%;padding:11px 12px;border:1px solid #d8c8cf;border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-weight:500;outline:none}.preview-form input:focus,.preview-form select:focus,.preview-form textarea:focus{border-color:var(--pink);box-shadow:0 0 0 3px #ffe4ee}.upload-control input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.upload-button{display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border:1px dashed var(--pink-dark);border-radius:10px;background:#fff;color:var(--pink-dark);cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.upload-control:focus-within .upload-button{outline:3px solid #ffd0e0}.upload-control small{color:var(--muted);font-weight:600}.error{margin:0;color:#9a233b;font-size:12px;font-weight:850}.adjustments{display:grid;gap:7px}.remove-image{display:flex;align-items:center;gap:5px;justify-self:start;padding:6px 2px;border:0;background:transparent;color:#8b304e;font:inherit;font-size:11px;font-weight:850;cursor:pointer}.remove-image:focus-visible{outline:3px solid #f3a8c1;outline-offset:2px}.preview-result{position:sticky;top:18px}.simulation-note{display:flex;align-items:center;justify-content:center;gap:7px;color:var(--muted);font-size:11px;line-height:1.4}.preview-whatsapp{display:flex;align-items:center;justify-content:center;gap:7px;padding:13px;border-radius:10px;background:#087f3f;color:#fff;font-weight:900}.preview-whatsapp:hover{background:#075e35}.attachment-note{margin:8px 0 0;text-align:center;color:var(--muted);font-size:11px;line-height:1.4}
 @media(max-width:800px){.personalization-preview{padding:20px}.preview-layout{grid-template-columns:1fr}.preview-result{position:static}.personalization-preview h2{font-size:23px}.adjustments label{grid-template-columns:125px 1fr}}
 </style>

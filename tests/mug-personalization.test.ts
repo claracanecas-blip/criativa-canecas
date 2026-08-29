@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {
+  ARTWORK_SCALE_MAX,
   calculateArtworkPlacement,
+  calculateFillScalePercent,
   MUG_TEXTURE_HEIGHT,
   MUG_TEXTURE_WIDTH,
   resolveMugAppearance,
@@ -26,7 +28,16 @@ test('posicionamento mantém proporção e responde a escala e deslocamento', ()
 
 test('posicionamento limita valores externos ao intervalo oferecido na interface', () => {
   const maximum = calculateArtworkPlacement(1000, 1000, 999, 999, 999, true)
-  const clamped = calculateArtworkPlacement(1000, 1000, 170, 35, 35, true)
+  const clamped = calculateArtworkPlacement(1000, 1000, ARTWORK_SCALE_MAX, 35, 35, true)
 
   assert.deepEqual(maximum, clamped)
+})
+
+test('preenchimento amplia fotos verticais sem ultrapassar o limite seguro', () => {
+  const portraitScale = calculateFillScalePercent(900, 1600, false)
+  const landscapeScale = calculateFillScalePercent(1600, 900, false)
+
+  assert.ok(portraitScale > 100)
+  assert.equal(portraitScale, ARTWORK_SCALE_MAX)
+  assert.equal(landscapeScale, 100)
 })
