@@ -1,6 +1,6 @@
 # Memória do projeto — Criativa Canecas
 
-Atualizada em 28 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
+Atualizada em 29 de agosto de 2026. Este arquivo preserva contexto operacional e decisões entre sessões. Não deve conter tokens, senhas ou chaves privadas.
 
 ## Identidade e serviços
 
@@ -99,9 +99,11 @@ Atualizada em 28 de agosto de 2026. Este arquivo preserva contexto operacional e
 - Após revisão do proprietário, o zoom modal de tela cheia foi substituído por ampliação de 2,4× recortada na própria caixa: acompanha o cursor no computador, ativa por toque e arraste no celular e continua operável por teclado. O PR `#4` foi mesclado por `3e51a2c`; Vercel ficou `Ready` e o smoke de produção confirmou foco proporcional ao cursor/toque, ausência de modal e ausência de overflow.
 - O preview Vercel da Fase 11 ficou `Ready` e respondeu `200` nas rotas home, produto, coleção, busca e personalizada. O CI aprovou 69 testes, typecheck, build, 104 cenários Playwright/Axe nos quatro perfis principais, 26 no Edge e Lighthouse com todas as categorias em pelo menos 90.
 - Nos modelos prontos do catálogo, os CTAs agora dizem `Pedir pelo WhatsApp` nos cards e `Pedir este modelo pelo WhatsApp` na página do produto. A mensagem identifica interesse no modelo, SKU e URL; `personalizar` permanece reservado ao fluxo `/personalizada`.
-- A seção comercial de `/personalizada` apresenta somente canecas prontas e personalizadas: tradicional, mágica, colorida e com foto. Cada opção informa o que o cliente recebe, personalização inclusa e valor; nenhuma caneca sem estampa é anunciada ou oferecida.
+- A seção comercial de `/personalizada` apresenta somente `Caneca personalizada` e `Caneca personalizada com foto`. Cada opção informa o que o cliente recebe, personalização inclusa e valor; nenhuma caneca sem estampa é anunciada ou oferecida.
 - A nova home aprovada em 28 de agosto de 2026 coloca produtos reais e os caminhos `Ver modelos`/`Criar minha caneca` na primeira dobra, antecipa categorias com miniaturas, mantém oito modelos em destaque e apresenta personalização e entrega em uma sequência comercial clara. O hero rosa usa somente textura pontilhada, curvas e brilhos discretos, com composição específica para celular.
 - A faixa superior da home passou a comunicar entrega ou retirada em Araranguá e envio pelos Correios. A mudança não altera banco, catálogo ou política comercial; typecheck, build com 741 URLs, 69 testes e os cenários E2E de estrutura/acessibilidade da home foram aprovados localmente antes da publicação direta autorizada na `main`.
+- Um incremento local de 29 de agosto substituiu a caneca plana em CSS de `/personalizada` por uma prévia 3D procedural com Three.js. Imagem e frase viram uma textura dinâmica local; mouse, toque, teclado e botões giram a caneca, roda/pinça controlam zoom e dispositivos sem WebGL 2 recebem fallback 2D. A rota continua sem upload ou persistência do arquivo do cliente.
+- Por decisão do proprietário, `/personalizada` oferece somente `Caneca personalizada` e `Caneca personalizada com foto`. Caneca mágica e a opção colorida separada foram removidas; a cor deixa de ser apresentada como produto independente. O incremento permanece local até publicação autorizada e está documentado em `docs/baselines/2026-08-29-personalization-3d/`.
 
 ## Decisões tomadas
 
@@ -143,6 +145,8 @@ Atualizada em 28 de agosto de 2026. Este arquivo preserva contexto operacional e
 35. Manter a prévia de personalização inteiramente no navegador: arquivo temporário não é persistido nem enviado automaticamente; o cliente anexa a imagem no WhatsApp e aprova a arte final antes da produção.
 36. Exibir ficha e prova social apenas com dados seguros: material/capacidade permanecem como confirmação por modelo e avaliações/fotos só aparecem após moderação e consentimento reais.
 37. Manter produto e decisão comercial na primeira dobra da home; detalhes decorativos devem ter baixo contraste, não competir com as canecas e ser reduzidos no celular.
+38. Renderizar a prévia 3D somente na rota personalizada, manter controles HTML acessíveis e preservar fallback 2D quando WebGL 2 estiver indisponível; o arquivo do cliente continua exclusivamente local.
+39. Tratar a área 3D como simulação comercial, não como prova dimensional de produção, até confirmar medidas reais da caneca e da área imprimível.
 
 ## Histórico relevante
 
@@ -190,12 +194,13 @@ Upload exige `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` apenas no ambiente da 
 - O DNS permanece administrado no Registro.br; os registros raiz e `www` apontam para a Vercel. Não trocar nameservers nem remover o hostname anterior antes de validar um rollback.
 - A Fase 8 ainda depende de CNPJ ou identificação pública aplicável, endereço e e-mail, condições oficiais restantes de troca, materiais, cuidados e prazos, além de avaliações reais; domínio, cidade de atendimento local, nome do responsável, WhatsApp e opções de entrega já foram confirmados.
 - A Fase 11 está funcional sem esses dados, mas a ficha só poderá informar material/capacidade exatos e a galeria/prova social só ficará completa após o fornecimento de especificações, fotos reais e avaliações autorizadas.
+- A prévia 3D usa geometria genérica; sem medidas reais da caneca e da área imprimível, a curvatura e o enquadramento são aproximados e não substituem a arte final aprovada.
 - Há atividade residual do GitHub Pages, mas produção oficial é Vercel; não desativar serviço externo sem autorização explícita.
 - Mesmo após a redução de aproximadamente 52%, a home ainda carrega o catálogo remoto completo para sustentar busca, menus e orçamento compartilhados. Consultas por rota são o próximo passo de escala, mas exigem redesenhar cache, busca e resolução dos itens persistidos.
 
 ## Próxima execução recomendada
 
-1. Coletar dados técnicos por modelo, fotos adicionais reais e avaliações autorizadas para completar ficha, galeria e prova social sem conteúdo inventado.
+1. Coletar medidas reais da caneca e da área imprimível, além dos dados técnicos por modelo, para calibrar a prévia 3D e completar a ficha sem conteúdo inventado.
 2. Especificar consultas por rota para a home não precisar carregar todos os produtos.
 3. Após 30 dias, reconciliar métricas com vendas reais e revisar `docs/decisions/CHECKOUT_DISCOVERY.md`.
 

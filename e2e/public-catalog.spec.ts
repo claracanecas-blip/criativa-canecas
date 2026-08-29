@@ -294,21 +294,50 @@ test('coleção pode ser refinada por tema, preço e ordenação', async ({ page
 test('prévia local de personalização preserva contexto no WhatsApp', async ({ page }) => {
   await page.goto('/personalizada')
   await expect(page.getByRole('heading', { name: 'Opções personalizadas e valores' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Monte sua prévia em 3D' })).toBeVisible()
+  await expect(page.getByText('Prévia 3D', { exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Girar caneca para a esquerda' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Centralizar' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Girar caneca para a direita' })).toBeVisible()
   await expect(page.getByText('Não vendemos canecas sem estampa.')).toBeVisible()
-  await expect(page.getByRole('heading', { level: 3, name: 'Caneca tradicional personalizada' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 3, name: 'Caneca personalizada', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 3, name: 'Caneca personalizada com foto' })).toBeVisible()
+  await expect(page.getByText('Caneca mágica personalizada')).toHaveCount(0)
+  await expect(page.getByText('Caneca colorida personalizada')).toHaveCount(0)
   await expect(page.getByText('Caneca branca', { exact: true })).toHaveCount(0)
-  await page.getByLabel('Modelo da caneca').selectOption('Caneca colorida personalizada')
+  await page.getByLabel('Modelo da caneca').selectOption('Caneca personalizada com foto')
+  await page.locator('input[type=file]').setInputFiles('public/img/logo.png')
+  await expect(page.locator('.upload-button')).toContainText('logo.png')
+  await expect(page.getByLabel('Tamanho da imagem')).toBeVisible()
   await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
   await page.getByLabel('Observações para a criação').fill('Usar tons de rosa')
 
   const whatsapp = page.getByRole('link', { name: 'Continuar pelo WhatsApp' })
   const href = await whatsapp.getAttribute('href')
   const message = new URL(href ?? '').searchParams.get('text') ?? ''
-  expect(message).toContain('Modelo escolhido: Caneca colorida personalizada')
+  expect(message).toContain('Modelo escolhido: Caneca personalizada com foto')
+  expect(message).toContain('Tenho a imagem “logo.png”')
   expect(message).toContain('Melhor mãe do mundo')
   expect(message).toContain('Usar tons de rosa')
   expect(message).toContain('prévia do site é apenas uma simulação')
   expect(message).toContain('Minha cidade/CEP')
+})
+
+test('personalização mantém imagem e frase no fallback sem WebGL 2', async ({ page }) => {
+  await page.addInitScript(() => {
+    const originalGetContext = HTMLCanvasElement.prototype.getContext
+    HTMLCanvasElement.prototype.getContext = function (contextId: string, ...args: unknown[]) {
+      if (contextId === 'webgl2') return null
+      return originalGetContext.call(this, contextId, ...args)
+    } as typeof HTMLCanvasElement.prototype.getContext
+  })
+
+  await page.goto('/personalizada')
+  await expect(page.getByText('Prévia 2D ativa')).toBeVisible()
+  await page.locator('input[type=file]').setInputFiles('public/img/logo.png')
+  await page.getByLabel('Nome ou frase').fill('Nossa caneca')
+  await expect(page.getByAltText('Imagem escolhida na simulação 2D')).toBeVisible()
+  await expect(page.locator('.fallback-print')).toContainText('Nossa caneca')
 })
 
 test('orçamento persiste, ajusta quantidade e gera mensagem consolidada', async ({ page }) => {
