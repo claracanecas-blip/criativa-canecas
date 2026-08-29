@@ -13,6 +13,9 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 - A caneca pode ser girada por mouse, toque, botões ou teclado; zoom funciona por roda do mouse e gesto de pinça.
 - Escala e posição da imagem continuam disponíveis nos controles acessíveis existentes.
 - A foto ganhou uma área plana complementar de enquadramento: arraste direto, teclado, zoom de 70% a 250%, ações de `Foto inteira`, `Preencher` e `Centralizar`, além de sliders de ajuste fino.
+- A área plana segue o gabarito operacional confirmado da caneca cerâmica branca: `21 × 8,7 cm`.
+- O navegador gera uma prévia PNG de `2480 × 1028 px`, com metadado de `300 dpi`, e oferece download ou compartilhamento nativo quando o dispositivo aceita arquivos.
+- Um indicador de resolução avisa quando o zoom exigiria ampliar demais a foto de origem.
 - Separar o enquadramento plano do giro da caneca evita que o mesmo gesto tente mover a foto e a câmera 3D ao mesmo tempo.
 - O renderizador limita a densidade de pixels e só pertence ao chunk sob demanda da rota personalizada.
 - Dispositivos sem WebGL 2 mantêm uma simulação 2D e o fluxo comercial continua utilizável.
@@ -22,7 +25,8 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 
 - JPEG, PNG e WebP continuam usando somente uma URL temporária criada pelo navegador.
 - O arquivo não é enviado ao Supabase, não entra em analytics e é descartado ao sair ou recarregar.
-- A mensagem do WhatsApp registra somente o nome do arquivo e orienta o cliente a anexá-lo na conversa.
+- A mensagem do WhatsApp registra o nome da foto original, zoom, posição, gabarito e nome da prévia, orientando o cliente a anexar tanto a prévia de enquadramento quanto o original de maior qualidade.
+- A prévia exportada também é criada inteiramente no navegador; não existe upload automático nem integração paga com a API da Meta.
 - Não houve migration, upload, serviço pago ou alteração de banco, Storage ou produção.
 
 ## Acessibilidade e compatibilidade
@@ -35,10 +39,10 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 
 ## Validação
 
-- 73 testes unitários aprovados, incluindo aparência das opções, cálculo de proporção, escala, preenchimento e deslocamento da arte.
+- 77 testes unitários aprovados, incluindo aparência das opções, cálculo de proporção, escala, preenchimento, deslocamento, resolução estimada, nome do arquivo e metadado PNG de densidade.
 - `npm run typecheck`: aprovado.
 - `npm run build`: aprovado, com 721 produtos, 17 coleções e 741 URLs no SEO.
-- Playwright: seis cenários direcionados aprovados em Chrome desktop e Safari móvel, cobrindo upload, enquadramento por preset e arraste, centralização, duas opções comerciais, contexto do WhatsApp, controles 3D, acessibilidade e foto/frase no fallback 2D.
+- Playwright: seis cenários direcionados aprovados em Chrome desktop e Safari móvel, cobrindo upload, enquadramento por preset e arraste, centralização, download em `2480 × 1028 px`/`300 dpi`, duas opções comerciais, contexto do WhatsApp, controles 3D, acessibilidade e foto/frase no fallback 2D.
 - Axe: `/personalizada` sem violações automáticas WCAG 2.2 A/AA em Chrome desktop e Safari móvel.
 - Inspeção visual concluída em 1440 × 1000 e 390 × 844 com imagem, frase, textura curva e layout responsivo.
 
@@ -52,9 +56,10 @@ Permitir que o cliente visualize a própria imagem e frase sobre a curvatura de 
 
 ## Limites conhecidos
 
-- A geometria representa uma caneca genérica. Fidelidade dimensional da área imprimível depende das medidas reais do modelo produzido.
+- A geometria representa uma caneca genérica. O plano exportável segue o gabarito confirmado, mas uma impressão física ainda deve conferir margens, emenda e orientação no equipamento real.
+- A prévia exportada registra a composição; não substitui o arquivo original nem garante que uma foto de baixa resolução se torne adequada para produção.
 - O 3D melhora a decisão visual, mas não garante corte, cor ou posição final de impressão; a aprovação humana permanece obrigatória.
-- O chunk 3D e o editor são carregados somente em `/personalizada`, adicionando aproximadamente 143 KB gzip nessa rota.
+- O chunk 3D, o editor e a exportação são carregados somente em `/personalizada`, totalizando aproximadamente 146 KB gzip nessa rota.
 
 ## Rollback
 

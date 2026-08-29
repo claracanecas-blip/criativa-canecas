@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
+import sharp from 'sharp'
 
 const publicPages = [
   { name: 'home', path: '/' },
@@ -341,11 +342,27 @@ test('prévia local de personalização preserva contexto no WhatsApp', async ({
   await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
   await page.getByLabel('Observações para a criação').fill('Usar tons de rosa')
 
-  const whatsapp = page.getByRole('link', { name: 'Continuar pelo WhatsApp' })
+  const downloadPromise = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Baixar prévia 21 × 8,7 cm' }).click()
+  const download = await downloadPromise
+  expect(download.suggestedFilename()).toBe('logo-previa-21x8-7cm.png')
+  const downloadedPath = await download.path()
+  if (!downloadedPath) throw new Error('Prévia baixada não possui caminho temporário')
+  const exportedMetadata = await sharp(downloadedPath).metadata()
+  expect(exportedMetadata.width).toBe(2480)
+  expect(exportedMetadata.height).toBe(1028)
+  expect(exportedMetadata.density).toBe(300)
+  await expect(page.getByText(/Prévia “logo-previa-21x8-7cm.png” salva/)).toBeVisible()
+
+  const whatsapp = page.getByRole('link', { name: 'Abrir WhatsApp e enviar' })
   const href = await whatsapp.getAttribute('href')
   const message = new URL(href ?? '').searchParams.get('text') ?? ''
   expect(message).toContain('Modelo escolhido: Caneca personalizada com foto')
-  expect(message).toContain('Tenho a imagem “logo.png”')
+  expect(message).toContain('Foto original: “logo.png”')
+  expect(message).toContain('Enquadramento escolhido: zoom 100%')
+  expect(message).toContain('logo-previa-21x8-7cm.png')
+  expect(message).toContain('gabarito 21 × 8,7 cm')
+  expect(message).toContain('use também a foto original')
   expect(message).toContain('Melhor mãe do mundo')
   expect(message).toContain('Usar tons de rosa')
   expect(message).toContain('prévia do site é apenas uma simulação')

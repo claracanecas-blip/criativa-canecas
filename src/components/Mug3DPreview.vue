@@ -24,7 +24,7 @@ import {
 } from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import {
-  calculateArtworkPlacement,
+  drawPersonalizationArtwork,
   MUG_TEXTURE_HEIGHT,
   MUG_TEXTURE_WIDTH,
   resolveMugAppearance,
@@ -69,64 +69,19 @@ function requestRender() {
   })
 }
 
-function wrapPhrase(context: CanvasRenderingContext2D, phrase: string, maximumWidth: number) {
-  const words = phrase.trim().split(/\s+/).filter(Boolean)
-  const lines: string[] = []
-  let current = ''
-
-  for (const word of words) {
-    const candidate = current ? `${current} ${word}` : word
-    if (current && context.measureText(candidate).width > maximumWidth) {
-      lines.push(current)
-      current = word
-    } else {
-      current = candidate
-    }
-  }
-  if (current) lines.push(current)
-  return lines.slice(0, 3)
-}
-
 function drawArtwork() {
   if (!textureCanvas || !artworkTexture) return
   const context = textureCanvas.getContext('2d')
   if (!context) return
-
-  context.clearRect(0, 0, MUG_TEXTURE_WIDTH, MUG_TEXTURE_HEIGHT)
-  const hasPhrase = Boolean(props.phrase.trim())
-
-  if (loadedImage) {
-    const placement = calculateArtworkPlacement(
-      loadedImage.naturalWidth,
-      loadedImage.naturalHeight,
-      props.imageScale,
-      props.imageX,
-      props.imageY,
-      hasPhrase,
-    )
-    context.drawImage(loadedImage, placement.x, placement.y, placement.width, placement.height)
-  }
-
-  if (hasPhrase) {
-    const fontSize = loadedImage ? 50 : 68
-    context.font = `900 ${fontSize}px Arial, sans-serif`
-    context.textAlign = 'center'
-    context.textBaseline = 'middle'
-    context.lineJoin = 'round'
-    const lines = wrapPhrase(context, props.phrase, 790)
-    const lineHeight = fontSize * 1.08
-    const totalHeight = lines.length * lineHeight
-    const centerY = loadedImage ? 425 : MUG_TEXTURE_HEIGHT / 2
-    const firstY = centerY - totalHeight / 2 + lineHeight / 2
-    for (const [index, line] of lines.entries()) {
-      const y = firstY + index * lineHeight
-      context.strokeStyle = 'rgba(255, 255, 255, .92)'
-      context.lineWidth = 12
-      context.strokeText(line, MUG_TEXTURE_WIDTH / 2, y)
-      context.fillStyle = '#872643'
-      context.fillText(line, MUG_TEXTURE_WIDTH / 2, y)
-    }
-  }
+  drawPersonalizationArtwork(context, MUG_TEXTURE_WIDTH, MUG_TEXTURE_HEIGHT, {
+    image: loadedImage,
+    imageWidth: loadedImage?.naturalWidth ?? 1,
+    imageHeight: loadedImage?.naturalHeight ?? 1,
+    imageScale: props.imageScale,
+    imageX: props.imageX,
+    imageY: props.imageY,
+    phrase: props.phrase,
+  })
 
   artworkTexture.needsUpdate = true
   requestRender()

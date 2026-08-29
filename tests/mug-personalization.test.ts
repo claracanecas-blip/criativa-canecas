@@ -3,9 +3,12 @@ import test from 'node:test'
 import {
   ARTWORK_SCALE_MAX,
   calculateArtworkPlacement,
+  calculateArtworkQuality,
   calculateFillScalePercent,
   MUG_TEXTURE_HEIGHT,
   MUG_TEXTURE_WIDTH,
+  PRINT_EXPORT_HEIGHT,
+  PRINT_EXPORT_WIDTH,
   resolveMugAppearance,
 } from '../src/utils/mugPersonalization.ts'
 
@@ -40,4 +43,17 @@ test('preenchimento amplia fotos verticais sem ultrapassar o limite seguro', () 
   assert.ok(portraitScale > 100)
   assert.equal(portraitScale, ARTWORK_SCALE_MAX)
   assert.equal(landscapeScale, 100)
+})
+
+test('gabarito de exportação corresponde a 21 por 8,7 cm em 300 dpi', () => {
+  assert.equal(PRINT_EXPORT_WIDTH, 2480)
+  assert.equal(PRINT_EXPORT_HEIGHT, 1028)
+  assert.equal(MUG_TEXTURE_WIDTH / MUG_TEXTURE_HEIGHT, PRINT_EXPORT_WIDTH / PRINT_EXPORT_HEIGHT)
+})
+
+test('qualidade considera o enquadramento e alerta sobre ampliação excessiva', () => {
+  assert.equal(calculateArtworkQuality(4000, 3000, 100, false).level, 'good')
+  const enlarged = calculateArtworkQuality(400, 400, ARTWORK_SCALE_MAX, false)
+  assert.equal(enlarged.level, 'low')
+  assert.ok(enlarged.effectiveDpi < 100)
 })
