@@ -27,14 +27,14 @@ A oferta comercial também foi consolidada em uma única `Caneca personalizada` 
 
 ## Validação
 
-- 69 testes unitários aprovados.
+- 70 testes unitários aprovados.
 - `npm run typecheck`: aprovado.
 - `npm run build`: aprovado, com 721 produtos, 17 coleções e 741 URLs no SEO.
-- `108/108` cenários Playwright/Axe aprovados em Chrome, Firefox, Safari desktop e Safari móvel. A personalização cobre seleção e remoção do arquivo, compartilhamento nativo simulado, fallback sem suporte a arquivos, resumo completo e ausência de editor/3D/download.
+- `112/112` cenários Playwright/Axe aprovados em Chrome, Firefox, Safari desktop e Safari móvel. A personalização cobre oferta e valores, seleção e remoção do arquivo, compartilhamento nativo simulado, fallback sem suporte a arquivos, resumo completo e ausência de editor/3D/download.
 - Inspeção visual aprovada em `1440 × 1000` e `390 × 844` com uma arte real mantida fora do projeto; nenhum arquivo do acervo foi copiado, enviado ou versionado.
-- O Edge local mantém a falha conhecida de encerramento no lançamento; o GitHub Actions aprovou `27/27` cenários nesse perfil.
-- O CI do commit `34d03d6` aprovou 69 testes, typecheck, build, `108/108` cenários nos quatro perfis principais, `27/27` no Edge e Lighthouse com todas as categorias em pelo menos `90`.
-- A Vercel publicou o preview `Ready` no alias da branch; o PR `#8` permanece em rascunho e `main`/produção não foram alteradas.
+- O Edge local mantém a falha conhecida de encerramento no lançamento; o GitHub Actions aprovou `28/28` cenários nesse perfil.
+- O CI da `main` no merge `a84c342` aprovou 70 testes, typecheck, build, `112/112` cenários nos quatro perfis principais, `28/28` no Edge e Lighthouse com todas as categorias em pelo menos `90`.
+- A Vercel publicou o deployment de produção `dpl_92kp1f2yz5Q4xrD7JhJye22HjZaa` em estado `Ready`. O smoke navegável no domínio oficial confirmou a oferta única, `R$ 39,90`, taxa condicional de `R$ 5,00`, total de `R$ 44,90`, isenção para arte pronta e mensagem destinada ao WhatsApp oficial.
 
 ## Rollback
 
