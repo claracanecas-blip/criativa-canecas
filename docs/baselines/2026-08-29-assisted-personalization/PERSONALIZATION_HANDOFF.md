@@ -6,7 +6,7 @@ Data: 29 de agosto de 2026.
 
 `/personalizada` usa um único fluxo assistido. O cliente envia a imagem original e descreve a ideia; a Criativa Canecas prepara o mockup e o cliente aprova antes da produção. O editor e a simulação automática foram retirados para reduzir esforço, dúvida e divergência entre a visualização do site e a arte final.
 
-A oferta comercial também foi consolidada em uma única `Caneca personalizada` por `R$ 39,90`. A estampa está incluída. Criação ou adaptação da arte acrescenta `R$ 5,00` somente quando a equipe precisar executar esse trabalho, totalizando `R$ 44,90`; se o cliente enviar arte pronta para impressão, a taxa não é cobrada.
+A oferta comercial também foi consolidada em uma única `Caneca personalizada`, apresentada em dois níveis do mesmo serviço: `R$ 39,90` com arte pronta para impressão e `R$ 44,90` com criação ou adaptação da composição pela equipe. A diferença não é apresentada como taxa, pois “personalizada” já pode sugerir criação inclusa.
 
 ## Funcionamento
 
@@ -14,7 +14,7 @@ A oferta comercial também foi consolidada em uma única `Caneca personalizada` 
 - A imagem selecionada fica somente na memória do navegador. O site exibe nome e confirmação, sem upload ou persistência.
 - Em celulares cuja Web Share API aceita arquivos, `Enviar foto e pedido pelo WhatsApp` abre o seletor nativo com o original e um resumo curto; o cliente escolhe o WhatsApp e a conversa da Criativa.
 - No computador, a caixa de seleção da imagem fica oculta para não pedir o mesmo arquivo duas vezes. Mesmo quando o sistema informa suporte genérico ao compartilhamento, `Abrir WhatsApp da Criativa` direciona ao número oficial e pede que a foto seja anexada somente na conversa. O mesmo fallback é usado em celulares sem compartilhamento de arquivos.
-- Para evitar duas ações concorrentes, apenas um dos caminhos aparece. O resumo contém modelo, nome do arquivo, frase, detalhes, valor da caneca, regra da taxa de arte, pedido de mockup e campo de cidade/CEP.
+- Para evitar duas ações concorrentes, apenas um dos caminhos aparece. O resumo contém modelo, nome do arquivo, frase, detalhes, os dois níveis de valor em uma linha, pedido de mockup e campo de cidade/CEP.
 - Links `wa.me` não transportam anexos. Por isso, a interface orienta conferir se o compartilhamento levou a foto e anexá-la manualmente quando necessário.
 - A equipe recebe o original, prepara o melhor enquadramento e devolve o mockup para aprovação humana.
 

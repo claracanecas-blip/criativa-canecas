@@ -41,10 +41,9 @@ test('política de entrega mantém preço, atendimento local e envio centralizad
   assert.match(deliveryPolicy.contactPrompt, /cidade\/CEP/i)
 })
 
-test('personalização separa o valor da caneca da taxa condicional de arte', () => {
-  assert.equal(personalizationPolicy.mugPrice, 'R$ 39,90')
-  assert.equal(personalizationPolicy.artCreationFee, 'R$ 5,00')
-  assert.equal(personalizationPolicy.totalWithArtCreation, 'R$ 44,90')
-  assert.match(personalizationPolicy.artCreationRule, /somente quando.*criar ou adaptar/i)
-  assert.match(personalizationPolicy.artCreationRule, /arte pronta.*não cobramos/i)
+test('personalização apresenta os valores por nível de serviço sem taxa separada', () => {
+  assert.equal(personalizationPolicy.readyArtPrice, 'R$ 39,90')
+  assert.equal(personalizationPolicy.assistedArtPrice, 'R$ 44,90')
+  assert.match(personalizationPolicy.readyArtDescription, /prontos para impressão/i)
+  assert.match(personalizationPolicy.assistedArtDescription, /criação ou adaptação/i)
 })
