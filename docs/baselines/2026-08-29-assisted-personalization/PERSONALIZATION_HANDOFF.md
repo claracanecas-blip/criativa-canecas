@@ -11,7 +11,7 @@ Data: 29 de agosto de 2026.
 - O formulário coleta modelo, JPEG/PNG/WebP de até 10 MB, frase opcional e orientações.
 - A imagem selecionada fica somente na memória do navegador. O site exibe nome e confirmação, sem upload ou persistência.
 - Em celulares cuja Web Share API aceita arquivos, `Enviar foto e pedido pelo WhatsApp` abre o seletor nativo com o original e um resumo curto; o cliente escolhe o WhatsApp e a conversa da Criativa.
-- No computador, mesmo quando o sistema informa suporte genérico ao compartilhamento, a interface usa `Abrir WhatsApp da Criativa` para direcionar ao número oficial e pede o anexo manual. O mesmo fallback é usado em celulares sem compartilhamento de arquivos.
+- No computador, a caixa de seleção da imagem fica oculta para não pedir o mesmo arquivo duas vezes. Mesmo quando o sistema informa suporte genérico ao compartilhamento, `Abrir WhatsApp da Criativa` direciona ao número oficial e pede que a foto seja anexada somente na conversa. O mesmo fallback é usado em celulares sem compartilhamento de arquivos.
 - Para evitar duas ações concorrentes, apenas um dos caminhos aparece. O resumo contém modelo, nome do arquivo, frase, detalhes, pedido de mockup e campo de cidade/CEP.
 - Links `wa.me` não transportam anexos. Por isso, a interface orienta conferir se o compartilhamento levou a foto e anexá-la manualmente quando necessário.
 - A equipe recebe o original, prepara o melhor enquadramento e devolve o mockup para aprovação humana.

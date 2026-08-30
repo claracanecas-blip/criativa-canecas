@@ -315,7 +315,7 @@ test('pedido assistido encaminha a foto e preserva o contexto no WhatsApp', asyn
 
   await page.goto('/personalizada')
   await expect(page.getByRole('heading', { name: 'Opções personalizadas e valores' })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Envie sua foto e conte sua ideia' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Conte sua ideia e envie a foto pelo WhatsApp' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Envie para criarmos o mockup' })).toBeVisible()
   await expect(page.getByText('Não vendemos canecas sem estampa.')).toBeVisible()
   await expect(page.getByRole('heading', { level: 3, name: 'Caneca personalizada', exact: true })).toBeVisible()
@@ -350,15 +350,31 @@ test('pedido assistido encaminha a foto e preserva o contexto no WhatsApp', asyn
   expect(sharedRequest?.text).toContain('Detalhes: Usar tons de rosa')
   expect(sharedRequest?.text).toContain('Cidade/CEP:')
   expect(sharedRequest?.text).not.toContain('enquadramento, cores e texto')
+})
 
-  await page.getByRole('button', { name: 'Remover imagem' }).click()
-  await page.evaluate(() => {
+test('no computador abre o número da loja sem duplicar a seleção da foto', async ({ page }) => {
+  await page.addInitScript(() => {
     Object.defineProperty(navigator, 'userAgent', {
       configurable: true,
       value: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/125 Safari/537.36',
     })
+    Object.defineProperty(navigator, 'canShare', {
+      configurable: true,
+      value: () => true,
+    })
+    Object.defineProperty(navigator, 'share', {
+      configurable: true,
+      value: async () => undefined,
+    })
   })
-  await page.locator('input[type=file]').setInputFiles('public/img/logo.png')
+
+  await page.goto('/personalizada')
+  await expect(page.getByRole('heading', { name: 'Conte sua ideia e envie a foto pelo WhatsApp' })).toBeVisible()
+  await expect(page.locator('input[type=file]')).toHaveCount(0)
+  await expect(page.getByText('Foto ou imagem original')).toHaveCount(0)
+  await page.getByLabel('Modelo da caneca').selectOption('Caneca personalizada com foto')
+  await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
+  await page.getByLabel('Como você imagina sua caneca?').fill('Usar tons de rosa')
   await expect(page.getByRole('button', { name: 'Enviar foto e pedido pelo WhatsApp' })).toHaveCount(0)
   const whatsapp = page.getByRole('link', { name: 'Abrir WhatsApp da Criativa' })
   await expect(whatsapp).toBeVisible()
@@ -366,8 +382,11 @@ test('pedido assistido encaminha a foto e preserva o contexto no WhatsApp', asyn
   const whatsappUrl = new URL(href ?? '')
   const message = whatsappUrl.searchParams.get('text') ?? ''
   expect(whatsappUrl.pathname).toBe('/5548991992341')
-  expect(message).toBe(sharedRequest?.text)
-  await expect(page.getByText(/Anexe a foto logo.png/)).toBeVisible()
+  expect(message).toContain('Modelo: Caneca personalizada com foto')
+  expect(message).toContain('Frase: Melhor mãe do mundo')
+  expect(message).toContain('Detalhes: Usar tons de rosa')
+  expect(message).not.toContain('Foto:')
+  await expect(page.getByText(/Anexe a foto diretamente no WhatsApp/)).toBeVisible()
 })
 
 test('orçamento persiste, ajusta quantidade e gera mensagem consolidada', async ({ page }) => {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { CheckCircle2, ImagePlus, MessageCircle, Send, ShieldCheck, Trash2, WandSparkles } from '@lucide/vue'
 import { linkWhatsapp } from '@/data/site'
 import { trackWhatsappClick } from '@/services/analytics'
@@ -17,6 +17,7 @@ const shareMessage = ref('')
 const shareError = ref(false)
 const isSharing = ref(false)
 const canShareOriginal = ref(false)
+const offerImageUpload = ref(false)
 
 const imageName = computed(() => selectedFile.value?.name ?? '')
 
@@ -35,14 +36,14 @@ const requestText = computed(() => {
 
 const whatsapp = computed(() => linkWhatsapp(requestText.value))
 
-function refreshShareSupport(file?: File) {
-  if (!file || typeof navigator.canShare !== 'function' || typeof navigator.share !== 'function') {
-    canShareOriginal.value = false
-    return
-  }
+function isMobileShareDevice() {
   const mobileUserAgent = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
   const iPadDesktopMode = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1
-  if (!mobileUserAgent && !iPadDesktopMode) {
+  return mobileUserAgent || iPadDesktopMode
+}
+
+function refreshShareSupport(file?: File) {
+  if (!file || !offerImageUpload.value) {
     canShareOriginal.value = false
     return
   }
@@ -52,6 +53,12 @@ function refreshShareSupport(file?: File) {
     canShareOriginal.value = false
   }
 }
+
+onMounted(() => {
+  offerImageUpload.value = isMobileShareDevice()
+    && typeof navigator.canShare === 'function'
+    && typeof navigator.share === 'function'
+})
 
 function removeImage() {
   selectedFile.value = undefined
@@ -105,7 +112,7 @@ async function shareOriginal() {
   <section class="personalization-request" aria-labelledby="request-title">
     <header>
       <small>Mockup feito por nós</small>
-      <h2 id="request-title">Envie sua foto e conte sua ideia</h2>
+      <h2 id="request-title">Conte sua ideia e envie a foto pelo WhatsApp</h2>
       <p>Nós montamos a composição, enviamos o mockup pelo WhatsApp e só produzimos depois da sua aprovação.</p>
     </header>
 
@@ -115,19 +122,21 @@ async function shareOriginal() {
           <select v-model="selectedModel"><option v-for="model in models" :key="model" :value="model">{{ model }}</option></select>
         </label>
 
-        <label class="upload-control">
-          <span>Foto ou imagem original</span>
-          <span class="upload-button"><ImagePlus :size="19" /> {{ imageName ? `Trocar imagem · ${imageName}` : 'Escolher imagem' }}</span>
-          <input ref="fileInput" type="file" accept="image/jpeg,image/png,image/webp" @change="selectImage">
-          <small>Envie o arquivo com a melhor qualidade disponível. JPEG, PNG ou WebP, até 10 MB.</small>
-        </label>
-        <p v-if="errorMessage" class="error" role="alert">{{ errorMessage }}</p>
+        <template v-if="offerImageUpload">
+          <label class="upload-control">
+            <span>Foto ou imagem original</span>
+            <span class="upload-button"><ImagePlus :size="19" /> {{ imageName ? `Trocar imagem · ${imageName}` : 'Escolher imagem' }}</span>
+            <input ref="fileInput" type="file" accept="image/jpeg,image/png,image/webp" @change="selectImage">
+            <small>Envie o arquivo com a melhor qualidade disponível. JPEG, PNG ou WebP, até 10 MB.</small>
+          </label>
+          <p v-if="errorMessage" class="error" role="alert">{{ errorMessage }}</p>
 
-        <div v-if="selectedFile" class="selected-file">
-          <p><CheckCircle2 :size="18" /> <span><strong>Imagem pronta para enviar:</strong> {{ imageName }}</span></p>
-          <p class="privacy"><ShieldCheck :size="16" /> O site não armazena nem envia sua imagem sozinho.</p>
-          <button type="button" @click="removeImage"><Trash2 :size="16" /> Remover imagem</button>
-        </div>
+          <div v-if="selectedFile" class="selected-file">
+            <p><CheckCircle2 :size="18" /> <span><strong>Imagem pronta para enviar:</strong> {{ imageName }}</span></p>
+            <p class="privacy"><ShieldCheck :size="16" /> O site não armazena nem envia sua imagem sozinho.</p>
+            <button type="button" @click="removeImage"><Trash2 :size="16" /> Remover imagem</button>
+          </div>
+        </template>
 
         <label>Nome ou frase <small>Opcional</small>
           <input v-model="phrase" type="text" maxlength="80" placeholder="Ex.: Melhor mãe do mundo">
