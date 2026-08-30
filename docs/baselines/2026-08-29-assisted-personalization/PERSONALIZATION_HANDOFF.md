@@ -29,8 +29,9 @@ Data: 29 de agosto de 2026.
 - `npm run build`: aprovado, com 721 produtos, 17 coleções e 741 URLs no SEO.
 - `108/108` cenários Playwright/Axe aprovados em Chrome, Firefox, Safari desktop e Safari móvel. A personalização cobre seleção e remoção do arquivo, compartilhamento nativo simulado, fallback sem suporte a arquivos, resumo completo e ausência de editor/3D/download.
 - Inspeção visual aprovada em `1440 × 1000` e `390 × 844` com uma arte real mantida fora do projeto; nenhum arquivo do acervo foi copiado, enviado ou versionado.
-- O Edge local mantém a falha conhecida de encerramento no lançamento; o perfil será confirmado pelo GitHub Actions após a publicação da branch.
-- Lighthouse e o preview Vercel serão registrados após a publicação da branch.
+- O Edge local mantém a falha conhecida de encerramento no lançamento; o GitHub Actions aprovou `27/27` cenários nesse perfil.
+- O CI do commit `34d03d6` aprovou 69 testes, typecheck, build, `108/108` cenários nos quatro perfis principais, `27/27` no Edge e Lighthouse com todas as categorias em pelo menos `90`.
+- A Vercel publicou o preview `Ready` no alias da branch; o PR `#8` permanece em rascunho e `main`/produção não foram alteradas.
 
 ## Rollback
 
