@@ -2,7 +2,7 @@ import type { Collection, MenuItem } from '@/types/catalog'
 
 /** Categorias principais exibidas na vitrine e no menu. */
 export const colecoes: Collection[] = [
-  { slug: 'personalizada', nome: 'Personalizadas', icone: 'Camera', to: '/personalizada' },
+  { slug: 'personalizada', nome: 'Personalizadas', icone: 'Camera', to: '/personalizada', listada: false },
   { slug: 'divertidas', nome: 'Divertidas', icone: 'Smile' },
   { slug: 'animes', nome: 'Animes', icone: 'Sparkles' },
   { slug: 'casais', nome: 'Casais', icone: 'Heart' },
@@ -33,7 +33,7 @@ export function buscarColecao(slug: string): Collection | undefined {
 
 /** Atalhos exibidos na home, em "Categorias em destaque". */
 export const destaques: string[] = [
-  'personalizada', 'divertidas', 'animes', 'casais', 'games', 'pets',
+  'divertidas', 'animes', 'casais', 'games', 'pets',
 ]
 
 /** Colunas da esquerda do mega menu. */

@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9–11 concluídas, Fase 8 em andamento |
-| Versão | 1.43 |
+| Versão | 1.44 |
 | Data-base | 30 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -16,7 +16,7 @@ Este documento é a fonte de verdade para o próximo ciclo do produto. Cada fase
 
 ## 2. Contexto atual
 
-A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 2.952 caminhos WebP do conjunto atual e 16 objetos anteriores preservados para rollback no bucket público `product-images`; o Postgres contém 721 produtos publicados com metadados reconciliados.
+A aplicação é um catálogo Vue 3 com TypeScript, Tailwind CSS, Lucide Icons e Vite. A Vercel publica automaticamente a branch `main`. O Supabase Storage hospeda 2.952 caminhos WebP do conjunto atual e 16 objetos anteriores preservados para rollback no bucket público `product-images`; o Postgres contém 721 produtos publicados e 16 coleções publicadas com metadados reconciliados.
 
 O catálogo público é lido do Supabase por uma camada de repositório tipada e possui fallback operacional para os arquivos TypeScript. A manutenção cotidiana é feita pelo painel administrativo protegido por Supabase Auth e RLS. O fluxo comercial termina no WhatsApp e mede a jornada por agregados diários sem identificador de visitante ou texto livre.
 
@@ -457,7 +457,7 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 2 — Banco | Concluída | Importação inicial de 341 produtos; catálogo atual com 721 e RLS positiva/negativa verificada |
 | 3 — Integração frontend | Concluída | Catálogo remoto, fallback, 14 testes e validação navegada |
 | 4 — Administração | Concluída | RLS remota e ciclo administrativo E2E completo |
-| 5 — Produto e SEO | Concluída | 721 páginas de produto, canonical único por HTML, sitemap de 741 URLs, preview e Lighthouse |
+| 5 — Produto e SEO | Concluída | 721 páginas de produto, canonical único por HTML, sitemap atual de 740 URLs, preview e Lighthouse |
 | 6 — Medição e qualidade | Concluída | Eventos sem PII, RLS, 90 cenários em cinco perfis, Lighthouse e actions no runtime Node 24 |
 | 7 — Orçamento | Concluída | Persistência local, quantidades, WhatsApp consolidado e E2E desktop/móvel |
 | 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical, Auth e opções de entrega concluídos; dados comerciais oficiais restantes e avaliações reais pendentes |
@@ -466,6 +466,8 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 11 — Experiência assistida | Concluída em produção | Galeria e zoom de produto validados; `/personalizada` usa oferta única com arte pronta a R$ 39,90 ou criação/adaptação a R$ 44,90, recebimento da foto/orientações e mockup feito pela equipe |
 
 ## 18. Evoluções incrementais após o roadmap
+
+- **30 de agosto de 2026 — personalização como ação, sem coleção duplicada:** a coleção vazia `Personalizadas` foi ocultada e despublicada sem substituição porque a oferta já está representada por `Personalize do seu jeito` e pela rota `/personalizada`. A home passou de seis para cinco categorias em destaque, todas com produtos reais, e o grid desktop foi redistribuído em cinco colunas; o fallback local respeita a mesma decisão. `/colecao/personalizada` redireciona para a experiência de personalização para preservar links antigos. A migration `20260830123000_hide_empty_personalized_collection.sql` aborta caso existam produtos relacionados, não apaga registros e possui rollback espelhado. No remoto, a coleção tinha zero relações, ficou com `is_published = false` e `is_listed = false`, e a migration foi registrada; leitura anônima de coleção publicada passou, leitura de `personalizada` retornou zero linhas e escrita anônima foi recusada com HTTP `401`. O aceite local cobriu 76 testes, typecheck, build com 721 produtos, 16 coleções e 740 URLs, 124 cenários Playwright/Axe em Chrome, Firefox, Safari desktop e Safari móvel e inspeção da home em 1440 × 1000. Evidência em [`docs/baselines/2026-08-30-personalization-category-cleanup/PERSONALIZATION_CATEGORY_CLEANUP.md`](../baselines/2026-08-30-personalization-category-cleanup/PERSONALIZATION_CATEGORY_CLEANUP.md). Rollback: executar o SQL versionado em `supabase/rollback/20260830123000_hide_empty_personalized_collection.sql` e reverter os arquivos deste incremento.
 
 - **30 de agosto de 2026 — refinamento visual e responsivo do catálogo:** coleções ganharam cabeçalho contextual com amostra real, contagem e filtros foram consolidados em uma barra compacta, cards receberam hierarquia visual e rótulos adequados ao espaço móvel e títulos longos de produto passaram a quebrar sem causar overflow. Em coleção e busca com até 700 px, o atalho flutuante redundante do WhatsApp fica oculto para não cobrir a grade; os CTAs de cada produto permanecem visíveis e o atalho continua nas outras rotas. Não houve migration nem mudança de dados ou regra comercial. O aceite local cobriu 73 testes, typecheck, build com 741 URLs, 120/120 cenários Playwright/Axe em Chrome, Firefox, Safari desktop e Safari móvel, inspeção em 1440 × 1000/390 × 844 e Lighthouse P90+ em todas as categorias. O PR `#9` foi mesclado por `f2630dd`; o CI da `main` `33318994130` aprovou novamente 120 cenários principais, 30 no Edge e Lighthouse, a Vercel publicou `dpl_9myA5GtA5zo99KYjkKwyTHAcgpDc` e o smoke no domínio oficial aprovou as três rotas e o comportamento responsivo. Rollback: reverter somente os componentes, views, teste E2E e documentação deste incremento. Evidência em [`docs/baselines/2026-08-30-catalog-mobile-polish/CATALOG_MOBILE_POLISH.md`](../baselines/2026-08-30-catalog-mobile-polish/CATALOG_MOBILE_POLISH.md).
 

@@ -13,6 +13,7 @@ import {
 const routes: RouteRecordRaw[] = [
   { path: '/',              name: 'home',          component: HomeView,                                       meta: { titulo: 'Canecas Personalizadas' } },
   { path: '/colecoes',      name: 'colecoes',      component: () => import('@/views/ColecoesView.vue'),       meta: { titulo: 'Todas as coleções' } },
+  { path: '/colecao/personalizada', redirect: { name: 'personalizada' } },
   { path: '/colecao/:slug', name: 'colecao',       component: () => import('@/views/ColecaoView.vue'),        props: true },
   { path: '/personalizada', name: 'personalizada', component: () => import('@/views/PersonalizadaView.vue'),  meta: { titulo: 'Caneca Personalizada' } },
   { path: '/com-fotos',     redirect: { name: 'personalizada' } },

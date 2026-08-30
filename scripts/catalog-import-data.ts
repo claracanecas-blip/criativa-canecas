@@ -87,8 +87,8 @@ export async function buildCatalogImportData() {
     icon_name: collection.icone,
     image_path: firstImageByCollection.get(collection.slug) ?? null,
     display_order: index,
-    is_published: true,
-    is_listed: publicSlugs.has(collection.slug),
+    is_published: collection.slug !== 'personalizada',
+    is_listed: collection.slug !== 'personalizada' && publicSlugs.has(collection.slug),
     seo_title: `${collection.nome} | Criativa Canecas`,
     seo_description: `Explore canecas da coleção ${collection.nome} na Criativa Canecas.`,
   }))
