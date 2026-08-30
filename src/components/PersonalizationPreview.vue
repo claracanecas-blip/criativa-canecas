@@ -40,6 +40,12 @@ function refreshShareSupport(file?: File) {
     canShareOriginal.value = false
     return
   }
+  const mobileUserAgent = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+  const iPadDesktopMode = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1
+  if (!mobileUserAgent && !iPadDesktopMode) {
+    canShareOriginal.value = false
+    return
+  }
   try {
     canShareOriginal.value = navigator.canShare({ files: [file] })
   } catch {
@@ -147,12 +153,12 @@ async function shareOriginal() {
         <p v-if="canShareOriginal" class="share-help">Escolha o WhatsApp e depois a conversa da Criativa. A foto e o resumo seguirão juntos.</p>
 
         <a v-else class="whatsapp" :href="whatsapp" target="_blank" rel="noopener" @click="trackWhatsappClick('personalized')">
-          <MessageCircle :size="20" /> Abrir conversa no WhatsApp
+          <MessageCircle :size="20" /> Abrir WhatsApp da Criativa
         </a>
         <p v-if="!canShareOriginal" class="attachment-note">
           <Send :size="15" />
-          <span v-if="imageName"><strong>Anexe a foto {{ imageName }}</strong> na conversa antes de enviar o pedido.</span>
-          <span v-else>Escolha uma imagem acima ou abra a conversa e anexe a foto diretamente no WhatsApp.</span>
+          <span v-if="imageName">A conversa abrirá com o resumo pronto. <strong>Anexe a foto {{ imageName }}</strong> antes de enviar.</span>
+          <span v-else>A conversa da Criativa abrirá com seu pedido. Anexe a foto diretamente no WhatsApp.</span>
         </p>
         <p v-if="shareMessage" class="share-status" :class="{ error: shareError }" role="status" aria-live="polite">{{ shareMessage }}</p>
       </aside>

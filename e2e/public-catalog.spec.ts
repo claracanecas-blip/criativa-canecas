@@ -293,6 +293,10 @@ test('coleção pode ser refinada por tema, preço e ordenação', async ({ page
 
 test('pedido assistido encaminha a foto e preserva o contexto no WhatsApp', async ({ page }) => {
   await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'userAgent', {
+      configurable: true,
+      value: 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/125 Mobile Safari/537.36',
+    })
     Object.defineProperty(navigator, 'canShare', {
       configurable: true,
       value: (data: ShareData) => Boolean(data.files?.length),
@@ -330,7 +334,7 @@ test('pedido assistido encaminha a foto e preserva o contexto no WhatsApp', asyn
   await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
   await page.getByLabel('Como você imagina sua caneca?').fill('Usar tons de rosa')
 
-  await expect(page.getByRole('link', { name: 'Abrir conversa no WhatsApp' })).toHaveCount(0)
+  await expect(page.getByRole('link', { name: 'Abrir WhatsApp da Criativa' })).toHaveCount(0)
   await page.getByRole('button', { name: 'Enviar foto e pedido pelo WhatsApp' }).click()
   await expect(page.getByText(/Foto e pedido compartilhados/)).toBeVisible()
   const sharedRequest = await page.evaluate(() => {
@@ -349,14 +353,19 @@ test('pedido assistido encaminha a foto e preserva o contexto no WhatsApp', asyn
 
   await page.getByRole('button', { name: 'Remover imagem' }).click()
   await page.evaluate(() => {
-    Object.defineProperty(navigator, 'canShare', { configurable: true, value: () => false })
+    Object.defineProperty(navigator, 'userAgent', {
+      configurable: true,
+      value: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/125 Safari/537.36',
+    })
   })
   await page.locator('input[type=file]').setInputFiles('public/img/logo.png')
   await expect(page.getByRole('button', { name: 'Enviar foto e pedido pelo WhatsApp' })).toHaveCount(0)
-  const whatsapp = page.getByRole('link', { name: 'Abrir conversa no WhatsApp' })
+  const whatsapp = page.getByRole('link', { name: 'Abrir WhatsApp da Criativa' })
   await expect(whatsapp).toBeVisible()
   const href = await whatsapp.getAttribute('href')
-  const message = new URL(href ?? '').searchParams.get('text') ?? ''
+  const whatsappUrl = new URL(href ?? '')
+  const message = whatsappUrl.searchParams.get('text') ?? ''
+  expect(whatsappUrl.pathname).toBe('/5548991992341')
   expect(message).toBe(sharedRequest?.text)
   await expect(page.getByText(/Anexe a foto logo.png/)).toBeVisible()
 })
