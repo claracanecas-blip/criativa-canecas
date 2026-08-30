@@ -30,6 +30,14 @@ O Lighthouse gerou os três relatórios válidos; no Windows, o Chrome Launcher 
 - os PNGs de cartões, os scripts PowerShell e `docs/guides/` permanecem não rastreados;
 - nenhuma chamada administrativa ou escrita remota foi necessária.
 
+## Preview e produção
+
+- PR: `#9`;
+- merge na `main`: `f2630dd`;
+- CI da `main`: execução `33318994130`, com 120 cenários principais, 30 no Edge/Windows e Lighthouse aprovados;
+- deployment Vercel: `dpl_9myA5GtA5zo99KYjkKwyTHAcgpDc`, estado `Ready` e aliases oficiais ativos;
+- smoke em `https://criativacanecas.com.br`: coleção, busca e produto responderam `200`; canonicals permaneceram oficiais; a grade móvel apresentou duas colunas e rótulos compactos; o WhatsApp flutuante ficou oculto em coleção/busca e visível no produto; `Breaking Bad — Walter e Jesse` não gerou overflow.
+
 ## Rollback
 
 Reverter os quatro arquivos de aplicação, o teste E2E e a documentação deste incremento. Não há migration, objeto de Storage ou dado remoto para desfazer.
