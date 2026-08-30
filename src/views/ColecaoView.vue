@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { ChevronRight } from '@lucide/vue'
+import { ChevronRight, SlidersHorizontal } from '@lucide/vue'
 import AppIcon from '@/components/ui/AppIcon.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import EstadoVazio from '@/components/EstadoVazio.vue'
@@ -88,24 +88,46 @@ watch(
       <span>{{ colecao.nome }}</span>
     </nav>
 
-    <div class="section-title">
-      <h1 class="flex items-center justify-center gap-2"><AppIcon :name="colecao.icone" :size="28" /> {{ colecao.nome }}</h1>
-      <p v-if="itens.length">{{ itens.length }} modelos disponíveis</p>
-    </div>
+    <header class="collection-hero">
+      <div class="collection-heading">
+        <span class="collection-icon" aria-hidden="true"><AppIcon :name="colecao.icone" :size="30" /></span>
+        <div>
+          <small>Coleção</small>
+          <h1>{{ colecao.nome }}</h1>
+          <p v-if="itens.length">{{ itens.length }} modelos para escolher</p>
+          <p v-else>Uma coleção preparada para o seu momento</p>
+        </div>
+      </div>
+      <div v-if="itens[0]" class="collection-art" aria-hidden="true">
+        <img
+          :src="productImageUrl(itens[0].imagem, 'card-320')"
+          alt=""
+          width="320"
+          height="320"
+          loading="eager"
+          fetchpriority="high"
+        >
+      </div>
+    </header>
 
     <div v-if="itens.length" class="catalog-tools" aria-label="Filtros do catálogo">
-      <label v-if="temas.length > 1">Tema
-        <select v-model="temaAtivo" aria-label="Filtrar por tema"><option value="">Todos os temas</option><option v-for="tema in temas" :key="tema" :value="tema">{{ tema }}</option></select>
-      </label>
-      <label v-if="possuiPrecosDiferentes">Preço
-        <select v-model="faixaPreco" aria-label="Faixa de preço"><option value="all">Todos os preços</option><option value="under-40">Até R$ 39,99</option><option value="40-50">R$ 40 a R$ 49,99</option><option value="over-50">R$ 50 ou mais</option></select>
-      </label>
-      <label>Ordenar
-        <select v-model="ordenacao" aria-label="Ordenar produtos"><option value="default">Destaques</option><option v-if="possuiPrecosDiferentes" value="price-asc">Menor preço</option><option v-if="possuiPrecosDiferentes" value="price-desc">Maior preço</option><option value="name">Nome de A a Z</option></select>
-      </label>
-      <button v-if="temaAtivo || faixaPreco !== 'all' || ordenacao !== 'default'" type="button" @click="clearFilters">Limpar filtros</button>
+      <div class="tools-summary">
+        <span><SlidersHorizontal :size="18" aria-hidden="true" /> Refine sua escolha</span>
+        <strong aria-live="polite">{{ visiveis.length }} {{ visiveis.length === 1 ? 'modelo encontrado' : 'modelos encontrados' }}</strong>
+      </div>
+      <div class="tools-fields">
+        <label v-if="temas.length > 1">Tema
+          <select v-model="temaAtivo" aria-label="Filtrar por tema"><option value="">Todos os temas</option><option v-for="tema in temas" :key="tema" :value="tema">{{ tema }}</option></select>
+        </label>
+        <label v-if="possuiPrecosDiferentes">Preço
+          <select v-model="faixaPreco" aria-label="Faixa de preço"><option value="all">Todos os preços</option><option value="under-40">Até R$ 39,99</option><option value="40-50">R$ 40 a R$ 49,99</option><option value="over-50">R$ 50 ou mais</option></select>
+        </label>
+        <label>Ordenar
+          <select v-model="ordenacao" aria-label="Ordenar produtos"><option value="default">Destaques</option><option v-if="possuiPrecosDiferentes" value="price-asc">Menor preço</option><option v-if="possuiPrecosDiferentes" value="price-desc">Maior preço</option><option value="name">Nome de A a Z</option></select>
+        </label>
+        <button v-if="temaAtivo || faixaPreco !== 'all' || ordenacao !== 'default'" type="button" aria-label="Limpar filtros" @click="clearFilters">Limpar</button>
+      </div>
     </div>
-    <p v-if="itens.length" class="result-count" aria-live="polite">{{ visiveis.length }} {{ visiveis.length === 1 ? 'modelo encontrado' : 'modelos encontrados' }}</p>
 
     <div v-if="visiveis.length" class="grid">
       <ProdutoCard
@@ -133,13 +155,20 @@ watch(
 </template>
 
 <style scoped>
-.trilha{display:flex;align-items:center;gap:3px;font-size:12px;color:var(--muted);margin-bottom:14px}
+.trilha{display:flex;align-items:center;gap:3px;font-size:12px;color:var(--muted);margin-bottom:12px}
 .trilha a:hover{color:var(--pink-dark)}
-
-.catalog-tools{display:flex;align-items:end;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:10px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fff7fa}.catalog-tools label{display:grid;gap:5px;min-width:180px;color:#8b304e;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.04em}.catalog-tools select{height:42px;padding:0 34px 0 12px;border:1px solid #d9cbd2;border-radius:10px;background:#fff;color:var(--ink);font:inherit;text-transform:none;letter-spacing:0}.catalog-tools button{height:42px;padding:0 14px;border:1px solid var(--pink-dark);border-radius:10px;background:#fff;color:var(--pink-dark);font-weight:850;cursor:pointer}.result-count{text-align:center;margin:0 0 22px;color:var(--muted);font-size:12px;font-weight:800}
+.collection-hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:154px;margin-bottom:14px;padding:24px 210px 24px 28px;overflow:hidden;border:1px solid #f0d6df;border-radius:24px;background:linear-gradient(115deg,#fff3f7 0%,#fff 68%)}
+.collection-hero::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(circle at 16% 20%,rgba(238,75,130,.12) 0 2px,transparent 3px) 0 0/22px 22px;mask-image:linear-gradient(90deg,#000,transparent 55%);opacity:.7}
+.collection-heading{display:flex;align-items:center;gap:17px}.collection-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:19px;background:#fff;color:var(--pink-dark);box-shadow:0 10px 24px rgba(125,48,76,.11)}
+.collection-heading small{display:block;margin-bottom:3px;color:var(--pink-dark);font-size:11px;font-weight:950;letter-spacing:.13em;text-transform:uppercase}.collection-heading h1{margin:0;font-family:Georgia,serif;font-size:clamp(30px,3.5vw,43px);line-height:1.06;text-wrap:balance}.collection-heading p{margin:7px 0 0;color:var(--muted);font-size:14px;font-weight:650}
+.collection-art{position:absolute;right:23px;top:50%;width:150px;height:150px;padding:7px;border-radius:50%;background:#fff;box-shadow:0 14px 30px rgba(72,36,51,.14);transform:translateY(-50%) rotate(4deg)}.collection-art::after{content:"";position:absolute;inset:7px;border:1px solid rgba(238,75,130,.16);border-radius:50%;pointer-events:none}.collection-art img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.catalog-tools{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 22px;padding:13px 15px;border:1px solid var(--line);border-radius:17px;background:#fff;box-shadow:0 7px 20px rgba(73,39,53,.05)}
+.tools-summary{display:grid;gap:2px;min-width:max-content}.tools-summary span{display:flex;align-items:center;gap:7px;color:var(--pink-dark);font-size:12px;font-weight:900}.tools-summary strong{color:var(--muted);font-size:11px;font-weight:750}
+.tools-fields{display:flex;align-items:end;justify-content:flex-end;gap:9px;flex-wrap:wrap}.catalog-tools label{display:grid;gap:4px;min-width:172px;color:#8b304e;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}.catalog-tools select{height:40px;padding:0 34px 0 11px;border:1px solid #d9cbd2;border-radius:10px;background:#fff;color:var(--ink);font-size:12px;font-weight:750;text-transform:none;letter-spacing:0}.catalog-tools button{height:40px;padding:0 13px;border:1px solid var(--pink-dark);border-radius:10px;background:#fff;color:var(--pink-dark);font-size:12px;font-weight:850;cursor:pointer}.catalog-tools button:hover{background:var(--pink-soft)}
 .paginacao{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:28px;font-size:13px;font-weight:800}
 .paginacao button{border:1px solid var(--line);border-radius:999px;padding:9px 16px;background:#fff;font-weight:800;cursor:pointer}
 .paginacao button:not(:disabled):hover{border-color:var(--pink);color:var(--pink-dark)}
 .paginacao button:disabled{opacity:.45;cursor:not-allowed}
-@media(max-width:700px){.catalog-tools{display:grid;grid-template-columns:1fr 1fr;align-items:end}.catalog-tools label{min-width:0}.catalog-tools label:first-child{grid-column:1/-1}.catalog-tools button{grid-column:1/-1}}
+@media(max-width:800px){.collection-hero{min-height:132px;padding:19px 145px 19px 18px;border-radius:20px}.collection-icon{flex-basis:48px;width:48px;height:48px;border-radius:15px}.collection-heading{gap:12px}.collection-heading h1{font-size:30px}.collection-heading p{font-size:12px}.collection-art{right:14px;width:112px;height:112px}.catalog-tools{display:grid;gap:12px}.tools-summary{display:flex;align-items:center;justify-content:space-between;gap:10px}.tools-summary strong{text-align:right}.tools-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px}.catalog-tools label{min-width:0}.catalog-tools button{grid-column:1/-1}}
+@media(max-width:480px){.trilha{margin-bottom:9px}.collection-hero{min-height:112px;padding:16px 106px 16px 15px;border-radius:18px}.collection-heading{align-items:flex-start}.collection-icon{display:none}.collection-heading small{font-size:9px}.collection-heading h1{font-size:clamp(25px,8vw,30px)}.collection-heading p{margin-top:5px;line-height:1.35}.collection-art{right:10px;width:88px;height:88px;padding:5px}.collection-art::after{inset:5px}.catalog-tools{padding:12px;margin-bottom:18px}.tools-summary span{font-size:11px}.tools-summary strong{font-size:10px}.catalog-tools select{width:100%;height:39px}}
 </style>
