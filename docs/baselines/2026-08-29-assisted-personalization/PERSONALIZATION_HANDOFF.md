@@ -34,7 +34,7 @@ A oferta comercial também foi consolidada em uma única `Caneca personalizada`,
 - Inspeção visual aprovada em `1440 × 1000` e `390 × 844` com uma arte real mantida fora do projeto; nenhum arquivo do acervo foi copiado, enviado ou versionado.
 - O Edge local mantém a falha conhecida de encerramento no lançamento; o GitHub Actions aprovou `28/28` cenários nesse perfil.
 - O CI da `main` no merge `a84c342` aprovou 70 testes, typecheck, build, `112/112` cenários nos quatro perfis principais, `28/28` no Edge e Lighthouse com todas as categorias em pelo menos `90`.
-- A Vercel publicou o deployment de produção `dpl_92kp1f2yz5Q4xrD7JhJye22HjZaa` em estado `Ready`. O smoke navegável no domínio oficial confirmou a oferta única, `R$ 39,90`, taxa condicional de `R$ 5,00`, total de `R$ 44,90`, isenção para arte pronta e mensagem destinada ao WhatsApp oficial.
+- A Vercel publicou o refinamento final no deployment de produção `dpl_AHx3wNsAkz5TrjYaU4yyy9mArg7i`, estado `Ready`. O smoke navegável no domínio oficial confirmou a oferta única, `R$ 39,90` com arte pronta, `R$ 44,90` com criação/adaptação, ausência de linguagem de taxa e mensagem destinada ao WhatsApp oficial.
 
 ## Rollback
 
