@@ -330,37 +330,35 @@ test('pedido assistido encaminha a foto e preserva o contexto no WhatsApp', asyn
   await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
   await page.getByLabel('Como você imagina sua caneca?').fill('Usar tons de rosa')
 
-  await page.getByRole('button', { name: 'Compartilhar foto e pedido' }).click()
+  await expect(page.getByRole('link', { name: 'Abrir conversa no WhatsApp' })).toHaveCount(0)
+  await page.getByRole('button', { name: 'Enviar foto e pedido pelo WhatsApp' }).click()
   await expect(page.getByText(/Foto e pedido compartilhados/)).toBeVisible()
   const sharedRequest = await page.evaluate(() => {
     const target = window as typeof window & { __sharedRequest?: { files: string[]; text: string } }
     return target.__sharedRequest
   })
   expect(sharedRequest?.files).toEqual(['logo.png'])
-  expect(sharedRequest?.text).toContain('prepare o mockup')
+  expect(sharedRequest?.text).toContain('Podem criar um mockup para eu aprovar?')
   expect(sharedRequest?.text).toContain('Melhor mãe do mundo')
-
-  const whatsapp = page.getByRole('link', { name: 'Abrir conversa no WhatsApp' })
-  const href = await whatsapp.getAttribute('href')
-  const message = new URL(href ?? '').searchParams.get('text') ?? ''
-  expect(message).toContain('Modelo escolhido: Caneca personalizada com foto')
-  expect(message).toContain('Foto original: “logo.png”')
-  expect(message).toContain('prepare o mockup para eu aprovar')
-  expect(message).toContain('Vou anexar a foto original')
-  expect(message).toContain('Melhor mãe do mundo')
-  expect(message).toContain('Usar tons de rosa')
-  expect(message).toContain('Aguardo o mockup')
-  expect(message).toContain('Minha cidade/CEP')
-  expect(message).not.toContain('Enquadramento escolhido')
-  expect(message).not.toContain('gabarito 21 × 8,7 cm')
+  expect(sharedRequest?.text).toContain('Modelo: Caneca personalizada com foto')
+  expect(sharedRequest?.text).toContain('Foto: logo.png')
+  expect(sharedRequest?.text).toContain('Frase: Melhor mãe do mundo')
+  expect(sharedRequest?.text).toContain('Detalhes: Usar tons de rosa')
+  expect(sharedRequest?.text).toContain('Cidade/CEP:')
+  expect(sharedRequest?.text).not.toContain('enquadramento, cores e texto')
 
   await page.getByRole('button', { name: 'Remover imagem' }).click()
   await page.evaluate(() => {
     Object.defineProperty(navigator, 'canShare', { configurable: true, value: () => false })
   })
   await page.locator('input[type=file]').setInputFiles('public/img/logo.png')
-  await expect(page.getByRole('button', { name: 'Compartilhar foto e pedido' })).toHaveCount(0)
-  await expect(page.getByText(/Se não estiver, anexe-a manualmente na conversa/)).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Enviar foto e pedido pelo WhatsApp' })).toHaveCount(0)
+  const whatsapp = page.getByRole('link', { name: 'Abrir conversa no WhatsApp' })
+  await expect(whatsapp).toBeVisible()
+  const href = await whatsapp.getAttribute('href')
+  const message = new URL(href ?? '').searchParams.get('text') ?? ''
+  expect(message).toBe(sharedRequest?.text)
+  await expect(page.getByText(/Anexe a foto logo.png/)).toBeVisible()
 })
 
 test('orçamento persiste, ajusta quantidade e gera mensagem consolidada', async ({ page }) => {
