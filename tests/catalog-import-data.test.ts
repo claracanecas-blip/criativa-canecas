@@ -6,8 +6,8 @@ test('importação materializa catálogo completo e relações exatas', async ()
   const data = await buildCatalogImportData()
 
   assert.equal(data.collections.length, 17)
-  assert.equal(data.collections.filter((collection) => collection.is_published).length, 17)
-  assert.equal(data.collections.filter((collection) => collection.is_listed).length, 15)
+  assert.equal(data.collections.filter((collection) => collection.is_published).length, 16)
+  assert.equal(data.collections.filter((collection) => collection.is_listed).length, 14)
   assert.equal(data.products.length, 341)
   assert.equal(data.product_collections.length, 341)
   assert.equal(data.product_images.length, 1364)
@@ -67,4 +67,14 @@ test('coleções legadas permanecem publicadas, mas fora da navegação', async 
     assert.equal(collection.is_published, true)
     assert.equal(collection.is_listed, false)
   }
+})
+
+test('atalho de personalização não é tratado como coleção do catálogo', async () => {
+  const data = await buildCatalogImportData()
+  const collection = data.collections.find((item) => item.slug === 'personalizada')
+
+  assert.ok(collection)
+  assert.equal(collection.is_published, false)
+  assert.equal(collection.is_listed, false)
+  assert.equal(data.product_collections.filter((relation) => relation.collection_id === 'personalizada').length, 0)
 })

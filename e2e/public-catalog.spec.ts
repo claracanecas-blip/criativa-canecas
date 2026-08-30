@@ -33,6 +33,8 @@ test('home apresenta produto, caminhos de compra e processo antes da entrega det
   await expect(page.getByRole('link', { name: 'Criar minha caneca' })).toHaveAttribute('href', '/personalizada')
   await expect(page.getByRole('link', { name: 'Ver modelo Aniversário 01' })).toHaveAttribute('href', '/produto/aniversario-01')
   await expect(page.getByRole('heading', { level: 2, name: 'Categorias em destaque' })).toBeVisible()
+  await expect(page.locator('.quick-card')).toHaveCount(5)
+  await expect(page.locator('.quick-card').filter({ hasText: 'Personalizadas' })).toHaveCount(0)
   await expect(page.getByRole('heading', { level: 2, name: 'Da ideia à caneca em três passos' })).toBeVisible()
   await expect(page.getByRole('heading', { level: 2, name: 'Escolha como receber' })).toBeVisible()
 
@@ -326,6 +328,10 @@ test('coleção usa tema e ordenação sem controles de preço redundantes', asy
 })
 
 test('endereços antigos levam às ofertas atuais sem apresentar páginas desatualizadas', async ({ page }) => {
+  await page.goto('/colecao/personalizada')
+  await expect(page).toHaveURL(/\/personalizada$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'Caneca Personalizada' })).toBeVisible()
+
   await page.goto('/com-fotos')
   await expect(page).toHaveURL(/\/personalizada$/)
   await expect(page.getByRole('heading', { level: 1, name: 'Caneca Personalizada' })).toBeVisible()
@@ -333,6 +339,14 @@ test('endereços antigos levam às ofertas atuais sem apresentar páginas desatu
   await page.goto('/dia-dos-pais')
   await expect(page).toHaveURL(/\/presentes$/)
   await expect(page.getByRole('heading', { level: 1, name: /Presentes/ })).toBeVisible()
+})
+
+test('personalização aparece como ação, não como coleção vazia', async ({ page }) => {
+  await page.goto('/colecoes')
+  await expect(page.getByRole('link', { name: /Personalizadas/ })).toHaveCount(0)
+
+  await page.goto('/')
+  await expect(page.getByRole('link', { name: 'Criar minha caneca' })).toHaveAttribute('href', '/personalizada')
 })
 
 test('arte pronta chega ao WhatsApp com serviço e valor específicos', async ({ page }) => {

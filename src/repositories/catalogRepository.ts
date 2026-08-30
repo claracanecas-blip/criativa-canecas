@@ -29,15 +29,18 @@ function iconName(value: string): IconName {
 
 export function mapCatalogRows(rows: CatalogDatabaseRows): CatalogSnapshot {
   const localBySlug = new Map(todasColecoes.map((collection) => [collection.slug, collection]))
-  const collections = rows.collections.map<Collection>((collection) => ({
-    slug: collection.slug,
-    nome: collection.name,
-    icone: iconName(collection.icon_name),
-    to: localBySlug.get(collection.slug)?.to,
-    descricao: collection.description,
-    publicada: collection.is_published,
-    listada: collection.is_listed,
-  }))
+  const collections = rows.collections.map<Collection>((collection) => {
+    const local = localBySlug.get(collection.slug)
+    return {
+      slug: collection.slug,
+      nome: collection.name,
+      icone: iconName(collection.icon_name),
+      to: local?.to,
+      descricao: collection.description,
+      publicada: collection.is_published,
+      listada: collection.is_listed && local?.listada !== false,
+    }
+  })
 
   const collectionIdsByProduct = new Map<string, string[]>()
   for (const relation of [...rows.relations].sort((a, b) => a.display_order - b.display_order)) {
@@ -129,7 +132,7 @@ export const typescriptCatalogRepository: CatalogRepository = {
       colecoes: todasColecoes.map((collection) => ({
         ...collection,
         publicada: true,
-        listada: colecoesLocais.some((listed) => listed.slug === collection.slug),
+        listada: collection.listada !== false && colecoesLocais.some((listed) => listed.slug === collection.slug),
       })),
       produtos: todosProdutos().map((product) => ({
         ...product,

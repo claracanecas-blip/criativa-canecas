@@ -243,7 +243,7 @@ const { testimonials } = useTestimonials()
 .editorial-section{padding-top:46px;padding-bottom:26px}
 
 .quick{background:#fff5f8;padding:44px 0}
-.quick-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.quick-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .quick-card{overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:17px;text-align:center;font-size:13px;font-weight:850;box-shadow:0 7px 20px rgba(70,35,50,.06)}
 .quick-card:hover{border-color:#efacc3;transform:translateY(-2px)}
 .quick-media{height:112px;overflow:hidden;background:#f7edf1}.quick-media :deep(img),.quick-media :deep(.catalog-image-fallback){display:block;width:100%;height:100%;object-fit:cover;transition:transform .25s ease}.quick-card:hover .quick-media :deep(img){transform:scale(1.04)}

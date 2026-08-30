@@ -19,7 +19,7 @@ test('repositório mapeia o catálogo importado com paridade de itens e imagens'
   })
 
   assert.equal(snapshot.colecoes.length, 17)
-  assert.equal(snapshot.colecoes.filter((collection) => collection.listada).length, 15)
+  assert.equal(snapshot.colecoes.filter((collection) => collection.listada).length, 14)
   assert.equal(snapshot.produtos.length, 341)
   assert.ok(snapshot.produtos.every((product) => product.imagem.endsWith('.webp')))
   assert.ok(snapshot.produtos.every((product) => product.imagens?.[0] === product.imagem))
