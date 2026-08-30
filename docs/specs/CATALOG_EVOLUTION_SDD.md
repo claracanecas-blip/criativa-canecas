@@ -7,7 +7,7 @@
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
 | Estado | Em execução; Fases 0–7 e 9–11 concluídas, Fase 8 em andamento |
-| Versão | 1.42 |
+| Versão | 1.43 |
 | Data-base | 30 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
@@ -466,6 +466,8 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 11 — Experiência assistida | Concluída em produção | Galeria e zoom de produto validados; `/personalizada` usa oferta única com arte pronta a R$ 39,90 ou criação/adaptação a R$ 44,90, recebimento da foto/orientações e mockup feito pela equipe |
 
 ## 18. Evoluções incrementais após o roadmap
+
+- **30 de agosto de 2026 — refinamento visual e responsivo do catálogo:** coleções ganharam cabeçalho contextual com amostra real, contagem e filtros foram consolidados em uma barra compacta, cards receberam hierarquia visual e rótulos adequados ao espaço móvel e títulos longos de produto passaram a quebrar sem causar overflow. Em coleção e busca com até 700 px, o atalho flutuante redundante do WhatsApp fica oculto para não cobrir a grade; os CTAs de cada produto permanecem visíveis e o atalho continua nas outras rotas. Não houve migration nem mudança de dados ou regra comercial. O aceite local cobriu 73 testes, typecheck, build com 741 URLs, 120/120 cenários Playwright/Axe em Chrome, Firefox, Safari desktop e Safari móvel, inspeção em 1440 × 1000/390 × 844 e Lighthouse P90+ em todas as categorias. Rollback: reverter somente os componentes, views, teste E2E e documentação deste incremento. Evidência em [`docs/baselines/2026-08-30-catalog-mobile-polish/CATALOG_MOBILE_POLISH.md`](../baselines/2026-08-30-catalog-mobile-polish/CATALOG_MOBILE_POLISH.md).
 
 - **30 de agosto de 2026 — checkup comercial e integridade do catálogo:** como os 721 produtos publicados têm preço único de `R$ 39,90`, coleções passaram a omitir filtro e ordenação por preço, mantendo tema, `Destaques` e nome; a interface reativa preço automaticamente quando houver valores distintos. URLs legadas foram preservadas por redirecionamento: `/com-fotos` leva à personalização atual e `/dia-dos-pais` a presentes. A auditoria de 17 coleções, 721 relações e 2.884 imagens eliminou duas ambiguidades de nome: seis artes antigas de Demon Slayer receberam nomes descritivos e `geek-16` virou `Breaking Bad — Walter e Jesse`; IDs, URLs, SKUs, imagens e preços não mudaram. As migrations `20260830090000_clarify_demon_slayer_names.sql` e `20260830100000_clarify_breaking_bad_name.sql` possuem rollbacks espelhados e passaram em lint remoto, leitura pública e bloqueio anônimo de escrita `42501`. O incremento passou em typecheck, 73 testes, build com 741 URLs, 116 cenários E2E/Axe com três timeouts do Firefox aprovados na repetição serial e inspeção visual desktop/celular. O commit `96486d0` foi publicado na `main`; o CI `33301474746` aprovou 116 cenários principais, 29 no Edge e Lighthouse P90+, a Vercel concluiu o deployment de produção e o smoke oficial aprovou filtros, redirects, nomes e status `200`. Rollback: reverter os arquivos de aplicação e executar, em ordem inversa, os dois SQLs correspondentes em `supabase/rollback/`.
 

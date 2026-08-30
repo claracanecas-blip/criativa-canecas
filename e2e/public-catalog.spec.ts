@@ -95,7 +95,7 @@ test('busca ignora acentos, aceita SKU e pagina resultados extensos', async ({ p
 
 test('coleção de aniversário contém somente os 23 modelos reconciliados', async ({ page }) => {
   await page.goto('/colecao/aniversario')
-  await expect(page.getByText('23 modelos disponíveis')).toBeVisible()
+  await expect(page.getByText('23 modelos para escolher')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
   await expect(page.getByRole('link', { name: 'Ver detalhes de Aniversário 01' })).toBeVisible()
 
@@ -108,7 +108,7 @@ test('coleção de aniversário contém somente os 23 modelos reconciliados', as
 
 test('coleção de pets contém os 50 modelos publicados', async ({ page }) => {
   await page.goto('/colecao/pets')
-  await expect(page.getByText('50 modelos disponíveis')).toBeVisible()
+  await expect(page.getByText('50 modelos para escolher')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
   await expect(page.getByRole('link', { name: 'Ver detalhes de Pets 01' })).toBeVisible()
 
@@ -125,7 +125,7 @@ test('coleção de pets contém os 50 modelos publicados', async ({ page }) => {
 
 test('coleção Futebol & Esportes contém os 50 modelos publicados', async ({ page }) => {
   await page.goto('/colecao/futebol')
-  await expect(page.getByText('50 modelos disponíveis')).toBeVisible()
+  await expect(page.getByText('50 modelos para escolher')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
   await expect(page.getByRole('link', { name: 'Ver detalhes de Flamengo 01' })).toBeVisible()
 
@@ -142,7 +142,7 @@ test('coleção Futebol & Esportes contém os 50 modelos publicados', async ({ p
 
 test('coleção Profissões contém os 50 modelos com estampa disponível', async ({ page }) => {
   await page.goto('/colecao/profissoes')
-  await expect(page.getByText('50 modelos disponíveis')).toBeVisible()
+  await expect(page.getByText('50 modelos para escolher')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
   await expect(page.getByRole('link', { name: 'Ver detalhes de Administração 01' })).toBeVisible()
 
@@ -159,7 +159,7 @@ test('coleção Profissões contém os 50 modelos com estampa disponível', asyn
 
 test('coleção Religião contém 50 modelos com estampas respeitosamente identificadas', async ({ page }) => {
   await page.goto('/colecao/religiao')
-  await expect(page.getByText('50 modelos disponíveis')).toBeVisible()
+  await expect(page.getByText('50 modelos para escolher')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
   await expect(page.getByRole('link', { name: 'Ver detalhes de Porque Ele Vive' })).toBeVisible()
 
@@ -176,7 +176,7 @@ test('coleção Religião contém 50 modelos com estampas respeitosamente identi
 
 test('coleção Divertidas contém somente os 36 mockups aprovados com estampa', async ({ page }) => {
   await page.goto('/colecao/divertidas')
-  await expect(page.getByText('36 modelos disponíveis')).toBeVisible()
+  await expect(page.getByText('36 modelos para escolher')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
   await expect(page.getByRole('link', { name: 'Ver detalhes de Vem Ni Mim' })).toBeVisible()
 
@@ -189,7 +189,7 @@ test('coleção Divertidas contém somente os 36 mockups aprovados com estampa',
 
 test('coleção Animes contém os 43 modelos anteriores e os 98 mockups aprovados', async ({ page }) => {
   await page.goto('/colecao/animes')
-  await expect(page.getByText('141 modelos disponíveis')).toBeVisible()
+  await expect(page.getByText('141 modelos para escolher')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
 
   for (let pageNumber = 2; pageNumber <= 8; pageNumber += 1) {
@@ -216,7 +216,7 @@ test('coleção Animes contém os 43 modelos anteriores e os 98 mockups aprovado
 
 test('coleção Amizade inclui os 30 novos mockups sem repetição de rota', async ({ page }) => {
   await page.goto('/colecao/amizade')
-  await expect(page.getByText('72 modelos disponíveis')).toBeVisible()
+  await expect(page.getByText('72 modelos para escolher')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(20)
 
   for (let pageNumber = 2; pageNumber <= 4; pageNumber += 1) {
@@ -248,6 +248,36 @@ test('produto continua utilizável em viewport móvel e via teclado', async ({ p
     document.activeElement?.matches('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'),
   )
   expect(focusIsInteractive).toBe(true)
+})
+
+test('catálogo móvel mantém grade compacta sem sobreposição do WhatsApp flutuante', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/colecao/series')
+
+  await expect(page.getByRole('heading', { level: 1, name: 'Séries' })).toBeVisible()
+  await expect(page.getByText('80 modelos para escolher')).toBeVisible()
+  await expect(page.locator('.wa')).toBeHidden()
+  await expect(page.locator('article.card').first().getByText('Adicionar', { exact: true })).toBeVisible()
+  await expect(page.locator('article.card').first().getByText('Adicionar ao orçamento', { exact: true })).toBeHidden()
+
+  const [firstCard, secondCard] = await Promise.all([
+    page.locator('article.card').nth(0).boundingBox(),
+    page.locator('article.card').nth(1).boundingBox(),
+  ])
+  expect(firstCard).not.toBeNull()
+  expect(secondCard).not.toBeNull()
+  expect(secondCard?.x ?? 0).toBeGreaterThan(firstCard?.x ?? 0)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true)
+
+  await page.goto('/busca?q=Arrow')
+  await expect(page.locator('.wa')).toBeHidden()
+  await expect(page.locator('article.card')).toHaveCount(4)
+
+  await page.goto('/produto/geek-16')
+  await expect(page.locator('.wa')).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1, name: 'Breaking Bad — Walter e Jesse' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Pedir este modelo pelo WhatsApp' })).toBeVisible()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true)
 })
 
 test('galeria amplia dentro da própria imagem por cursor, toque e teclado', async ({ page }, testInfo) => {
