@@ -11,7 +11,7 @@ import { useTestimonials } from '@/composables/useTestimonials'
 import { Star } from '@lucide/vue'
 
 const beneficios: Array<{ icone: IconName; titulo: string; texto: string }> = [
-  { icone: 'Coffee', titulo: 'Caneca pronta', texto: 'Personalização inclusa' },
+  { icone: 'Coffee', titulo: 'Caneca pronta', texto: 'Estampa inclusa' },
   { icone: 'WandSparkles', titulo: 'Arte aprovada', texto: 'Antes da produção' },
   { icone: 'MessageCircle', titulo: 'Atendimento direto', texto: 'Pelo WhatsApp' },
   { icone: 'Truck', titulo: 'Entrega combinada', texto: 'Local ou pelos Correios' },

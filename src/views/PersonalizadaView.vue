@@ -2,6 +2,7 @@
 import AppIcon from '@/components/ui/AppIcon.vue'
 import DeliveryOptions from '@/components/DeliveryOptions.vue'
 import PersonalizationPreview from '@/components/PersonalizationPreview.vue'
+import { personalizationPolicy } from '@/data/site'
 import type { IconName } from '@/types/catalog'
 
 const passos = [
@@ -15,14 +16,8 @@ const opcoes: Array<{ icone: IconName; nome: string; descricao: string; preco: s
   {
     icone: 'Coffee',
     nome: 'Caneca personalizada',
-    descricao: 'Personalização com sua arte, frase ou logo em uma caneca de visual clássico.',
-    preco: 'R$ 39,90',
-  },
-  {
-    icone: 'Camera',
-    nome: 'Caneca personalizada com foto',
-    descricao: 'Sua foto preparada em uma composição personalizada para a caneca.',
-    preco: 'R$ 42,90',
+    descricao: 'Personalização com sua arte pronta, foto, frase ou logo em uma caneca de visual clássico.',
+    preco: personalizationPolicy.mugPrice,
   },
 ]
 const modelNames = opcoes.map((opcao) => opcao.nome)
@@ -45,21 +40,26 @@ const modelNames = opcoes.map((opcao) => opcao.nome)
 
     <div class="section-title opcoes-titulo">
       <small>O que você está comprando</small>
-      <h2>Opções personalizadas e valores</h2>
-      <p>Todos os valores correspondem à caneca pronta e personalizada com a arte escolhida. Não vendemos canecas sem estampa.</p>
+      <h2>Caneca personalizada e valor</h2>
+      <p>O valor corresponde à caneca pronta e personalizada. Não vendemos canecas sem estampa.</p>
     </div>
 
     <div class="opcoes">
       <article v-for="opcao in opcoes" :key="opcao.nome" class="opcao">
         <div class="opcao-cabecalho">
           <div class="icone"><AppIcon :name="opcao.icone" :size="28" /></div>
-          <span class="inclusa">Personalização inclusa</span>
+          <span class="inclusa">Estampa inclusa</span>
         </div>
         <h3>{{ opcao.nome }}</h3>
         <p>{{ opcao.descricao }}</p>
         <div class="opcao-preco">
           <small>Valor da caneca personalizada</small>
           <strong>{{ opcao.preco }}</strong>
+        </div>
+        <div class="taxa-arte">
+          <div><span>Criação ou adaptação da arte</span><strong>+ {{ personalizationPolicy.artCreationFee }}</strong></div>
+          <p>{{ personalizationPolicy.artCreationRule }}</p>
+          <small>Total quando a criação ou adaptação for necessária: <strong>{{ personalizationPolicy.totalWithArtCreation }}</strong></small>
         </div>
       </article>
     </div>
@@ -78,15 +78,17 @@ const modelNames = opcoes.map((opcao) => opcao.nome)
 .passo p{margin:0;font-size:13px;color:var(--muted)}
 
 .opcoes-titulo{margin-top:44px}.opcoes-titulo small{display:block;margin-bottom:5px;color:var(--pink-dark);font-size:11px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}.opcoes-titulo p{max-width:720px;margin:8px auto 0;color:var(--muted);font-size:14px;line-height:1.55}
-.opcoes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:760px;margin:0 auto}
+.opcoes{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;max-width:560px;margin:0 auto}
 .opcao{display:flex;flex-direction:column;min-height:285px;background:#fff;border:1px solid #edc5d3;border-radius:18px;padding:20px;box-shadow:0 8px 24px rgba(70,35,50,.07)}
 .opcao-cabecalho{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}.opcao .icone{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--pink-soft);color:var(--pink-dark)}.inclusa{padding:5px 8px;border-radius:999px;background:#e8f7ee;color:#08733c;font-size:10px;font-weight:900;letter-spacing:.02em;text-transform:uppercase}.opcao h3{margin:0 0 9px;font-size:17px;line-height:1.25}.opcao>p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.opcao-preco{margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}.opcao-preco small{display:block;margin-bottom:3px;color:var(--muted);font-size:10px;font-weight:750}.opcao-preco strong{color:#a12645;font-size:21px}
+.taxa-arte{margin-top:13px;padding:12px;border:1px solid #efd2dc;border-radius:11px;background:#fff7fa}.taxa-arte>div{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#623746;font-size:11px;font-weight:850}.taxa-arte>div strong{flex:0 0 auto;color:#a12645;font-size:15px}.taxa-arte p{margin:6px 0 0;color:var(--muted);font-size:10px;line-height:1.45}
+.taxa-arte small{display:block;margin-top:7px;color:#623746;font-size:10px;line-height:1.4}.taxa-arte small strong{color:#a12645}
 .delivery{margin-top:28px}
 
 @media(max-width:950px){
-  .passos,.opcoes{grid-template-columns:repeat(2,1fr)}
+  .passos{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:700px){
-  .passos,.opcoes{grid-template-columns:1fr}
+  .passos{grid-template-columns:1fr}
 }
 </style>

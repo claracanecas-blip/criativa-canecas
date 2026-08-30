@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { CheckCircle2, ImagePlus, MessageCircle, Send, ShieldCheck, Trash2, WandSparkles } from '@lucide/vue'
-import { linkWhatsapp } from '@/data/site'
+import { linkWhatsapp, personalizationPolicy } from '@/data/site'
 import { trackWhatsappClick } from '@/services/analytics'
 import { validateImageCandidate } from '@/utils/adminImages'
 
@@ -29,6 +29,8 @@ const requestText = computed(() => {
   if (imageName.value) lines.push(`Foto: ${imageName.value}`)
   if (phrase.value.trim()) lines.push(`Frase: ${phrase.value.trim()}`)
   if (notes.value.trim()) lines.push(`Detalhes: ${notes.value.trim()}`)
+  lines.push(`Valor da caneca: ${personalizationPolicy.mugPrice}`)
+  lines.push(`Taxa de arte: +${personalizationPolicy.artCreationFee} somente se precisarem criar ou adaptar.`)
   lines.push('Podem criar um mockup para eu aprovar?')
   lines.push('Cidade/CEP: ')
   return lines.join('\n')
@@ -118,7 +120,7 @@ async function shareOriginal() {
 
     <div class="request-layout">
       <form class="request-form" @submit.prevent>
-        <label>Modelo da caneca
+        <label v-if="models.length > 1">Modelo da caneca
           <select v-model="selectedModel"><option v-for="model in models" :key="model" :value="model">{{ model }}</option></select>
         </label>
 
