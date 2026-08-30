@@ -42,3 +42,11 @@ Nenhum token, chave privada ou conteúdo de `.env.local` foi gravado nos artefat
 1. Executar `supabase/rollback/20260830123000_hide_empty_personalized_collection.sql` no projeto vinculado.
 2. Reverter os arquivos de aplicação, testes e documentação deste incremento.
 3. Executar novamente testes, typecheck, build e smoke do catálogo.
+
+## Publicação
+
+- PR: `#10`;
+- merge em `main`: `c9e1397`;
+- CI da `main`: execução `33321308197`, com 124 cenários principais, 31 no Edge e Lighthouse home P98/A100/B100/S100;
+- deployment Vercel: `dpl_7A3Ju7EgabW1NAoEKrazkJsoqv6R`, estado `Ready` e aliases oficiais ativos;
+- smoke em `https://criativacanecas.com.br`: cinco categorias em desktop e celular, zero ocorrência da categoria `Personalizadas`, `/colecao/personalizada` redirecionando para `/personalizada`, canonical oficial, sem overflow móvel e sitemap com 740 URLs.
