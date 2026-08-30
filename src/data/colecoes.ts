@@ -38,18 +38,14 @@ export const destaques: string[] = [
 
 /** Colunas da esquerda do mega menu. */
 export const menuLateral: MenuItem[] = [
-  { nome: 'Coleção', to: '/colecoes', seta: true },
+  { nome: 'Coleções', to: '/colecoes', seta: true },
   { nome: 'Caneca Personalizada', to: '/personalizada', seta: true },
-  { nome: 'Canecas com Foto', to: '/com-fotos' },
   { nome: 'Presentes', to: '/presentes', seta: true },
-  { nome: 'Personalize do seu Jeito', to: '/personalizada', seta: true },
 ]
 
 /** Links do menu principal (barra horizontal). */
 export const menuPrincipal: MenuItem[] = [
-  { nome: 'Coleção', to: '/colecoes', seta: true },
-  { nome: 'Caneca Mágica', to: '/personalizada' },
-  { nome: 'Canecas com Foto', to: '/com-fotos' },
+  { nome: 'Coleções', to: '/colecoes', seta: true },
   { nome: 'Presentes', to: '/presentes', seta: true },
   { nome: 'Personalize do seu jeito', to: '/personalizada', seta: true },
 ]
