@@ -6,9 +6,9 @@
 |---|---|
 | Projeto | Criativa Canecas |
 | Tipo | Especificação orientada por requisitos (Spec-Driven Development) |
-| Estado | Em execução; Fases 0–7 e 9–10 concluídas, Fase 8 em andamento |
-| Versão | 1.35 |
-| Data-base | 28 de agosto de 2026 |
+| Estado | Em execução; Fases 0–7 e 9–11 concluídas, Fase 8 em andamento |
+| Versão | 1.40 |
+| Data-base | 29 de agosto de 2026 |
 | Produção | https://criativacanecas.com.br |
 | Repositório | https://github.com/claracanecas-blip/criativa-canecas |
 
@@ -387,19 +387,19 @@ Uma fase só está concluída quando:
 
 ### Fase 11 — Experiência de escolha e personalização
 
-**Estado:** concluída e validada em produção em 28 de agosto de 2026.
+**Estado:** concluída e validada em produção em 28 de agosto de 2026; simplificação comercial do atendimento assistido aprovada pelo proprietário para publicação em 30 de agosto, no PR `#8`.
 
 **Objetivo:** permitir inspeção detalhada do mockup, reduzir dúvidas sobre produto e facilitar a descoberta e a personalização antes do WhatsApp.
 
-**Entregas:** zoom acessível de 2,4× recortado na própria caixa e galeria preparada para múltiplas imagens; bloco seguro de detalhes/cuidados; depoimentos moderados no contexto do produto; filtros por tema, coleção e preço com ordenação; prévia 2D local com imagem, frase, posicionamento e resumo para WhatsApp; CTAs dos modelos prontos distinguidos do fluxo de personalização, com modelo, SKU e URL preservados na mensagem; opções de `/personalizada` descritas como canecas prontas com personalização inclusa, sem oferta de caneca sem estampa.
+**Entregas:** zoom acessível de 2,4× recortado na própria caixa e galeria preparada para múltiplas imagens; bloco seguro de detalhes/cuidados; depoimentos moderados no contexto do produto; filtros por tema, coleção e preço com ordenação; `/personalizada` com um único fluxo assistido para informar frase/orientações; resumo comercial que explica recebimento, criação do mockup e aprovação antes da produção; seleção e compartilhamento nativo do arquivo somente em celulares cuja Web Share API aceita arquivos; no computador, nenhuma caixa de imagem é exibida e o link de WhatsApp direciona ao número oficial para que a foto seja escolhida uma única vez, dentro da conversa; celulares incompatíveis usam o mesmo fallback, pois `wa.me` não transporta arquivos; arquivo mantido somente no navegador até a ação do cliente; CTAs dos modelos prontos distinguidos do fluxo de personalização, com modelo, SKU e URL preservados na mensagem; `/personalizada` limitada a uma única `Caneca personalizada` de `R$ 39,90`, com estampa inclusa e sem oferta separada “com foto”; criação ou adaptação da arte acrescenta `R$ 5,00` somente quando necessária, total de `R$ 44,90`, e arte pronta para impressão não paga a taxa. O protótipo 3D/editor/exportação foi retirado por decisão do proprietário.
 
-**Aceite:** ampliação operável por mouse, teclado e toque; filtros não alteram o catálogo de origem e tratam zero resultados; prévia não persiste nem envia a imagem; mensagem do WhatsApp preserva escolhas e ressalva de simulação; modelos prontos usam linguagem de pedido sem sugerir personalização, enquanto `/personalizada` mantém a proposta sob medida e deixa explícito que os valores incluem a personalização; nenhum material, capacidade, foto ou avaliação não confirmada é publicado; typecheck, testes, build, E2E/axe, preview e inspeção desktop/celular aprovados.
+**Aceite:** fluxo assistido sem editor, simulação ou download de prévia; em celular compatível, seleção valida JPEG/PNG/WebP de até 10 MB e o compartilhamento nativo inclui o original e um resumo de modelo, arquivo, frase, detalhes, valores, mockup e cidade/CEP; no computador, não existe input de arquivo e o CTA usa `wa.me/5548991992341`, abre a conversa oficial com o resumo e instrui a seleção única da foto dentro do WhatsApp; somente uma ação principal de envio é exibida por vez; troca/remoção da imagem no celular funciona sem persistência ou upload; filtros não alteram o catálogo de origem e tratam zero resultados; modelos prontos usam linguagem de pedido sem sugerir personalização; `/personalizada` mostra uma única oferta e separa claramente valor da caneca, taxa condicional, total quando aplicável e isenção para arte pronta; nenhum material, capacidade, foto ou avaliação não confirmada é publicado; typecheck, testes, build, E2E/axe, preview e inspeção desktop/celular aprovados.
 
 **Dependências externas:** fotos adicionais reais, dados técnicos por modelo e avaliações autorizadas são conteúdo comercial, não bloqueiam a infraestrutura e permanecem ocultos/condicionados enquanto ausentes.
 
 **Rollback:** reverter somente componentes, utilitários, views, testes e documentação da fase. Não há migration nem alteração remota.
 
-**Evidência:** [`docs/baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md`](../baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md), PRs `#3` e `#4`, previews Vercel `Ready`, 69 testes, 130 cenários Playwright/Axe nos cinco perfis, Lighthouse com todas as categorias em pelo menos 90 e smoke do zoom em produção por cursor e toque.
+**Evidência:** [`docs/baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md`](../baselines/2026-08-27-customer-experience/CUSTOMER_EXPERIENCE.md), [`docs/baselines/2026-08-29-assisted-personalization/PERSONALIZATION_HANDOFF.md`](../baselines/2026-08-29-assisted-personalization/PERSONALIZATION_HANDOFF.md), histórico do protótipo em [`docs/baselines/2026-08-29-personalization-3d/PERSONALIZATION_3D.md`](../baselines/2026-08-29-personalization-3d/PERSONALIZATION_3D.md), PRs `#3`, `#4` e `#8`, previews Vercel `Ready`, Lighthouse com todas as categorias em pelo menos 90 e smoke do zoom de produto em produção por cursor e toque.
 
 ## 13. Ordem, dependências e marcos
 
@@ -463,9 +463,13 @@ As respostas oficiais podem ser enviadas usando [`docs/templates/PHASE_8_BUSINES
 | 8 — Confiança e domínio | Em andamento | Domínio próprio, HTTPS, redirects, canonical, Auth e opções de entrega concluídos; dados comerciais oficiais restantes e avaliações reais pendentes |
 | 9 — Descoberta de checkout | Concluída | Decisão documentada: adiar, medir 30 dias e reavaliar por critérios |
 | 10 — Escala e descoberta | Concluída | Produção validada; 65 testes, 100 cenários E2E/axe, Lighthouse P90+, redirects, SEO, buscas e menu mobile aprovados |
-| 11 — Experiência assistida | Concluída | Galeria e zoom na própria caixa, detalhes seguros, prova social moderada, filtros e prévia 2D validados em produção |
+| 11 — Experiência assistida | Concluída; publicação autorizada | Galeria e zoom de produto validados em produção; PR `#8` deixa `/personalizada` com oferta única de R$ 39,90, taxa condicional de arte de R$ 5,00, recebimento da foto/orientações e mockup feito pela equipe |
 
 ## 18. Evoluções incrementais após o roadmap
+
+- **29–30 de agosto de 2026 — personalização assistida sem editor:** por decisão do proprietário, o protótipo híbrido do PR `#8` foi simplificado para um único pedido de criação. O cliente informa frase e orientações; a equipe recebe a foto, prepara o mockup e o envia para aprovação antes da produção. Em celulares compatíveis, `Enviar foto e pedido pelo WhatsApp` leva arquivo e resumo curto ao seletor do sistema. No computador, a caixa de arquivo foi removida para não exigir a mesma foto duas vezes; `Abrir WhatsApp da Criativa` usa o número oficial e a imagem é escolhida somente na conversa. Não há upload, armazenamento, editor, prévia 2D/3D nem PNG de gabarito. Three.js e os módulos exclusivos da simulação foram removidos; o chunk da rota caiu de aproximadamente `147,7 KB gzip` para `4,3 KB gzip`. A oferta foi consolidada em uma única caneca personalizada de `R$ 39,90`; criação ou adaptação acrescenta `R$ 5,00` apenas quando necessária, e arte pronta para impressão é isenta. Página e WhatsApp exibem os valores separadamente. O commit `34d03d6` foi aprovado com 69 testes, `108/108` cenários nos navegadores principais, `27/27` no Edge e Lighthouse P90+; a validação final e a publicação autorizada do novo preço estão registradas no mesmo incremento. Evidência em [`docs/baselines/2026-08-29-assisted-personalization/PERSONALIZATION_HANDOFF.md`](../baselines/2026-08-29-assisted-personalization/PERSONALIZATION_HANDOFF.md).
+
+- **29 de agosto de 2026 — protótipo histórico de fluxo híbrido e prévia 3D:** antes da simplificação registrada acima, `/personalizada` chegou a renderizar uma caneca procedural com Three.js e aplicar imagem/frase por textura de canvas mantida somente no navegador. `Quero ver e ajustar` ampliava automaticamente a foto em até `140%` e oferecia conferência/editor; `Quero que vocês criem` deixava o mockup com a equipe. O gabarito usava `21 × 8,7 cm`, faixas transparentes próximas à alça e exportação `2480 × 1028 px`/`300 dpi`. Esse protótipo foi validado com 79 testes, `112/112` cenários Playwright/Axe e Lighthouse P90+, mas foi removido do PR `#8` por decisão posterior do proprietário. O histórico técnico e o rollback permanecem em [`docs/baselines/2026-08-29-personalization-3d/PERSONALIZATION_3D.md`](../baselines/2026-08-29-personalization-3d/PERSONALIZATION_3D.md).
 
 - **28 de agosto de 2026 — apresentação comercial da home:** a primeira dobra passou a mostrar canecas reais, preço de referência e dois caminhos distintos para modelos prontos e personalização. Categorias com miniaturas aparecem antes dos banners e da entrega detalhada; oito modelos continuam compondo a vitrine; o processo de aprovação e recebimento é explicado em três passos. A identidade rosa ganhou somente curvas, pontilhado e brilhos de baixo contraste, com redução específica no celular. O aceite local cobriu revisão visual em 1440 × 1000 e 390 × 844, 69 testes, typecheck, build com 741 URLs e E2E de hierarquia mais Axe WCAG 2.2 A/AA. Não houve migration, upload nem alteração de dados remotos; rollback consiste em reverter os arquivos da home, aviso e teste relacionado.
 

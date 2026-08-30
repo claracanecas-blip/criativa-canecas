@@ -7,6 +7,7 @@ import {
   normalizeSiteOrigin,
   officialSiteOrigin,
   officialSiteUrl,
+  personalizationPolicy,
   site,
 } from '../src/data/site.ts'
 
@@ -38,4 +39,12 @@ test('política de entrega mantém preço, atendimento local e envio centralizad
   assert.match(deliveryPolicy.shipping.subtitle, /Correios/i)
   assert.match(deliveryPolicy.shipping.description, /frete.*CEP/i)
   assert.match(deliveryPolicy.contactPrompt, /cidade\/CEP/i)
+})
+
+test('personalização separa o valor da caneca da taxa condicional de arte', () => {
+  assert.equal(personalizationPolicy.mugPrice, 'R$ 39,90')
+  assert.equal(personalizationPolicy.artCreationFee, 'R$ 5,00')
+  assert.equal(personalizationPolicy.totalWithArtCreation, 'R$ 44,90')
+  assert.match(personalizationPolicy.artCreationRule, /somente quando.*criar ou adaptar/i)
+  assert.match(personalizationPolicy.artCreationRule, /arte pronta.*não cobramos/i)
 })

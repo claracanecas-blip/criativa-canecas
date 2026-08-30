@@ -23,6 +23,13 @@ export const deliveryPolicy = {
   },
 } as const
 
+export const personalizationPolicy = {
+  mugPrice: 'R$ 39,90',
+  artCreationFee: 'R$ 5,00',
+  totalWithArtCreation: 'R$ 44,90',
+  artCreationRule: 'Cobrada somente quando nossa equipe precisar criar ou adaptar a arte. Se você enviar a arte pronta para impressão, não cobramos essa taxa.',
+} as const
+
 export const DEFAULT_SITE_ORIGIN = 'https://criativa-canecas.vercel.app'
 
 export function normalizeSiteOrigin(value?: string): string {

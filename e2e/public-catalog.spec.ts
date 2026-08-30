@@ -291,24 +291,110 @@ test('coleção pode ser refinada por tema, preço e ordenação', async ({ page
   await expect(page.locator('article.card')).toHaveCount(20)
 })
 
-test('prévia local de personalização preserva contexto no WhatsApp', async ({ page }) => {
-  await page.goto('/personalizada')
-  await expect(page.getByRole('heading', { name: 'Opções personalizadas e valores' })).toBeVisible()
-  await expect(page.getByText('Não vendemos canecas sem estampa.')).toBeVisible()
-  await expect(page.getByRole('heading', { level: 3, name: 'Caneca tradicional personalizada' })).toBeVisible()
-  await expect(page.getByText('Caneca branca', { exact: true })).toHaveCount(0)
-  await page.getByLabel('Modelo da caneca').selectOption('Caneca colorida personalizada')
-  await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
-  await page.getByLabel('Observações para a criação').fill('Usar tons de rosa')
+test('pedido assistido encaminha a foto e preserva o contexto no WhatsApp', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'userAgent', {
+      configurable: true,
+      value: 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/125 Mobile Safari/537.36',
+    })
+    Object.defineProperty(navigator, 'canShare', {
+      configurable: true,
+      value: (data: ShareData) => Boolean(data.files?.length),
+    })
+    Object.defineProperty(navigator, 'share', {
+      configurable: true,
+      value: async (data: ShareData) => {
+        const target = window as typeof window & { __sharedRequest?: { files: string[]; text: string } }
+        target.__sharedRequest = {
+          files: data.files?.map((file) => file.name) ?? [],
+          text: data.text ?? '',
+        }
+      },
+    })
+  })
 
-  const whatsapp = page.getByRole('link', { name: 'Continuar pelo WhatsApp' })
+  await page.goto('/personalizada')
+  await expect(page.getByRole('heading', { name: 'Caneca personalizada e valor' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Conte sua ideia e envie a foto pelo WhatsApp' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Envie para criarmos o mockup' })).toBeVisible()
+  await expect(page.getByText('Não vendemos canecas sem estampa.')).toBeVisible()
+  await expect(page.getByRole('heading', { level: 3, name: 'Caneca personalizada', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 3, name: 'Caneca personalizada com foto' })).toHaveCount(0)
+  await expect(page.getByText('R$ 39,90', { exact: true })).toBeVisible()
+  await expect(page.getByText('+ R$ 5,00', { exact: true })).toBeVisible()
+  await expect(page.getByText(/Total quando a criação ou adaptação for necessária: R\$ 44,90/)).toBeVisible()
+  await expect(page.getByText(/Se você enviar a arte pronta para impressão, não cobramos essa taxa/)).toBeVisible()
+  await expect(page.getByText('Caneca mágica personalizada')).toHaveCount(0)
+  await expect(page.getByText('Caneca colorida personalizada')).toHaveCount(0)
+  await expect(page.getByText('Caneca branca', { exact: true })).toHaveCount(0)
+  await expect(page.getByLabel('Modelo da caneca')).toHaveCount(0)
+  await page.locator('input[type=file]').setInputFiles('public/img/logo.png')
+  await expect(page.locator('.upload-button')).toContainText('logo.png')
+  await expect(page.locator('.selected-file')).toContainText('Imagem pronta para enviar: logo.png')
+  await expect(page.getByText('O site não armazena nem envia sua imagem sozinho.')).toBeVisible()
+  await expect(page.getByText('Prévia 3D', { exact: true })).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: 'Ajuste sua foto' })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Baixar prévia 21 × 8,7 cm' })).toHaveCount(0)
+  await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
+  await page.getByLabel('Como você imagina sua caneca?').fill('Usar tons de rosa')
+
+  await expect(page.getByRole('link', { name: 'Abrir WhatsApp da Criativa' })).toHaveCount(0)
+  await page.getByRole('button', { name: 'Enviar foto e pedido pelo WhatsApp' }).click()
+  await expect(page.getByText(/Foto e pedido compartilhados/)).toBeVisible()
+  const sharedRequest = await page.evaluate(() => {
+    const target = window as typeof window & { __sharedRequest?: { files: string[]; text: string } }
+    return target.__sharedRequest
+  })
+  expect(sharedRequest?.files).toEqual(['logo.png'])
+  expect(sharedRequest?.text).toContain('Podem criar um mockup para eu aprovar?')
+  expect(sharedRequest?.text).toContain('Melhor mãe do mundo')
+  expect(sharedRequest?.text).toContain('Modelo: Caneca personalizada')
+  expect(sharedRequest?.text).toContain('Foto: logo.png')
+  expect(sharedRequest?.text).toContain('Frase: Melhor mãe do mundo')
+  expect(sharedRequest?.text).toContain('Detalhes: Usar tons de rosa')
+  expect(sharedRequest?.text).toContain('Valor da caneca: R$ 39,90')
+  expect(sharedRequest?.text).toContain('Taxa de arte: +R$ 5,00 somente se precisarem criar ou adaptar.')
+  expect(sharedRequest?.text).toContain('Cidade/CEP:')
+  expect(sharedRequest?.text).not.toContain('enquadramento, cores e texto')
+})
+
+test('no computador abre o número da loja sem duplicar a seleção da foto', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'userAgent', {
+      configurable: true,
+      value: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/125 Safari/537.36',
+    })
+    Object.defineProperty(navigator, 'canShare', {
+      configurable: true,
+      value: () => true,
+    })
+    Object.defineProperty(navigator, 'share', {
+      configurable: true,
+      value: async () => undefined,
+    })
+  })
+
+  await page.goto('/personalizada')
+  await expect(page.getByRole('heading', { name: 'Conte sua ideia e envie a foto pelo WhatsApp' })).toBeVisible()
+  await expect(page.locator('input[type=file]')).toHaveCount(0)
+  await expect(page.getByText('Foto ou imagem original')).toHaveCount(0)
+  await expect(page.getByLabel('Modelo da caneca')).toHaveCount(0)
+  await page.getByLabel('Nome ou frase').fill('Melhor mãe do mundo')
+  await page.getByLabel('Como você imagina sua caneca?').fill('Usar tons de rosa')
+  await expect(page.getByRole('button', { name: 'Enviar foto e pedido pelo WhatsApp' })).toHaveCount(0)
+  const whatsapp = page.getByRole('link', { name: 'Abrir WhatsApp da Criativa' })
+  await expect(whatsapp).toBeVisible()
   const href = await whatsapp.getAttribute('href')
-  const message = new URL(href ?? '').searchParams.get('text') ?? ''
-  expect(message).toContain('Modelo escolhido: Caneca colorida personalizada')
-  expect(message).toContain('Melhor mãe do mundo')
-  expect(message).toContain('Usar tons de rosa')
-  expect(message).toContain('prévia do site é apenas uma simulação')
-  expect(message).toContain('Minha cidade/CEP')
+  const whatsappUrl = new URL(href ?? '')
+  const message = whatsappUrl.searchParams.get('text') ?? ''
+  expect(whatsappUrl.pathname).toBe('/5548991992341')
+  expect(message).toContain('Modelo: Caneca personalizada')
+  expect(message).toContain('Frase: Melhor mãe do mundo')
+  expect(message).toContain('Detalhes: Usar tons de rosa')
+  expect(message).toContain('Valor da caneca: R$ 39,90')
+  expect(message).toContain('Taxa de arte: +R$ 5,00 somente se precisarem criar ou adaptar.')
+  expect(message).not.toContain('Foto:')
+  await expect(page.getByText(/Anexe a foto diretamente no WhatsApp/)).toBeVisible()
 })
 
 test('orçamento persiste, ajusta quantidade e gera mensagem consolidada', async ({ page }) => {
