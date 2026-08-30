@@ -10,6 +10,10 @@ export interface ProductFilterOptions {
   sort?: ProductSort
 }
 
+export function hasMultiplePrices(products: Product[]): boolean {
+  return new Set(products.map((product) => product.preco)).size > 1
+}
+
 function matchesPriceBand(price: number, band: PriceBand): boolean {
   if (band === 'under-40') return price < 40
   if (band === '40-50') return price >= 40 && price < 50

@@ -9,7 +9,7 @@ import { useCatalog } from '@/composables/useCatalog'
 import { usePageMeta, type PageMeta } from '@/composables/usePageMeta'
 import { productImageUrl } from '@/utils/assets'
 import { officialSiteOrigin, officialSiteUrl } from '@/data/site'
-import { filterAndSortProducts, type PriceBand, type ProductSort } from '@/utils/catalogFilters'
+import { filterAndSortProducts, hasMultiplePrices, type PriceBand, type ProductSort } from '@/utils/catalogFilters'
 
 const props = defineProps<{ slug: string }>()
 const catalog = useCatalog()
@@ -38,6 +38,7 @@ usePageMeta(pageMeta)
 
 // filtro por tema (ex.: Arrow, Breaking Bad), montado a partir dos produtos
 const temas = computed(() => [...new Set(itens.value.map((p) => p.tema ?? p.nome))].sort())
+const possuiPrecosDiferentes = computed(() => hasMultiplePrices(itens.value))
 const temaAtivo = ref<string>('')
 const faixaPreco = ref<PriceBand>('all')
 const ordenacao = ref<ProductSort>('default')
@@ -96,11 +97,11 @@ watch(
       <label v-if="temas.length > 1">Tema
         <select v-model="temaAtivo" aria-label="Filtrar por tema"><option value="">Todos os temas</option><option v-for="tema in temas" :key="tema" :value="tema">{{ tema }}</option></select>
       </label>
-      <label>Preço
+      <label v-if="possuiPrecosDiferentes">Preço
         <select v-model="faixaPreco" aria-label="Faixa de preço"><option value="all">Todos os preços</option><option value="under-40">Até R$ 39,99</option><option value="40-50">R$ 40 a R$ 49,99</option><option value="over-50">R$ 50 ou mais</option></select>
       </label>
       <label>Ordenar
-        <select v-model="ordenacao" aria-label="Ordenar produtos"><option value="default">Ordem da coleção</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option><option value="name">Nome de A a Z</option></select>
+        <select v-model="ordenacao" aria-label="Ordenar produtos"><option value="default">Destaques</option><option v-if="possuiPrecosDiferentes" value="price-asc">Menor preço</option><option v-if="possuiPrecosDiferentes" value="price-desc">Maior preço</option><option value="name">Nome de A a Z</option></select>
       </label>
       <button v-if="temaAtivo || faixaPreco !== 'all' || ordenacao !== 'default'" type="button" @click="clearFilters">Limpar filtros</button>
     </div>

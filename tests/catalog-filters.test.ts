@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { filterAndSortProducts } from '../src/utils/catalogFilters.ts'
+import { filterAndSortProducts, hasMultiplePrices } from '../src/utils/catalogFilters.ts'
 import type { Product } from '../src/types/catalog.ts'
 
 const products: Product[] = [
@@ -20,4 +20,10 @@ test('ordena sem alterar a lista de origem', () => {
   assert.deepEqual(filterAndSortProducts(products, { sort: 'price-desc' }).map((item) => item.id), ['b', 'c', 'a'])
   assert.deepEqual(filterAndSortProducts(products, { sort: 'name' }).map((item) => item.id), ['a', 'b', 'c'])
   assert.deepEqual(products.map((item) => item.id), ['b', 'a', 'c'])
+})
+
+test('controles de preço só são úteis quando existem valores diferentes', () => {
+  assert.equal(hasMultiplePrices(products), true)
+  assert.equal(hasMultiplePrices(products.map((product) => ({ ...product, preco: 39.9 }))), false)
+  assert.equal(hasMultiplePrices([]), false)
 })

@@ -10,12 +10,12 @@ const PRECO_PADRAO = 39.9
 
 export const produtos: Record<string, ProductInput[]> = {
   animes: [
-    { id: 'demon-slayer-gyuu',               nome: 'Demon Slayer 01', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-gyuu.jpg' },
-    { id: 'demon-slayer-inosuke',            nome: 'Demon Slayer 02', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-inosuke.jpg' },
-    { id: 'demon-slayer-kanao',              nome: 'Demon Slayer 03', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-kanao.jpg' },
-    { id: 'demon-slayer-kimetsu-no-yaiba',   nome: 'Demon Slayer 04', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-kimetsu-no-yaiba.jpg' },
-    { id: 'demon-slayer-kimetsu-no-yaiba-2', nome: 'Demon Slayer 05', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-kimetsu-no-yaiba-2.jpg' },
-    { id: 'demon-slayer-kimetsu-no-yaiba-3', nome: 'Demon Slayer 06', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-kimetsu-no-yaiba-3.jpg' },
+    { id: 'demon-slayer-gyuu',               nome: 'Demon Slayer — Giyu', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-gyuu.jpg' },
+    { id: 'demon-slayer-inosuke',            nome: 'Demon Slayer — Inosuke', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-inosuke.jpg' },
+    { id: 'demon-slayer-kanao',              nome: 'Demon Slayer — Kanao', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-kanao.jpg' },
+    { id: 'demon-slayer-kimetsu-no-yaiba',   nome: 'Demon Slayer — Elenco 01', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-kimetsu-no-yaiba.jpg' },
+    { id: 'demon-slayer-kimetsu-no-yaiba-2', nome: 'Demon Slayer — Elenco 02', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-kimetsu-no-yaiba-2.jpg' },
+    { id: 'demon-slayer-kimetsu-no-yaiba-3', nome: 'Demon Slayer — Elenco 03', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-kimetsu-no-yaiba-3.jpg' },
     { id: 'demon-slayer-kyoujurou',          nome: 'Demon Slayer 07', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-kyoujurou.jpg' },
     { id: 'demon-slayer-mitsuri',            nome: 'Demon Slayer 08', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-mitsuri.jpg' },
     { id: 'demon-slayer-muchirou',           nome: 'Demon Slayer 09', tema: 'Demon Slayer', preco: 39.9, imagem: './img/demon-slayer-muchirou.jpg' },
@@ -299,10 +299,11 @@ export const produtos: Record<string, ProductInput[]> = {
     const codigo = String(numero).padStart(2, '0')
     const numeroDoTema = temas.slice(0, indice + 1).filter(([item]) => item === tema).length
     const codigoDoTema = String(numeroDoTema).padStart(2, '0')
+    const nome = numero === 16 ? 'Breaking Bad — Walter e Jesse' : `${tema} ${codigoDoTema}`
 
     return {
       id: `geek-${codigo}`,
-      nome: `${tema} ${codigoDoTema}`,
+      nome,
       tema,
       preco: 39.9,
       imagem: `./img/geek-mockup-${codigo}.jpg`,

@@ -277,18 +277,32 @@ test('galeria amplia dentro da própria imagem por cursor, toque e teclado', asy
   await expect(gallery).toHaveAttribute('aria-pressed', 'false')
 })
 
-test('coleção pode ser refinada por tema, preço e ordenação', async ({ page }) => {
+test('coleção usa tema e ordenação sem controles de preço redundantes', async ({ page }) => {
   await page.goto('/colecao/series')
+  await expect(page.getByLabel('Faixa de preço')).toHaveCount(0)
+  await expect(page.getByRole('option', { name: 'Menor preço' })).toHaveCount(0)
+  await expect(page.getByRole('option', { name: 'Maior preço' })).toHaveCount(0)
+  await expect(page.getByLabel('Ordenar produtos')).toHaveValue('default')
+  await expect(page.getByLabel('Ordenar produtos')).toContainText('Destaques')
   await page.getByLabel('Filtrar por tema').selectOption({ label: 'Arrow' })
   await expect(page.getByText('4 modelos encontrados')).toBeVisible()
   await expect(page.locator('article.card')).toHaveCount(4)
 
-  await page.getByLabel('Faixa de preço').selectOption('over-50')
-  await expect(page.getByText('0 modelos encontrados')).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Nenhum modelo neste filtro' })).toBeVisible()
+  await page.getByLabel('Ordenar produtos').selectOption('name')
+  await expect(page.getByLabel('Ordenar produtos')).toHaveValue('name')
 
   await page.getByRole('button', { name: 'Limpar filtros' }).click()
   await expect(page.locator('article.card')).toHaveCount(20)
+})
+
+test('endereços antigos levam às ofertas atuais sem apresentar páginas desatualizadas', async ({ page }) => {
+  await page.goto('/com-fotos')
+  await expect(page).toHaveURL(/\/personalizada$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'Caneca Personalizada' })).toBeVisible()
+
+  await page.goto('/dia-dos-pais')
+  await expect(page).toHaveURL(/\/presentes$/)
+  await expect(page.getByRole('heading', { level: 1, name: /Presentes/ })).toBeVisible()
 })
 
 test('arte pronta chega ao WhatsApp com serviço e valor específicos', async ({ page }) => {

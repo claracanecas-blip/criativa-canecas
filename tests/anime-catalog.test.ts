@@ -20,6 +20,14 @@ const correctionRollback = await readFile(
   new URL('../supabase/rollback/20260821200000_correct_anime_catalog_classification.sql', import.meta.url),
   'utf8',
 )
+const namingMigration = await readFile(
+  new URL('../supabase/migrations/20260830090000_clarify_demon_slayer_names.sql', import.meta.url),
+  'utf8',
+)
+const namingRollback = await readFile(
+  new URL('../supabase/rollback/20260830090000_clarify_demon_slayer_names.sql', import.meta.url),
+  'utf8',
+)
 
 test('catálogo local preserva os IDs aprovados e remove as duas artes repetidas ou incorretas', () => {
   assert.equal(novosProdutosAnimes.length, 98)
@@ -80,4 +88,24 @@ test('correção remove Fairy Tail incorreto e Hunter duplicado sem apagar o Sto
   assert.doesNotMatch(correctionMigration, /delete from storage\.objects/i)
   assert.match(correctionRollback, /Os oito WebPs removidos do catálogo permanecem no Storage/i)
   assert.match(correctionRollback, /O rollback reintroduz intencionalmente a classificação antiga/i)
+})
+
+test('nomes de Demon Slayer distinguem as artes antigas sem alterar seus identificadores', () => {
+  const demonSlayerProducts = produtos.animes.filter((product) => product.tema === 'Demon Slayer')
+  const names = demonSlayerProducts.map((product) => product.nome)
+
+  assert.equal(new Set(names).size, names.length)
+  assert.deepEqual(names.slice(0, 6), [
+    'Demon Slayer — Giyu',
+    'Demon Slayer — Inosuke',
+    'Demon Slayer — Kanao',
+    'Demon Slayer — Elenco 01',
+    'Demon Slayer — Elenco 02',
+    'Demon Slayer — Elenco 03',
+  ])
+  assert.match(namingMigration, /demon-slayer-gyuu.*Demon Slayer — Giyu/is)
+  assert.match(namingMigration, /demon-slayer-kimetsu-no-yaiba-3.*Demon Slayer — Elenco 03/is)
+  assert.match(namingMigration, /update public\.product_images/is)
+  assert.match(namingRollback, /demon-slayer-gyuu.*Demon Slayer 01/is)
+  assert.match(namingRollback, /demon-slayer-kimetsu-no-yaiba-3.*Demon Slayer 06/is)
 })

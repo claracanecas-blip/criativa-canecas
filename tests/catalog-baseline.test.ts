@@ -16,17 +16,35 @@ const baselineDates = (await readdir(baselineRoot, { withFileTypes: true }))
 const latestBaseline = baselineDates.at(-1)
 assert.ok(latestBaseline, 'Nenhum baseline versionado foi encontrado.')
 const backupPath = join(baselineRoot, latestBaseline, 'catalog-backup.json')
+const breakingBadMigration = await readFile(
+  new URL('../supabase/migrations/20260830100000_clarify_breaking_bad_name.sql', import.meta.url),
+  'utf8',
+)
+const breakingBadRollback = await readFile(
+  new URL('../supabase/rollback/20260830100000_clarify_breaking_bad_name.sql', import.meta.url),
+  'utf8',
+)
 
 test('catálogo possui IDs únicos e dados mínimos válidos', () => {
   const catalog = todosProdutos()
   assert.ok(catalog.length > 0)
   assert.equal(new Set(catalog.map((product) => product.id)).size, catalog.length)
+  assert.equal(new Set(catalog.map((product) => product.nome)).size, catalog.length)
   for (const product of catalog) {
     assert.ok(product.nome.trim())
     assert.ok(product.colecao.trim())
     assert.ok(product.preco > 0)
     assert.match(product.imagem, /^\.\/img\/.+\.(?:jpe?g|png)$/i)
   }
+})
+
+test('artes diferentes mantêm nomes claros para o cliente', () => {
+  const catalog = todosProdutos()
+  assert.equal(catalog.find((product) => product.id === 'geek-16')?.nome, 'Breaking Bad — Walter e Jesse')
+  assert.equal(catalog.find((product) => product.id === 'breaking-bad-1')?.nome, 'Breaking Bad 01')
+  assert.match(breakingBadMigration, /geek-16.*Breaking Bad — Walter e Jesse/is)
+  assert.match(breakingBadMigration, /update public\.product_images/is)
+  assert.match(breakingBadRollback, /geek-16.*Breaking Bad 01/is)
 })
 
 test('coleções públicas possuem slugs únicos', () => {
